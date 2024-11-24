@@ -1,4 +1,171 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sat, 10 Jun 2023 18:22:27 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>BERT</title><link>http://fengchen321.github.io/posts/deeplearning/transformer_nlp/bert/</link><pubDate>Sat, 10 Jun 2023 18:22:27 +0800</pubDate><guid>http://fengchen321.github.io/posts/deeplearning/transformer_nlp/bert/</guid><category domain="http://fengchen321.github.io/categories/deep-learning/">Deep Learning</category><description>&lt;h2 id="bert" class="heading-element">&lt;span>BERT&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sun, 24 Nov 2024 20:14:59 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog配置</title><link>http://fengchen321.github.io/posts/other/blog/</link><pubDate>Sun, 24 Nov 2024 20:14:59 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/blog/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="安装hugo" class="heading-element">&lt;span>安装Hugo&lt;/span>
+ &lt;a href="#%e5%ae%89%e8%a3%85hugo" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">winget install Hugo.Hugo.Extended&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>安装完成后查看hugo版本验证安装是否成功&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo version&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="配置博客源" class="heading-element">&lt;span>配置博客源&lt;/span>
+ &lt;a href="#%e9%85%8d%e7%bd%ae%e5%8d%9a%e5%ae%a2%e6%ba%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="使用hugo创建网站" class="heading-element">&lt;span>使用hugo创建网站&lt;/span>
+ &lt;a href="#%e4%bd%bf%e7%94%a8hugo%e5%88%9b%e5%bb%ba%e7%bd%91%e7%ab%99" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo new site blog &lt;span class="c1"># 可以替换成任意你想要的名字&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># github里创建同名仓库，到时候git push进去就行&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="安装主题" class="heading-element">&lt;span>安装主题&lt;/span>
+ &lt;a href="#%e5%ae%89%e8%a3%85%e4%b8%bb%e9%a2%98" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;a href="https://themes.gohugo.io/"target="_blank" rel="external nofollow noopener noreferrer">hugo 主题&lt;/a>&lt;/p>
+&lt;p>根据主题文档安装，用的&lt;a href="https://fixit.lruihao.cn/zh-cn/documentation/installation/"target="_blank" rel="external nofollow noopener noreferrer">fixit主题&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> blog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git init
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git submodule add https://github.com/hugo-fixit/FixIt.git themes/FixIt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git submodule update --remote --merge themes/FixIt&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>测试只需要把主blog/themes/FixIt/demo放在blog下相对于的文件夹里就行，比如&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">cp themes/FixIt/demo/hugo.toml hugo.toml
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># blog/themes/FixIt/demo/content/posts 替换blog/content&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其中修改hugo.toml里的baseurl修改成你的网站&lt;user>.github.io&lt;/p>
+&lt;h2 id="本地调试和预览" class="heading-element">&lt;span>本地调试和预览&lt;/span>
+ &lt;a href="#%e6%9c%ac%e5%9c%b0%e8%b0%83%e8%af%95%e5%92%8c%e9%a2%84%e8%a7%88" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">hugo new posts/test/a.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hugo server&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="配置action" class="heading-element">&lt;span>配置Action&lt;/span>
+ &lt;a href="#%e9%85%8d%e7%bd%aeaction" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;code>settings -&amp;gt; Developer Settings -&amp;gt; Personal access tokens(Token classic) -&amp;gt; generate new token里创建一个tokens，注意勾选repo和workflow权限&lt;/code>&lt;/p>
+&lt;p>在博客源仓库的&lt;code>Settings -&amp;gt; Secrets and variables -&amp;gt; Actions -&amp;gt; Repository secrets&lt;/code>中添加一个NAME为&lt;code>ACTION_TOKEN&lt;/code>（随便什么名字，后面要使用）内容为刚刚创建的tokens&lt;/p>
+&lt;p>创建 blog/.github/workflows/gh-pages.yml&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">name: GitHub Pages
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">on:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> push:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> branches:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - main 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> pull_request:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">jobs:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> deploy:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> runs-on: ubuntu-22.04
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> concurrency:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> group: &lt;span class="si">${&lt;/span>&lt;span class="p">{ github.workflow &lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="o">}&lt;/span>-&lt;span class="si">${&lt;/span>&lt;span class="p">{ github.ref &lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> steps:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - uses: actions/checkout@v4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> submodules: &lt;span class="nb">true&lt;/span> &lt;span class="c1"># Fetch Hugo themes (true OR recursive)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> fetch-depth: &lt;span class="m">0&lt;/span> &lt;span class="c1"># Fetch all history for .GitInfo and .Lastmod&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - name: Setup Hugo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uses: peaceiris/actions-hugo@v3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> hugo-version: &lt;span class="s1">&amp;#39;0.139.0&amp;#39;&lt;/span> 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> extended: &lt;span class="nb">true&lt;/span> &lt;span class="c1"># 是否启用hugo extended&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - name: Build
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> run: hugo --minify
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> - name: Deploy
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> uses: peaceiris/actions-gh-pages@v3
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> with:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> EXTERNAL_REPOSITORY: fengchen321/fengchen321.github.io &lt;span class="c1"># 你的Github Pages远程仓库名&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PERSONAL_TOKEN: &lt;span class="si">${&lt;/span>&lt;span class="p">{ secrets.ACTION_TOKEN &lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="c1"># setting 存放的名字而不是原始key&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PUBLISH_DIR: ./public
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> PUBLISH_BRANCH: main&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>push该博客源即可&lt;/p>
+&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;a href="https://ratmomo.github.io/p/2024/06/%E4%BD%BF%E7%94%A8-hugo--github-pages-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"target="_blank" rel="external nofollow noopener noreferrer">使用 Hugo + Github Pages 部署个人博客&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://matrix-a.github.io/"target="_blank" rel="external nofollow noopener noreferrer">matrix-a&lt;/a>&lt;/p></description></item><item><title>BERT</title><link>http://fengchen321.github.io/posts/deeplearning/transformer_nlp/bert/</link><pubDate>Sat, 10 Jun 2023 18:22:27 +0800</pubDate><guid>http://fengchen321.github.io/posts/deeplearning/transformer_nlp/bert/</guid><category domain="http://fengchen321.github.io/categories/deep-learning/">Deep Learning</category><description>&lt;h2 id="bert" class="heading-element">&lt;span>BERT&lt;/span>
  &lt;a href="#bert" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -2366,245 +2533,4 @@ $$z_{t +1}、z_{t + 2}$$&lt;p>（未来时刻的特征输出）&lt;/p>
 &lt;p>局限性：当处理不同的视角或者说不同的模态时候，可能需要不同的编码器，因为不同的输入可能长得很不一样，这就有可能会导致使用几个视角，有可能就得配几个编码器，在训练的时候这个计算代价就有点高&lt;/p>
 &lt;blockquote>
 &lt;p>Transformer有可能能同时处理不同模态的数据&lt;/p>
-&lt;/blockquote></description></item><item><title>Moco</title><link>http://fengchen321.github.io/posts/deeplearning/contrastive-learning/moco/</link><pubDate>Wed, 07 Jun 2023 18:22:27 +0800</pubDate><guid>http://fengchen321.github.io/posts/deeplearning/contrastive-learning/moco/</guid><category domain="http://fengchen321.github.io/categories/deep-learning/">Deep Learning</category><description>&lt;h2 id="moco" class="heading-element">&lt;span>MoCo&lt;/span>
- &lt;a href="#moco" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>文章标题：&lt;a href="https://arxiv.org/abs/1911.05722"target="_blank" rel="external nofollow noopener noreferrer">Momentum Contrast for Unsupervised Visual Representation Learning&lt;/a> &lt;a href="https://www.semanticscholar.org/paper/Momentum-Contrast-for-Unsupervised-Visual-Learning-He-Fan/ec46830a4b275fd01d4de82bffcabe6da086128f"target="_blank" rel="external nofollow noopener noreferrer">&lt;img loading="lazy" src="https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fec46830a4b275fd01d4de82bffcabe6da086128f%3Ffields%3DcitationCount" alt="citation" srcset="https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fec46830a4b275fd01d4de82bffcabe6da086128f%3Ffields%3DcitationCount&amp;amp;size=small, https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fec46830a4b275fd01d4de82bffcabe6da086128f%3Ffields%3DcitationCount&amp;amp;size=medium 1.5x, https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fec46830a4b275fd01d4de82bffcabe6da086128f%3Ffields%3DcitationCount&amp;amp;size=large 2x" data-title="citation" class="suffix-invalid suffix-invalid__small suffix-invalid__large" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&lt;/a>&lt;/p>
-&lt;p>作者：&lt;a href="https://kaiminghe.github.io/"target="_blank" rel="external nofollow noopener noreferrer">Kaiming He,&lt;/a> &lt;a href="https://haoqifan.github.io/"target="_blank" rel="external nofollow noopener noreferrer">Haoqi Fan,&lt;/a> &lt;a href="https://ppwwyyxx.com/"target="_blank" rel="external nofollow noopener noreferrer">Yuxin Wu&lt;/a>, &lt;a href="https://www.sainingxie.com/"target="_blank" rel="external nofollow noopener noreferrer">Saining Xie&lt;/a>, &lt;a href="https://scholar.google.com/citations?hl=en&amp;amp;user=W8VIEZgAAAAJ&amp;amp;pagesize=1000&amp;amp;sortby=pubdate"target="_blank" rel="external nofollow noopener noreferrer">Ross Girshick&lt;/a>&lt;/p>
-&lt;p>发表时间：(CVPR 2020)&lt;/p>
-&lt;p>&lt;a href="https://github.com/facebookresearch/moco"target="_blank" rel="external nofollow noopener noreferrer">offical code&lt;/a>&lt;/p>
-&lt;p>视觉 + 对比学习的里程碑式的工作&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>无监督学习的目的&lt;/strong>：在一个很大的无标注的数据集上训练，模型学到的特征可以很好的迁移到下游任务。&lt;/p>
-&lt;p>&lt;strong>对比学习&lt;/strong>：通过对比去学习模型，只需要知道图 A和 图 B相似，图 A、图 B和 图 C不相似；而不需要真的知道各个图片的具体类别。&lt;/p>
-&lt;blockquote>
-&lt;p>3 张图进入一个网络 M 得到特征 f1、f2、f3，在一个学习好的特征空间 embedding space 中，f1、f2 的特征尽量近，和 f3 的特征尽量远离。&lt;/p>
-&lt;p>对比学习学到的很好的特征：类似物体在这个特征空间 &lt;strong>相邻&lt;/strong>，不类似的物体在特征空间 &lt;strong>远离&lt;/strong>&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>Q: 图 1 和 图 2 相似，和图 3 都不相似，难道不是有监督学习吗？Why 对比学习在 CV 领域被认为是无监督训练呢？&lt;/strong>&lt;/p>
-&lt;p>CV 领域 设计巧妙的代理任务 pre-text task，人为设立一些规则 —— 定义哪些图片相似、哪些图片不相似，为自监督学习提供监督信号，从而自监督训练&lt;/p>
-&lt;p>一个无标注的数据集，n 张图片，$x_1, x_2, &amp;hellip;, x_n$， 随机选取一张图片，做 transformation。&lt;/p>
-&lt;p>以 $x_1 $图片为例，$x_1 $随机裁剪 + 数据增广 得到 $x_i^1$, $x_i^2 $（看起来和 $x_1$ 有区别的 2 张照片， $x_1$ 的正样本），数据集中的其它图片 $x_j$, $j ≠ i $是 $x_1$ 的负样本&lt;/p>
-&lt;blockquote>
-&lt;p>基于图片和图片本身的变换是正样本，和其它图片是负样本&lt;/p>
-&lt;p>ImageNet-1K 此时不是 1000 个类别，而是 100w 个类别。每个图片都是它自己的正样本，其余都是负样本。&lt;/p>
-&lt;/blockquote>
-&lt;p>对比学习的框架：灵活性&amp;ndash;定义正负样本的规则&lt;/p>
-&lt;ul>
-&lt;li>同一个视频里的任意两帧是正样本，和其它视频的所有帧是负样本&lt;/li>
-&lt;li>NLP, simCSE 把同样的句子扔给模型，但是做 2 次 forward，通过不同的 dropout 得到一个句子的 2 个特征；和其它所有句子的特征都是负样本。&lt;/li>
-&lt;li>CMC 论文：一个物体的不同视角 view（正面、背面；RGB 图像、深度图像）作为不同形式的正样本。&lt;/li>
-&lt;li>多模态领域：Open AI 的 CLIP 模型&lt;/li>
-&lt;/ul>
-&lt;h2 id="moco标题" class="heading-element">&lt;span>MoCo标题&lt;/span>
- &lt;a href="#moco%e6%a0%87%e9%a2%98" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>Momentum Contrast for Unsupervised Visual Representation Learning&lt;/p>
-&lt;p>动量对比学习的方法做无监督视觉特征学习&lt;/p>
-&lt;/blockquote>
-&lt;p>Momentum Contrast: 动量对比学习&lt;/p>
-&lt;blockquote>
-&lt;p>动量：(指数)加权移动平均值 $y_t = m * y_{t-1} + (1 - m) * x_t$&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>m: 动量的超参数&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>$y_{t-1}$: 上一个时刻的输出&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>$x_t$: 当前时刻的输入&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>m 趋近于 1，$y_t $改变缓慢，当前时刻的输入 $x_t $没什么影响&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>m 趋近于 0, $y_t $更多依赖于当前时刻的输入。&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;p>MoCo 利用动量的特性，缓慢的更新一个编码器，从而让中间学习到的字典中的特征尽可能保持一致。&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>MoCo 从什么角度做对比学习呢？&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>dictionary look-up&lt;/strong>, 字典查询任务, a dynamic dictionary with a queue and a moving-averaged encoder 动态字典&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>一个队列&lt;/strong>：队列中的样本&lt;strong>无需梯度回传&lt;/strong>，可以放很多负样本，让字典变得很大&lt;/li>
-&lt;li>&lt;strong>一个移动平均的编码器&lt;/strong>：让字典的特征尽可能的保持一致&lt;/li>
-&lt;li>一个大的、一致的字典，有利于无监督的对比学习训练。&lt;/li>
-&lt;/ul>
-&lt;h2 id="introduction" class="heading-element">&lt;span>Introduction&lt;/span>
- &lt;a href="#introduction" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;strong>NLP 的离散单词更具语义性，CV的连续、高维信号不好构建字典&lt;/strong>&lt;/p>
-&lt;p>无监督在 CV 不成功的原因是什么？&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>原始信号空间的不同&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>NLP 原始信号是离散的，词、词根、词缀，容易构建 tokenized dictionaries 做无监督学习&lt;/p>
-&lt;blockquote>
-&lt;p>tokenized: 把一个词对应成某一个特征&lt;/p>
-&lt;p>Why tokenized dictionaries 有助于无监督学习？&lt;/p>
-&lt;ul>
-&lt;li>把字典的 key 认为是一个类别，有类似标签的信息帮助学习&lt;/li>
-&lt;li>NLP 无监督学习很容易建模，建好的模型也好优化&lt;/li>
-&lt;li>CV 原始信号是连续的、高维的，不像单词具有浓缩好的、简洁的语义信息，不适合构建一个字典&lt;/li>
-&lt;li>如果没有字典，无监督学习很难建模&lt;/li>
-&lt;/ul>
-&lt;/blockquote>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>给CV 无监督对比学习 构建一个 ==大 (by queue)==+ ==一致 (momentum encoder)==的字典&lt;/strong>&lt;/p>
-&lt;p>$f_{11} $当成 query 在 $f_{12}, f_2, f_3, &amp;hellip;, f_n$ 组成的字典的 key 特征条目 $k_1, k_2, &amp;hellip;$ 里面查找，dictionary look-up 靠近 $f_{12}$, 远离 $f_2, f_3, &amp;hellip;$&lt;/p>
-&lt;p>从动态字典的角度看对比学习，什么样的字典才适合呢？ &lt;strong>大 + 一致性&lt;/strong>&lt;/p>
-&lt;blockquote>
-&lt;p>large&lt;/p>
-&lt;blockquote>
-&lt;p>从连续高维空间做更多的采样。字典 key 越多，表示的视觉信息越丰富，匹配时更容易找到具有区分性的本质特征。&lt;/p>
-&lt;p>如果 字典小、key 少，模型可能学到 shortcut 捷径，不能泛化&lt;/p>
-&lt;/blockquote>
-&lt;p>consistent&lt;/p>
-&lt;blockquote>
-&lt;p>字典里的 key ($k_0, k_1, k_2, &amp;hellip;, k_N$) 应该由相同的 or 相似的编码器生成&lt;/p>
-&lt;p>如果字典的 key 是由不同的编码器得到的，query q 做字典查询时，很有可能 找到和 query 使用同一个 or 相似编码器生成的 key，而不是语义相似的 key。另一种形式的 shortcut solution&lt;/p>
-&lt;/blockquote>
-&lt;/blockquote>
-&lt;h2 id="related-work" class="heading-element">&lt;span>Related work&lt;/span>
- &lt;a href="#related-work" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>两个可以做的点：pretext tasks and loss functions&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>代理任务&lt;/strong>：为了学习一个好的数据特征表示&lt;/li>
-&lt;li>&lt;strong>损失函数&lt;/strong>：和代理任务可以分开研究。 MoCo 的创新点在损失函数，又大又一致的字典 影响 infoNCE 目标函数的计算&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>损失函数：判别式、生成式、对比学习、对抗学习&lt;/strong>&lt;/p>
-&lt;blockquote>
-&lt;p>对比学习的损失：目标不固定，训练过程中不断改变。目标有编码器抽出来的特征（MoCo 的字典）而决定&lt;/p>
-&lt;p>判别式：预测 8 个位置中的哪一个方位（九宫格）&lt;/p>
-&lt;p>生成式：重建整张图&lt;/p>
-&lt;p>对比学习的目标：测量样本对 在特征空间的相似性。相似样本离得近，不相似样本离得远&lt;/p>
-&lt;p>对抗学习的目标：衡量两个概率分布之间的差异&lt;/p>
-&lt;/blockquote>
-&lt;p>对比学习和代理任务的关系：&lt;/p>
-&lt;ul>
-&lt;li>不同的代理任务 可以和 某种形式的对比学习的目标函数 配对使用&lt;/li>
-&lt;li>Instance discrimination 个体判别方法 &amp;mdash;&amp;ndash; examplar based 代理任务很相关&lt;/li>
-&lt;li>CPC contrastive predictive coding 用上下文信息预测未来 &amp;mdash;&amp;ndash; context auto-encoding 上下文自编码&lt;/li>
-&lt;li>CMC contrastive multiview coding 利用一个物体的不同视角做对比 &amp;mdash;&amp;ndash; olorization 图片上色（同一个图片的 2 个视角：黑白 和 彩色）&lt;/li>
-&lt;/ul>
-&lt;h2 id="methods" class="heading-element">&lt;span>Methods&lt;/span>
- &lt;a href="#methods" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>对比学习和最近的发展，都可以看成是一个训练一个 encoder 来做 字典查询 的任务&lt;/p>
-$$
-L_q=-log\ \frac{exp(q\cdot k_+ / \tau)}{\sum_{i=0}^K exp(q\cdot k_i / \tau)}
-$$&lt;blockquote>
-&lt;p>&lt;em>q&lt;/em> : 编码查询,;${k_0, k_1, k_2, &amp;hellip;}$: 一组键 &lt;em>key&lt;/em> 编码样本 。假设字典中只有一个键$（k_+）$与 &lt;em>q&lt;/em> 匹配。&lt;/p>
-&lt;p>$\tau$: 温度超参数； K : 负样本个数。&lt;/p>
-&lt;p>试图将 q 分类为 k+ 的 (K+1)-way softmax-based 分类器的对数损失。&lt;/p>
-&lt;/blockquote>
-&lt;center>
- &lt;img src = "/images/Contrastive learning/MoCo.assets/moco.png">
- &lt;br>
- &lt;div style="color:black; border-bottrm: 1px solid #d9d9d9;
- display: inline-block;
- padding: 2px;">MoCo 框架图
- &lt;/div>
-&lt;/center>
-&lt;blockquote>
-&lt;p>end to end: 编码器都能通过反向传播实时更新学习。（特征高度一致）&lt;/p>
-&lt;blockquote>
-&lt;p>局限性：字典大小 == mini-batch size 硬件限制；大 batch size 优化难，难收敛&lt;/p>
-&lt;/blockquote>
-&lt;p>memory bank: 只有query 编码器可以进行梯度回传更新。 把所有特征存在memory bank里， 从memory bank中随机抽取 key 当作字典；没有反向传播，所以它可以支持大的字典大小。&lt;/p>
-&lt;blockquote>
-&lt;p>局限性：不同时刻编码器(梯度回传更新)得到的特征缺乏一致性&lt;/p>
-&lt;/blockquote>
-&lt;p>MoCo: 采用队列形式实现一个字典（ 不受batch size限制 ），使用动量编码器（提高一致性）&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>queue&lt;/strong> 数据结构: 剥离字典的大小 和 显卡内存的限制，让字典的大小和模型每次做前向传播的 batch size 的大小分开&lt;/p>
-&lt;blockquote>
-&lt;p>当前 mini-batch 入队，最早进入队列的 mini-batch 出队&lt;/p>
-&lt;p>队列的大小 == 字典的大小，但是每次做 iteration 更新，并不需要更新字典中所有 key 元素的值。&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>momentum encoder&lt;/strong>：使用 queue，只有当前 mini-batch 的特征是由当前的编码器得到的；之前的 key 是由不同时刻的编码器抽取的特征，如何保持 consistent 呢？&lt;/p>
-&lt;blockquote>
-&lt;p>momentum encoder 由当前时刻的 encoder 初始化而来&lt;/p>
-&lt;p>$\theta_k = m * \theta_{k-1}+ (1-m) * \theta_q$&lt;/p>
-&lt;blockquote>
-&lt;p>动量系数: $m\in[0,1)$。只有参数 θq 通过反向传播更新。&lt;/p>
-&lt;p>动量参数 m 较大时，$\theta_k $的更新缓慢，不过多的依赖于 $\theta_q $当前时刻的编码器，即不随着当前时刻的编码器快速改变，尽可能保证 字典里的 key 都是由相似的编码器生成的特征，保证特征的 consistent&lt;/p>
-&lt;/blockquote>
-&lt;/blockquote>
-&lt;center>
- &lt;img src = "/images/Contrastive learning/MoCo.assets/moco_algorithm.png" width=600 />
- &lt;br>
- &lt;div style="color:black; border-bottrm: 1px solid #d9d9d9;
- display: inline-block;
- padding: 2px;">MoCo pytorch 算法
- &lt;/div>
-&lt;/center>
-**Shuffling BN** 
-&lt;blockquote>
-&lt;p>小 trick ,后续没再用&lt;/p>
-&lt;/blockquote>
-&lt;p>BN会阻止模型学习好的表征，可能是由于样本中间的信息（由BN引起）泄露。&lt;/p>
-&lt;p>操作：配给GPU之前打乱样本顺序，用多个GPU进行训练，并对每个GPU的样本独立进行BN。再把顺序恢复后算loss。&lt;/p>
-&lt;h2 id="拓展阅读" class="heading-element">&lt;span>拓展阅读&lt;/span>
- &lt;a href="#%e6%8b%93%e5%b1%95%e9%98%85%e8%af%bb" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://www.bilibili.com/video/BV1C3411s7t9/?vd_source=d28e92983881d85b633a5acf8e46efaa"target="_blank" rel="external nofollow noopener noreferrer">MoCo 论文逐段精读【论文精读】&lt;/a>&lt;/p>
-&lt;h2 id="moco-v2" class="heading-element">&lt;span>MoCo-V2&lt;/span>
- &lt;a href="#moco-v2" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>文章标题：&lt;a href="https://arxiv.org/abs/2003.04297"target="_blank" rel="external nofollow noopener noreferrer">Improved Baselines with Momentum Contrastive Learning&lt;/a> &lt;a href="https://www.semanticscholar.org/paper/Improved-Baselines-with-Momentum-Contrastive-Chen-Fan/a1b8a8df281bbaec148a897927a49ea47ea31515"target="_blank" rel="external nofollow noopener noreferrer">&lt;img loading="lazy" src="https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fa1b8a8df281bbaec148a897927a49ea47ea31515%3Ffields%3DcitationCount" alt="citation" srcset="https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fa1b8a8df281bbaec148a897927a49ea47ea31515%3Ffields%3DcitationCount&amp;amp;size=small, https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fa1b8a8df281bbaec148a897927a49ea47ea31515%3Ffields%3DcitationCount&amp;amp;size=medium 1.5x, https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fa1b8a8df281bbaec148a897927a49ea47ea31515%3Ffields%3DcitationCount&amp;amp;size=large 2x" data-title="citation" class="suffix-invalid suffix-invalid__small suffix-invalid__large" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&lt;/a>&lt;/p>
-&lt;p>作者: &lt;a href="https://xinleic.xyz/"target="_blank" rel="external nofollow noopener noreferrer">Xinlei Chen&lt;/a>, &lt;a href="https://haoqifan.github.io/"target="_blank" rel="external nofollow noopener noreferrer">Haoqi Fan,&lt;/a> &lt;a href="https://scholar.google.com/citations?hl=en&amp;amp;user=W8VIEZgAAAAJ&amp;amp;pagesize=1000&amp;amp;sortby=pubdate"target="_blank" rel="external nofollow noopener noreferrer">Ross Girshick&lt;/a>, &lt;a href="https://kaiminghe.github.io/"target="_blank" rel="external nofollow noopener noreferrer">Kaiming He&lt;/a>&lt;/p>
-&lt;p>发表时间: (Arxiv 2021) 技术报告 (2页)&lt;/p>
-&lt;/blockquote>
-&lt;p>MoCo v2发现SimCLR里的那些技术都是即插即用型的，引入了mlp projection head以及使用更多的数据增强，就又刷新ImageNet 上的最好成绩。&lt;/p>
-&lt;blockquote>
-&lt;p>加了一个 mlp 层&lt;/p>
-&lt;blockquote>
-&lt;p>没有 batch norm ；直接 fc + Relu + fc + Relu&lt;/p>
-&lt;/blockquote>
-&lt;p>加了更多的数据增强&lt;/p>
-&lt;p>训练的时候用了cosine的 learning rate schedule&lt;/p>
-&lt;p>训练更长的 epoch，从200变到了800&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="moco-v3" class="heading-element">&lt;span>MoCo-V3&lt;/span>
- &lt;a href="#moco-v3" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>文章标题：&lt;a href="https://arxiv.org/abs/2104.02057"target="_blank" rel="external nofollow noopener noreferrer">An Empirical Study of Training Self-Supervised Vision Transformers&lt;/a> &lt;a href="https://www.semanticscholar.org/paper/An-Empirical-Study-of-Training-Self-Supervised-Chen-Xie/739ceacfafb1c4eaa17509351b647c773270b3ae"target="_blank" rel="external nofollow noopener noreferrer">&lt;img loading="lazy" src="https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F739ceacfafb1c4eaa17509351b647c773270b3ae%3Ffields%3DcitationCount" alt="citation" srcset="https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F739ceacfafb1c4eaa17509351b647c773270b3ae%3Ffields%3DcitationCount&amp;amp;size=small, https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F739ceacfafb1c4eaa17509351b647c773270b3ae%3Ffields%3DcitationCount&amp;amp;size=medium 1.5x, https://img.shields.io/badge/dynamic/json?label=citation&amp;amp;query=citationCount&amp;amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F739ceacfafb1c4eaa17509351b647c773270b3ae%3Ffields%3DcitationCount&amp;amp;size=large 2x" data-title="citation" class="suffix-invalid suffix-invalid__small suffix-invalid__large" style="background: url(/images/loading.min.svg) no-repeat center;" onload="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}this.dataset.lazyloaded='';" onerror="this.title=this.dataset.title;for(const i of ['style', 'data-title','onerror','onload']){this.removeAttribute(i);}"/>&lt;/a>&lt;/p>
-&lt;p>作者: &lt;a href="https://xinleic.xyz/"target="_blank" rel="external nofollow noopener noreferrer">Xinlei Chen&lt;/a>, Saining Xie, &lt;a href="https://kaiminghe.github.io/"target="_blank" rel="external nofollow noopener noreferrer">Kaiming He&lt;/a>&lt;/p>
-&lt;p>发表时间: (ICCV 2021)&lt;/p>
-&lt;p>MoCo v2 + SimSiam&lt;/p>
-&lt;p>&lt;a href="https://github.com/facebookresearch/moco-v3"target="_blank" rel="external nofollow noopener noreferrer">offical code&lt;/a>&lt;/p>
-&lt;/blockquote>
-&lt;center>
- &lt;img src = "/images/Contrastive learning/MoCo.assets/mocov3_algorithm.png" width=600 />
- &lt;br>
- &lt;div style="color:black; border-bottrm: 1px solid #d9d9d9;
- display: inline-block;
- padding: 2px;">MoCoV3 pytorch 算法
- &lt;/div>
-&lt;/center>
-&lt;p>残差网络换成 ViT&lt;/p>
-&lt;blockquote>
-&lt;p>当这个 batch size 变大了以后曲线会抖动，效果变差
-方法：观察了一下训练时，每一层这个回传梯度的情况；发现每次 loss 有大幅震动
-导致这个准确度大幅下降的时候，梯度也会有一个波峰（发生在第一层）&lt;/p>
-&lt;p>第一层：patch projection
-解决：随机初始化了一个 patch projection 层；然后冻结使得整个训练过程中都不变&lt;/p>
 &lt;/blockquote></description></item></channel></rss>
