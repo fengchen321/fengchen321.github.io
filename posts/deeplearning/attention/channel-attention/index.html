@@ -1,0 +1,651 @@
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><meta name=robots content="noodp"><title>Channel Attention - fengchen</title><meta name=author content><meta name=description content="通道注意力"><meta name=keywords content='Deep Learning,注意力机制'><meta itemprop=name content="Channel Attention"><meta itemprop=description content="通道注意力"><meta itemprop=datePublished content="2023-06-06T18:22:27+08:00"><meta itemprop=dateModified content="2023-06-06T18:22:27+08:00"><meta itemprop=wordCount content="3626"><meta itemprop=keywords content="Deep Learning,注意力机制"><meta property="og:url" content="http://fengchen321.github.io/posts/deeplearning/attention/channel-attention/"><meta property="og:site_name" content="fengchen"><meta property="og:title" content="Channel Attention"><meta property="og:description" content="通道注意力"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-06-06T18:22:27+08:00"><meta property="article:modified_time" content="2023-06-06T18:22:27+08:00"><meta property="article:tag" content="Deep Learning"><meta property="article:tag" content="注意力机制"><meta name=twitter:card content="summary"><meta name=twitter:title content="Channel Attention"><meta name=twitter:description content="通道注意力"><meta name=application-name content="FixIt"><meta name=apple-mobile-web-app-title content="FixIt"><meta name=theme-color data-light=#f8f8f8 data-dark=#252627 content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical type=text/html href=http://fengchen321.github.io/posts/deeplearning/attention/channel-attention/ title="Channel Attention - fengchen"><link rel=prev type=text/html href=http://fengchen321.github.io/posts/deeplearning/attention/spatial-attention/ title="Spatial Attention"><link rel=next type=text/html href=http://fengchen321.github.io/posts/deeplearning/attention/channlespatial-attention/ title="Channel && Spatial Attention"><link rel=stylesheet href=/css/style.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Channel Attention","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/fengchen321.github.io\/posts\/deeplearning\/attention\/channel-attention\/"},"genre":"posts","keywords":"Deep Learning, 注意力机制","wordcount":3626,"url":"http:\/\/fengchen321.github.io\/posts\/deeplearning\/attention\/channel-attention\/","datePublished":"2023-06-06T18:22:27+08:00","dateModified":"2023-06-06T18:22:27+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"作者"},"description":"通道注意力"}</script><script src=/js/head/color-scheme.min.js></script></head><body data-header-desktop=sticky data-header-mobile=auto><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容…… id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></li><li class="menu-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><nav><ul class=menu id=menu-mobile><li class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容…… id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></li><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item menu-system"><span class="menu-system-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></span></li></ul></nav></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=合集></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>Channel Attention</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><span class=author><i class="fa-solid fa-user-circle" aria-hidden=true></i>
+Anonymous</span></span><span class=post-included-in>&nbsp;收录于 <a href=/categories/deep-learning/ class=post-category title="分类 - Deep Learning"><i class="fa-regular fa-folder fa-fw" aria-hidden=true></i> Deep Learning</a></span></div><div class=post-meta-line><span title="发布于 2023-06-06 18:22:27"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden=true></i><time datetime=2023-06-06>2023-06-06</time></span>&nbsp;<span title="3626 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden=true></i>约 3700 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden=true></i>预计阅读 8 分钟</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#encnet>EncNet</a></li><li><a href=#gsop-net>GSoP-Net</a></li><li><a href=#fcanet>FcaNet</a></li><li><a href=#billinear-attention>Billinear attention</a></li></ul><ul><li><a href=#ecanet>ECANet</a></li><li><a href=#rcan>RCAN</a></li><li><a href=#dianet>DIANet</a></li></ul><ul><li><a href=#srm>SRM</a></li><li><a href=#gct>GCT</a></li><li><a href=#soca>SoCA</a></li></ul></nav></div></div><div class=content id=content><h2 id=senet class=heading-element><span>SENet</span>
+<a href=#senet class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://arxiv.org/abs/1709.01507 target=_blank rel="external nofollow noopener noreferrer">Squeeze-and-Excitation Networks</a>
+作者：Jie Hu, Li Shen, Samuel Albanie, Gang Sun, Enhua Wu
+发表时间：(CVPR 2018)</p><p><a href=https://github.com/hujie-frank/SENet target=_blank rel="external nofollow noopener noreferrer">Official Code</a></p><p><a href=https://github.com/xmu-xiaoma666/External-Attention-pytorch#4-squeeze-and-excitation-attention-usage target=_blank rel="external nofollow noopener noreferrer">External-Attention-pytorch</a> <a href=https://github.com/moskomule/senet.pytorch target=_blank rel="external nofollow noopener noreferrer">senet.pytorch</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/SE-pipeline.jpg"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">Diagram of a Squeeze-and-Excitation building block.</div></center><blockquote>$$
+> u_c=v_c*X=\sum_{s=1}^{C'}v_c^s*x^s
+> $$<blockquote><p>输入：$X=[x^1,x^2,&mldr;,x^{C&rsquo;}]$</p><p>输出：$U=[u_1,u_2,&mldr;,u_C]$</p><p>$v_c=[v_c^1,v_c^2,&mldr;,v_c^{C&rsquo;}] $；$v_c^s$是一个二维空间内核，表示作用于 $X $的相应通道的 $v_c$的单个通道。</p><p>卷积核的集合：$V=[v_1,v_2,&mldr;,v_C]$</p></blockquote><p><strong>压缩（Squeeze）</strong>：经过（全局平均池化）压缩操作后特征图被压缩为1×1×C向量；也可以采用更复杂的策略**（收集全局空间信息）**</p><blockquote><p>为什么用平均池化：卷积计算：参数量比较大；最大池化：可能用于检测等其他任务，输入的特征图是变化的，<strong>能量</strong>无法保持</p></blockquote>$$
+> z_c=F_{sq}(u_c)=\frac{1}{H\times W}\sum_{i=1}^H\sum_{j=1}^Wu_c(i,j)
+> $$$$
+> s=F_{ex}(z,W)=\sigma(g(z,W)) =\sigma(W_2\delta(W_1z))
+> $$<p>$\delta$：ReLU；$\sigma$：sigmoid激活，$W_1\in R^{\frac{C}{r}\times C}$：降维层；$W_2\in R^{C \times\frac{C}{r}}$：升维层</p><blockquote><p>比直接用一个 Fully Connected 层的好处在于</p><p>1）具有更多的非线性，可以更好地拟合通道间复杂的相关性；</p><p>2）极大地减少了参数量和计算量</p><p>c可能很大，所以需要降维</p></blockquote>$$
+> \tilde x_c = F_{scale}(u_c,s_c)=s_cu_c
+> $$</blockquote>$$
+s = F_{se}(X,\theta) = \sigma(W_2\delta(W_1 GAP(X)))
+\\ Y = sX
+\\ global\ average\ pooling\rightarrow MLP\rightarrow sigmoid
+$$<p><strong>缺点：在挤压模块中，全局平均池(一阶统计信息)太过简单，无法捕获复杂的全局信息。在激励模块中，全连接层增加了模型的复杂性。</strong></p><p><strong>GAP（全局平均池化）在某些情况下会失效</strong>，如将SE模块部署在LN层之后，因为LN固定了每个通道的平均数，对于任意输入，GAP的输出都是恒定的。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>torch</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>torch</span> <span class=kn>import</span> <span class=n>nn</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>SEAttention</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>channel</span><span class=o>=</span><span class=mi>512</span><span class=p>,</span><span class=n>reduction</span><span class=o>=</span><span class=mi>16</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>()</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>avg_pool</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>AdaptiveAvgPool2d</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>fc</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Sequential</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>channel</span><span class=p>,</span> <span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Sigmoid</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=n>_</span><span class=p>,</span> <span class=n>_</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>size</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>avg_pool</span><span class=p>(</span><span class=n>x</span><span class=p>)</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>fc</span><span class=p>(</span><span class=n>y</span><span class=p>)</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>y</span><span class=o>.</span><span class=n>expand_as</span><span class=p>(</span><span class=n>x</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><p><a href="https://www.youtube.com/watch?v=FUiUfD7bdqw" target=_blank rel="external nofollow noopener noreferrer">CV27 Momenta研发总监 孙刚 Squeeze and Excitation Networks上</a></p><p><a href="https://www.youtube.com/watch?v=-8nqA4F7XNU" target=_blank rel="external nofollow noopener noreferrer">CV27 Momenta研发总监 孙刚 Squeeze and Excitation Networks下</a></p><h2 id=改进挤压模块 class=heading-element><span>改进挤压模块</span>
+<a href=#%e6%94%b9%e8%bf%9b%e6%8c%a4%e5%8e%8b%e6%a8%a1%e5%9d%97 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><h2 id=encnet class=heading-element><span>EncNet</span>
+<a href=#encnet class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://arxiv.org/abs/1803.08904 target=_blank rel="external nofollow noopener noreferrer">Context Encoding for Semantic Segmentation</a>
+作者：Hang Zhang, Kristin Dana, Jianping Shi, Zhongyue Zhang, Xiaogang Wang, Ambrish Tyagi, Amit Agrawal
+发表时间：(CVPR 2018)</p><p><a href=https://github.com/zhanghang1989/PyTorch-Encoding target=_blank rel="external nofollow noopener noreferrer">Official Code</a> <strong>(看不懂)</strong></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/EncModule.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">EncModule</div></center>$$
+e_k = \frac{\sum_{i=1}^N e^{-s_k||X_i-d_k||^2}(X_i-d_k)}{\sum_{i=1}^K e^{-s_j||X_i-d_j||^2}}
+\\ e = \sum_{k=1}^K \phi(e_k)
+\\ s = \sigma(We)
+\\ Y = sX
+\\ encoder\rightarrow MLP\rightarrow sigmoid
+$$<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>EncModule</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>in_channels</span><span class=p>,</span> <span class=n>nclass</span><span class=p>,</span> <span class=n>ncodes</span><span class=o>=</span><span class=mi>32</span><span class=p>,</span> <span class=n>se_loss</span><span class=o>=</span><span class=kc>True</span><span class=p>,</span> <span class=n>norm_layer</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>EncModule</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>se_loss</span> <span class=o>=</span> <span class=n>se_loss</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>encoding</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Sequential</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>in_channels</span><span class=p>,</span> <span class=n>in_channels</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>norm_layer</span><span class=p>(</span><span class=n>in_channels</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>Encoding</span><span class=p>(</span><span class=n>D</span><span class=o>=</span><span class=n>in_channels</span><span class=p>,</span> <span class=n>K</span><span class=o>=</span><span class=n>ncodes</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>norm_layer</span><span class=p>(</span><span class=n>ncodes</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>Mean</span><span class=p>(</span><span class=n>dim</span><span class=o>=</span><span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>fc</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Sequential</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>in_channels</span><span class=p>,</span> <span class=n>in_channels</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Sigmoid</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>se_loss</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>selayer</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>in_channels</span><span class=p>,</span> <span class=n>nclass</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>en</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>encoding</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=n>_</span><span class=p>,</span> <span class=n>_</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>size</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=n>gamma</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>fc</span><span class=p>(</span><span class=n>en</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=n>gamma</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>outputs</span> <span class=o>=</span> <span class=p>[</span><span class=n>F</span><span class=o>.</span><span class=n>relu_</span><span class=p>(</span><span class=n>x</span> <span class=o>+</span> <span class=n>x</span> <span class=o>*</span> <span class=n>y</span><span class=p>)]</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>se_loss</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>outputs</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>selayer</span><span class=p>(</span><span class=n>en</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>tuple</span><span class=p>(</span><span class=n>outputs</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><h2 id=gsop-net class=heading-element><span>GSoP-Net</span>
+<a href=#gsop-net class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://openaccess.thecvf.com/content_CVPR_2019/papers/Gao_Global_Second-Order_Pooling_Convolutional_Networks_CVPR_2019_paper.pdf target=_blank rel="external nofollow noopener noreferrer">Global Second-order Pooling Convolutional Networks</a>
+作者：Zilin Gao, Jiangtao Xie, Qilong Wang, Peihua Li
+发表时间：(CVPR 2019)</p><p><a href=https://github.com/ZilinGao/Global-Second-order-Pooling-Convolutional-Networks target=_blank rel="external nofollow noopener noreferrer">Official Code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/GSoP-block.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">GSoP-block</div></center><blockquote><p><strong>压缩（Squeeze）</strong></p><blockquote><p>使用 1x1 卷积将输入特征通道降维（c&rsquo;->c）</p><p>计算通道间的协方差矩阵($c\times c$)</p><blockquote><p>由于二次运算涉及到改变数据的顺序，因此对协方差矩阵执行逐行归一化，保留固有的结构信息</p></blockquote></blockquote><p><strong>激励（Excitation）</strong></p><blockquote><p>对协方差特征图进行非线性逐行卷积得到4<em>c</em>的结构信息</p><p>用一个全连接层调整到输入的通道数c ′维度，</p><p>通过sigmoid 函数得到注意力向量与输入进行逐通道相乘，得到输出特征</p></blockquote></blockquote>$$
+s = F_{gsop}(X,\theta) = \sigma(WRC(Cov(Conv(X))))
+\\ Y=sX
+\\ 2nd\ order\ pooling\rightarrow convolution\&MLP\rightarrow sigmoid
+$$<p>在收集全局信息的同时，使用全局二阶池化(GSoP)块对高阶统计数据建模</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>isqrt_dim</span> <span class=o>=</span> <span class=mi>256</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>layer_reduce</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=mi>512</span> <span class=o>*</span> <span class=n>block</span><span class=o>.</span><span class=n>expansion</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>isqrt_dim</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span> <span class=n>stride</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span> <span class=n>padding</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>layer_reduce_bn</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>BatchNorm2d</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>isqrt_dim</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>layer_reduce_relu</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=bp>self</span><span class=o>.</span><span class=n>fc</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=nb>int</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>isqrt_dim</span> <span class=o>*</span> <span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>isqrt_dim</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span><span class=p>),</span> <span class=n>num_classes</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1># forward</span>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>layer_reduce</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>layer_reduce_bn</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>layer_reduce_relu</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=o>=</span> <span class=n>MPNCOV</span><span class=o>.</span><span class=n>CovpoolLayer</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=o>=</span> <span class=n>MPNCOV</span><span class=o>.</span><span class=n>SqrtmLayer</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=mi>3</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>x</span> <span class=o>=</span> <span class=n>MPNCOV</span><span class=o>.</span><span class=n>TriuvecLayer</span><span class=p>(</span><span class=n>x</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><h2 id=fcanet class=heading-element><span>FcaNet</span>
+<a href=#fcanet class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://arxiv.org/abs/2012.11879 target=_blank rel="external nofollow noopener noreferrer">FcaNet: Frequency Channel Attention Networks</a>
+作者：Zequn Qin, Pengyi Zhang, Fei Wu, Xi Li
+发表时间：(ICCV 2021)</p><p><a href=https://github.com/cfzd/FcaNet target=_blank rel="external nofollow noopener noreferrer">official code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/FcaNet.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">fca_module</div></center><p>GAP是DCT（二维离散余弦变换）的特例</p><blockquote><p>将图像特征分解为不同频率分量的组合。GAP操作仅利用到了其中的一个频率分量。</p></blockquote><p>首先，将输入 X 按通道维度划分为n部分，其中n必须能被通道数整除。</p><p>对于每个部分，分配相应的二维DCT频率分量，其结果可作为通道注意力的预处理结果（类似于GAP）</p><blockquote><p>2D DCT可以使用预处理结果来减少计算</p></blockquote>$$
+s = F_{fca}(X,\theta) = \sigma(W_2\delta(W_1[(DCT(Group(X)))]))
+\\ Y=sX
+\\ discrete\ cosine\ transform\rightarrow MLP\rightarrow sigmoid
+$$<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=c1># https://github.com/cfzd/FcaNet/blob/aa5fb63505575bb4e4e094613565379c3f6ada33/model/layer.py#L29</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>MultiSpectralAttentionLayer</span><span class=p>(</span><span class=n>torch</span><span class=o>.</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>dct_h</span><span class=p>,</span> <span class=n>dct_w</span><span class=p>,</span> <span class=n>reduction</span> <span class=o>=</span> <span class=mi>16</span><span class=p>,</span> <span class=n>freq_sel_method</span> <span class=o>=</span> <span class=s1>&#39;top16&#39;</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>MultiSpectralAttentionLayer</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>reduction</span> <span class=o>=</span> <span class=n>reduction</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dct_h</span> <span class=o>=</span> <span class=n>dct_h</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dct_w</span> <span class=o>=</span> <span class=n>dct_w</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>mapper_x</span><span class=p>,</span> <span class=n>mapper_y</span> <span class=o>=</span> <span class=n>get_freq_indices</span><span class=p>(</span><span class=n>freq_sel_method</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>num_split</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>mapper_x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>mapper_x</span> <span class=o>=</span> <span class=p>[</span><span class=n>temp_x</span> <span class=o>*</span> <span class=p>(</span><span class=n>dct_h</span> <span class=o>//</span> <span class=mi>7</span><span class=p>)</span> <span class=k>for</span> <span class=n>temp_x</span> <span class=ow>in</span> <span class=n>mapper_x</span><span class=p>]</span> 
+</span></span><span class=line><span class=cl>        <span class=n>mapper_y</span> <span class=o>=</span> <span class=p>[</span><span class=n>temp_y</span> <span class=o>*</span> <span class=p>(</span><span class=n>dct_w</span> <span class=o>//</span> <span class=mi>7</span><span class=p>)</span> <span class=k>for</span> <span class=n>temp_y</span> <span class=ow>in</span> <span class=n>mapper_y</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=c1># make the frequencies in different sizes are identical to a 7x7 frequency space</span>
+</span></span><span class=line><span class=cl>        <span class=c1># eg, (2,2) in 14x14 is identical to (1,1) in 7x7</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>dct_layer</span> <span class=o>=</span> <span class=n>MultiSpectralDCTLayer</span><span class=p>(</span><span class=n>dct_h</span><span class=p>,</span> <span class=n>dct_w</span><span class=p>,</span> <span class=n>mapper_x</span><span class=p>,</span> <span class=n>mapper_y</span><span class=p>,</span> <span class=n>channel</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>fc</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Sequential</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>channel</span><span class=p>,</span> <span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Linear</span><span class=p>(</span><span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Sigmoid</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>n</span><span class=p>,</span><span class=n>c</span><span class=p>,</span><span class=n>h</span><span class=p>,</span><span class=n>w</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>shape</span>
+</span></span><span class=line><span class=cl>        <span class=n>x_pooled</span> <span class=o>=</span> <span class=n>x</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>h</span> <span class=o>!=</span> <span class=bp>self</span><span class=o>.</span><span class=n>dct_h</span> <span class=ow>or</span> <span class=n>w</span> <span class=o>!=</span> <span class=bp>self</span><span class=o>.</span><span class=n>dct_w</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>x_pooled</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>nn</span><span class=o>.</span><span class=n>functional</span><span class=o>.</span><span class=n>adaptive_avg_pool2d</span><span class=p>(</span><span class=n>x</span><span class=p>,</span> <span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>dct_h</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>dct_w</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>            <span class=c1># If you have concerns about one-line-change, don&#39;t worry.   :)</span>
+</span></span><span class=line><span class=cl>            <span class=c1># In the ImageNet models, this line will never be triggered. </span>
+</span></span><span class=line><span class=cl>            <span class=c1># This is for compatibility in instance segmentation and object detection.</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>dct_layer</span><span class=p>(</span><span class=n>x_pooled</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>fc</span><span class=p>(</span><span class=n>y</span><span class=p>)</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>n</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>y</span><span class=o>.</span><span class=n>expand_as</span><span class=p>(</span><span class=n>x</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><h2 id=billinear-attention class=heading-element><span>Billinear attention</span>
+<a href=#billinear-attention class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://openaccess.thecvf.com/content_ICCV_2019/papers/Fang_Bilinear_Attention_Networks_for_Person_Retrieval_ICCV_2019_paper.pdf target=_blank rel="external nofollow noopener noreferrer">Bilinear Attention Networks for Person Retrieval</a>
+作者：Pengfei Fang , Jieming Zhou , Soumava Kumar Roy , Lars Petersson , Mehrtash Harandi,
+发表时间：(ICCV 2019)</p></blockquote><center><img src="/images/Attention/Channel Attention.assets/Billinear_attention.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">Billinear_attention</div></center><p>线性注意块（双注意），以捕获每个通道内的局部成对特征交互，同时保留空间信息。</p><p>双注意采用注意中注意（AiA）机制来捕获二阶统计信息：从内部通道注意的输出计算外部逐点通道注意向量。形式上，给定输入特征映射X，bi注意首先使用双线性池来捕获二阶信息</p>$$
+\widetilde x = Bi(\phi(X))=Vec(Utri(\phi(X)\phi(X)^T))
+\\ \hat x = \omega (GAP(\widetilde x))\varphi(\widetilde x)
+\\ s = \sigma(\hat x)
+\\ Y =sX
+$$<h2 id=改进激励模块 class=heading-element><span>改进激励模块</span>
+<a href=#%e6%94%b9%e8%bf%9b%e6%bf%80%e5%8a%b1%e6%a8%a1%e5%9d%97 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><h2 id=ecanet class=heading-element><span>ECANet</span>
+<a href=#ecanet class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://arxiv.org/abs/1910.03151 target=_blank rel="external nofollow noopener noreferrer">ECA-Net: Efficient Channel Attention for Deep Convolutional Neural Networks</a>
+作者：Qilong Wang, Banggu Wu, Pengfei Zhu, Peihua Li, Wangmeng Zuo, Qinghua Hu
+发表时间：(CVPR 2020)</p><p><a href=https://github.com/BangguWu/ECANet target=_blank rel="external nofollow noopener noreferrer">official code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/eca_module.jpg"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">eca_module</div></center>$$
+s=F_{eca}(X,\theta) = \sigma(Conv1D(GAP(X)))
+\\ Y = sX
+\\ global\ average\ pooling\rightarrow conv1d\rightarrow sigmoid
+$$<p>使用1D卷积来确定通道之间的相互作用，而不是全连接降维。</p><blockquote><p>只考虑每个通道与其k近邻之间的直接交互，而不是间接对应，以控制模型复杂度</p><p>使用交叉验证从通道维度C自适应确定内核大小k，而不是通过手动调整</p><blockquote><p>$k = \psi(C)=|\frac{log_{2}(C)}{\gamma}+\frac{b}{\gamma}|_{odd}$</p><blockquote><p>$\gamma, b$超参数；$|x|_{odd}$：最近的奇数</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>kernel_size</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=nb>abs</span><span class=p>((</span><span class=n>math</span><span class=o>.</span><span class=n>log</span><span class=p>(</span><span class=n>channel</span><span class=p>,</span> <span class=mi>2</span><span class=p>)</span> <span class=o>+</span> <span class=n>b</span><span class=p>)</span> <span class=o>/</span> <span class=n>gamma</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=n>kernel_size</span> <span class=o>=</span> <span class=n>kernel_size</span> <span class=k>if</span> <span class=n>kernel_size</span> <span class=o>%</span> <span class=mi>2</span> <span class=k>else</span> <span class=n>kernel_size</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl><span class=c1># 为啥源码ResNet固定kernel_size: https://github.com/BangguWu/ECANet/issues/24</span></span></span></code></pre></td></tr></table></div></div></blockquote></blockquote></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>torch</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>torch</span> <span class=kn>import</span> <span class=n>nn</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>torch.nn.parameter</span> <span class=kn>import</span> <span class=n>Parameter</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>eca_layer</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Constructs a ECA module.
+</span></span></span><span class=line><span class=cl><span class=s2>
+</span></span></span><span class=line><span class=cl><span class=s2>    Args:
+</span></span></span><span class=line><span class=cl><span class=s2>        channel: Number of channels of the input feature map
+</span></span></span><span class=line><span class=cl><span class=s2>        k_size: Adaptive selection of kernel size
+</span></span></span><span class=line><span class=cl><span class=s2>    &#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>k_size</span><span class=o>=</span><span class=mi>3</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>eca_layer</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>avg_pool</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>AdaptiveAvgPool2d</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>conv</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv1d</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=n>k_size</span><span class=p>,</span> <span class=n>padding</span><span class=o>=</span><span class=p>(</span><span class=n>k_size</span> <span class=o>-</span> <span class=mi>1</span><span class=p>)</span> <span class=o>//</span> <span class=mi>2</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>sigmoid</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Sigmoid</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=c1># feature descriptor on the global spatial information</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>avg_pool</span><span class=p>(</span><span class=n>x</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Two different branches of ECA module </span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>conv</span><span class=p>(</span><span class=n>y</span><span class=o>.</span><span class=n>squeeze</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span><span class=o>.</span><span class=n>transpose</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=o>-</span><span class=mi>2</span><span class=p>))</span><span class=o>.</span><span class=n>transpose</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=o>-</span><span class=mi>2</span><span class=p>)</span><span class=o>.</span><span class=n>unsqueeze</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Multi-scale information fusion</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>sigmoid</span><span class=p>(</span><span class=n>y</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>y</span><span class=o>.</span><span class=n>expand_as</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>     </span></span></code></pre></td></tr></table></div></div><h2 id=rcan class=heading-element><span>RCAN</span>
+<a href=#rcan class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://openaccess.thecvf.com/content_ECCV_2018/papers/Yulun_Zhang_Image_Super-Resolution_Using_ECCV_2018_paper.pdf target=_blank rel="external nofollow noopener noreferrer">Image Super-Resolution Using Very Deep Residual Channel Attention Networks</a>
+作者：Yulun Zhang, Kunpeng Li
+发表时间：(ECCV 2018)</p><p><a href=https://github.com/yulunzhang/RCAN target=_blank rel="external nofollow noopener noreferrer">official Code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/RCAN_CA.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">CA</div></center>$$
+s=F_{rca}(X,\theta) = \sigma(Conv_U(\delta(Conv_D(GAP(X))))
+\\ Y = sX
+\\ global\ average\ pooling\rightarrow conv2d\rightarrow Relu \rightarrow conv2d\rightarrow sigmoid
+$$<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>CALayer</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>reduction</span><span class=o>=</span><span class=mi>16</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>CALayer</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=c1># global average pooling: feature --&gt; point</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>avg_pool</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>AdaptiveAvgPool2d</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># feature channel downscale and upscale --&gt; channel weight</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>conv_du</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Sequential</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>                <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>channel</span><span class=p>,</span> <span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=n>padding</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>                <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>                <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=n>padding</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>                <span class=n>nn</span><span class=o>.</span><span class=n>Sigmoid</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>avg_pool</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>conv_du</span><span class=p>(</span><span class=n>y</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>y</span></span></span></code></pre></td></tr></table></div></div><h2 id=dianet class=heading-element><span>DIANet</span>
+<a href=#dianet class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://arxiv.org/abs/1905.10671 target=_blank rel="external nofollow noopener noreferrer">DIANet: Dense-and-Implicit Attention Network</a>
+作者：Zhongzhan Huang, Senwei Liang, Mingfu Liang, Haizhao Yang
+发表时间：(AAAI 2020)</p><p><a href=https://github.com/gbup-group/DIANet target=_blank rel="external nofollow noopener noreferrer">official Code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/DIA_module.jpg"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">DIA_module</div></center>$$
+s = F_{dia}(X,\theta) = \delta (LSTM(GAP(X)))
+\\ Y = sX + X
+\\ global\ average\ pooling\rightarrow LSTM\rightarrow Relu
+$$<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>DIA_Attention</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>ModuleList</span><span class=p>,</span> <span class=n>block_idx</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>DIA_Attention</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>ModuleList</span> <span class=o>=</span> <span class=n>ModuleList</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>block_idx</span> <span class=o>==</span> <span class=mi>1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>lstm</span> <span class=o>=</span> <span class=n>LSTMCell</span><span class=p>(</span><span class=mi>64</span><span class=p>,</span> <span class=mi>64</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=n>block_idx</span> <span class=o>==</span> <span class=mi>2</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>lstm</span> <span class=o>=</span> <span class=n>LSTMCell</span><span class=p>(</span><span class=mi>128</span><span class=p>,</span> <span class=mi>128</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=n>block_idx</span> <span class=o>==</span> <span class=mi>3</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>lstm</span> <span class=o>=</span> <span class=n>LSTMCell</span><span class=p>(</span><span class=mi>256</span><span class=p>,</span> <span class=mi>256</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>GlobalAvg</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>AdaptiveAvgPool2d</span><span class=p>((</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>relu</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>block_idx</span> <span class=o>=</span> <span class=n>block_idx</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>idx</span><span class=p>,</span> <span class=n>layer</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>ModuleList</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>x</span><span class=p>,</span> <span class=n>org</span> <span class=o>=</span> <span class=n>layer</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>  <span class=c1># 64 128 256   BatchSize * NumberOfChannels * 1 * 1</span>
+</span></span><span class=line><span class=cl>             <span class=c1># BatchSize * NumberOfChannels</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=n>idx</span> <span class=o>==</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=n>seq</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>GlobalAvg</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=c1># list = seq.view(seq.size(0), 1, seq.size(1))</span>
+</span></span><span class=line><span class=cl>                <span class=n>seq</span> <span class=o>=</span> <span class=n>seq</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span> <span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                <span class=n>ht</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span> <span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>1</span><span class=p>))</span><span class=o>.</span><span class=n>cuda</span><span class=p>()</span>  <span class=c1># 1 mean number of layers</span>
+</span></span><span class=line><span class=cl>                <span class=n>ct</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span> <span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>1</span><span class=p>))</span><span class=o>.</span><span class=n>cuda</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>                <span class=n>ht</span><span class=p>,</span> <span class=n>ct</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>lstm</span><span class=p>(</span><span class=n>seq</span><span class=p>,</span> <span class=p>(</span><span class=n>ht</span><span class=p>,</span> <span class=n>ct</span><span class=p>))</span>  <span class=c1># 1 * batch size * length</span>
+</span></span><span class=line><span class=cl>                <span class=c1># ht = self.sigmoid(ht)</span>
+</span></span><span class=line><span class=cl>                <span class=n>x</span> <span class=o>=</span> <span class=n>x</span> <span class=o>*</span> <span class=p>(</span><span class=n>ht</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>ht</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>1</span><span class=p>),</span> <span class=n>ht</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>2</span><span class=p>),</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                <span class=n>x</span> <span class=o>+=</span> <span class=n>org</span>
+</span></span><span class=line><span class=cl>                <span class=c1># x = selrelu(x)</span>
+</span></span><span class=line><span class=cl>            <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=n>seq</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>GlobalAvg</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=c1># list = torch.cat((list, seq.view(seq.size(0), 1, seq.size(1))), 1)</span>
+</span></span><span class=line><span class=cl>                <span class=n>seq</span> <span class=o>=</span> <span class=n>seq</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span> <span class=n>seq</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                <span class=n>ht</span><span class=p>,</span> <span class=n>ct</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>lstm</span><span class=p>(</span><span class=n>seq</span><span class=p>,</span> <span class=p>(</span><span class=n>ht</span><span class=p>,</span> <span class=n>ct</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                <span class=c1># ht = self.sigmoid(ht)</span>
+</span></span><span class=line><span class=cl>                <span class=n>x</span> <span class=o>=</span> <span class=n>x</span> <span class=o>*</span> <span class=p>(</span><span class=n>ht</span><span class=p>[</span><span class=o>-</span><span class=mi>1</span><span class=p>]</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>ht</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>1</span><span class=p>),</span> <span class=n>ht</span><span class=o>.</span><span class=n>size</span><span class=p>(</span><span class=mi>2</span><span class=p>),</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>                <span class=n>x</span> <span class=o>+=</span> <span class=n>org</span>
+</span></span><span class=line><span class=cl>                <span class=c1># x = self.relu(x)</span>
+</span></span><span class=line><span class=cl>                <span class=c1># print(self.block_idx, idx, ht)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>x</span> <span class=c1>#, list</span></span></span></code></pre></td></tr></table></div></div><h2 id=同时改进挤压激励模块 class=heading-element><span>同时改进挤压、激励模块</span>
+<a href=#%e5%90%8c%e6%97%b6%e6%94%b9%e8%bf%9b%e6%8c%a4%e5%8e%8b%e6%bf%80%e5%8a%b1%e6%a8%a1%e5%9d%97 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><h2 id=srm class=heading-element><span>SRM</span>
+<a href=#srm class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://openaccess.thecvf.com/content_ICCV_2019/papers/Lee_SRM_A_Style-Based_Recalibration_Module_for_Convolutional_Neural_Networks_ICCV_2019_paper.pdf target=_blank rel="external nofollow noopener noreferrer">SRM : A Style-based Recalibration Module for Convolutional Neural Networks</a>
+作者：HyunJae Lee, Hyo-Eun Kim, Hyeonseob Nam
+发表时间：(ICCV 2019)</p><p><a href=https://github.com/EvgenyKashin/SRMnet target=_blank rel="external nofollow noopener noreferrer">Code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/SRM.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">SRM</div></center>$$
+s = F_{srm}(X,\theta) = \sigma(BN(CFC(SP(X))))
+\\ Y = sX
+\\ style\ pooling\rightarrow convolution\& MLP\rightarrow sigmoid
+$$<p>利用输入特征的平均值和标准偏差来提高捕获全局信息的能力</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>SRMLayer</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>reduction</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=c1># Reduction for compatibility with layer_block interface</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>SRMLayer</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># CFC: channel-wise fully connected layer</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>cfc</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Conv1d</span><span class=p>(</span><span class=n>channel</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>kernel_size</span><span class=o>=</span><span class=mi>2</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>False</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                             <span class=n>groups</span><span class=o>=</span><span class=n>channel</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>bn</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>BatchNorm1d</span><span class=p>(</span><span class=n>channel</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=n>_</span><span class=p>,</span> <span class=n>_</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>size</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Style pooling</span>
+</span></span><span class=line><span class=cl>        <span class=n>mean</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>)</span><span class=o>.</span><span class=n>mean</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span><span class=o>.</span><span class=n>unsqueeze</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>std</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>)</span><span class=o>.</span><span class=n>std</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span><span class=o>.</span><span class=n>unsqueeze</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>u</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>cat</span><span class=p>((</span><span class=n>mean</span><span class=p>,</span> <span class=n>std</span><span class=p>),</span> <span class=o>-</span><span class=mi>1</span><span class=p>)</span>  <span class=c1># (b, c, 2)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Style integration</span>
+</span></span><span class=line><span class=cl>        <span class=n>z</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>cfc</span><span class=p>(</span><span class=n>u</span><span class=p>)</span>  <span class=c1># (b, c, 1)</span>
+</span></span><span class=line><span class=cl>        <span class=n>z</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>bn</span><span class=p>(</span><span class=n>z</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>g</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>sigmoid</span><span class=p>(</span><span class=n>z</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>g</span> <span class=o>=</span> <span class=n>g</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>b</span><span class=p>,</span> <span class=n>c</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>g</span><span class=o>.</span><span class=n>expand_as</span><span class=p>(</span><span class=n>x</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><h2 id=gct class=heading-element><span>GCT</span>
+<a href=#gct class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://arxiv.org/abs/1909.11519 target=_blank rel="external nofollow noopener noreferrer">Gated Channel Transformation for Visual Recognition</a>
+作者：Zongxin Yang, Linchao Zhu, Yu Wu, Yi Yang
+发表时间：(CVPR 2020)</p><p><a href=https://github.com/z-x-yang/GCT target=_blank rel="external nofollow noopener noreferrer">official Code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/GCT.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">GCT</div></center><p>GCT模块可以促进 shallow layer 特征间的合作，同时，促进 deep layer 特征间的竞争。这样，浅层特征可以更好的获取通用的属性，深层特征可以更好的获取与任务相关的 discriminative 特征</p><p>通过计算每个通道的<strong>l2范数</strong>来收集全局信息。</p><p>利用可学习向量$\alpha$对特征进行缩放。然后通过通道归一化，采用竞争机制来实现信道间的交互。</p>$$
+s = F_{gct}(X,\theta)=tanh(\gamma CN(\alpha Norm(X))+\beta)
+\\ Y = sX+X
+\\ computer\ L2norm\ on \ spatial\rightarrow channel\ normalization\rightarrow tanh
+$$<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>GCT</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>num_channels</span><span class=p>,</span> <span class=n>epsilon</span><span class=o>=</span><span class=mf>1e-5</span><span class=p>,</span> <span class=n>mode</span><span class=o>=</span><span class=s1>&#39;l2&#39;</span><span class=p>,</span> <span class=n>after_relu</span><span class=o>=</span><span class=kc>False</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>GCT</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Parameter</span><span class=p>(</span><span class=n>torch</span><span class=o>.</span><span class=n>ones</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>num_channels</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>gamma</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Parameter</span><span class=p>(</span><span class=n>torch</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>num_channels</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>beta</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Parameter</span><span class=p>(</span><span class=n>torch</span><span class=o>.</span><span class=n>zeros</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>num_channels</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>epsilon</span> <span class=o>=</span> <span class=n>epsilon</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>mode</span> <span class=o>=</span> <span class=n>mode</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>after_relu</span> <span class=o>=</span> <span class=n>after_relu</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>mode</span> <span class=o>==</span> <span class=s1>&#39;l2&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>embedding</span> <span class=o>=</span> <span class=p>(</span><span class=n>x</span><span class=o>.</span><span class=n>pow</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span><span class=o>.</span><span class=n>sum</span><span class=p>((</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>),</span> <span class=n>keepdim</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>epsilon</span><span class=p>)</span><span class=o>.</span><span class=n>pow</span><span class=p>(</span><span class=mf>0.5</span><span class=p>)</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span>
+</span></span><span class=line><span class=cl>            <span class=n>norm</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>gamma</span> <span class=o>/</span> <span class=p>(</span><span class=n>embedding</span><span class=o>.</span><span class=n>pow</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span><span class=o>.</span><span class=n>mean</span><span class=p>(</span><span class=n>dim</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span> <span class=n>keepdim</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>epsilon</span><span class=p>)</span><span class=o>.</span><span class=n>pow</span><span class=p>(</span><span class=mf>0.5</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=bp>self</span><span class=o>.</span><span class=n>mode</span> <span class=o>==</span> <span class=s1>&#39;l1&#39;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=ow>not</span> <span class=bp>self</span><span class=o>.</span><span class=n>after_relu</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=n>_x</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>abs</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=n>_x</span> <span class=o>=</span> <span class=n>x</span>
+</span></span><span class=line><span class=cl>            <span class=n>embedding</span> <span class=o>=</span> <span class=n>_x</span><span class=o>.</span><span class=n>sum</span><span class=p>((</span><span class=mi>2</span><span class=p>,</span><span class=mi>3</span><span class=p>),</span> <span class=n>keepdim</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>alpha</span>
+</span></span><span class=line><span class=cl>            <span class=n>norm</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>gamma</span> <span class=o>/</span> <span class=p>(</span><span class=n>torch</span><span class=o>.</span><span class=n>abs</span><span class=p>(</span><span class=n>embedding</span><span class=p>)</span><span class=o>.</span><span class=n>mean</span><span class=p>(</span><span class=n>dim</span><span class=o>=</span><span class=mi>1</span><span class=p>,</span> <span class=n>keepdim</span><span class=o>=</span><span class=kc>True</span><span class=p>)</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>epsilon</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=s1>&#39;Unknown mode!&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=n>sys</span><span class=o>.</span><span class=n>exit</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=n>gate</span> <span class=o>=</span> <span class=mf>1.</span> <span class=o>+</span> <span class=n>torch</span><span class=o>.</span><span class=n>tanh</span><span class=p>(</span><span class=n>embedding</span> <span class=o>*</span> <span class=n>norm</span> <span class=o>+</span> <span class=bp>self</span><span class=o>.</span><span class=n>beta</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>gate</span></span></span></code></pre></td></tr></table></div></div><h2 id=soca class=heading-element><span>SoCA</span>
+<a href=#soca class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>文章标题：<a href=https://www4.comp.polyu.edu.hk/~cslzhang/paper/CVPR19-SAN.pdf target=_blank rel="external nofollow noopener noreferrer">Second-order Attention Network for Single Image Super-Resolution</a>
+作者：Tao Dai1,2, Jianrui Cai , Yongbing Zhang
+发表时间：(CVPR 2019) 基于<a href=##RCAN>RCAN</a></p><p><a href=https://github.com/daitao/SAN target=_blank rel="external nofollow noopener noreferrer">official code</a></p></blockquote><center><img src="/images/Attention/Channel Attention.assets/SoCA.png"><br><div style="color:orange;border-bottom:1px solid #d9d9d9;display:inline-block;color:#999;padding:2px">SoCA</div></center>$$
+s=F_{soca}(X,\theta) = \sigma(Conv_U(\delta(Conv_D(GCP(X))))
+\\ Y = sX
+\\ global\ covariance\ pooling\rightarrow conv2d\rightarrow Relu \rightarrow conv2d\rightarrow sigmoid
+$$<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>class</span> <span class=nc>SOCA</span><span class=p>(</span><span class=n>nn</span><span class=o>.</span><span class=n>Module</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=n>reduction</span><span class=o>=</span><span class=mi>8</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=nb>super</span><span class=p>(</span><span class=n>SOCA</span><span class=p>,</span> <span class=bp>self</span><span class=p>)</span><span class=o>.</span><span class=fm>__init__</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=c1># global average pooling: feature --&gt; point</span>
+</span></span><span class=line><span class=cl>        <span class=c1># self.avg_pool = nn.AdaptiveAvgPool2d(1)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># self.max_pool = nn.AdaptiveMaxPool2d(1)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>max_pool</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>MaxPool2d</span><span class=p>(</span><span class=n>kernel_size</span><span class=o>=</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># feature channel downscale and upscale --&gt; channel weight</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>conv_du</span> <span class=o>=</span> <span class=n>nn</span><span class=o>.</span><span class=n>Sequential</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>channel</span><span class=p>,</span> <span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=n>padding</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>ReLU</span><span class=p>(</span><span class=n>inplace</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Conv2d</span><span class=p>(</span><span class=n>channel</span> <span class=o>//</span> <span class=n>reduction</span><span class=p>,</span> <span class=n>channel</span><span class=p>,</span> <span class=mi>1</span><span class=p>,</span> <span class=n>padding</span><span class=o>=</span><span class=mi>0</span><span class=p>,</span> <span class=n>bias</span><span class=o>=</span><span class=kc>True</span><span class=p>),</span>
+</span></span><span class=line><span class=cl>            <span class=n>nn</span><span class=o>.</span><span class=n>Sigmoid</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>forward</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>batch_size</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>h</span><span class=p>,</span> <span class=n>w</span> <span class=o>=</span> <span class=n>x</span><span class=o>.</span><span class=n>shape</span>  <span class=c1># x: NxCxHxW</span>
+</span></span><span class=line><span class=cl>        <span class=n>N</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=n>h</span> <span class=o>*</span> <span class=n>w</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>min_h</span> <span class=o>=</span> <span class=nb>min</span><span class=p>(</span><span class=n>h</span><span class=p>,</span> <span class=n>w</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>h1</span> <span class=o>=</span> <span class=mi>1000</span>
+</span></span><span class=line><span class=cl>        <span class=n>w1</span> <span class=o>=</span> <span class=mi>1000</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>h</span> <span class=o>&lt;</span> <span class=n>h1</span> <span class=ow>and</span> <span class=n>w</span> <span class=o>&lt;</span> <span class=n>w1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>x_sub</span> <span class=o>=</span> <span class=n>x</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=n>h</span> <span class=o>&lt;</span> <span class=n>h1</span> <span class=ow>and</span> <span class=n>w</span> <span class=o>&gt;</span> <span class=n>w1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=c1># H = (h - h1) // 2</span>
+</span></span><span class=line><span class=cl>            <span class=n>W</span> <span class=o>=</span> <span class=p>(</span><span class=n>w</span> <span class=o>-</span> <span class=n>w1</span><span class=p>)</span> <span class=o>//</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>            <span class=n>x_sub</span> <span class=o>=</span> <span class=n>x</span><span class=p>[:,</span> <span class=p>:,</span> <span class=p>:,</span> <span class=n>W</span><span class=p>:(</span><span class=n>W</span> <span class=o>+</span> <span class=n>w1</span><span class=p>)]</span>
+</span></span><span class=line><span class=cl>        <span class=k>elif</span> <span class=n>w</span> <span class=o>&lt;</span> <span class=n>w1</span> <span class=ow>and</span> <span class=n>h</span> <span class=o>&gt;</span> <span class=n>h1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>H</span> <span class=o>=</span> <span class=p>(</span><span class=n>h</span> <span class=o>-</span> <span class=n>h1</span><span class=p>)</span> <span class=o>//</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>            <span class=c1># W = (w - w1) // 2</span>
+</span></span><span class=line><span class=cl>            <span class=n>x_sub</span> <span class=o>=</span> <span class=n>x</span><span class=p>[:,</span> <span class=p>:,</span> <span class=n>H</span><span class=p>:</span><span class=n>H</span> <span class=o>+</span> <span class=n>h1</span><span class=p>,</span> <span class=p>:]</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=n>H</span> <span class=o>=</span> <span class=p>(</span><span class=n>h</span> <span class=o>-</span> <span class=n>h1</span><span class=p>)</span> <span class=o>//</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>            <span class=n>W</span> <span class=o>=</span> <span class=p>(</span><span class=n>w</span> <span class=o>-</span> <span class=n>w1</span><span class=p>)</span> <span class=o>//</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>            <span class=n>x_sub</span> <span class=o>=</span> <span class=n>x</span><span class=p>[:,</span> <span class=p>:,</span> <span class=n>H</span><span class=p>:(</span><span class=n>H</span> <span class=o>+</span> <span class=n>h1</span><span class=p>),</span> <span class=n>W</span><span class=p>:(</span><span class=n>W</span> <span class=o>+</span> <span class=n>w1</span><span class=p>)]</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>        <span class=c1>## MPN-COV</span>
+</span></span><span class=line><span class=cl>        <span class=n>cov_mat</span> <span class=o>=</span> <span class=n>MPNCOV</span><span class=o>.</span><span class=n>CovpoolLayer</span><span class=p>(</span><span class=n>x_sub</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>        <span class=n>cov_mat_sqrt</span> <span class=o>=</span> <span class=n>MPNCOV</span><span class=o>.</span><span class=n>SqrtmLayer</span><span class=p>(</span><span class=n>cov_mat</span><span class=p>,</span><span class=mi>5</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=c1>##</span>
+</span></span><span class=line><span class=cl>        <span class=n>cov_mat_sum</span> <span class=o>=</span> <span class=n>torch</span><span class=o>.</span><span class=n>mean</span><span class=p>(</span><span class=n>cov_mat_sqrt</span><span class=p>,</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>cov_mat_sum</span> <span class=o>=</span> <span class=n>cov_mat_sum</span><span class=o>.</span><span class=n>view</span><span class=p>(</span><span class=n>batch_size</span><span class=p>,</span><span class=n>C</span><span class=p>,</span><span class=mi>1</span><span class=p>,</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl> 
+</span></span><span class=line><span class=cl>        <span class=n>y_cov</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>conv_du</span><span class=p>(</span><span class=n>cov_mat_sum</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>y_cov</span><span class=o>*</span><span class=n>x</span></span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2023-06-06 18:22:27">更新于 2023-06-06&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=twitter data-url=http://fengchen321.github.io/posts/deeplearning/attention/channel-attention/ data-title="Channel Attention" data-hashtags="Deep Learning,注意力机制"><i class="fa-brands fa-x-twitter fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=http://fengchen321.github.io/posts/deeplearning/attention/channel-attention/ data-hashtag="Deep Learning"><i class="fa-brands fa-facebook-square fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=http://fengchen321.github.io/posts/deeplearning/attention/channel-attention/ data-title="Channel Attention"><i class="fa-brands fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fa-solid fa-tags fa-fw me-1" aria-hidden=true></i><a href=/tags/deep-learning/ class=post-tag title="标签 - Deep Learning">Deep Learning</a><a href=/tags/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/ class=post-tag title="标签 - 注意力机制">注意力机制</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/deeplearning/attention/spatial-attention/ class=post-nav-item rel=prev title="Spatial Attention"><i class="fa-solid fa-angle-left fa-fw" aria-hidden=true></i>Spatial Attention</a><a href=/posts/deeplearning/attention/channlespatial-attention/ class=post-nav-item rel=next title="Channel && Spatial Attention">Channel && Spatial Attention<i class="fa-solid fa-angle-right fa-fw" aria-hidden=true></i></a></div></div></article><aside class=toc id=toc-auto aria-label=目录><h2 class=toc-title>目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden=true></i></h2><div class="toc-content always-active" id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.139.0"><img class=hugo-icon src=/images/hugo.min.svg alt="Hugo logo"> Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/hugo-fixit/FixIt target=_blank rel=external title="FixIt v0.3.15"><img class=fixit-icon src=/images/fixit.min.svg alt="FixIt logo"> FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw" aria-hidden=true></i>
+<span itemprop=copyrightYear>2024</span><span class=author itemprop=copyrightHolder>
+<a href=/></a></span></div></div></footer></div><div class=widgets><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role=button aria-label=回到顶部><i class="fa-solid fa-arrow-up fa-fw" aria-hidden=true></i><span class="variant-numeric d-none">0%</span></div></div><div id=mask></div><noscript><div class=noscript-warning>该网站在启用 JavaScript 的情况下效果最佳。</div></noscript></div><link rel=preload href=/lib/katex/katex.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/katex/katex.min.css></noscript><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script src=/lib/autocomplete/autocomplete.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/katex/katex.min.js defer></script><script src=/lib/katex/auto-render.min.js defer></script><script src=/lib/katex/copy-tex.min.js defer></script><script src=/lib/katex/mhchem.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.js defer></script><script>window.config={code:{copyTitle:"复制到剪贴板",editLockTitle:"锁定可编辑代码块",editUnLockTitle:"解锁可编辑代码块",editable:!0,maxShownLines:100},comment:{enable:!1},cookieconsent:{content:{dismiss:"同意",link:"了解更多",message:"本网站使用 Cookies 来改善您的浏览体验。"},enable:!0,palette:{button:{background:"#f0f0f0"},popup:{background:"#1aa3ff"}},theme:"edgeless"},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50},version:"v0.3.15"}</script><script src=/js/theme.min.js defer></script></body></html>
