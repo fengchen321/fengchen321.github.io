@@ -1,0 +1,295 @@
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><meta name=robots content="noodp"><title>GDB调试 - fengchen</title><meta name=author content="fengchen"><meta name=description content="GDB调试"><meta name=keywords content='Computer,Linux,C++'><meta itemprop=name content="GDB调试"><meta itemprop=description content="GDB调试"><meta itemprop=datePublished content="2023-06-18T13:33:12+08:00"><meta itemprop=dateModified content="2023-06-18T13:33:12+08:00"><meta itemprop=wordCount content="2451"><meta itemprop=keywords content="Computer,Linux,C++"><meta property="og:url" content="http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/"><meta property="og:site_name" content="fengchen"><meta property="og:title" content="GDB调试"><meta property="og:description" content="GDB调试"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-06-18T13:33:12+08:00"><meta property="article:modified_time" content="2023-06-18T13:33:12+08:00"><meta property="article:tag" content="Computer"><meta property="article:tag" content="Linux"><meta property="article:tag" content="C++"><meta name=twitter:card content="summary"><meta name=twitter:title content="GDB调试"><meta name=twitter:description content="GDB调试"><meta name=application-name content="FixIt"><meta name=apple-mobile-web-app-title content="FixIt"><meta name=theme-color data-light=#f8f8f8 data-dark=#252627 content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical type=text/html href=http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/ title="GDB调试 - fengchen"><link rel=prev type=text/html href=http://fengchen321.github.io/posts/computer/shell%E7%BC%96%E7%A8%8B/ title=Shell编程><link rel=next type=text/html href=http://fengchen321.github.io/posts/computer/git%E6%95%99%E7%A8%8B/ title=git教程><link rel=alternate type=text/markdown href=http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/index.md title="GDB调试 - fengchen"><link rel=stylesheet href=/css/style.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"GDB调试","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/fengchen321.github.io\/posts\/computer\/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B\/"},"genre":"posts","keywords":"Computer, Linux, C\u002b\u002b","wordcount":2451,"url":"http:\/\/fengchen321.github.io\/posts\/computer\/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B\/","datePublished":"2023-06-18T13:33:12+08:00","dateModified":"2023-06-18T13:33:12+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"fengchen"},"description":"GDB调试"}</script><script src=/js/head/color-scheme.min.js></script></head><body data-header-desktop=sticky data-header-mobile=auto><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容…… id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></li><li class="menu-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><nav><ul class=menu id=menu-mobile><li class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容…… id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></li><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item menu-system"><span class="menu-system-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></span></li></ul></nav></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=合集></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>GDB调试</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><span class=author><i class="fa-solid fa-user-circle" aria-hidden=true></i>
+fengchen</span></span><span class=post-included-in>&nbsp;收录于 <a href=/categories/computer/ class=post-category title="分类 - Computer"><i class="fa-regular fa-folder fa-fw" aria-hidden=true></i> Computer</a></span></div><div class=post-meta-line><span title="发布于 2023-06-18 13:33:12"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden=true></i><time datetime=2023-06-18>2023-06-18</time></span>&nbsp;<span title="2451 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden=true></i>约 2500 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden=true></i>预计阅读 5 分钟</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#断点操作>断点操作</a><ul><li><a href=#设置断点>设置断点</a></li><li><a href=#删除断点delete是全局的>删除断点（delete是全局的）</a></li><li><a href=#查看断点>查看断点</a></li><li><a href=#启用禁用断点>启用/禁用断点</a></li><li><a href=#观察点>观察点</a></li><li><a href=#捕获点>捕获点</a></li></ul></li><li><a href=#执行>执行</a></li><li><a href=#查看显示>查看显示</a><ul><li><a href=#窗口显示>窗口显示</a></li><li><a href=#查看源代码>查看源代码</a></li><li><a href=#查看修改变量的值>查看/修改变量的值</a></li><li><a href=#查看变量类型>查看变量类型</a></li><li><a href=#查看内存>查看内存</a></li><li><a href=#查看寄存器>查看寄存器</a></li><li><a href=#查看汇编>查看汇编</a></li><li><a href=#查看调用栈>查看调用栈</a></li></ul></li><li><a href=#多线程调试>多线程调试</a></li><li><a href=#多进程调试>多进程调试</a></li><li><a href=#内存检查>内存检查</a></li><li><a href=#coredump调试>coredump调试</a></li><li><a href=#发行版调试>发行版调试</a></li><li><a href=#其他>其他</a></li><li><a href=#参考阅读>参考阅读</a></li></ul></nav></div></div><div class=content id=content><h2 id=gdb调试 class=heading-element><span>GDB调试</span>
+<a href=#gdb%e8%b0%83%e8%af%95 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><ol><li><p><code>gcc -o main main.c -g </code>或者<code>-G</code>生成<code>Debug</code>可调试版本</p><blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>mkdir build <span class=o>&amp;&amp;</span> <span class=nb>cd</span> build 
+</span></span><span class=line><span class=cl>cmake .. -DCMAKE_BUILD_TYPE<span class=o>=</span>Debug
+</span></span><span class=line><span class=cl>make</span></span></code></pre></td></tr></table></div></div></blockquote></li><li><p><code>gdb filename</code> 指定调试的文件</p><blockquote><p>hip程序</p><blockquote><ol><li><code>hipcc demo.cpp -o demo -g</code>，然后<code>hipgdb</code></li><li><code>hipcc demo.cpp -o demo -gdwarf-4</code>，然后<code>gdb</code></li></ol><p>打日志</p><blockquote><p><code>HIP_LOG_LEVEL=4 HIP_MODULE_MASK=0x7fffffff HIP_ENABLE_LIST="hip:hsa:thunk" ./demo</code> 设置了HIP的日志级别和模块掩码，生成<code>demo_xxx.nano</code>文件</p><p><code>hiplogdump sort demo_xxx.nano >log.txt</code></p></blockquote></blockquote></blockquote></li><li><p><code>gdb [exec file] [core file]</code>：调式coredump内核转储文件，直接进去<code>bt</code>查看调用栈信息。</p></li><li><p><code>gdb attach -p &lt;进程ID></code> :进行进程调试并附加到正在运行的进程</p></li><li><p><code>r </code>程序运行</p></li></ol><h2 id=断点操作 class=heading-element><span>断点操作</span>
+<a href=#%e6%96%ad%e7%82%b9%e6%93%8d%e4%bd%9c class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><h3 id=设置断点 class=heading-element><span>设置断点</span>
+<a href=#%e8%ae%be%e7%bd%ae%e6%96%ad%e7%82%b9 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>b demo.cpp:123  	<span class=c1># b 文件:行号</span>
+</span></span><span class=line><span class=cl>b function_name  	<span class=c1># 所有同名函数</span>
+</span></span><span class=line><span class=cl>b class1::function_name <span class=c1># 指定函数</span>
+</span></span><span class=line><span class=cl>b +5  <span class=c1># 偏移量打断点，当前73行， +5到78行</span>
+</span></span><span class=line><span class=cl>b demo.cpp:123 <span class=k>if</span> <span class=nv>i</span><span class=o>==</span><span class=m>3</span> <span class=c1># b 断点 条件    满足条件命中断点</span>
+</span></span><span class=line><span class=cl>b *0x11111 <span class=c1># 指令地址设置断点（调试程序没有符号信息时）使用p function_name获得函数地址0x11111,在断点然后r运行</span>
+</span></span><span class=line><span class=cl>rb funtion_nam* <span class=c1># 正则表达式</span>
+</span></span><span class=line><span class=cl>tb 				<span class=c1># 临时断点</span></span></span></code></pre></td></tr></table></div></div><h3 id=删除断点delete是全局的 class=heading-element><span>删除断点（delete是全局的）</span>
+<a href=#%e5%88%a0%e9%99%a4%e6%96%ad%e7%82%b9delete%e6%98%af%e5%85%a8%e5%b1%80%e7%9a%84 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>delete  		<span class=c1>#删除所有断点</span>
+</span></span><span class=line><span class=cl>delete <span class=m>5</span> 		<span class=c1># 删除5号断点</span>
+</span></span><span class=line><span class=cl>delete <span class=m>5</span> <span class=m>6</span> 		<span class=c1># 删除5号和6号断点</span>
+</span></span><span class=line><span class=cl>delete 5-8 11-13 	<span class=c1>#删除指定范围断点</span>
+</span></span><span class=line><span class=cl>clear function_name <span class=c1># 删除指定函数断点</span>
+</span></span><span class=line><span class=cl>clear demo.cpp:123 	<span class=c1># 删除指定行号断点</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看断点 class=heading-element><span>查看断点</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e6%96%ad%e7%82%b9 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>info b <span class=c1># 常用</span>
+</span></span><span class=line><span class=cl>info: info i 两种方式
+</span></span><span class=line><span class=cl>breakpoint： breakpoint <span class=nb>break</span> b  三种方式</span></span></code></pre></td></tr></table></div></div><h3 id=启用禁用断点 class=heading-element><span>启用/禁用断点</span>
+<a href=#%e5%90%af%e7%94%a8%e7%a6%81%e7%94%a8%e6%96%ad%e7%82%b9 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>enable/disabele 断点编号  	<span class=c1>#启用/禁用断点，可以单一编号如`1`，也可以范围`2-7`</span>
+</span></span><span class=line><span class=cl><span class=nb>enable</span> once 断点编号		<span class=c1># 启用一次后自动禁用</span>
+</span></span><span class=line><span class=cl><span class=nb>enable</span> delete 断点编号 		<span class=c1># 启用后删除</span>
+</span></span><span class=line><span class=cl><span class=nb>enable</span> count 数量N 断点编号 	<span class=c1># 启用断点并命中N次</span>
+</span></span><span class=line><span class=cl>ignore 断点编号 次数N  		<span class=c1># 忽略断点前N次命中</span></span></span></code></pre></td></tr></table></div></div><h3 id=观察点 class=heading-element><span>观察点</span>
+<a href=#%e8%a7%82%e5%af%9f%e7%82%b9 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>watch 变量/表达式   <span class=c1># 观察点，监视变量</span>
+</span></span><span class=line><span class=cl>rwatch 变量/表达式  <span class=c1># 读取观察点，变量或表达式被读取时，程序中断</span>
+</span></span><span class=line><span class=cl>awatch 变量/表达式  <span class=c1># 读写观察点，无论变量或表达式被读取还是写入时，程序都中断</span>
+</span></span><span class=line><span class=cl>info watchpoints  <span class=c1># 查看所有观察点</span>
+</span></span><span class=line><span class=cl>delete/disable/enable 观察点编号 <span class=c1># 删除/禁用/启用观察点</span></span></span></code></pre></td></tr></table></div></div><h3 id=捕获点 class=heading-element><span>捕获点</span>
+<a href=#%e6%8d%95%e8%8e%b7%e7%82%b9 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><blockquote><p>C++异常</p><p>动态库载入</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>catch 事件</span></span></code></pre></td></tr></table></div></div><h2 id=执行 class=heading-element><span>执行</span>
+<a href=#%e6%89%a7%e8%a1%8c class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><code>s</code> 步进 <code>finish</code>跳出</p><p><code>n </code>：跳过 (next)</p><p><code>c </code>：继续（continue）</p><p><code>jump N</code>：跳到第N行 ，或者函数</p><p><code>where</code> ：显示当前执行的具体函数和代码行</p><h2 id=查看显示 class=heading-element><span>查看显示</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e6%98%be%e7%a4%ba class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><code>info args</code> ：进入一个函数查看参数信息</p><p><code>info locals</code> ：查看局部变量值</p><p><code>info functions</code> ：查看有哪些函数</p><h3 id=窗口显示 class=heading-element><span>窗口显示</span>
+<a href=#%e7%aa%97%e5%8f%a3%e6%98%be%e7%a4%ba class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>gdb -tui filename</code> # 显示代码窗口</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>tui <span class=nb>enable</span>  <span class=c1># 显示  crtl + x 再按a关闭打开窗口</span>
+</span></span><span class=line><span class=cl>layout src 	<span class=c1># 显示源码</span>
+</span></span><span class=line><span class=cl>layout asm  <span class=c1># 显示汇编</span>
+</span></span><span class=line><span class=cl>layout split	<span class=c1># 显示源代码和汇编</span>
+</span></span><span class=line><span class=cl>layout regs	<span class=c1># 显示寄存器</span>
+</span></span><span class=line><span class=cl>refresh <span class=c1># 刷新屏幕 crtl + l</span>
+</span></span><span class=line><span class=cl>update 	<span class=c1># 更新源代码</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看源代码 class=heading-element><span>查看源代码</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e6%ba%90%e4%bb%a3%e7%a0%81 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>l <span class=c1># 查看上下文(list) 默认当前代码行的前5行和后5行</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> listsize <span class=m>20</span> <span class=c1># 设置显示行数 20行</span>
+</span></span><span class=line><span class=cl>list demo.cpp:123 <span class=c1># 查看指定文件指定行代码</span>
+</span></span><span class=line><span class=cl>list function_name <span class=c1># 查看指定函数的源代码</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 搜索源代码</span>
+</span></span><span class=line><span class=cl>serach 正则表达式
+</span></span><span class=line><span class=cl>forward-search 正则表达式  <span class=c1># 正向搜索</span>
+</span></span><span class=line><span class=cl>reverse-search 正则表达式  <span class=c1># 反向搜索</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看修改变量的值 class=heading-element><span>查看/修改变量的值</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e4%bf%ae%e6%94%b9%e5%8f%98%e9%87%8f%e7%9a%84%e5%80%bc class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>print 变量  <span class=c1># 打印变量</span>
+</span></span><span class=line><span class=cl>p 变量
+</span></span><span class=line><span class=cl>p <span class=nv>变量名</span><span class=o>=</span>值  <span class=c1>#修改查看的变量值</span>
+</span></span><span class=line><span class=cl><span class=c1># 一些内嵌函数</span>
+</span></span><span class=line><span class=cl>p sizeof<span class=o>(</span>a<span class=o>)</span>
+</span></span><span class=line><span class=cl>p strcmp<span class=o>(</span><span class=s2>&#34;123&#34;</span>. <span class=s2>&#34;12&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>p strlen<span class=o>(</span><span class=s2>&#34;string&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl><span class=c1># 查看结构体/ 类的值</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> print null-stop <span class=c1># 设置字符串显示规则，遇到结结束符时停止显示</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> print pretty  <span class=c1># 美化，格式化结构体</span>
+</span></span><span class=line><span class=cl>p new_node-&gt;Name  <span class=c1># 查看结构体/类单个成员</span>
+</span></span><span class=line><span class=cl>p *new_node  <span class=c1># 查看整个结构体/类</span>
+</span></span><span class=line><span class=cl><span class=c1># 查看数组</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> print array <span class=c1># 控制数组显示</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> print array-indexes <span class=c1># 显示数组索引</span>
+</span></span><span class=line><span class=cl><span class=c1># 查看联合体</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> print union
+</span></span><span class=line><span class=cl><span class=c1># 自动显示变量值,和断点类似</span>
+</span></span><span class=line><span class=cl>display 变量名
+</span></span><span class=line><span class=cl>display <span class=o>{</span>var1, var2, var3<span class=o>}</span> <span class=c1># 多变量名时，长度要相同</span>
+</span></span><span class=line><span class=cl>undisplay 变量编号 <span class=c1># 取消自动显示，info display可查看编号</span>
+</span></span><span class=line><span class=cl>enabele/disable display 变量编号 <span class=c1># 启用/禁用自动显示</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看变量类型 class=heading-element><span>查看变量类型</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e5%8f%98%e9%87%8f%e7%b1%bb%e5%9e%8b class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># ptype /选项 变量或类型  查看各个变量类型</span>
+</span></span><span class=line><span class=cl>ptype node_head  	<span class=c1># 查看变量类型，显示成员名称和类型</span>
+</span></span><span class=line><span class=cl><span class=c1># 选项</span>
+</span></span><span class=line><span class=cl>/r	<span class=c1># 原始数据显示，不会代替一些typedef定义</span>
+</span></span><span class=line><span class=cl>/m	<span class=c1># 查看类时，只显示类的成员变量</span>
+</span></span><span class=line><span class=cl>/M	<span class=c1># 显示类的方法（默认）</span>
+</span></span><span class=line><span class=cl>/t	<span class=c1># 不打印类中的typedef数据</span>
+</span></span><span class=line><span class=cl>/o 	<span class=c1># 打印结构体字段偏移量和大小信息</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>whatis 变量或表达式	<span class=c1># 查看变量类型</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看内存 class=heading-element><span>查看内存</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e5%86%85%e5%ad%98 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># x /选项 地址  查看各个变量内存信息</span>
+</span></span><span class=line><span class=cl>const char* <span class=nv>str</span> <span class=o>=</span> <span class=s2>&#34;test&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>x str  <span class=c1># 默认16进制显示，内存存储内容和“test&#34;相反（小端存储） 0x74736574</span>
+</span></span><span class=line><span class=cl>x /s str  <span class=c1># 直接显示内容 ”test&#34;</span>
+</span></span><span class=line><span class=cl>x /d str  <span class=c1># 十进制显示</span>
+</span></span><span class=line><span class=cl>x /4d str <span class=c1># 十进制显示，显示宽度为4</span>
+</span></span><span class=line><span class=cl><span class=c1># 变量非指针类型，如int， 先p &amp;value_name, 在使用x查看</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看寄存器 class=heading-element><span>查看寄存器</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e5%af%84%e5%ad%98%e5%99%a8 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p>指针寄存器<code>$rip</code> (32位EIP，64RIP)指向当前执行的代码位置</p><p>栈指针寄存器<code>$rsp</code>指向当前栈顶</p><p>通用寄存器存储一些变量值，函数参数及返回值等</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>info registers     <span class=c1># 简写 i  r</span>
+</span></span><span class=line><span class=cl>info registers rax <span class=c1># 显示特定寄存器值</span>
+</span></span><span class=line><span class=cl>info all-registers <span class=c1># 显示所有寄存器值</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>function_test<span class=o>(</span>intc a, const char* str<span class=o>)</span>
+</span></span><span class=line><span class=cl>调用function_test<span class=o>(</span>10, <span class=s2>&#34;test&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>第一个参数存储在寄存器rdi,第二个参数存储在rsi中,是字符串指针
+</span></span><span class=line><span class=cl>i r rdi
+</span></span><span class=line><span class=cl>i r rsi
+</span></span><span class=line><span class=cl>x /s <span class=nv>$rsi</span> <span class=c1># 查看寄存器值</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看汇编 class=heading-element><span>查看汇编</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e6%b1%87%e7%bc%96 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>starti 		<span class=c1>#开始执行程序并停在第一个汇编指令处</span>
+</span></span><span class=line><span class=cl>layout asm 	<span class=c1>#显示汇编窗口</span>
+</span></span><span class=line><span class=cl>si 			<span class=c1>#单步</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>disassemble /mr ./demo  <span class=c1>#查看反汇编代码</span></span></span></code></pre></td></tr></table></div></div><h3 id=查看调用栈 class=heading-element><span>查看调用栈</span>
+<a href=#%e6%9f%a5%e7%9c%8b%e8%b0%83%e7%94%a8%e6%a0%88 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>bt 		<span class=c1># 查看回溯 backtrace</span>
+</span></span><span class=line><span class=cl>bt <span class=m>2</span> 	<span class=c1># 只显示两个栈帧</span>
+</span></span><span class=line><span class=cl>f <span class=m>2</span> 	<span class=c1># frame切换栈帧，查看调试位置</span>
+</span></span><span class=line><span class=cl>up/down <span class=m>2</span> <span class=c1># 基于当前帧来切换</span>
+</span></span><span class=line><span class=cl>f 帧地址  	<span class=c1># 通过帧地址切换</span>
+</span></span><span class=line><span class=cl>info frame 	<span class=c1># 查看帧信息</span></span></span></code></pre></td></tr></table></div></div><h2 id=多线程调试 class=heading-element><span>多线程调试</span>
+<a href=#%e5%a4%9a%e7%ba%bf%e7%a8%8b%e8%b0%83%e8%af%95 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>info threads  <span class=c1># 查看线程, *号表示当前线程</span>
+</span></span><span class=line><span class=cl>thread N      <span class=c1># 切换线程</span>
+</span></span><span class=line><span class=cl>b M thread N  <span class=c1># 为N号线程M行设置断点</span>
+</span></span><span class=line><span class=cl>thread apply N <span class=nb>command</span> 	<span class=c1># 为N号线程执行command命令</span>
+</span></span><span class=line><span class=cl>thread apply all bt 		<span class=c1># 查看所用线程堆栈信息</span></span></span></code></pre></td></tr></table></div></div><h2 id=多进程调试 class=heading-element><span>多进程调试</span>
+<a href=#%e5%a4%9a%e8%bf%9b%e7%a8%8b%e8%b0%83%e8%af%95 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>info inferiors 	<span class=c1># 查看进程                                 </span>
+</span></span><span class=line><span class=cl>inferior N 		<span class=c1># 切换相应进程</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> follow-fork-mode child 	<span class=c1># 设置调试子进程</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> detach-on-fork off 		<span class=c1># 对所有的进程进行调试</span></span></span></code></pre></td></tr></table></div></div><h2 id=内存检查 class=heading-element><span>内存检查</span>
+<a href=#%e5%86%85%e5%ad%98%e6%a3%80%e6%9f%a5 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># 需要安装 libasan 即AddressSanitizer</span>
+</span></span><span class=line><span class=cl>g++ -fsanitize<span class=o>=</span>address -g -o demo ./demo.cpp</span></span></code></pre></td></tr></table></div></div><h2 id=coredump调试 class=heading-element><span>coredump调试</span>
+<a href=#coredump%e8%b0%83%e8%af%95 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># 在调试界面生成coredump文件</span>
+</span></span><span class=line><span class=cl>ps aux <span class=p>|</span> grep ./demo  <span class=c1># 查看进程号</span>
+</span></span><span class=line><span class=cl>gdb attach -p &lt;进程ID&gt;  <span class=c1># 附加到进程</span>
+</span></span><span class=line><span class=cl>gcore ****.core  
+</span></span><span class=line><span class=cl>detach
+</span></span><span class=line><span class=cl>q
+</span></span><span class=line><span class=cl><span class=c1># 配置并生成coredump文件</span>
+</span></span><span class=line><span class=cl>/etc/security/limits.conf添加 soft core unlimited
+</span></span><span class=line><span class=cl><span class=nb>echo</span> -e <span class=s2>&#34;/root/corefile/core-%e-%s-%p-%t&#34;</span> &gt; /proc/sys/kernel/core_pattern
+</span></span><span class=line><span class=cl><span class=c1># %e进程名称。%s崩溃信号，%p进程id,%t时间戳</span>
+</span></span><span class=line><span class=cl><span class=c1># 调试</span>
+</span></span><span class=line><span class=cl>gdb <span class=o>[</span><span class=nb>exec</span> file<span class=o>]</span> <span class=o>[</span>core file<span class=o>]</span>  <span class=c1># 调式coredump内核转储文件，直接进去`bt`查看调用栈信息。</span></span></span></code></pre></td></tr></table></div></div><h2 id=发行版调试 class=heading-element><span>发行版调试</span>
+<a href=#%e5%8f%91%e8%a1%8c%e7%89%88%e8%b0%83%e8%af%95 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># 从调试版中提取调试符号</span>
+</span></span><span class=line><span class=cl>objcopy --only-keep-debug demo demo.symbol  <span class=c1># 生成调试符号表</span>
+</span></span><span class=line><span class=cl>gdb --symbol<span class=o>=</span>demo.symbol -exec<span class=o>=</span>demo_release   <span class=c1># 加上调试符号调试发行版</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>gdb --symbol<span class=o>=</span>demo -exec<span class=o>=</span>demo_release  <span class=c1># 直接使用调试版作为符号源</span></span></span></code></pre></td></tr></table></div></div><h2 id=其他 class=heading-element><span>其他</span>
+<a href=#%e5%85%b6%e4%bb%96 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cpp data-lang=cpp><span class=line><span class=cl><span class=c1>// int 3是用于触发调试中断的指令
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>asm</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=mi>3</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h2 id=参考阅读 class=heading-element><span>参考阅读</span>
+<a href=#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><a href=https://book.douban.com/subject/36337198/ target=_blank rel="external nofollow noopener noreferrer">C/C++代码调试的艺术（第2版） (豆瓣) (douban.com)</a></p><p><a href=https://blog.csdn.net/qq_18145605/article/details/119212037 target=_blank rel="external nofollow noopener noreferrer">GDB 高级调试-多线程、后台调试、多进程、反向调试</a></p><p><a href=https://mp.weixin.qq.com/s/XxPIfrQ3E0GR88UsmQNggg target=_blank rel="external nofollow noopener noreferrer">GDB调试-从入门实践到原理</a></p><p><a href=https://github.com/hellogcc/100-gdb-tips/blob/master/src/index.md target=_blank rel="external nofollow noopener noreferrer">100个gdb小技巧</a></p><p><a href=https://sourceware.org/gdb/current/onlinedocs/gdb.html/ target=_blank rel="external nofollow noopener noreferrer">GDB官方手册</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2023-06-18 13:33:12">更新于 2023-06-18&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=twitter data-url=http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/ data-title=GDB调试 data-hashtags=Computer,Linux,C++><i class="fa-brands fa-x-twitter fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/ data-hashtag=Computer><i class="fa-brands fa-facebook-square fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/ data-title=GDB调试><i class="fa-brands fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fa-solid fa-tags fa-fw me-1" aria-hidden=true></i><a href=/tags/computer/ class=post-tag title="标签 - Computer">Computer</a><a href=/tags/linux/ class=post-tag title="标签 - Linux">Linux</a><a href=/tags/c++/ class=post-tag title="标签 - C++">C++</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/computer/shell%E7%BC%96%E7%A8%8B/ class=post-nav-item rel=prev title=Shell编程><i class="fa-solid fa-angle-left fa-fw" aria-hidden=true></i>Shell编程</a><a href=/posts/computer/git%E6%95%99%E7%A8%8B/ class=post-nav-item rel=next title=Git教程>Git教程<i class="fa-solid fa-angle-right fa-fw" aria-hidden=true></i></a></div></div></article><aside class=toc id=toc-auto aria-label=目录><h2 class=toc-title>目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden=true></i></h2><div class="toc-content always-active" id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.139.0"><img class=hugo-icon src=/images/hugo.min.svg alt="Hugo logo"> Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/hugo-fixit/FixIt target=_blank rel=external title="FixIt v0.3.15"><img class=fixit-icon src=/images/fixit.min.svg alt="FixIt logo"> FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw" aria-hidden=true></i>
+<span itemprop=copyrightYear>2024</span><span class=author itemprop=copyrightHolder>
+<a href=/>fengchen</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div class=widgets><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role=button aria-label=回到顶部><i class="fa-solid fa-arrow-up fa-fw" aria-hidden=true></i><span class="variant-numeric d-none">0%</span></div></div><div id=mask></div><div class=reading-progress-bar style=left:0;top:0></div><noscript><div class=noscript-warning>该网站在启用 JavaScript 的情况下效果最佳。</div></noscript></div><link rel=preload href=/lib/katex/katex.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/katex/katex.min.css></noscript><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script src=/lib/autocomplete/autocomplete.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/katex/katex.min.js defer></script><script src=/lib/katex/auto-render.min.js defer></script><script src=/lib/katex/copy-tex.min.js defer></script><script src=/lib/katex/mhchem.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.js defer></script><script>window.config={code:{copyTitle:"复制到剪贴板",editLockTitle:"锁定可编辑代码块",editUnLockTitle:"解锁可编辑代码块",editable:!0,maxShownLines:100},comment:{enable:!1},cookieconsent:{content:{dismiss:"同意",link:"了解更多",message:"本网站使用 Cookies 来改善您的浏览体验。"},enable:!0,palette:{button:{background:"#f0f0f0"},popup:{background:"#1aa3ff"}},theme:"edgeless"},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50},version:"v0.3.15"}</script><script src=/js/theme.min.js defer></script></body></html>

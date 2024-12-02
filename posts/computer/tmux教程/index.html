@@ -1,0 +1,165 @@
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><meta name=robots content="noodp"><title>Tmux教程 - fengchen</title><meta name=author content="fengchen"><meta name=description content="tmux教程"><meta name=keywords content='Computer,工具,Linux'><meta itemprop=name content="tmux教程"><meta itemprop=description content="tmux教程"><meta itemprop=datePublished content="2023-06-16T13:33:12+08:00"><meta itemprop=dateModified content="2023-06-16T13:33:12+08:00"><meta itemprop=wordCount content="1389"><meta itemprop=keywords content="Computer,工具,Linux"><meta property="og:url" content="http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/"><meta property="og:site_name" content="fengchen"><meta property="og:title" content="tmux教程"><meta property="og:description" content="tmux教程"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-06-16T13:33:12+08:00"><meta property="article:modified_time" content="2023-06-16T13:33:12+08:00"><meta property="article:tag" content="Computer"><meta property="article:tag" content="工具"><meta property="article:tag" content="Linux"><meta name=twitter:card content="summary"><meta name=twitter:title content="tmux教程"><meta name=twitter:description content="tmux教程"><meta name=application-name content="FixIt"><meta name=apple-mobile-web-app-title content="FixIt"><meta name=theme-color data-light=#f8f8f8 data-dark=#252627 content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical type=text/html href=http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/ title="tmux教程 - fengchen"><link rel=prev type=text/html href=http://fengchen321.github.io/posts/computer/vim%E6%95%99%E7%A8%8B/ title=Vim教程><link rel=next type=text/html href=http://fengchen321.github.io/posts/computer/shell%E7%BC%96%E7%A8%8B/ title=Shell编程><link rel=alternate type=text/markdown href=http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/index.md title="tmux教程 - fengchen"><link rel=stylesheet href=/css/style.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"tmux教程","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/fengchen321.github.io\/posts\/computer\/tmux%E6%95%99%E7%A8%8B\/"},"genre":"posts","keywords":"Computer, 工具, Linux","wordcount":1389,"url":"http:\/\/fengchen321.github.io\/posts\/computer\/tmux%E6%95%99%E7%A8%8B\/","datePublished":"2023-06-16T13:33:12+08:00","dateModified":"2023-06-16T13:33:12+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"fengchen"},"description":"tmux教程"}</script><script src=/js/head/color-scheme.min.js></script></head><body data-header-desktop=sticky data-header-mobile=auto><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容…… id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></li><li class="menu-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><nav><ul class=menu id=menu-mobile><li class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容…… id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></li><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item menu-system"><span class="menu-system-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></span></li></ul></nav></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=合集></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>Tmux教程</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><span class=author><i class="fa-solid fa-user-circle" aria-hidden=true></i>
+fengchen</span></span><span class=post-included-in>&nbsp;收录于 <a href=/categories/computer/ class=post-category title="分类 - Computer"><i class="fa-regular fa-folder fa-fw" aria-hidden=true></i> Computer</a></span></div><div class=post-meta-line><span title="发布于 2023-06-16 13:33:12"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden=true></i><time datetime=2023-06-16>2023-06-16</time></span>&nbsp;<span title="1389 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden=true></i>约 1400 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden=true></i>预计阅读 3 分钟</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#常用操作>常用操作</a></li><li><a href=#安装tmux>安装tmux</a></li><li><a href=#配置文件-tmuxconf>配置文件 ~/.tmux.conf</a></li></ul></nav></div></div><div class=content id=content><h2 id=tmux教程 class=heading-element><span>tmux教程</span>
+<a href=#tmux%e6%95%99%e7%a8%8b class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><strong>功能</strong></p><blockquote><p>分屏。</p><p>允许断开Terminal连接后，继续运行进程。</p></blockquote><p><strong>结构</strong></p><blockquote><p>一个tmux可以包含多个session，一个session可以包含多个window，一个window可以包含多个pane。</p></blockquote><h2 id=常用操作 class=heading-element><span>常用操作</span>
+<a href=#%e5%b8%b8%e7%94%a8%e6%93%8d%e4%bd%9c class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><ol><li><p><code>tmux</code>：新建一个session，其中包含一个window，window中包含一个pane，pane里打开了一个shell对话框。</p></li><li><p><code>tmux kill-server </code>：关闭所有session</p></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>%</code> （<code>shift + 5</code>）：将当前pane左右平分成两个pane</p></li><li><p>按下<code>Ctrl + B </code>后松开，然后按<code>"</code>：将当前pane上下平分成两个pane。</p></li><li><p><code>Ctrl + D</code>：关闭当前pane；</p><blockquote><p>如果当前window的所有pane均已关闭，则自动关闭window；如果当前session的所有window均已关闭，则自动关闭session。</p></blockquote></li><li><p>鼠标点击可以选pane。(我鼠标动不了)</p></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>方向键</code>：选择相邻的pane。</p></li><li><p>鼠标拖动pane之间的分割线，可以调整分割线的位置。</p></li><li><p>按住<code>Ctrl + B</code> 的同时按<code>方向键</code>，可以调整pane之间分割线的位置。</p></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>z</code>：将当前pane全屏/取消全屏。</p></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>d</code>：挂起当前session。</p></li><li><p><code>tmux a</code>：打开之前挂起的session。</p></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>s</code>：选择其它session。</p><blockquote><p>方向键 —— 上：选择上一项 session/window/pane</p><p>方向键 —— 下：选择下一项 session/window/pane</p><p>方向键 —— 右：展开当前项 session/window</p><p>方向键 —— 左：闭合当前项 session/window</p></blockquote></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>c</code>：在当前session中创建一个新的window。</p></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>w</code>：选择其他window，操作方法与(12)完全相同。</p></li><li><p>按下<code>Ctrl + B</code> 后松开，然后按<code>PageUp</code>：翻阅当前pane内的内容。</p></li><li><p>鼠标滚轮：翻阅当前pane内的内容。</p></li><li><p>在tmux中选中文本时，需要按住shift键。（仅支持Windows和Linux，不支持Mac）</p></li><li><p>tmux中复制/粘贴文本的通用方式：</p><blockquote><ul><li>按下<code>Ctrl + B</code> 后松开，然后按<code>[</code></li><li>用鼠标选中文本，被选中的文本会被自动复制到tmux的剪贴板</li><li>按下<code>Ctrl + B</code> 后松开，然后按<code>]</code>，会将剪贴板中的内容粘贴到光标处</li></ul></blockquote></li></ol><h2 id=安装tmux class=heading-element><span>安装tmux</span>
+<a href=#%e5%ae%89%e8%a3%85tmux class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>无网络使用appImages版本： <a href=https://appimage.github.io/apps/ target=_blank rel="external nofollow noopener noreferrer">apps – AppImages</a></p><p><a href=https://github.com/nelsonenzo/tmux-appimage/releases target=_blank rel="external nofollow noopener noreferrer">Releases · nelsonenzo/tmux-appimage (github.com)</a></p><blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>chmod +x ./tmux.appimage <span class=c1># 下载后，添加权限</span>
+</span></span><span class=line><span class=cl>cp tmux.appimage /usr/local/bin/tmux <span class=c1># 放到PATH环境变量记录的文件夹下，以便在任意地方直接调用</span></span></span></code></pre></td></tr></table></div></div></blockquote><h2 id=配置文件-tmuxconf class=heading-element><span>配置文件 ~/.tmux.conf</span>
+<a href=#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6-tmuxconf class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><blockquote><p>令其生效两种方式：</p><p>1：<code>tmux source-file ~/.tmux.conf</code></p><p>2：在tmux窗口中，先按下<code>Ctrl+b</code>指令前缀，然后按下系统指令<code>:</code>，进入到命令模式后输入<code>source-file ~/.tmux.conf</code>，回车后生效。</p></blockquote><p>ctrl + B 改成 ctrl + A</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>set-option -g status-keys vi
+</span></span><span class=line><span class=cl>setw -g mode-keys vi
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>setw -g monitor-activity on
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># setw -g c0-change-trigger 10</span>
+</span></span><span class=line><span class=cl><span class=c1># setw -g c0-change-interval 100</span>
+</span></span><span class=line><span class=cl><span class=c1># setw -g c0-change-interval 50</span>
+</span></span><span class=line><span class=cl><span class=c1># setw -g c0-change-trigger  75</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>set-window-option -g automatic-rename on
+</span></span><span class=line><span class=cl>set-option -g set-titles on
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g history-limit <span class=m>100000</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>#set-window-option -g utf8 on</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># set command prefix</span>
+</span></span><span class=line><span class=cl>set-option -g prefix C-a
+</span></span><span class=line><span class=cl>unbind-key C-b
+</span></span><span class=line><span class=cl>bind-key C-a send-prefix
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> h <span class=k>select</span>-pane -L
+</span></span><span class=line><span class=cl><span class=nb>bind</span> j <span class=k>select</span>-pane -D
+</span></span><span class=line><span class=cl><span class=nb>bind</span> k <span class=k>select</span>-pane -U
+</span></span><span class=line><span class=cl><span class=nb>bind</span> l <span class=k>select</span>-pane -R
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> -n M-Left <span class=k>select</span>-pane -L
+</span></span><span class=line><span class=cl><span class=nb>bind</span> -n M-Right <span class=k>select</span>-pane -R
+</span></span><span class=line><span class=cl><span class=nb>bind</span> -n M-Up <span class=k>select</span>-pane -U
+</span></span><span class=line><span class=cl><span class=nb>bind</span> -n M-Down <span class=k>select</span>-pane -D
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> &lt; resize-pane -L <span class=m>7</span>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> &gt; resize-pane -R <span class=m>7</span>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> - resize-pane -D <span class=m>7</span>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> + resize-pane -U <span class=m>7</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>bind-key -n M-l next-window
+</span></span><span class=line><span class=cl>bind-key -n M-h previous-window
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-interval <span class=m>1</span>
+</span></span><span class=line><span class=cl><span class=c1># status bar</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-bg black
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-fg blue
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>#set -g status-utf8 on</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-justify centre
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-bg default
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-left <span class=s2>&#34; #[fg=green]#S@#H #[default]&#34;</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-left-length <span class=m>20</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># mouse support</span>
+</span></span><span class=line><span class=cl><span class=c1># for tmux 2.1</span>
+</span></span><span class=line><span class=cl><span class=c1># set -g mouse-utf8 on</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g mouse on
+</span></span><span class=line><span class=cl><span class=c1>#</span>
+</span></span><span class=line><span class=cl><span class=c1># for previous version</span>
+</span></span><span class=line><span class=cl><span class=c1>#set -g mode-mouse on</span>
+</span></span><span class=line><span class=cl><span class=c1>#set -g mouse-resize-pane on</span>
+</span></span><span class=line><span class=cl><span class=c1>#set -g mouse-select-pane on</span>
+</span></span><span class=line><span class=cl><span class=c1>#set -g mouse-select-window on</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1>#set -g status-right-length 25</span>
+</span></span><span class=line><span class=cl><span class=nb>set</span> -g status-right <span class=s2>&#34;#[fg=green]%H:%M:%S #[fg=magenta]%a %m-%d #[default]&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># fix for tmux 1.9</span>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> <span class=s1>&#39;&#34;&#39;</span> split-window -vc <span class=s2>&#34;#{pane_current_path}&#34;</span>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> <span class=s1>&#39;%&#39;</span> split-window -hc <span class=s2>&#34;#{pane_current_path}&#34;</span>
+</span></span><span class=line><span class=cl><span class=nb>bind</span> <span class=s1>&#39;c&#39;</span> new-window -c <span class=s2>&#34;#{pane_current_path}&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># run-shell &#34;powerline-daemon -q&#34;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># vim: ft=conf</span></span></span></code></pre></td></tr></table></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2023-06-16 13:33:12">更新于 2023-06-16&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=twitter data-url=http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/ data-title=Tmux教程 data-hashtags=Computer,工具,Linux><i class="fa-brands fa-x-twitter fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/ data-hashtag=Computer><i class="fa-brands fa-facebook-square fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/ data-title=Tmux教程><i class="fa-brands fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fa-solid fa-tags fa-fw me-1" aria-hidden=true></i><a href=/tags/computer/ class=post-tag title="标签 - Computer">Computer</a><a href=/tags/%E5%B7%A5%E5%85%B7/ class=post-tag title="标签 - 工具">工具</a><a href=/tags/linux/ class=post-tag title="标签 - Linux">Linux</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/computer/vim%E6%95%99%E7%A8%8B/ class=post-nav-item rel=prev title=Vim教程><i class="fa-solid fa-angle-left fa-fw" aria-hidden=true></i>Vim教程</a><a href=/posts/computer/shell%E7%BC%96%E7%A8%8B/ class=post-nav-item rel=next title=Shell编程>Shell编程<i class="fa-solid fa-angle-right fa-fw" aria-hidden=true></i></a></div></div></article><aside class=toc id=toc-auto aria-label=目录><h2 class=toc-title>目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden=true></i></h2><div class="toc-content always-active" id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.139.0"><img class=hugo-icon src=/images/hugo.min.svg alt="Hugo logo"> Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/hugo-fixit/FixIt target=_blank rel=external title="FixIt v0.3.15"><img class=fixit-icon src=/images/fixit.min.svg alt="FixIt logo"> FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw" aria-hidden=true></i>
+<span itemprop=copyrightYear>2024</span><span class=author itemprop=copyrightHolder>
+<a href=/>fengchen</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div class=widgets><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role=button aria-label=回到顶部><i class="fa-solid fa-arrow-up fa-fw" aria-hidden=true></i><span class="variant-numeric d-none">0%</span></div></div><div id=mask></div><div class=reading-progress-bar style=left:0;top:0></div><noscript><div class=noscript-warning>该网站在启用 JavaScript 的情况下效果最佳。</div></noscript></div><link rel=preload href=/lib/katex/katex.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/katex/katex.min.css></noscript><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script src=/lib/autocomplete/autocomplete.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/katex/katex.min.js defer></script><script src=/lib/katex/auto-render.min.js defer></script><script src=/lib/katex/copy-tex.min.js defer></script><script src=/lib/katex/mhchem.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.js defer></script><script>window.config={code:{copyTitle:"复制到剪贴板",editLockTitle:"锁定可编辑代码块",editUnLockTitle:"解锁可编辑代码块",editable:!0,maxShownLines:100},comment:{enable:!1},cookieconsent:{content:{dismiss:"同意",link:"了解更多",message:"本网站使用 Cookies 来改善您的浏览体验。"},enable:!0,palette:{button:{background:"#f0f0f0"},popup:{background:"#1aa3ff"}},theme:"edgeless"},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50},version:"v0.3.15"}</script><script src=/js/theme.min.js defer></script></body></html>

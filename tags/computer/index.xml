@@ -1,5 +1,317 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Computer - 标签 - fengchen</title><link>http://fengchen321.github.io/tags/computer/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sun, 01 Dec 2024 13:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/tags/computer/index.xml" rel="self" type="application/rss+xml"/><item><title>Linx系统编程</title><link>http://fengchen321.github.io/posts/computer/linx%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/linx%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="linx系统编程" class="heading-element">&lt;span>Linx系统编程&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Computer - 标签 - fengchen</title><link>http://fengchen321.github.io/tags/computer/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sat, 16 Dec 2023 13:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/tags/computer/index.xml" rel="self" type="application/rss+xml"/><item><title>SQLite</title><link>http://fengchen321.github.io/posts/computer/sqlite/</link><pubDate>Sat, 16 Dec 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/sqlite/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="sqlite" class="heading-element">&lt;span>SQLite&lt;/span>
+ &lt;a href="#sqlite" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="基本流程" class="heading-element">&lt;span>基本流程&lt;/span>
+ &lt;a href="#%e5%9f%ba%e6%9c%ac%e6%b5%81%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//打开数据库
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">sqlite3&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="n">sqldb&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="n">res&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">sqlite3_open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">db_file_name&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">c_str&lt;/span>&lt;span class="p">(),&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">sqldb&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">res&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="n">SQLITE_OK&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fprintf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">stderr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;Can not open database: %s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">sqlite3_errmsg&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sqldb&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="nb">false&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// 关闭数据库
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">sqlite3_close&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sqldb&lt;/span>&lt;span class="p">);&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="常用语句" class="heading-element">&lt;span>常用语句&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8%e8%af%ad%e5%8f%a5" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">SELECT column1, column2, columnN FROM table_name; --从表 table_name 中选择column1， column2， columnN列
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SELECT * FROM table_name; --选择所有列
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SELECT * FROM COMPANY WHERE AGE IN ( 25, 27 ); --列出了 AGE 的值为 25 或 27 的所有记录
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ID NAME AGE ADDRESS SALARY
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">---------- ---------- ---------- ---------- ----------
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2 Allen 25 Texas 15000.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">4 Mark 25 Rich-Mond 65000.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">5 David 27 Texas 85000.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">--直接看菜鸟教程吧，很详细&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="常用函数" class="heading-element">&lt;span>常用函数&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8%e5%87%bd%e6%95%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;code>sqlite3_exec()&lt;/code>，称为便捷函数，封装了好多任务。&lt;/p></description></item><item><title>Linx系统编程</title><link>http://fengchen321.github.io/posts/computer/linx%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</link><pubDate>Sat, 09 Dec 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/linx%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="linx系统编程" class="heading-element">&lt;span>Linx系统编程&lt;/span>
  &lt;a href="#linx%e7%b3%bb%e7%bb%9f%e7%bc%96%e7%a8%8b" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>在 Linux 中，手册节号通常被分为以下 8 个部分：&lt;/p></description></item></channel></rss>
+&lt;/h2>&lt;p>在 Linux 中，手册节号通常被分为以下 8 个部分：&lt;/p></description></item><item><title>CMake教程</title><link>http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 15 Jul 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="cmake教程" class="heading-element">&lt;span>CMake教程&lt;/span>
+ &lt;a href="#cmake%e6%95%99%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;code>CMakeLists.txt&lt;/code>&lt;/p></description></item><item><title>正则表达式</title><link>http://fengchen321.github.io/posts/computer/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link><pubDate>Sat, 15 Jul 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="正则表达式" class="heading-element">&lt;span>正则表达式&lt;/span>
+ &lt;a href="#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="正则表达式语法" class="heading-element">&lt;span>正则表达式语法&lt;/span>
+ &lt;a href="#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f%e8%af%ad%e6%b3%95" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="元字符" class="heading-element">&lt;span>元字符&lt;/span>
+ &lt;a href="#%e5%85%83%e5%ad%97%e7%ac%a6" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: center">元字符&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: center">.&lt;/td>
+ &lt;td>句号匹配任意单个字符除了换行符。&lt;br />&amp;quot;&lt;code>.ar&lt;/code>&amp;quot; =&amp;gt; The &lt;font color=blue>car&lt;/font> &lt;font color=blue>par&lt;/font>ked in the &lt;font color=blue>gar&lt;/font>age.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">[ ]&lt;/td>
+ &lt;td>匹配方括号内的任意字符&lt;br />&amp;quot;&lt;code>[Tt]he&lt;/code>&amp;quot; =&amp;gt; &lt;font color=blue>The&lt;/font> car parked in &lt;font color=blue>the&lt;/font> garage.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">[^ ]&lt;/td>
+ &lt;td>否定的字符种类。匹配除了方括号里的任意字符&lt;br />&amp;quot;&lt;code>[^c]ar&lt;/code>=&amp;gt; The car &lt;font color=blue>par&lt;/font>ked in the &lt;font color=blue>gar&lt;/font>age.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">*&lt;/td>
+ &lt;td>匹配&amp;gt;=0个重复的在*号之前的字符。&lt;br />&amp;quot;&lt;code>[a-z]*&lt;/code>&amp;quot; =&amp;gt; T&lt;font color=blue>he car parked in the garage&lt;/font> #21.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">+&lt;/td>
+ &lt;td>匹配&amp;gt;=1个重复的+号前的字符。&lt;br />&amp;quot;&lt;code>c.+t&lt;/code>&amp;quot; =&amp;gt; The fat &lt;font color=blue>cat sat on the mat&lt;/font>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">?&lt;/td>
+ &lt;td>标记?之前的字符为可选.&lt;br />&amp;quot;&lt;code>[T]?he&lt;/code>&amp;quot; =&amp;gt; &lt;font color=blue>The&lt;/font> car is parked in t&lt;font color=blue>he&lt;/font> garage.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">{n,m}&lt;/td>
+ &lt;td>匹配num个大括号之前的字符或字符集 (n &amp;lt;= num &amp;lt;= m).&lt;br />0~9之间匹配最少2位，最多3位的数字：&amp;quot;&lt;code>[0-9]{2,3}&lt;/code>&amp;quot; =&amp;gt; The number was 9.&lt;font color=blue>999&lt;/font>7 but we rounded it off to &lt;font color=blue>10&lt;/font>.0.&lt;br />0~9之间匹配只是2位的数字：&amp;quot;&lt;code>[0-9]{2,}&lt;/code>&amp;quot; =&amp;gt; The number was 9.&lt;font color=blue>9997&lt;/font> but we rounded it off to &lt;font color=blue>10&lt;/font>.0.&lt;br />0~9之间匹配3位数字：&amp;quot;&lt;code>[0-9]{3}&lt;/code>&amp;quot; =&amp;gt; The number was 9.&lt;font color=blue>999&lt;/font>7 but we rounded it off to 10.0.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">(xyz)&lt;/td>
+ &lt;td>字符集，匹配与 xyz 完全相等的字符串.&lt;br />&amp;quot;`(c&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">|&lt;/td>
+ &lt;td>或运算符，匹配符号前或后的字符.&lt;br /> &amp;ldquo;`(T&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\&lt;/td>
+ &lt;td>转义字符,用于匹配一些保留的字符 &lt;code>[ ] ( ) { } . * + ? ^ $ \ |&lt;/code>&lt;br />&amp;quot;`(f&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">^&lt;/td>
+ &lt;td>从开始行开始匹配&lt;br />`[T&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">$&lt;/td>
+ &lt;td>从末端开始匹配&lt;br />&amp;quot;&lt;code>(at\.)&lt;/code>&amp;rdquo; =&amp;gt;The fat c&lt;font color=blue>at.&lt;/font> s&lt;font color=blue>at.&lt;/font> on the m&lt;font color=blue>at.&lt;/font>&lt;br />&amp;quot;&lt;code>(at\.$)&lt;/code>&amp;quot;=&amp;gt;The fat cat. sat. on the m&lt;font color=blue>at.&lt;/font>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="简写字符集" class="heading-element">&lt;span>简写字符集&lt;/span>
+ &lt;a href="#%e7%ae%80%e5%86%99%e5%ad%97%e7%ac%a6%e9%9b%86" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: center">简写&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: center">.&lt;/td>
+ &lt;td>除换行符外的所有字符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\w&lt;/td>
+ &lt;td>匹配所有字母数字，等同于 &lt;code>[a-zA-Z0-9_]&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\W&lt;/td>
+ &lt;td>匹配所有非字母数字，即符号，等同于： &lt;code>[^\w]&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\d&lt;/td>
+ &lt;td>匹配数字： &lt;code>[0-9]&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\D&lt;/td>
+ &lt;td>匹配非数字： &lt;code>[^\d]&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\s&lt;/td>
+ &lt;td>匹配所有空格字符，等同于： &lt;code>[\t\n\f\r\p{Z}]&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\S&lt;/td>
+ &lt;td>匹配所有非空格字符： &lt;code>[^\s]&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\f&lt;/td>
+ &lt;td>匹配一个换页符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\n&lt;/td>
+ &lt;td>匹配一个换行符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\r&lt;/td>
+ &lt;td>匹配一个回车符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\t&lt;/td>
+ &lt;td>匹配一个制表符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\v&lt;/td>
+ &lt;td>匹配一个垂直制表符&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">\p&lt;/td>
+ &lt;td>匹配 CR/LF（等同于 &lt;code>\r\n&lt;/code>），用来匹配 DOS 行终止符&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="零宽度断言" class="heading-element">&lt;span>零宽度断言&lt;/span>
+ &lt;a href="#%e9%9b%b6%e5%ae%bd%e5%ba%a6%e6%96%ad%e8%a8%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: center">符号&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: center">?=&lt;/td>
+ &lt;td>正先行断言-存在&lt;br />“`(T&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">?!&lt;/td>
+ &lt;td>负先行断言-排除&lt;br />“`(T&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">?&amp;lt;=&lt;/td>
+ &lt;td>正后发断言-存在&lt;br />“`(?&amp;lt;=(T&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">?&amp;lt;!&lt;/td>
+ &lt;td>负后发断言-排除&lt;br />“`(?&amp;lt;!(T&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="标志可选项" class="heading-element">&lt;span>标志(可选项)&lt;/span>
+ &lt;a href="#%e6%a0%87%e5%bf%97%e5%8f%af%e9%80%89%e9%a1%b9" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: center">标志&lt;/th>
+ &lt;th>描述&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: center">i&lt;/td>
+ &lt;td>忽略大小写。&lt;br />&amp;quot;&lt;code>The/gi&lt;/code>&amp;quot; =&amp;gt; &lt;font color=blue>The&lt;/font> fat cat sat on &lt;font color=blue>the&lt;/font> mat.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">g&lt;/td>
+ &lt;td>全局搜索。&lt;br />&amp;quot;&lt;code>.(at)/gi&lt;/code>&amp;quot; =&amp;gt; The &lt;font color=blue>fat&lt;/font> &lt;font color=blue>cat&lt;/font> &lt;font color=blue>sat&lt;/font> on the &lt;font color=blue>mat&lt;/font>.&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: center">m&lt;/td>
+ &lt;td>多行修饰符：锚点元字符 &lt;code>^&lt;/code> &lt;code>$&lt;/code> 工作范围在每行的起始。&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="贪婪与惰性匹配" class="heading-element">&lt;span>贪婪与惰性匹配&lt;/span>
+ &lt;a href="#%e8%b4%aa%e5%a9%aa%e4%b8%8e%e6%83%b0%e6%80%a7%e5%8c%b9%e9%85%8d" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>默认贪婪匹配，意味着会匹配尽可能长的子串&lt;/p></description></item><item><title>Docker教程</title><link>http://fengchen321.github.io/posts/computer/docker%E6%95%99%E7%A8%8B/</link><pubDate>Mon, 10 Jul 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/docker%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="docker教程" class="heading-element">&lt;span>docker教程&lt;/span>
+ &lt;a href="#docker%e6%95%99%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="1-docker安装" class="heading-element">&lt;span>1 docker安装&lt;/span>
+ &lt;a href="#1-docker%e5%ae%89%e8%a3%85" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;blockquote>
+&lt;p>&lt;a href="https://docs.docker.com/engine/install/ubuntu/"target="_blank" rel="external nofollow noopener noreferrer">官方教程&lt;/a>&lt;/p></description></item><item><title>git教程</title><link>http://fengchen321.github.io/posts/computer/git%E6%95%99%E7%A8%8B/</link><pubDate>Mon, 10 Jul 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/git%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="git教程" class="heading-element">&lt;span>git教程&lt;/span>
+ &lt;a href="#git%e6%95%99%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;blockquote>
+&lt;p>&lt;a href="https://learngitbranching.js.org/?locale=zh_CN"target="_blank" rel="external nofollow noopener noreferrer">git可视化的学习网站&lt;/a>&lt;/p></description></item><item><title>GDB调试</title><link>http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/</link><pubDate>Sun, 18 Jun 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="gdb调试" class="heading-element">&lt;span>GDB调试&lt;/span>
+ &lt;a href="#gdb%e8%b0%83%e8%af%95" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ol>
+&lt;li>
+&lt;p>&lt;code>gcc -o main main.c -g &lt;/code>或者&lt;code>-G&lt;/code>生成&lt;code>Debug&lt;/code>可调试版本&lt;/p></description></item><item><title>Shell编程</title><link>http://fengchen321.github.io/posts/computer/shell%E7%BC%96%E7%A8%8B/</link><pubDate>Sat, 17 Jun 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/shell%E7%BC%96%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="shell编程" class="heading-element">&lt;span>Shell编程&lt;/span>
+ &lt;a href="#shell%e7%bc%96%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="概论" class="heading-element">&lt;span>概论&lt;/span>
+ &lt;a href="#%e6%a6%82%e8%ae%ba" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>shell是通过命令行与操作系统沟通的语言。&lt;/p></description></item><item><title>tmux教程</title><link>http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/</link><pubDate>Fri, 16 Jun 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="tmux教程" class="heading-element">&lt;span>tmux教程&lt;/span>
+ &lt;a href="#tmux%e6%95%99%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>&lt;/p></description></item><item><title>Vim教程</title><link>http://fengchen321.github.io/posts/computer/vim%E6%95%99%E7%A8%8B/</link><pubDate>Fri, 16 Jun 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/vim%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="vim教程" class="heading-element">&lt;span>Vim教程&lt;/span>
+ &lt;a href="#vim%e6%95%99%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;strong>功能&lt;/strong>&lt;/p></description></item><item><title>Linx常用指令</title><link>http://fengchen321.github.io/posts/computer/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</link><pubDate>Thu, 15 Jun 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="linux基础" class="heading-element">&lt;span>Linux基础&lt;/span>
+ &lt;a href="#linux%e5%9f%ba%e7%a1%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="1-linux启动" class="heading-element">&lt;span>1. Linux启动&lt;/span>
+ &lt;a href="#1-linux%e5%90%af%e5%8a%a8" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ol>
+&lt;li>
+&lt;p>内核引导。&lt;/p></description></item></channel></rss>

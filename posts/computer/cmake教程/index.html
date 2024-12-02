@@ -1,0 +1,433 @@
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><meta name=robots content="noodp"><title>CMake教程 - fengchen</title><meta name=author content="fengchen"><meta name=description content="CMake教程"><meta name=keywords content='Computer,C++'><meta itemprop=name content="CMake教程"><meta itemprop=description content="CMake教程"><meta itemprop=datePublished content="2023-07-15T13:33:12+08:00"><meta itemprop=dateModified content="2023-07-15T13:33:12+08:00"><meta itemprop=wordCount content="2275"><meta itemprop=keywords content="Computer,C++"><meta property="og:url" content="http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/"><meta property="og:site_name" content="fengchen"><meta property="og:title" content="CMake教程"><meta property="og:description" content="CMake教程"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-07-15T13:33:12+08:00"><meta property="article:modified_time" content="2023-07-15T13:33:12+08:00"><meta property="article:tag" content="Computer"><meta property="article:tag" content="C++"><meta name=twitter:card content="summary"><meta name=twitter:title content="CMake教程"><meta name=twitter:description content="CMake教程"><meta name=application-name content="FixIt"><meta name=apple-mobile-web-app-title content="FixIt"><meta name=theme-color data-light=#f8f8f8 data-dark=#252627 content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical type=text/html href=http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/ title="CMake教程 - fengchen"><link rel=prev type=text/html href=http://fengchen321.github.io/posts/computer/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/ title=正则表达式><link rel=next type=text/html href=http://fengchen321.github.io/posts/computer/linx%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/ title=Linx系统编程><link rel=alternate type=text/markdown href=http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/index.md title="CMake教程 - fengchen"><link rel=stylesheet href=/css/style.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"CMake教程","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/fengchen321.github.io\/posts\/computer\/cmake%E6%95%99%E7%A8%8B\/"},"genre":"posts","keywords":"Computer, C\u002b\u002b","wordcount":2275,"url":"http:\/\/fengchen321.github.io\/posts\/computer\/cmake%E6%95%99%E7%A8%8B\/","datePublished":"2023-07-15T13:33:12+08:00","dateModified":"2023-07-15T13:33:12+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"fengchen"},"description":"CMake教程"}</script><script src=/js/head/color-scheme.min.js></script></head><body data-header-desktop=sticky data-header-mobile=auto><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容…… id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></li><li class="menu-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><nav><ul class=menu id=menu-mobile><li class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容…… id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></li><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item menu-system"><span class="menu-system-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></span></li></ul></nav></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=合集></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>CMake教程</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><span class=author><i class="fa-solid fa-user-circle" aria-hidden=true></i>
+fengchen</span></span><span class=post-included-in>&nbsp;收录于 <a href=/categories/computer/ class=post-category title="分类 - Computer"><i class="fa-regular fa-folder fa-fw" aria-hidden=true></i> Computer</a></span></div><div class=post-meta-line><span title="发布于 2023-07-15 13:33:12"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden=true></i><time datetime=2023-07-15>2023-07-15</time></span>&nbsp;<span title="2275 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden=true></i>约 2300 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden=true></i>预计阅读 5 分钟</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#基础知识>基础知识</a><ul><li><a href=#简单项目>简单项目</a><ul><li><a href=#可执行文件>可执行文件</a></li><li><a href=#定义库>定义库</a></li><li><a href=#目标链接>目标链接</a></li><li><a href=#小总结-1>小总结 1</a></li></ul></li><li><a href=#变量>变量</a><ul><li><a href=#基本变量>基本变量</a></li><li><a href=#环境变量>环境变量</a></li><li><a href=#缓存变量>缓存变量</a></li><li><a href=#调试变量和诊断>调试变量和诊断</a></li><li><a href=#处理字符串>处理字符串</a></li><li><a href=#列表>列表</a></li><li><a href=#数学表达式>数学表达式</a></li></ul></li><li><a href=#控制流>控制流</a><ul><li><a href=#if>if()</a></li><li><a href=#循环>循环</a></li></ul></li><li><a href=#子目录>子目录</a><ul><li><a href=#add_subdirectory>add_subdirectory()</a></li><li><a href=#include>include()</a></li></ul></li></ul></li><li><a href=#参考阅读>参考阅读</a></li></ul><ul><li><a href=#参考阅读-1>参考阅读</a></li></ul></nav></div></div><div class=content id=content><h2 id=cmake教程 class=heading-element><span>CMake教程</span>
+<a href=#cmake%e6%95%99%e7%a8%8b class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><code>CMakeLists.txt</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>cmake_minimum_required</span><span class=p>(</span><span class=s>VERSION</span> <span class=s>3.10</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>project</span><span class=p>(</span><span class=s>hello</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>add_executable</span><span class=p>(</span><span class=s>hello</span> <span class=s>main.cpp</span> <span class=s>factorial.cpp</span> <span class=s>printhello.cpp</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><p><strong>CMake 2.x</strong> 一般方便删除多余文件，新建Build文件夹用来生成文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>mkdir build
+</span></span><span class=line><span class=cl><span class=nb>cd</span> build
+</span></span><span class=line><span class=cl>cmake .. -DCMAKE_BUILD_TYPE<span class=o>=</span>Release
+</span></span><span class=line><span class=cl>make -j4
+</span></span><span class=line><span class=cl>make install
+</span></span><span class=line><span class=cl>./hello
+</span></span><span class=line><span class=cl><span class=nb>cd</span> ../
+</span></span><span class=line><span class=cl>rm -rf build
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>cmake .. -DCMAKE_INSTALL_PREFIX<span class=o>=</span></span></span></code></pre></td></tr></table></div></div><p><strong>CMake 3.x</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>cmake -B build -DCMAKE_BUILD_TYPE<span class=o>=</span>Release
+</span></span><span class=line><span class=cl>cmake --build build --parallel <span class=m>4</span>
+</span></span><span class=line><span class=cl>cmake --build build --target install</span></span></code></pre></td></tr></table></div></div><h2 id=基础知识 class=heading-element><span>基础知识</span>
+<a href=#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><h3 id=简单项目 class=heading-element><span>简单项目</span>
+<a href=#%e7%ae%80%e5%8d%95%e9%a1%b9%e7%9b%ae class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>cmake_minimum_required</span><span class=p>(</span><span class=s>VERSION</span> <span class=s>major.minor[.patch[.tweak]]</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><ol><li>指定了项目所需的CMake的最低版本</li><li>强制设置将CMake行为匹配到对应版本</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=err>#</span> <span class=nb>cmake_minimum_required</span><span class=p>(</span><span class=s>VERSION</span> <span class=s>3.10</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p>指定版本 3.10</p></blockquote></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>project</span><span class=p>(</span><span class=s>projectName</span>
+</span></span><span class=line><span class=cl> <span class=s>[VERSION</span> <span class=s>major[.minor[.patch[.tweak]]]]</span>
+</span></span><span class=line><span class=cl> <span class=s>[LANGUAGES</span> <span class=s>languageName</span> <span class=s>...]</span>
+</span></span><span class=line><span class=cl><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p><code>projectName</code>：项目名称</p><p><code>LANGUAGES</code>：项目编程语言：<code> C、CXX、JAVA</code>、&mldr;多种语言空格分开；默认<code>C</code>和<code>CXX</code></p><blockquote><p>3.0版本之前不支持<code>LANGUAGES</code>关键字，<code>project(hello CXX)</code></p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=err>#</span> <span class=nb>project</span><span class=p>(</span><span class=s>hello</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p>hello项目</p></blockquote></blockquote><h4 id=可执行文件 class=heading-element><span>可执行文件</span>
+<a href=#%e5%8f%af%e6%89%a7%e8%a1%8c%e6%96%87%e4%bb%b6 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>add_executable</span><span class=p>(</span><span class=s>targetName</span> <span class=s>[WIN32]</span> <span class=s>[MACOSX_BUNDLE]</span>
+</span></span><span class=line><span class=cl> <span class=s>[EXCLUDE_FROM_ALL]</span>
+</span></span><span class=line><span class=cl> <span class=s>source1</span> <span class=s>[source2</span> <span class=s>...]</span>
+</span></span><span class=line><span class=cl><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p>为一组源文件创建一个可执行文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=err>#</span> <span class=nb>add_executable</span><span class=p>(</span><span class=s>test</span> <span class=s>main.cpp</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><p>为main.cpp构建test可执行文件</p></blockquote><h4 id=定义库 class=heading-element><span>定义库</span>
+<a href=#%e5%ae%9a%e4%b9%89%e5%ba%93 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>add_library</span><span class=p>(</span><span class=s>targetName</span> <span class=s>[STATIC</span> <span class=s>|</span> <span class=s>SHARED</span> <span class=s>|</span> <span class=s>MODULE]</span>
+</span></span><span class=line><span class=cl> <span class=s>[EXCLUDE_FROM_ALL]</span>
+</span></span><span class=line><span class=cl> <span class=s>source1</span> <span class=s>[source2</span> <span class=s>...]</span>
+</span></span><span class=line><span class=cl><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p><code>STATIC | SHARED | MODULE</code>：静态库，动态库，动态加载库</p><blockquote><p><code>cmake -DBUILD_SHARED_LIBS=YES /path/to/source</code>：<code>-D</code>选项设置是否构建为动态库，否则为静态库。</p></blockquote><blockquote><p><code>set(BUILD_SHARED_LIBS YES)</code>：要在 <code>add_library() </code>命令之前设置，（灵活性较差）</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>add_library</span><span class=p>(</span><span class=s>collector</span> <span class=s>src1.cpp</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div></blockquote><h4 id=目标链接 class=heading-element><span>目标链接</span>
+<a href=#%e7%9b%ae%e6%a0%87%e9%93%be%e6%8e%a5 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><p>考虑A库依赖于B库，因此将A链接到B</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>target_link_libraries</span><span class=p>(</span><span class=s>targetName</span>
+</span></span><span class=line><span class=cl> <span class=s>&lt;PRIVATE|PUBLIC|INTERFACE&gt;</span> <span class=s>item1</span> <span class=s>[item2</span> <span class=s>...]</span>
+</span></span><span class=line><span class=cl> <span class=s>[&lt;PRIVATE|PUBLIC|INTERFACE&gt;</span> <span class=s>item3</span> <span class=s>[item4</span> <span class=s>...]]</span>
+</span></span><span class=line><span class=cl> <span class=s>...</span>
+</span></span><span class=line><span class=cl><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><h4 id=小总结-1 class=heading-element><span>小总结 1</span>
+<a href=#%e5%b0%8f%e6%80%bb%e7%bb%93-1 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><p>目标名称与项目名称无关，最好将项目名称和可执行文件名称分开</p><p>命名库的目标时，不要用lib作为名称的开头或结尾。lib会自动成为前缀</p><p>尽量避免直接将库指定 STATIC 或 SHARED</p><p>目标在调用 target_link_libraries() 时需要指定 PRIVATE 、 PUBLIC 和/或 INTERFACE</p><h3 id=变量 class=heading-element><span>变量</span>
+<a href=#%e5%8f%98%e9%87%8f class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><h4 id=基本变量 class=heading-element><span>基本变量</span>
+<a href=#%e5%9f%ba%e6%9c%ac%e5%8f%98%e9%87%8f class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>set</span><span class=p>(</span><span class=s>varName</span> <span class=s>value...</span> <span class=s>[PARENT_SCOPE]</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p>将所有变量都作为字符串处理，给定多个值，这些值将用 分号连接在一起。可以使用转义字符表示引号<code>\"</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>set</span><span class=p>(</span><span class=s>myVar</span> <span class=s>a</span> <span class=s>b</span> <span class=s>c</span><span class=p>)</span> <span class=c># myVar = &#34;a;b;c&#34;
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>set</span><span class=p>(</span><span class=s>myVar</span> <span class=s>a;b;c</span><span class=p>)</span> <span class=c># myVar = &#34;a;b;c&#34;
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>set</span><span class=p>(</span><span class=s>myVar</span> <span class=s2>&#34;a b c&#34;</span><span class=p>)</span> <span class=c># myVar = &#34;a b c&#34;
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>set</span><span class=p>(</span><span class=s>myVar</span> <span class=s>a</span> <span class=s>b;c</span><span class=p>)</span> <span class=c># myVar = &#34;a;b;c&#34;
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>set</span><span class=p>(</span><span class=s>myVar</span> <span class=s>a</span> <span class=s2>&#34;b c&#34;</span><span class=p>)</span> <span class=err>#</span> <span class=err>myVar</span> <span class=err>=</span> <span class=err>&#34;a;b</span> <span class=err>c&#34;</span></span></span></code></pre></td></tr></table></div></div></blockquote><h4 id=环境变量 class=heading-element><span>环境变量</span>
+<a href=#%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>set</span><span class=p>(</span><span class=s>ENV{PATH}</span> <span class=s2>&#34;$ENV{PATH}:/opt/myDir&#34;</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p>只会影响当前的CMake实例，很少用到</p></blockquote><h4 id=缓存变量 class=heading-element><span>缓存变量</span>
+<a href=#%e7%bc%93%e5%ad%98%e5%8f%98%e9%87%8f class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>set</span><span class=p>(</span><span class=s>varName</span> <span class=s>value...</span> <span class=s>CACHE</span> <span class=s>type</span> <span class=s2>&#34;docstring&#34;</span> <span class=s>[FORCE]</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><p>布尔缓存变量使用<code>optio()</code>代替<code>set()</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>option</span><span class=p>(</span><span class=s>optVar</span> <span class=s>heilpstring</span> <span class=s>[initialValue]</span><span class=p>)</span>  <span class=c># initialValue默认OFF
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>set</span><span class=p>(</span><span class=s>optVar</span> <span class=s>initialValue</span> <span class=s>CACHE</span> <span class=s>BOOL</span> <span class=s>hilpstring</span><span class=p>)</span> <span class=err>#</span> <span class=err>等价option</span></span></span></code></pre></td></tr></table></div></div><h4 id=调试变量和诊断 class=heading-element><span>调试变量和诊断</span>
+<a href=#%e8%b0%83%e8%af%95%e5%8f%98%e9%87%8f%e5%92%8c%e8%af%8a%e6%96%ad class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>message</span><span class=p>(</span><span class=s>[mode]</span> <span class=s>msg1</span> <span class=s>[msg2]...</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># 打印记录信息
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>variable_watch</span><span class=p>(</span><span class=s>myVar</span> <span class=s>[command]</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err>#</span> <span class=err>监控变量，很少用</span></span></span></code></pre></td></tr></table></div></div><h4 id=处理字符串 class=heading-element><span>处理字符串</span>
+<a href=#%e5%a4%84%e7%90%86%e5%ad%97%e7%ac%a6%e4%b8%b2 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><p>查找和替换操作、正则表达式匹配、大小写转换、删除空格和其他常见字符串操作</p><p><strong>查找</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>string</span><span class=p>(</span><span class=s>FIND</span> <span class=s>inputString</span> <span class=s>subString</span> <span class=s>outVar</span> <span class=s>[REVERSE]</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>et</span><span class=p>(</span><span class=s>longStr</span> <span class=s>abcdefabcdef</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>set</span><span class=p>(</span><span class=s>shortBit</span> <span class=s>def</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>string</span><span class=p>(</span><span class=s>FIND</span> <span class=o>${</span><span class=nv>longStr</span><span class=o>}</span> <span class=o>${</span><span class=nv>shortBit</span><span class=o>}</span> <span class=s>fwdIndex</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>string</span><span class=p>(</span><span class=s>FIND</span> <span class=o>${</span><span class=nv>longStr</span><span class=o>}</span> <span class=o>${</span><span class=nv>shortBit</span><span class=o>}</span> <span class=s>revIndex</span> <span class=s>REVERSE</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>message</span><span class=p>(</span><span class=s2>&#34;fwdIndex = ${fwdIndex}, revIndex = ${revIndex}&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># 输出 fwdIndex = 3, revIndex = 9
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=err>#</span> <span class=err>代表子字符串被找到，第一次找到的时候索引为3；最后一次找到的索引为9</span></span></span></code></pre></td></tr></table></div></div></blockquote><p><strong>替换</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>string</span><span class=p>(</span><span class=s>REPLACE</span> <span class=s>matchString</span> <span class=s>replaceWith</span> <span class=s>outVar</span> <span class=s>input</span> <span class=s>[input...]</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p>将使用 replaceWith 替换输入字符串中每个 matchString ，并将结果存储在 outVar</p></blockquote><p><strong>正则表达式</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>string</span><span class=p>(</span><span class=s>REGEX</span> <span class=s>MATCH</span> <span class=s>regex</span> <span class=s>outVar</span> <span class=s>input</span> <span class=s>[input...]</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>string</span><span class=p>(</span><span class=s>REGEX</span> <span class=s>MATCHALL</span> <span class=s>regex</span> <span class=s>outVar</span> <span class=s>input</span> <span class=s>[input...]</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>string</span><span class=p>(</span><span class=s>REGEX</span> <span class=s>REPLACE</span> <span class=s>regex</span> <span class=s>replaceWith</span> <span class=s>outVar</span> <span class=s>input</span> <span class=s>[input...]</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><h4 id=列表 class=heading-element><span>列表</span>
+<a href=#%e5%88%97%e8%a1%a8 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>list</span><span class=p>(</span><span class=s>LENGTH</span> <span class=s>listVar</span> <span class=s>outVar</span><span class=p>)</span>  <span class=c># 统计
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>GET</span> <span class=s>listVar</span> <span class=s>index</span> <span class=s>[index...]</span><span class=p>)</span> <span class=err>outVar</span> <span class=c># 检索
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>APPEND</span> <span class=s>listVar</span> <span class=s>item</span> <span class=s>[item...]</span><span class=p>)</span>   <span class=c># 追加
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>INSERT</span> <span class=s>listVar</span> <span class=s>index</span> <span class=s>item</span> <span class=s>[item...]</span><span class=p>)</span> <span class=c># 插入
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>FIND</span> <span class=s>myList</span> <span class=s>value</span> <span class=s>outVar</span><span class=p>)</span> <span class=c># 查找
+</span></span></span><span class=line><span class=cl><span class=c># 删除
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>REMOVE_ITEM</span> <span class=s>myList</span> <span class=s>value</span> <span class=s>[value...]</span><span class=p>)</span> <span class=c># 从列表中删除一个或多个目标项。如果目标项不在列表中，也不会出错
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>REMOVE_AT</span> <span class=s>myList</span> <span class=s>index</span> <span class=s>[index...]</span><span class=p>)</span> <span class=c># 指定一个或多个要删除的索引，超过索引报错
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>REMOVE_DUPLICATES</span> <span class=s>myList</span><span class=p>)</span> <span class=c># 将确保列表不包含重复项。
+</span></span></span><span class=line><span class=cl><span class=c># 排序  (按字母顺序)
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>REVERSE</span> <span class=s>myList</span><span class=p>)</span>  <span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>list</span><span class=p>(</span><span class=s>SORT</span> <span class=s>myList</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>set</span><span class=p>(</span><span class=s>myList</span> <span class=s>a</span> <span class=s>b</span> <span class=s>c</span><span class=p>)</span> <span class=c># Creates the list &#34;a;b;c&#34;
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>list</span><span class=p>(</span><span class=s>LENGTH</span> <span class=s>myList</span> <span class=s>len</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>message</span><span class=p>(</span><span class=s2>&#34;length = ${len}&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>list</span><span class=p>(</span><span class=s>GET</span> <span class=s>myList</span> <span class=s>2</span> <span class=s>1</span> <span class=s>letters</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>message</span><span class=p>(</span><span class=s2>&#34;letters = ${letters}&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>list</span><span class=p>(</span><span class=s>APPEND</span> <span class=s>myList</span> <span class=s>d</span> <span class=s>e</span> <span class=s>f</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>message</span><span class=p>(</span><span class=s2>&#34;myList (first) = ${myList}&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>list</span><span class=p>(</span><span class=s>INSERT</span> <span class=s>myList</span> <span class=s>2</span> <span class=s>X</span> <span class=s>Y</span> <span class=s>Z</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>message</span><span class=p>(</span><span class=s2>&#34;myList (second) = ${myList}&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>list</span><span class=p>(</span><span class=s>FIND</span> <span class=s>myList</span> <span class=s>d</span> <span class=s>index</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>message</span><span class=p>(</span><span class=s2>&#34;index = ${index}&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># 输出
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=err>length</span> <span class=err>=</span> <span class=err>3
+</span></span></span><span class=line><span class=cl><span class=err>letters</span> <span class=err>=</span> <span class=err>c;b
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>myList</span> <span class=p>(</span><span class=s>first</span><span class=p>)</span> <span class=err>=</span> <span class=err>a;b;c;d;e;f
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>myList</span> <span class=p>(</span><span class=s>second</span><span class=p>)</span> <span class=err>=</span> <span class=err>a;b;X;Y;Z;c;d;e;f
+</span></span></span><span class=line><span class=cl><span class=err>index</span> <span class=err>=</span> <span class=err>6</span></span></span></code></pre></td></tr></table></div></div></blockquote><h4 id=数学表达式 class=heading-element><span>数学表达式</span>
+<a href=#%e6%95%b0%e5%ad%a6%e8%a1%a8%e8%be%be%e5%bc%8f class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>math</span><span class=p>(</span><span class=s>EXPR</span> <span class=s>outVar</span> <span class=s>mathExpr</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><blockquote><p>第一个参数必须使用关键字 EXPR ，而 mathExpr 定义要计算的表达式，结果将存储在 outVar 中</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>set</span><span class=p>(</span><span class=s>x</span> <span class=s>3</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>set</span><span class=p>(</span><span class=s>y</span> <span class=s>7</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>math</span><span class=p>(</span><span class=s>EXPR</span> <span class=s>z</span> <span class=s2>&#34;(${x}+${y}) / 2&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>message</span><span class=p>(</span><span class=s2>&#34;result = ${z}&#34;</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># 输出
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=err>result</span> <span class=err>=</span> <span class=err>5</span></span></span></code></pre></td></tr></table></div></div></blockquote><h3 id=控制流 class=heading-element><span>控制流</span>
+<a href=#%e6%8e%a7%e5%88%b6%e6%b5%81 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><h4 id=if class=heading-element><span>if()</span>
+<a href=#if class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>if</span><span class=p>(</span><span class=s>expression1</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># commands ...
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>elseif</span><span class=p>(</span><span class=s>expression2</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># commands ...
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>else</span><span class=p>()</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># commands ...
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>endif</span><span class=p>()</span></span></span></code></pre></td></tr></table></div></div><h4 id=循环 class=heading-element><span>循环</span>
+<a href=#%e5%be%aa%e7%8e%af class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>foreach</span><span class=p>(</span><span class=s>loopVar</span> <span class=s>IN</span> <span class=s>[LISTS</span> <span class=s>listVar1</span> <span class=s>...]</span> <span class=s>[ITEMS</span> <span class=s>item1</span> <span class=s>...]</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># ...
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>endforeach</span><span class=p>()</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=nb>while</span><span class=p>(</span><span class=s>condition</span><span class=p>)</span><span class=err>
+</span></span></span><span class=line><span class=cl><span class=err></span><span class=c># ...
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nb>endwhile</span><span class=p>()</span></span></span></code></pre></td></tr></table></div></div><h3 id=子目录 class=heading-element><span>子目录</span>
+<a href=#%e5%ad%90%e7%9b%ae%e5%bd%95 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><h4 id=add_subdirectory class=heading-element><span>add_subdirectory()</span>
+<a href=#add_subdirectory class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-cmake data-lang=cmake><span class=line><span class=cl><span class=nb>add_subdirectory</span><span class=p>(</span><span class=s>sourceDir</span> <span class=s>[</span> <span class=s>binaryDir</span> <span class=s>]</span> <span class=s>[</span> <span class=s>EXCLUDE_FROM_ALL</span> <span class=s>]</span><span class=p>)</span></span></span></code></pre></td></tr></table></div></div><p>允许项目将另一个目录引入到构建中</p><blockquote><p><code>CMAKE_SOURCE_DIR </code>：源的最顶层目录（最顶层CMakeLists.txt所在位置）</p><p><code>CMAKE_BINARY_DIR</code>：构建的最顶层目录 就是build</p><p><code>CMAKE_CURRENT_SOURCE_DIR</code>：当前处理的CMakeLists.txt文件的目录</p><p><code>CMAKE_CURRENT_BINARY_DIR</code>：当前处理的CMakeLists.txt文件对应的构建目录</p></blockquote><h4 id=include class=heading-element><span>include()</span>
+<a href=#include class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h4><h2 id=参考阅读 class=heading-element><span>参考阅读</span>
+<a href=#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><a href=https://cmake.org/cmake/help/latest/ target=_blank rel="external nofollow noopener noreferrer">官方手册</a></p><p><a href=https://www.haohan.pro:10443/doc/Professional-CMake-zh.pdf target=_blank rel="external nofollow noopener noreferrer">Professional-CMake</a></p><p><a href=https://www.bookstack.cn/read/CMake-Cookbook/README.md target=_blank rel="external nofollow noopener noreferrer">cmake cookbook</a></p><p><a href=https://zhuanlan.zhihu.com/p/493493849 target=_blank rel="external nofollow noopener noreferrer">CMake的链接选项：PRIVATE，INTERFACE，PUBLIC - 知乎 (zhihu.com)</a></p><p><a href=https://cliutils.gitlab.io/modern-cmake/ target=_blank rel="external nofollow noopener noreferrer">An Introduction to Modern CMake</a></p><p>vscode 插件 ： clangd</p><h2 id=make命令 class=heading-element><span>Make命令</span>
+<a href=#make%e5%91%bd%e4%bb%a4 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>python版本的makefile: <a href=https://scons-cookbook.readthedocs.io/en/latest/ target=_blank rel="external nofollow noopener noreferrer">SCons</a></p><p>make规则：&ldquo;目标"是必需的，不可省略；&ldquo;前置条件"和"命令"都是可选的，但是两者之中必须至少存在一个。</p><p>每条规则就明确两件事：构建目标的前置条件是什么，以及如何构建。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-make data-lang=make><span class=line><span class=cl><span class=nf>&lt;目标&gt; </span><span class=o>:</span> &lt;前置条件&gt;
+</span></span><span class=line><span class=cl>	&lt;命令&gt;
+</span></span></code></pre></td></tr></table></div></div><ol><li><p>文本文件的编写</p><blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c data-lang=c><span class=line><span class=cl><span class=c1>// functions.h
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=cp>#ifndef _FUNCTIONS_H_
+</span></span></span><span class=line><span class=cl><span class=cp>#define _FUNCTIONS_H_
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=kt>void</span> <span class=nf>printhello</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>factorial</span><span class=p>(</span><span class=kt>int</span> <span class=n>n</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=cp>#endif
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=c1>// factorial.cpp
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=cp>#include</span> <span class=cpf>&#34;functions.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=kt>int</span> <span class=nf>factorial</span><span class=p>(</span><span class=kt>int</span> <span class=n>n</span><span class=p>){</span>
+</span></span><span class=line><span class=cl> <span class=k>if</span><span class=p>(</span><span class=n>n</span> <span class=o>==</span> <span class=mi>1</span><span class=p>)</span> <span class=k>return</span> <span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl> <span class=k>else</span> <span class=k>return</span> <span class=n>n</span> <span class=o>*</span> <span class=nf>factorial</span><span class=p>(</span><span class=n>n</span> <span class=o>-</span> <span class=mi>1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//printhello.cpp
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;functions.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=n>using</span> <span class=n>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>void</span> <span class=nf>printhello</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl> <span class=kt>int</span> <span class=n>i</span><span class=p>;</span>
+</span></span><span class=line><span class=cl> <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;Hello world!&#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=c1>//main.cpp
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=cp>#include</span> <span class=cpf>&lt;iostream&gt;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp>#include</span> <span class=cpf>&#34;functions.h&#34;</span><span class=cp>
+</span></span></span><span class=line><span class=cl><span class=cp></span><span class=n>using</span> <span class=n>namespace</span> <span class=n>std</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kt>int</span> <span class=nf>main</span><span class=p>(){</span>
+</span></span><span class=line><span class=cl> <span class=nf>printhello</span><span class=p>();</span>
+</span></span><span class=line><span class=cl> <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;This is main: &#34;</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl> <span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>&#34;This factorial of 5 is: &#34;</span> <span class=o>&lt;&lt;</span> <span class=nf>factorial</span><span class=p>(</span><span class=mi>5</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>endl</span><span class=p>;</span>
+</span></span><span class=line><span class=cl> <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><p>正常编译</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>g++ *.cpp -o hello
+</span></span><span class=line><span class=cl>./hello</span></span></code></pre></td></tr></table></div></div></li><li><p>写<code>makefile</code>文件，管理工程，实现自动化编译（<code>.o</code>）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-makefile data-lang=makefile><span class=line><span class=cl><span class=c># VERDION 1
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nf>hello</span><span class=o>:</span> <span class=n>main</span>.<span class=n>cpp</span> <span class=n>printhello</span>.<span class=n>cpp</span> <span class=n>factorial</span>.<span class=n>cpp</span>
+</span></span><span class=line><span class=cl>	g++ -o hello main.cpp printhello.cpp factorial.cpp
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c># VERDION 2
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nv>CXX</span> <span class=o>=</span> g++
+</span></span><span class=line><span class=cl><span class=nv>TARGET</span> <span class=o>=</span> hello
+</span></span><span class=line><span class=cl><span class=nv>OBJ</span> <span class=o>=</span> main.o printhello.o factorial.o
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>$(TARGET)</span><span class=o>:</span> <span class=k>$(</span><span class=nv>OBJ</span><span class=k>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> -o <span class=k>$(</span>TARGET<span class=k>)</span> <span class=k>$(</span>OBJ<span class=k>)</span>
+</span></span><span class=line><span class=cl><span class=nf>main.o</span><span class=o>:</span> <span class=n>main</span>.<span class=n>cpp</span>
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> -c main.cpp
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>printhello.o</span><span class=o>:</span> <span class=n>printhello</span>.<span class=n>cpp</span>
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> -c printhello.cpp
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>factorial.o</span><span class=o>:</span> <span class=n>factorial</span>.<span class=n>cpp</span>
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> -c factorial.cpp
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c># VERDION 3
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nv>CXX</span> <span class=o>=</span> g++
+</span></span><span class=line><span class=cl><span class=nv>TARGET</span> <span class=o>=</span> hello
+</span></span><span class=line><span class=cl><span class=nv>OBJ</span> <span class=o>=</span> main.o printhello.o factorial.o
+</span></span><span class=line><span class=cl><span class=nv>CXXFLAGS</span> <span class=o>=</span> -c -Wall 
+</span></span><span class=line><span class=cl><span class=c># Wall 打开警告信息
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nf>$(TARGET)</span><span class=o>:</span> <span class=k>$(</span><span class=nv>OBJ</span><span class=k>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> -o <span class=nv>$@</span> $^
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>%.o</span><span class=o>:</span> %.<span class=n>cpp</span>	
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> <span class=k>$(</span>CXXFLAGS<span class=k>)</span> $&lt; -o <span class=nv>$@</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>.PHONY</span><span class=o>:</span> <span class=n>clean</span>
+</span></span><span class=line><span class=cl><span class=nf>clean</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	rm -f *.o <span class=k>$(</span>TARGET<span class=k>)</span>  
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c># VERDION 4
+</span></span></span><span class=line><span class=cl><span class=c></span><span class=nv>CXX</span> <span class=o>=</span> g++
+</span></span><span class=line><span class=cl><span class=nv>TARGET</span> <span class=o>=</span> hello
+</span></span><span class=line><span class=cl><span class=nv>SRC</span> <span class=o>=</span> <span class=k>$(</span>wildcard *.cpp<span class=k>)</span>
+</span></span><span class=line><span class=cl><span class=nv>OBJ</span> <span class=o>=</span> <span class=k>$(</span>patsubst %.cpp, %.o, <span class=k>$(</span>SRC<span class=k>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nv>CXXFLAGS</span> <span class=o>=</span> -c -Wall
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>$(TARGET)</span><span class=o>:</span> <span class=k>$(</span><span class=nv>OBJ</span><span class=k>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> -o <span class=nv>$@</span> $^
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>%.o</span><span class=o>:</span> %.<span class=n>cpp</span>	
+</span></span><span class=line><span class=cl>	<span class=k>$(</span>CXX<span class=k>)</span> <span class=k>$(</span>CXXFLAGS<span class=k>)</span> $&lt; -o <span class=nv>$@</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nf>.PHONY</span><span class=o>:</span> <span class=n>clean</span>
+</span></span><span class=line><span class=cl><span class=nf>clean</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>	rm -f *.o <span class=k>$(</span>TARGET<span class=k>)</span>
+</span></span><span class=line><span class=cl><span class=c># del -f *.o $(TARGET).exe
+</span></span></span><span class=line><span class=cl><span class=c># windows下要想在Makefile中通过命令行删除中间文件，需要将rm替换为del
+</span></span></span></code></pre></td></tr></table></div></div></li><li><p>使用<code>make</code>命令执行<code>makefile</code>文件中的指令集</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>make
+</span></span><span class=line><span class=cl><span class=c1># make VERBOSE=1 查看make具体指令</span></span></span></code></pre></td></tr></table></div></div></li><li><p>在当前目录下执行<code>main</code>程序</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>./hello
+</span></span><span class=line><span class=cl>make clean</span></span></code></pre></td></tr></table></div></div></li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>make -n  <span class=c1># 打印make查看具体指令，不运行</span>
+</span></span><span class=line><span class=cl>.PHONY <span class=c1># 强制每次执行</span></span></span></code></pre></td></tr></table></div></div><h2 id=参考阅读-1 class=heading-element><span>参考阅读</span>
+<a href=#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-1 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><a href=https://makefiletutorial.com/ target=_blank rel="external nofollow noopener noreferrer">Makefile Tutorial By Example</a></p><p><a href=https://www.gnu.org/software/make/manual/make.html#Complex-Makefile target=_blank rel="external nofollow noopener noreferrer">GNU make</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2023-07-15 13:33:12">更新于 2023-07-15&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=twitter data-url=http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/ data-title=CMake教程 data-hashtags=Computer,C++><i class="fa-brands fa-x-twitter fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/ data-hashtag=Computer><i class="fa-brands fa-facebook-square fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/ data-title=CMake教程><i class="fa-brands fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fa-solid fa-tags fa-fw me-1" aria-hidden=true></i><a href=/tags/computer/ class=post-tag title="标签 - Computer">Computer</a><a href=/tags/c++/ class=post-tag title="标签 - C++">C++</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/computer/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/ class=post-nav-item rel=prev title=正则表达式><i class="fa-solid fa-angle-left fa-fw" aria-hidden=true></i>正则表达式</a><a href=/posts/computer/linx%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/ class=post-nav-item rel=next title=Linx系统编程>Linx系统编程<i class="fa-solid fa-angle-right fa-fw" aria-hidden=true></i></a></div></div></article><aside class=toc id=toc-auto aria-label=目录><h2 class=toc-title>目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden=true></i></h2><div class="toc-content always-active" id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.139.0"><img class=hugo-icon src=/images/hugo.min.svg alt="Hugo logo"> Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/hugo-fixit/FixIt target=_blank rel=external title="FixIt v0.3.15"><img class=fixit-icon src=/images/fixit.min.svg alt="FixIt logo"> FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw" aria-hidden=true></i>
+<span itemprop=copyrightYear>2024</span><span class=author itemprop=copyrightHolder>
+<a href=/>fengchen</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div class=widgets><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role=button aria-label=回到顶部><i class="fa-solid fa-arrow-up fa-fw" aria-hidden=true></i><span class="variant-numeric d-none">0%</span></div></div><div id=mask></div><div class=reading-progress-bar style=left:0;top:0></div><noscript><div class=noscript-warning>该网站在启用 JavaScript 的情况下效果最佳。</div></noscript></div><link rel=preload href=/lib/katex/katex.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/katex/katex.min.css></noscript><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script src=/lib/autocomplete/autocomplete.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/katex/katex.min.js defer></script><script src=/lib/katex/auto-render.min.js defer></script><script src=/lib/katex/copy-tex.min.js defer></script><script src=/lib/katex/mhchem.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.js defer></script><script>window.config={code:{copyTitle:"复制到剪贴板",editLockTitle:"锁定可编辑代码块",editUnLockTitle:"解锁可编辑代码块",editable:!0,maxShownLines:100},comment:{enable:!1},cookieconsent:{content:{dismiss:"同意",link:"了解更多",message:"本网站使用 Cookies 来改善您的浏览体验。"},enable:!0,palette:{button:{background:"#f0f0f0"},popup:{background:"#1aa3ff"}},theme:"edgeless"},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50},version:"v0.3.15"}</script><script src=/js/theme.min.js defer></script></body></html>
