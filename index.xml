@@ -13046,7 +13046,7 @@ padding: 2px;">&lt;/div>
 &lt;li>
 &lt;p>&lt;code>git commit -m &amp;quot;给自己看的备注信息&amp;quot;&lt;/code>：将暂存区的内容提交到当前分支&lt;/p>
 &lt;blockquote>
-&lt;p>&lt;code>git commit --amend&lt;/code>:&lt;/p>
+&lt;p>&lt;code>git commit --amend&lt;/code>: 修改最近一次提交commit&lt;/p>
 &lt;/blockquote>
 &lt;/li>
 &lt;li>
@@ -13133,6 +13133,7 @@ padding: 2px;">&lt;/div>
  &lt;/a>
 &lt;/h3>&lt;ol>
 &lt;li>&lt;code>git remote add origin git@git.acwing.com:xxx/XXX.git&lt;/code>：将本地仓库关联到远程仓库&lt;/li>
+&lt;li>&lt;code>git remote prune origin&lt;/code>：清理远程已删除的分支&lt;/li>
 &lt;li>&lt;code>git push -u &lt;/code>(第一次需要-u以后不需要) ：将当前分支推送到远程仓库&lt;/li>
 &lt;li>&lt;code>git push origin branch_name&lt;/code>：将本地的某个分支推送到远程仓库&lt;/li>
 &lt;li>&lt;code>git clone git@git.acwing.com:xxx/XXX.git&lt;/code>：将远程仓库XXX下载到当前目录下&lt;/li>
@@ -13235,7 +13236,7 @@ padding: 2px;">&lt;/div>
 &lt;p>&lt;code>git pull&lt;/code>&lt;/p>
 &lt;p>&lt;code>git add .&lt;/code>&lt;/p>
 &lt;p>&lt;code>git commit&lt;/code>&lt;/p>
-&lt;p>&lt;code>git push&lt;/code>&lt;/p>
+&lt;p>&lt;code>git push origin branch_name&lt;/code>&lt;/p>
 &lt;/blockquote>
 &lt;p>&lt;strong>多人提交&lt;/strong>&lt;/p>
 &lt;blockquote>
@@ -13245,8 +13246,7 @@ padding: 2px;">&lt;/div>
  &lt;a href="#%e5%b8%b8%e7%94%a8" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://blog.csdn.net/xiaoyulike/article/details/119176756"target="_blank" rel="external nofollow noopener noreferrer">Git使用小技巧【修改commit注释, 超详细】_git更改commit描述-CSDN博客&lt;/a>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -13266,6 +13266,40 @@ padding: 2px;">&lt;/div>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git checkout develop
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git merge branch_name
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git status &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>修改commit注释&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 修改最后一次提交的注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit --amend &lt;span class="c1"># 修改退出后，查看一下git log&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push --force origin branch_name &lt;span class="c1"># 强制提交 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 修改以前提交的注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git rebase -i HEAD~2 &lt;span class="c1"># 数字指的是倒数第n次提交记录的注释&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pick 改成 edit 后退出&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git commit --amend &lt;span class="c1"># 修改&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git rebase --continue 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git push --force origin branch_name &lt;span class="c1"># 强制提交 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>拉取远程分支&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">git fetch origin master
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git merge FETCH_HEAD &lt;span class="c1">#FETCH_HEAD 是一个 Git 内部的引用，表示最近一次 git fetch 命令拉取的内容&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>[&lt;a href="https://zhuanlan.zhihu.com/p/52885189"target="_blank" rel="external nofollow noopener noreferrer">Git].gitignore文件的配置使用 - 知乎 (zhihu.com)&lt;/a>&lt;/p></description></item><item><title>GDB调试</title><link>http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/</link><pubDate>Sun, 18 Jun 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="gdb调试" class="heading-element">&lt;span>GDB调试&lt;/span>
  &lt;a href="#gdb%e8%b0%83%e8%af%95" class="heading-mark">

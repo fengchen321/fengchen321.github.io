@@ -71,7 +71,7 @@ padding: 2px;&#34;&gt;The Transformer - model architecture&lt;/div&gt;
 &gt; &gt; padding: 2px;&#34;&gt;Transformer_positional_Encoding&lt;/div&gt;
 &gt; &gt; &lt;/center&gt;
 &gt; &gt;
-&gt; &gt; &gt; positional encodding 是 cos 和 sin 的一个函数，在 [-1, &#43;1] 之间抖动的。
+&gt; &gt; &gt; positional encoding 是 cos 和 sin 的一个函数，在 [-1, &#43;1] 之间抖动的。
 &gt; &gt; &gt;
 &gt; &gt; &gt; &gt; $PE_{(pos,2i)}=sin(pos/10000^{2i/d_{model}})$
 &gt; &gt; &gt; &gt;

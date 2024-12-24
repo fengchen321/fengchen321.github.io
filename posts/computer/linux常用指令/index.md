@@ -430,7 +430,6 @@ find . -name &#39;*.py&#39; | xargs cat | wc -l
 &gt; crontab -l
 &gt; ```
 
-
 # 常用情况
 
 1. windows换行符`\r`对应的显示`^M`；转换为unix格式的`\n`
@@ -445,7 +444,17 @@ find . -name &#39;*.py&#39; | xargs cat | wc -l
 
 1. `readelf`
 
-   &gt; `readelf -S ./demo ` : 查看demo是否是debug模式编译文件，看`section`里有没有`.debug_info`
+   &gt; `readelf -d ./demo`：查看动态段信息,比如共享库依赖、动态符号、重定位信息、程序入口点等
+   &gt;
+   &gt; `readelf -a ./demo` :显示 ELF 文件的 **所有** 可用信息,依次输出所有的 ELF 文件头、节区头、符号表、动态段、重定位信息等内容。
+   &gt;
+   &gt; `readelf –h ./demo`：显示 ELF 文件的 **文件头信息**
+   &gt;
+   &gt; `readelf --segments ./demo`：显示 ELF 文件的 **程序头信息**
+   &gt;
+   &gt; `readelf -s --wide ./demo`：显示 ELF 文件的 **符号表信息**，`--wide` 选项用于避免输出被截断
+   &gt;
+   &gt; `readelf -S ./demo ` : 显示 ELF 文件的 **节区头信息**，查看demo是否是debug模式编译文件，看`section`里有没有`.debug_info` 也可用`--sections`
 
 2. `c&#43;&#43;filt ` 解析C&#43;&#43;符号工具
 

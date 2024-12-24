@@ -31,7 +31,7 @@
 
 2. `git commit -m &#34;给自己看的备注信息&#34;`：将暂存区的内容提交到当前分支
 
-     &gt; `git commit --amend`: 
+     &gt; `git commit --amend`: 修改最近一次提交commit
 
 3. `git status`：查看仓库状态
 
@@ -81,6 +81,7 @@
 
 ### 远程仓库
 1. `git remote add origin git@git.acwing.com:xxx/XXX.git`：将本地仓库关联到远程仓库
+1. `git remote prune origin`：清理远程已删除的分支
 2. `git push -u `(第一次需要-u以后不需要) ：将当前分支推送到远程仓库
 3. `git push origin branch_name`：将本地的某个分支推送到远程仓库
 4. `git clone git@git.acwing.com:xxx/XXX.git`：将远程仓库XXX下载到当前目录下
@@ -150,15 +151,13 @@
 &gt;
 &gt; `git commit`
 &gt;
-&gt; `git push`
+&gt; `git push origin branch_name`
 
 **多人提交**
 
 &gt; 第一个提交后，第二个提交先pull新版本，合并本地修改冲突，再push自己的
 
 ## 常用
-
- [Git使用小技巧【修改commit注释, 超详细】_git更改commit描述-CSDN博客](https://blog.csdn.net/xiaoyulike/article/details/119176756)
 
 ```shell
 git restore --staged xx # 将xx从暂存区里移除
@@ -169,6 +168,27 @@ git checkout -b branch_name origin/branch_name # 远端分支下载
 git checkout develop
 git merge branch_name
 git status 
+```
+
+**修改commit注释**
+
+```shell
+# 修改最后一次提交的注释
+git commit --amend # 修改退出后，查看一下git log
+git push --force origin branch_name # 强制提交 
+# 修改以前提交的注释
+git rebase -i HEAD~2   # 数字指的是倒数第n次提交记录的注释
+# pick 改成 edit 后退出
+git commit --amend # 修改
+git rebase --continue 
+git push --force origin branch_name # 强制提交 
+```
+
+**拉取远程分支**
+
+```shell
+git fetch origin master
+git merge FETCH_HEAD  #FETCH_HEAD 是一个 Git 内部的引用，表示最近一次 git fetch 命令拉取的内容
 ```
 
 [[Git\].gitignore文件的配置使用 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/52885189)
