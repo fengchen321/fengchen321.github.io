@@ -480,5 +480,5 @@ make -n  # 打印make查看具体指令，不运行
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/computer/cmake%E6%95%99%E7%A8%8B/  
+> URL: http://fengchen321.github.io/posts/c&#43;&#43;/cmake%E6%95%99%E7%A8%8B/  
 

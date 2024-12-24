@@ -222,7 +222,7 @@ x /s $rsi # 查看寄存器值
 starti 		#开始执行程序并停在第一个汇编指令处
 layout asm 	#显示汇编窗口
 si 			#单步
-
+set disassembly-flavor intel # s
 disassemble /mr ./demo  #查看反汇编代码
 ```
 
