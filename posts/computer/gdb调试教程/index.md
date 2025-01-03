@@ -192,7 +192,7 @@ x str  # 默认16进制显示，内存存储内容和“test&#34;相反（小端
 x /s str  # 直接显示内容 ”test&#34;
 x /d str  # 十进制显示
 x /4d str # 十进制显示，显示宽度为4
-# 变量非指针类型，如int， 先p &amp;value_name, 在使用x查看
+# 变量非指针类型，如int， 先p &amp;value_name, 使用x查看
 ```
 
 ### 查看寄存器
@@ -222,7 +222,7 @@ x /s $rsi # 查看寄存器值
 starti 		#开始执行程序并停在第一个汇编指令处
 layout asm 	#显示汇编窗口
 si 			#单步
-set disassembly-flavor intel # s
+set disassembly-flavor intel
 disassemble /mr ./demo  #查看反汇编代码
 ```
 

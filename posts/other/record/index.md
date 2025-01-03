@@ -3,54 +3,16 @@
 
 # 常用工具
 
-## MobaXterm
+## WSL
 
-[MobaXterm的基本使用与快捷键介绍 - 木卯生十木 - 博客园 (cnblogs.com)](https://www.cnblogs.com/jxearlier/p/13236571.html)
-
-## Source Insight
-
-New project -&gt; 新建工程名字；保存路径；
-
-project source directory:输入程序源代码的路径
-
-add all 为工程添加文件 ，全部勾选；Show only known file types这一选项来选择显示其它类型的文件
-
-# 软件
-
-[ 键盘/🎮手柄按键 检测及历史记录显示工具](https://github.com/Sunrisepeak/KHistory)
-
-[Windows11、Win10完美去除快捷方式小箭头的方法 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/663388551)
-
-```bash
-# .bat 管理员运行 去除箭头 win11
-reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons&#34; /v 29 /d &#34;%systemroot%\system32\imageres.dll,197&#34; /t reg_sz /f
-taskkill /f /im explorer.exe
-attrib -s -r -h &#34;%userprofile%\AppData\Local\iconcache.db&#34;
-del &#34;%userprofile%\AppData\Local\iconcache.db&#34; /f /q
-start explorer
-pause
-# win10
-reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons&#34; /v 29 /d &#34;%systemroot%\system32\imageres.dll,197&#34; /t reg_sz /f
-taskkill /f /im explorer.exe
-start explorer
-pause
-# 恢复箭头
-reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons&#34; /v 29 /f
-taskkill /f /im explorer.exe
-start explorer
-pause
+```shell
+wsl --install -d Ubuntu-22.04 # 安装后重启
+wsl --shutdown # 使其stop
+wsl --export Ubuntu-22.04 D:\wsl_ubuntu\Ubuntu.tar # 导出备份
+wsl --unregister Ubuntu-22.04 #删除当前安装的系统
+wsl --import Ubuntu-22.04 D:\wsl_ubuntu D:\wsl_ubuntu\Ubuntu.tar 
+Ubuntu2204 config --default-user fengchen
 ```
-
-
-
-## 专利检索平台
-[访问网址](https://www.incopat.com)； 
-
-## pycharm激活插件
-
-&gt; 在File-Settings -&gt; Plugins 内手动添加第三方插件仓库地址：*https://plugins.zhile.io*
-&gt;
-&gt; IDE Eval Reset
 
 ## VSCode远程连接AC平台
 
@@ -105,6 +67,73 @@ Host 主机名
 
 &gt; [vscode 集成 Neovim - 简书 (jianshu.com)](https://www.jianshu.com/p/ac739c6ea541)
 
+##  安装rocm环境
+
+```shell
+sudo apt update
+wget https://repo.radeon.com/amdgpu-install/6.2.3/ubuntu/jammy/amdgpu-install_6.2.60203-1_all.deb
+sudo apt install ./amdgpu-install_6.2.60203-1_all.deb
+
+sudo amdgpu-install --list-usecase # 显示可用用例的列表
+amdgpu-install -y --usecase=wsl,rocm --no-dkms
+```
+## MobaXterm
+
+[MobaXterm的基本使用与快捷键介绍 - 木卯生十木 - 博客园 (cnblogs.com)](https://www.cnblogs.com/jxearlier/p/13236571.html)
+
+## Source Insight
+
+New project -&gt; 新建工程名字；保存路径；
+
+project source directory:输入程序源代码的路径
+
+add all 为工程添加文件 ，全部勾选；Show only known file types这一选项来选择显示其它类型的文件
+
+## 软件
+
+[ 键盘/🎮手柄按键 检测及历史记录显示工具](https://github.com/Sunrisepeak/KHistory)
+
+[Windows11、Win10完美去除快捷方式小箭头的方法 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/663388551)
+
+```bash
+# .bat 管理员运行 去除箭头 win11
+reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons&#34; /v 29 /d &#34;%systemroot%\system32\imageres.dll,197&#34; /t reg_sz /f
+taskkill /f /im explorer.exe
+attrib -s -r -h &#34;%userprofile%\AppData\Local\iconcache.db&#34;
+del &#34;%userprofile%\AppData\Local\iconcache.db&#34; /f /q
+start explorer
+pause
+# win10
+reg add &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons&#34; /v 29 /d &#34;%systemroot%\system32\imageres.dll,197&#34; /t reg_sz /f
+taskkill /f /im explorer.exe
+start explorer
+pause
+# 恢复箭头
+reg delete &#34;HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons&#34; /v 29 /f
+taskkill /f /im explorer.exe
+start explorer
+pause
+```
+
+### 终端美化
+
+[ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+
+```shell
+sudo apt install zsh # git也要安装
+sh -c &#34;$(wget -O- https://install.ohmyz.sh/)&#34;
+```
+
+
+## 专利检索平台
+[访问网址](https://www.incopat.com)
+
+## pycharm激活插件
+
+&gt; 在File-Settings -&gt; Plugins 内手动添加第三方插件仓库地址：*https://plugins.zhile.io*
+&gt;
+&gt; IDE Eval Reset
+
 
 ## Scientific Toolworks Understand安装
 
@@ -120,7 +149,10 @@ Host 主机名
 
 [使用 Typora 画图（类图、流程图、时序图） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/172635547)
 
+一不小心没保存可以在临时目录里找：`C:\Users\用户名\AppData\Roaming\Typora\draftsRecover`
+
 # Latex
+
 KaTeX 默认不支持 numcases 环境，还是使用cases吧。
 
 [katex在线](https://katex.org/#demo)
