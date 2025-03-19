@@ -439,6 +439,10 @@ make规则：&#34;目标&#34;是必需的，不可省略；&#34;前置条件&#34
    
    %.o: %.cpp	
    	$(CXX) $(CXXFLAGS) $&lt; -o $@
+   	# 想看某些宏的时候在make加上-E即可
+   	$(CXX) $(CXXFLAGS) -E  $&lt; | \
+           grep -ve &#39;^#&#39; | \
+           clang-format - &gt; $(basename $@).i
    
    .PHONY: clean
    clean:
@@ -451,7 +455,6 @@ make规则：&#34;目标&#34;是必需的，不可省略；&#34;前置条件&#34
 
    ```shell
    make
-   # make VERBOSE=1 查看make具体指令
    ```
 
 4. 在当前目录下执行`main`程序
@@ -461,14 +464,17 @@ make规则：&#34;目标&#34;是必需的，不可省略；&#34;前置条件&#34
    make clean
    ```
 
-
+## 常用指令
 
 ```shell
-make -n  # 打印make查看具体指令，不运行
+make VERBOSE=1 # 查看make具体指令
+make -nB | grep -ve &#39;^\(\#|echo\|mkdir\)&#39; | vim -
+# -n:只打印命令不运行
+# -B:强制 make 所有目标
+# grep -v:反向匹配，表示只输出不匹配指定模式的行; -e:指定一个正则表达式模式
+# vim - :从标准输入（而不是文件）读取内容
 .PHONY # 强制每次执行
 ```
-
-
 
 ## 参考阅读
 

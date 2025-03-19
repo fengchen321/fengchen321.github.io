@@ -105,6 +105,14 @@ mul ebx 		; edx:eax = eax * ebx  mul无符号,imul有符号 edx:eax 表示 64 �
 mov eax, 100
 mov ebx, 20
 div ebx         ; eax = 5 (商), edx = 0 (余数) div无符号,idiv有符号
+
+; lea 将变量的地址加载到寄存器中,大致相当于c中的&amp;q
+lea ebx, [eax &#43; ecx * 4] 
+; 数组索引计算：把eax寄存器中的值加上ecx乘以4（int）的结果，作为数组元素的地址放入ebx寄存器
+lea edx, [eax &#43; offsetof(struct_name, member_name)] 
+; 结构体成员访问：结构体struct_name中成员member_name的偏移量，将内存中的地址存入edx寄存器
+lea ecx, [ebp - size] 
+; 动态内存分配：使用栈帧指针ebp减去size的值，得到内存分配的起始地址，并将结果存入ecx寄存器
 ```
 
 ### Directive Instruction
@@ -159,25 +167,25 @@ mov eax, [ebx&#43;ecx*4] ; 将 ebx &#43; ecx * 4 处的值加载到 eax
 
 #### 比较指令
 
-| Bit   | Label | Description                                          |
-| :---- | :---- | -----------------------------------------------------|
-| 0     | CF    | Carry Flag(进位标志)：运算结果的最高有效位有进位（加法）或借位（减法）时，进位标志置1 |
-| 2     | PF    | Parity Flag（奇偶标志）：运算结果的所有位中1的个数是偶数置1  |
-| 4     | AF    | Auxiliary Carry flag（辅助进位标志位）：第3位向第4位发生了进位，那么AF标志位置1 |
-| 6     | ZF    | Zero Flag：结果为0，置1                                |
-| 7     | SF    | Sign Flag：结果为负数（最高位为1），置1                   |
-| 8     | TF    | Trap Flag：陷阱标志位 ，用于调试，置 1 时单步执行。         |
-| 9     | IF    | Interrupt enable Flag：是否响应中断                     |
-| 10    | DF    | Direction Flag（方向标志位）控制字符串操作的方向（0：递增，1：递减）   |
-| 11    | OF    | Overflow Flag（溢出标志位）                            |
-| 12-13 | IOPL  | I/O privilege level：控制 I/O 指令的执行权限            |
-| 14    | NT    | Nested task                                          |
-| 16    | RF    | Resume Flag  用于调试，控制是否忽略断点                  |
-| 17    | VM    | Virtual-8086 mode：置 1 时进入虚拟 8086 模式            |
-| 18    | AC    | Alignment check / Access Control：置 1 时启用对齐检查   |
-| 19    | VIF   | Virtual Interrupt Flag：虚拟模式下的中断标志             |
-| 20    | VIP   | Virtual Interrupt Pending：虚拟模式下的中断挂起状态。     |
-| 21    | ID    | ID Flag ：支持 CPUID 指令的标志                         |
+| Bit   | Label  | Description                                                  |
+| :---- | :----- | ------------------------------------------------------------ |
+| 0     | **CF** | Carry Flag(进位标志)：运算结果的最高有效位有进位（加法）或借位（减法）时，进位标志置1 |
+| 2     | PF     | Parity Flag（奇偶标志）：运算结果的所有位中1的个数是偶数置1  |
+| 4     | AF     | Auxiliary Carry flag（辅助进位标志位）：第3位向第4位发生了进位，那么AF标志位置1 |
+| 6     | **ZF** | Zero Flag：结果为0，置1                                      |
+| 7     | **SF** | Sign Flag：结果为负数（最高位为1），置1                      |
+| 8     | TF     | Trap Flag：陷阱标志位 ，用于调试，置 1 时单步执行。          |
+| 9     | IF     | Interrupt enable Flag：是否响应中断                          |
+| 10    | DF     | Direction Flag（方向标志位）控制字符串操作的方向（0：递增，1：递减） |
+| 11    | **OF** | Overflow Flag（溢出标志位）                                  |
+| 12-13 | IOPL   | I/O privilege level：控制 I/O 指令的执行权限                 |
+| 14    | NT     | Nested task                                                  |
+| 16    | RF     | Resume Flag  用于调试，控制是否忽略断点                      |
+| 17    | VM     | Virtual-8086 mode：置 1 时进入虚拟 8086 模式                 |
+| 18    | AC     | Alignment check / Access Control：置 1 时启用对齐检查        |
+| 19    | VIF    | Virtual Interrupt Flag：虚拟模式下的中断标志                 |
+| 20    | VIP    | Virtual Interrupt Pending：虚拟模式下的中断挂起状态。        |
+| 21    | ID     | ID Flag ：支持 CPUID 指令的标志                              |
 
 ```assembly
 cmp a, b ;计算 a-b 的值,并设置标志寄存器
@@ -234,6 +242,10 @@ ret				;函数返回
 [汇编语言-B站](https://www.bilibili.com/video/BV147yDYzETr/)
 
 [Arch Linux - v86 (copy.sh)](https://copy.sh/v86/?profile=archlinux)
+
+[x86-64 Machine-Level Programming](https://www.cs.cmu.edu/%7Efp/courses/15213-s07/misc/asm64-handout.pdf)
+
+[在 C 中使用汇编语言（使用 GNU 编译器集合 （GCC））](https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gcc/Using-Assembly-Language-with-C.html)
 
 
 ---

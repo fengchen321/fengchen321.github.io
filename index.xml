@@ -266,6 +266,14 @@
 &lt;/span>&lt;span class="lnt">12
 &lt;/span>&lt;span class="lnt">13
 &lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">mov dest, src	; move src to desc
@@ -281,7 +289,15 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov eax, 100
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov ebx, 20
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">div ebx ; eax = 5 (商), edx = 0 (余数) div无符号,idiv有符号&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">div ebx ; eax = 5 (商), edx = 0 (余数) div无符号,idiv有符号
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; lea 将变量的地址加载到寄存器中,大致相当于c中的&amp;amp;q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lea ebx, [eax + ecx * 4] 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; 数组索引计算：把eax寄存器中的值加上ecx乘以4（int）的结果，作为数组元素的地址放入ebx寄存器
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lea edx, [eax + offsetof(struct_name, member_name)] 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; 结构体成员访问：结构体struct_name中成员member_name的偏移量，将内存中的地址存入edx寄存器
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lea ecx, [ebp - size] 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; 动态内存分配：使用栈帧指针ebp减去size的值，得到内存分配的起始地址，并将结果存入ecx寄存器&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="directive-instruction" class="heading-element">&lt;span>Directive Instruction&lt;/span>
  &lt;a href="#directive-instruction" class="heading-mark">
@@ -397,7 +413,7 @@
  &lt;tbody>
  &lt;tr>
  &lt;td style="text-align: left">0&lt;/td>
- &lt;td style="text-align: left">CF&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>CF&lt;/strong>&lt;/td>
  &lt;td>Carry Flag(进位标志)：运算结果的最高有效位有进位（加法）或借位（减法）时，进位标志置1&lt;/td>
  &lt;/tr>
  &lt;tr>
@@ -412,12 +428,12 @@
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: left">6&lt;/td>
- &lt;td style="text-align: left">ZF&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>ZF&lt;/strong>&lt;/td>
  &lt;td>Zero Flag：结果为0，置1&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: left">7&lt;/td>
- &lt;td style="text-align: left">SF&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>SF&lt;/strong>&lt;/td>
  &lt;td>Sign Flag：结果为负数（最高位为1），置1&lt;/td>
  &lt;/tr>
  &lt;tr>
@@ -437,7 +453,7 @@
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: left">11&lt;/td>
- &lt;td style="text-align: left">OF&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>OF&lt;/strong>&lt;/td>
  &lt;td>Overflow Flag（溢出标志位）&lt;/td>
  &lt;/tr>
  &lt;tr>
@@ -601,7 +617,9 @@
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;p>&lt;a href="https://www.bilibili.com/video/BV147yDYzETr/"target="_blank" rel="external nofollow noopener noreferrer">汇编语言-B站&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://copy.sh/v86/?profile=archlinux"target="_blank" rel="external nofollow noopener noreferrer">Arch Linux - v86 (copy.sh)&lt;/a>&lt;/p></description></item><item><title>Record</title><link>http://fengchen321.github.io/posts/other/record/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/record/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="常用工具" class="heading-element">&lt;span>常用工具&lt;/span>
+&lt;p>&lt;a href="https://copy.sh/v86/?profile=archlinux"target="_blank" rel="external nofollow noopener noreferrer">Arch Linux - v86 (copy.sh)&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.cs.cmu.edu/%7Efp/courses/15213-s07/misc/asm64-handout.pdf"target="_blank" rel="external nofollow noopener noreferrer">x86-64 Machine-Level Programming&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gcc/Using-Assembly-Language-with-C.html"target="_blank" rel="external nofollow noopener noreferrer">在 C 中使用汇编语言（使用 GNU 编译器集合 （GCC））&lt;/a>&lt;/p></description></item><item><title>Record</title><link>http://fengchen321.github.io/posts/other/record/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/record/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="常用工具" class="heading-element">&lt;span>常用工具&lt;/span>
  &lt;a href="#%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -19539,6 +19557,10 @@ padding: 2px;">&lt;/div>
 &lt;/span>&lt;span class="lnt">55
 &lt;/span>&lt;span class="lnt">56
 &lt;/span>&lt;span class="lnt">57
+&lt;/span>&lt;span class="lnt">58
+&lt;/span>&lt;span class="lnt">59
+&lt;/span>&lt;span class="lnt">60
+&lt;/span>&lt;span class="lnt">61
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-makefile" data-lang="makefile">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># VERDION 1
@@ -19592,6 +19614,10 @@ padding: 2px;">&lt;/div>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">%.o&lt;/span>&lt;span class="o">:&lt;/span> %.&lt;span class="n">cpp&lt;/span>	
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> &lt;span class="k">$(&lt;/span>CXXFLAGS&lt;span class="k">)&lt;/span> $&amp;lt; -o &lt;span class="nv">$@&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="c1"># 想看某些宏的时候在make加上-E即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> &lt;span class="k">$(&lt;/span>CXXFLAGS&lt;span class="k">)&lt;/span> -E $&amp;lt; &lt;span class="p">|&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> grep -ve &lt;span class="s1">&amp;#39;^#&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> clang-format - &amp;gt; &lt;span class="k">$(&lt;/span>basename &lt;span class="nv">$@&lt;/span>&lt;span class="k">)&lt;/span>.i
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">.PHONY&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">clean&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">clean&lt;/span>&lt;span class="o">:&lt;/span>
@@ -19606,11 +19632,9 @@ padding: 2px;">&lt;/div>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">make
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># make VERBOSE=1 查看make具体指令&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">make&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;li>
@@ -19626,13 +19650,27 @@ padding: 2px;">&lt;/div>
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ol>
-&lt;div class="highlight">&lt;div class="chroma">
+&lt;h2 id="常用指令" class="heading-element">&lt;span>常用指令&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">make -n &lt;span class="c1"># 打印make查看具体指令，不运行&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">make &lt;span class="nv">VERBOSE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="c1"># 查看make具体指令&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -nB &lt;span class="p">|&lt;/span> grep -ve &lt;span class="s1">&amp;#39;^\(\#|echo\|mkdir\)&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> vim -
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -n:只打印命令不运行&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -B:强制 make 所有目标&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># grep -v:反向匹配，表示只输出不匹配指定模式的行; -e:指定一个正则表达式模式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># vim - :从标准输入（而不是文件）读取内容&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.PHONY &lt;span class="c1"># 强制每次执行&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="参考阅读-1" class="heading-element">&lt;span>参考阅读&lt;/span>

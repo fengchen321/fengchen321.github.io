@@ -1004,6 +1004,12 @@ My name is: abc
 
 `grep -l &#39;./hip-prof-3912.db&#39; log_*.txt`:查找文本
 
+查找所有包含 `main` 函数的 `.cpp` 文件
+
+&gt; `grep -n main $(find . -name &#34;*.cpp&#34;)`
+&gt;
+&gt; `find . -name &#34;*.cpp&#34; | xargs grep --color -nse &#39;\&lt;main\&gt;&#39;`
+
 ### sed
 
 &gt; 更适合编辑匹配到的文本
