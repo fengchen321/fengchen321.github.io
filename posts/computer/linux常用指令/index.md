@@ -466,6 +466,13 @@ find . -name &#39;*.py&#39; | xargs cat | wc -l
    &gt; llvm-amdgpu-objdump --inputs= # 反汇编命令,amdgpu
    &gt; ```
 
+4. 性能分析
+
+   ```shell
+    perf stat -e instructions,cycles ls
+   ```
+
+   
 
 
 ---

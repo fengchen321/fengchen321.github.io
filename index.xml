@@ -1,4 +1,471 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Tue, 24 Dec 2024 13:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>汇编语言</title><link>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Thu, 07 Aug 2025 13:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>MPI 基础知识</title><link>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 07 Aug 2025 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="mpi-基础知识" class="heading-element">&lt;span>MPI 基础知识&lt;/span>
+ &lt;a href="#mpi-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>MPI (Message Passing Interface)&lt;/p>
+&lt;blockquote>
+&lt;p>C/C++: &lt;code>mpi,h&lt;/code> -&amp;gt; &lt;code>libmpi.so&lt;/code> 编译：&lt;code>mpicxx -o test_mpi_cpp test_mpi.cpp -lmpi&lt;/code>&lt;/p>
+&lt;p>Fortran: &lt;code>mpif.h&lt;/code>, 或者使用模板mpi&lt;code>use mpi&lt;/code> -&amp;gt; &lt;code>libmpi_mpifh.so&lt;/code> 编译：``mpifort test_mpi.F90 -o test_mpi_fortran`&lt;/p>
+&lt;p>运行 &lt;code>mpirun -n 8 ./tests/mpi_tests/test_mpi_cpp&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="核心概念" class="heading-element">&lt;span>核心概念&lt;/span>
+ &lt;a href="#%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;strong>消息&lt;/strong>：数据（数，数组，字符等等）&lt;/p>
+&lt;p>&lt;strong>通信域&lt;/strong>(communicating domain)：定义一组能够互相发消息的进程，每个进程分配一个序号（rank），通信可以通过&lt;code>rank&lt;/code>或者&lt;code>消息标签tag&lt;/code>来进行&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>MPI_COMM_WORLD&lt;/code>: 所有进程的集合，最大通信域；进入并行环境时自动创建。&lt;/p>
+&lt;p>&lt;code>MPI_COMM_SELF&lt;/code>：只包含使用它的进程&lt;/p>
+&lt;/blockquote>
+&lt;p>函数格式：&lt;/p>
+&lt;blockquote>
+&lt;p>C/C++: &lt;code>int MPI_Comm_size(MPI_Comm comm, int *size);&lt;/code>&lt;/p>
+&lt;p>Fortran: &lt;code>call MPI_Comm_size(comm, size, ieror)&lt;/code>&lt;/p>
+&lt;p>C++: &lt;code>int MPI::COMM::Get_size() const;&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="6个基本函数" class="heading-element">&lt;span>6个基本函数&lt;/span>
+ &lt;a href="#6%e4%b8%aa%e5%9f%ba%e6%9c%ac%e5%87%bd%e6%95%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;code>MPI_Init(ierr)&lt;/code>: 初始化并行环境，通信域&lt;code>MPI_COMM_WORLD&lt;/code>形成&lt;/p>
+&lt;p>&lt;code>MPI_Finalize(ierr)&lt;/code>: 退出并行环境&lt;/p>
+&lt;p>&lt;code>MPI_Comm_size(comm, size, ierr)&lt;/code>: 返回进程数size&lt;/p>
+&lt;p>&lt;code>MPI_Comm_rank(comm, rank, iree)&lt;/code>: 返回进程编号rank， &lt;code>0~size-1&lt;/code>&lt;/p>
+&lt;p>&lt;code>MPI_Send(buf, count, datatype, dest, tag, comm, ierr)&lt;/code>: 消息发送&lt;/p>
+&lt;p>&lt;code>MPI_Recv(buf, count, datatype, source, tag, comm, status, ierr)&lt;/code>: 消息接收&lt;/p>
+&lt;blockquote>
+&lt;p>消息缓冲（MessageBuffer）：消息起始地址（&lt;code>buf&lt;/code>），数据个数（&lt;code>count&lt;/code>）， 消息类型（&lt;code> datatype&lt;/code>） 实际长度= datatype * count&lt;/p>
+&lt;p>消息信封（Message Envelop)：接收/发送进程号(&lt;code>dest/source&lt;/code>)，消息标签 0-32767（&lt;code>tag&lt;/code>），通信域（&lt;code>comm&lt;/code>）&lt;/p>
+&lt;p>&lt;code>status&lt;/code>：消息接收的状态&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="其他函数" class="heading-element">&lt;span>其他函数&lt;/span>
+ &lt;a href="#%e5%85%b6%e4%bb%96%e5%87%bd%e6%95%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;code>MPI_Abort(comm, errorcode, ireror)&lt;/code>: 出现特殊情况，需要中途停止MPI&lt;/p>
+&lt;p>&lt;code>MPI_Get_count(status, datatype, count, ierror)&lt;/code>: 接收数据的数量&lt;/p>
+&lt;p>&lt;code>MPI_Pack_size(incount, datatype, comm, size, ierror)&lt;/code>: 确定要打包的数据占用空间大小&lt;/p>
+&lt;p>&lt;code>MPI_Pack(inbuf, incount, datatype, outbuf, outsize, position, comm, ierror)&lt;/code>:将数据打包，由&amp;lt;inbuf, incount, datatype&amp;gt;指定的消息到&amp;lt;outbuf, outsize&amp;gt;指定的空间&lt;/p>
+&lt;h2 id="点对点通信-p2p-communication" class="heading-element">&lt;span>点对点通信 (P2P Communication)&lt;/span>
+ &lt;a href="#%e7%82%b9%e5%af%b9%e7%82%b9%e9%80%9a%e4%bf%a1-p2p-communication" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>通信模式&lt;/p>
+&lt;blockquote>
+&lt;p>同步发送(Synchrounous Send)&lt;/p>
+&lt;p>缓冲发送(Buffered Send)&lt;/p>
+&lt;p>标准发送(Standed Send)&lt;/p>
+&lt;p>就绪发送(Ready Send)&lt;/p>
+&lt;/blockquote>
+&lt;blockquote>
+&lt;p>发送类别：4种通信模式 * （阻塞+ 非阻塞）&lt;/p>
+&lt;p>&lt;code>MPI_Send(buf, count, datatype, dest, tag, comm, ierr)&lt;/code>&lt;/p>
+&lt;p>&lt;code>MPI_Isend(buf, count, datatype, dest, tag, comm, request, ierror)&lt;/code>： 标准非阻塞通信 request：通信请求&lt;/p>
+&lt;p>&lt;code>MPI_Ssend(buf, count, datatype, dest, tag, comm, ierror)&lt;/code>: 标准同步发送&lt;/p>
+&lt;p>&lt;code>MPI_Issend(buf, count, datatype, dest, tag, comm, request, ierror)&lt;/code>&lt;/p>
+&lt;p>&lt;code>MPI_Bsend(buf, count, datatype, dest, tag, comm, ierror)&lt;/code>：具有用户指定缓冲的基本发送&lt;/p>
+&lt;p>&lt;code>MPI_Ibsend(buf, count, datatype, dest, tag, comm, request, ierror)&lt;/code>&lt;/p>
+&lt;p>&lt;code>MPI_Rsend(buf, count, datatype, dest, tag, comm, ierror)&lt;/code>&lt;/p>
+&lt;p>&lt;code>MPI_Irsend(buf, count, datatype, dest, tag, comm, request, ierror)&lt;/code>&lt;/p>
+&lt;p>接收类别：阻塞和非阻塞&lt;/p>
+&lt;p>&lt;code>MPI_Recv(buf, count, datatype, source, tag, comm, status, ierror)&lt;/code>&lt;/p>
+&lt;p>&lt;code>MPI_Irecv(buf, count, datatype, source, tag, comm, request, ierror)&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="群集通信collective-communication" class="heading-element">&lt;span>群集通信(Collective Communication)&lt;/span>
+ &lt;a href="#%e7%be%a4%e9%9b%86%e9%80%9a%e4%bf%a1collective-communication" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>&lt;strong>类型&lt;/strong>&lt;/th>
+ &lt;th>&lt;strong>函数名&lt;/strong>&lt;/th>
+ &lt;th>&lt;strong>含义&lt;/strong>&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>通信&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Bcast&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>一对多广播同样的消息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Gather&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>多对一收集各进程信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;code>MPI_Gatherv &lt;/code>&lt;/td>
+ &lt;td>一般化&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Allgather&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>全局收集，每个进程执行 Gather&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;code>MPI_Allgatherv&lt;/code>&lt;/td>
+ &lt;td>一般化&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Scatter&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>一对多散播不同消息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;code>MPI_Scatterv&lt;/code>&lt;/td>
+ &lt;td>一般化&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Alltoall&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>多对多全局交换，每个进程执行 Scatter&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;code>MPI_Alltoallv&lt;/code>&lt;/td>
+ &lt;td>一般化&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>聚集&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Reduce&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>多对一归约&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;code>MPI_Allreduce&lt;/code>&lt;/td>
+ &lt;td>一般化&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;code>MPI_Reduce_scatter&lt;/code>&lt;/td>
+ &lt;td>归约并散播&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Scan&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>扫描。每个进程对自己前面的进程归约&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>同步&lt;/td>
+ &lt;td>&lt;span style="color:red">&lt;strong>MPI_Barrier&lt;/strong>&lt;/span>&lt;/td>
+ &lt;td>路障同步&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>多对一&lt;/strong>和&lt;strong>一对多&lt;/strong>还需要指明root进程，&lt;strong>多对多&lt;/strong>只需要指明通信域。&lt;/p>
+&lt;h3 id="广播mpi_bcast" class="heading-element">&lt;span>广播(MPI_Bcast)&lt;/span>
+ &lt;a href="#%e5%b9%bf%e6%92%admpi_bcast" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Bcast(buffer, count, datatype, root, comm, ierror)&lt;/code>&lt;/p>
+&lt;p>一对多，消息相同。有一个root进程，由它向所有进程发送消息。 对于root本身，缓冲区即是发送缓冲又是接收缓冲。&lt;/p>
+&lt;pre class="mermaid">sequenceDiagram
+ participant P0 as P0 (Root)
+ participant P1 as P1
+ participant P2 as P2
+ participant P3 as P3
+
+ P0->>P1: MPI_Bcast(A)
+ P0->>P2: MPI_Bcast(A)
+ P0->>P3: MPI_Bcast(A)
+ Note right of P0: 所有进程收到相同数据&lt;/pre>
+&lt;template>sequenceDiagram
+ participant P0 as P0 (Root)
+ participant P1 as P1
+ participant P2 as P2
+ participant P3 as P3
+
+ P0->>P1: MPI_Bcast(A)
+ P0->>P2: MPI_Bcast(A)
+ P0->>P3: MPI_Bcast(A)
+ Note right of P0: 所有进程收到相同数据&lt;/template>&lt;h3 id="收集mpi_gather" class="heading-element">&lt;span>收集（MPI_Gather)&lt;/span>
+ &lt;a href="#%e6%94%b6%e9%9b%86mpi_gather" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Gather(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm, ierror)&lt;/code>&lt;/p>
+&lt;p>多对一，消息相同。有一个root进程用来接收，其他(包含root)发送。 这n个消息按进程的标号进行拼接。所有非root进程忽略接收缓冲。&lt;/p>
+&lt;pre class="mermaid">sequenceDiagram
+ participant P0 as P0 (Root)
+ participant P1 as P1
+ participant P2 as P2
+ participant P3 as P3
+
+ Note over P1,P3: 各进程持有不同数据
+ P1->>P0: MPI_Gather(A)
+ P2->>P0: MPI_Gather(B)
+ P3->>P0: MPI_Gather(C)
+ Note over P0: 收集结果: [A,B,C]&lt;/pre>
+&lt;template>sequenceDiagram
+ participant P0 as P0 (Root)
+ participant P1 as P1
+ participant P2 as P2
+ participant P3 as P3
+
+ Note over P1,P3: 各进程持有不同数据
+ P1->>P0: MPI_Gather(A)
+ P2->>P0: MPI_Gather(B)
+ P3->>P0: MPI_Gather(C)
+ Note over P0: 收集结果: [A,B,C]&lt;/template>&lt;h3 id="散播mpi_scatter" class="heading-element">&lt;span>散播（MPI_Scatter)&lt;/span>
+ &lt;a href="#%e6%95%a3%e6%92%admpi_scatter" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Scatter(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm, ierror)&lt;/code>&lt;/p>
+&lt;p>一对多，消息不同，顺序存储。有一个root进程，将发送缓冲中的数据按进程编号，有序的发送。非root进程忽略发送缓冲&lt;/p>
+&lt;pre class="mermaid">sequenceDiagram
+ participant P0 as P0 (Root)
+ participant P1 as P1
+ participant P2 as P2
+ participant P3 as P3
+
+ Note over P0: 初始数据: [A,B,C,D]
+ P0->>P1: MPI_Scatter(A)
+ P0->>P2: MPI_Scatter(B)
+ P0->>P3: MPI_Scatter(C)
+ Note left of P0: 最后一个元素D通常留在P0
+ Note right of P1: 各进程获得不同数据&lt;/pre>
+&lt;template>sequenceDiagram
+ participant P0 as P0 (Root)
+ participant P1 as P1
+ participant P2 as P2
+ participant P3 as P3
+
+ Note over P0: 初始数据: [A,B,C,D]
+ P0->>P1: MPI_Scatter(A)
+ P0->>P2: MPI_Scatter(B)
+ P0->>P3: MPI_Scatter(C)
+ Note left of P0: 最后一个元素D通常留在P0
+ Note right of P1: 各进程获得不同数据&lt;/template>&lt;h3 id="全局收集mpi_allgather" class="heading-element">&lt;span>全局收集(MPI_Allgather)&lt;/span>
+ &lt;a href="#%e5%85%a8%e5%b1%80%e6%94%b6%e9%9b%86mpi_allgather" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Allgather(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, comm, ierror)&lt;/code>&lt;/p>
+&lt;p>相当于每个进程都作为root进程执行了一次Gather操作。&lt;/p>
+&lt;pre class="mermaid">flowchart LR
+ subgraph 初始数据
+ P0((P0:A))
+ P1((P1:B))
+ P2((P2:C))
+ P3((P3:D))
+ end
+
+ subgraph Allgather结果
+ P0r[P0:A,B,C,D]
+ P1r[P1:A,B,C,D]
+ P2r[P2:A,B,C,D]
+ P3r[P3:A,B,C,D]
+ end
+
+ 初始数据 -->|MPI_Allgather| Allgather结果&lt;/pre>
+&lt;template>flowchart LR
+ subgraph 初始数据
+ P0((P0:A))
+ P1((P1:B))
+ P2((P2:C))
+ P3((P3:D))
+ end
+
+ subgraph Allgather结果
+ P0r[P0:A,B,C,D]
+ P1r[P1:A,B,C,D]
+ P2r[P2:A,B,C,D]
+ P3r[P3:A,B,C,D]
+ end
+
+ 初始数据 -->|MPI_Allgather| Allgather结果&lt;/template>&lt;h3 id="全局交换mpi_alltoall" class="heading-element">&lt;span>全局交换(MPI_Alltoall)&lt;/span>
+ &lt;a href="#%e5%85%a8%e5%b1%80%e4%ba%a4%e6%8d%a2mpi_alltoall" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Alltoall(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, comm, ierror)&lt;/code>&lt;/p>
+&lt;p>相当于每个进程作为root进程执行了一次Scatter操作。&lt;/p>
+&lt;pre class="mermaid">flowchart LR
+ %% 初始数据
+ subgraph 初始数据
+ P0["P0: [A0,A1,A2,A3]"]
+ P1["P1: [B0,B1,B2,B3]"]
+ P2["P2: [C0,C1,C2,C3]"]
+ P3["P3: [D0,D1,D2,D3]"]
+ end
+
+ %% 通信规则（简化为关键路径）
+ P0 -->|A1| P1
+ P0 -->|A2| P2
+ P0 -->|A3| P3
+ P1 -->|B0| P0
+ P2 -->|C0| P0
+ P3 -->|D0| P0
+
+ %% 最终结果（突出显示）
+ subgraph 交换结果
+ P0_Result["P0: [A0,B0,C0,D0]"]
+ P1_Result["P1: [A1,B1,C1,D1]"]
+ P2_Result["P2: [A2,B2,C2,D2]"]
+ P3_Result["P3: [A3,B3,C3,D3]"]
+ end
+
+ %% 连接线
+ 初始数据 --> 交换结果
+ style P0_Result fill:#e3f2fd,stroke:#2196f3
+ style P1_Result fill:#e8f5e9,stroke:#4caf50&lt;/pre>
+&lt;template>flowchart LR
+ %% 初始数据
+ subgraph 初始数据
+ P0["P0: [A0,A1,A2,A3]"]
+ P1["P1: [B0,B1,B2,B3]"]
+ P2["P2: [C0,C1,C2,C3]"]
+ P3["P3: [D0,D1,D2,D3]"]
+ end
+
+ %% 通信规则（简化为关键路径）
+ P0 -->|A1| P1
+ P0 -->|A2| P2
+ P0 -->|A3| P3
+ P1 -->|B0| P0
+ P2 -->|C0| P0
+ P3 -->|D0| P0
+
+ %% 最终结果（突出显示）
+ subgraph 交换结果
+ P0_Result["P0: [A0,B0,C0,D0]"]
+ P1_Result["P1: [A1,B1,C1,D1]"]
+ P2_Result["P2: [A2,B2,C2,D2]"]
+ P3_Result["P3: [A3,B3,C3,D3]"]
+ end
+
+ %% 连接线
+ 初始数据 --> 交换结果
+ style P0_Result fill:#e3f2fd,stroke:#2196f3
+ style P1_Result fill:#e8f5e9,stroke:#4caf50&lt;/template>&lt;h3 id="归约mpi_reduce" class="heading-element">&lt;span>归约(MPI_Reduce)&lt;/span>
+ &lt;a href="#%e5%bd%92%e7%ba%a6mpi_reduce" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Reduce(sendbuf, recvbuf, count, datatype, op, root, comm, ierror)&lt;/code>&lt;/p>
+&lt;p>多对一，且完成计算。每个进程将发送缓冲区中数据发到root进 程，root完成指定的操作，并将结果放到接收缓冲。&lt;/p>
+&lt;pre class="mermaid">flowchart TD
+ %% 初始数据
+ subgraph 初始数据
+ P0["P0: A"]
+ P1["P1: B"]
+ P2["P2: C"]
+ P3["P3: D"]
+ end
+
+ %% 归约操作（以求和为例）
+ subgraph 归约过程
+ P0 -->|A| Root
+ P1 -->|B| Root
+ P2 -->|C| Root
+ P3 -->|D| Root
+ Root["MPI_Reduce(OP=SUM)"] --> 结果
+ end
+
+ %% 最终结果
+ 结果["Root进程结果: A+B+C+D"]
+
+ %% 样式
+ style Root fill:#ffebee,stroke:#f44336
+ style 结果 fill:#e8f5e9,stroke:#4caf50&lt;/pre>
+&lt;template>flowchart TD
+ %% 初始数据
+ subgraph 初始数据
+ P0["P0: A"]
+ P1["P1: B"]
+ P2["P2: C"]
+ P3["P3: D"]
+ end
+
+ %% 归约操作（以求和为例）
+ subgraph 归约过程
+ P0 -->|A| Root
+ P1 -->|B| Root
+ P2 -->|C| Root
+ P3 -->|D| Root
+ Root["MPI_Reduce(OP=SUM)"] --> 结果
+ end
+
+ %% 最终结果
+ 结果["Root进程结果: A+B+C+D"]
+
+ %% 样式
+ style Root fill:#ffebee,stroke:#f44336
+ style 结果 fill:#e8f5e9,stroke:#4caf50&lt;/template>&lt;h3 id="扫描mpi_scan" class="heading-element">&lt;span>扫描(MPI_Scan)&lt;/span>
+ &lt;a href="#%e6%89%ab%e6%8f%8fmpi_scan" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Scan(*sendbuf*, *recvbuf*, *count*, *datatype*, *op*, *comm*, *ierror*)&lt;/code>&lt;/p>
+&lt;p>多对多。一种特殊的Reduce：每一个进程多作为root对排在他前面的进程执行归约操作。(类比前缀和)&lt;/p>
+&lt;pre class="mermaid">flowchart LR
+ %% 初始数据
+ subgraph 初始数据
+ P0["P0: A"]
+ P1["P1: B"]
+ P2["P2: C"]
+ P3["P3: D"]
+ end
+
+ %% 扫描过程（以累加为例）
+ subgraph 前缀扫描
+ direction TB
+ P0 -->|A| Scan0["P0结果: A"]
+ P0 -->|A| P1
+ P1 -->|A+B| Scan1["P1结果: A+B"]
+ P1 -->|A+B| P2
+ P2 -->|A+B+C| Scan2["P2结果: A+B+C"]
+ P2 -->|A+B+C| P3
+ P3 -->|A+B+C+D| Scan3["P3结果: A+B+C+D"]
+ end
+
+ %% 样式
+ style Scan0 fill:#e1f5fe,stroke:#039be5
+ style Scan3 fill:#e8f5e9,stroke:#4caf50&lt;/pre>
+&lt;template>flowchart LR
+ %% 初始数据
+ subgraph 初始数据
+ P0["P0: A"]
+ P1["P1: B"]
+ P2["P2: C"]
+ P3["P3: D"]
+ end
+
+ %% 扫描过程（以累加为例）
+ subgraph 前缀扫描
+ direction TB
+ P0 -->|A| Scan0["P0结果: A"]
+ P0 -->|A| P1
+ P1 -->|A+B| Scan1["P1结果: A+B"]
+ P1 -->|A+B| P2
+ P2 -->|A+B+C| Scan2["P2结果: A+B+C"]
+ P2 -->|A+B+C| P3
+ P3 -->|A+B+C+D| Scan3["P3结果: A+B+C+D"]
+ end
+
+ %% 样式
+ style Scan0 fill:#e1f5fe,stroke:#039be5
+ style Scan3 fill:#e8f5e9,stroke:#4caf50&lt;/template>&lt;h3 id="屏障mpi_barrier" class="heading-element">&lt;span>屏障(MPI_Barrier)&lt;/span>
+ &lt;a href="#%e5%b1%8f%e9%9a%9cmpi_barrier" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;code>MPI_Barrier(comm, ierror)&lt;/code>&lt;/p>
+&lt;h2 id="mpi-tracerhttpsgithubcomonewayforevermpi-tracer" class="heading-element">&lt;span>&lt;a href="https://github.com/onewayforever/mpi-tracer"target="_blank" rel="external nofollow noopener noreferrer">mpi-tracer&lt;/a>&lt;/span>
+ &lt;a href="#mpi-tracerhttpsgithubcomonewayforevermpi-tracer" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="源码分析" class="heading-element">&lt;span>源码分析&lt;/span>
+ &lt;a href="#%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;a href="https://mpitutorial.com/"target="_blank" rel="external nofollow noopener noreferrer">MPI Tutorial&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.open-mpi.org/doc/v4.1/"target="_blank" rel="external nofollow noopener noreferrer">Open MPI documentation&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/590277732"target="_blank" rel="external nofollow noopener noreferrer">MPI 与并行计算入门 - 知乎&lt;/a>&lt;/p>
+&lt;p>&lt;a href="http://fcode.cn/download/fcode/MPI_C,C&amp;#43;&amp;#43;,Fortran_Bind.pdf"target="_blank" rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf&lt;/a>&lt;/p></description></item><item><title>汇编语言</title><link>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
  &lt;a href="#%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -20109,235 +20576,4 @@ padding: 2px;">&lt;/div>
 &lt;p>&lt;a href="https://regex101.com/"target="_blank" rel="external nofollow noopener noreferrer">在线正则表达式&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://regexper.com/"target="_blank" rel="external nofollow noopener noreferrer">正则表达式可视化&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://blog.csdn.net/jackandsnow/article/details/103885422"target="_blank" rel="external nofollow noopener noreferrer">re.sub()用法的详细介绍&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.runoob.com/python/python-reg-expressions.html"target="_blank" rel="external nofollow noopener noreferrer">菜鸟教程：python正则表达式&lt;/a>&lt;/p></description></item><item><title>Docker教程</title><link>http://fengchen321.github.io/posts/computer/docker%E6%95%99%E7%A8%8B/</link><pubDate>Mon, 10 Jul 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/docker%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="docker教程" class="heading-element">&lt;span>docker教程&lt;/span>
- &lt;a href="#docker%e6%95%99%e7%a8%8b" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h2 id="1-docker安装" class="heading-element">&lt;span>1 docker安装&lt;/span>
- &lt;a href="#1-docker%e5%ae%89%e8%a3%85" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>&lt;a href="https://docs.docker.com/engine/install/ubuntu/"target="_blank" rel="external nofollow noopener noreferrer">官方教程&lt;/a>&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">ssh abcserver
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># abcserver&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">tmux &lt;span class="c1"># tmux里安装&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 1. 更新 apt 包索引并安装包以允许 apt 通过 HTTPS 使用存储库：&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get update
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get install &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> ca-certificates &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> curl &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> gnupg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2. 添加 Docker 的官方 GPG 密钥： &lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo mkdir -m &lt;span class="m">0755&lt;/span> -p /etc/apt/keyrings
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -fsSL https://download.docker.com/linux/ubuntu/gpg &lt;span class="p">|&lt;/span> sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 3. 使用以下命令设置存储库：&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="s2">&amp;#34;deb [arch=&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>dpkg --print-architecture&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s2"> &amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>. /etc/os-release &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$VERSION_CODENAME&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34; stable&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> sudo tee /etc/apt/sources.list.d/docker.list &amp;gt; /dev/null
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 4. 更新apt软件包索引：&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get update
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 5. 安装Docker引擎，容器和Docker组成&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 6. 通过运行Hello-World Image来验证Docker Engine安装成功：&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># sudo docker run hello-world&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">docker --version&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="2-docker教程" class="heading-element">&lt;span>2 docker教程&lt;/span>
- &lt;a href="#2-docker%e6%95%99%e7%a8%8b" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;strong>将当前用户添加到docker用户组&lt;/strong>
-为了避免每次使用docker命令都需要加上sudo权限，可以将当前用户加入安装中自动创建的docker用户组(可以参考&lt;a href="https://docs.docker.com/engine/install/linux-postinstall/"target="_blank" rel="external nofollow noopener noreferrer">官方文档&lt;/a>)：执行完此操作后，需要退出服务器，再重新登录回来，才可以省去sudo权限。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">sudo usermod -aG docker &lt;span class="nv">$USER&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="镜像images" class="heading-element">&lt;span>镜像（images）&lt;/span>
- &lt;a href="#%e9%95%9c%e5%83%8fimages" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;ol>
-&lt;li>
-&lt;p>&lt;code>docker pull ubuntu:20.04&lt;/code>：拉取一个镜像&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker images&lt;/code>：列出本地所有镜像&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker image rm ubuntu:20.04&lt;/code> 或 &lt;code>docker rmi ubuntu:20.04&lt;/code>：删除镜像ubuntu:20.04&lt;/p>
-&lt;blockquote>
-&lt;p>没有名称直接用id&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [container] commit CONTAINER IMAGE_NAME:TAG&lt;/code>：创建某个container的镜像&lt;/p>
-&lt;blockquote>
-&lt;p>[]内容为可选&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker save -o ubuntu_20_04.tar ubuntu:20.04&lt;/code>：将镜像ubuntu:20.04导出到本地文件ubuntu_20_04.tar中&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker load -i ubuntu_20_04.tar&lt;/code>：将镜像ubuntu:20.04从本地文件ubuntu_20_04.tar中加载出来&lt;/p>
-&lt;/li>
-&lt;/ol>
-&lt;h4 id="容器container" class="heading-element">&lt;span>容器(container)&lt;/span>
- &lt;a href="#%e5%ae%b9%e5%99%a8container" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">docker run -d -t -v /home/待映射路径:/data --privileged --device&lt;span class="o">=&lt;/span>/dev/kfd/ --device&lt;span class="o">=&lt;/span>/dev/dri/ --network&lt;span class="o">=&lt;/span>host --group-add video --name 容器名字 镜像地址&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ol>
-&lt;li>
-&lt;p>&lt;code>docker [container] create -it ubuntu:20.04&lt;/code>：利用镜像ubuntu:20.04创建一个容器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker ps -a&lt;/code>：查看本地的所有容器&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;code>docker ps&lt;/code>：显示所有在运行的容器&lt;/p>
-&lt;p>docker ps -a &amp;ndash;format &amp;ldquo;table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Size}}&amp;rdquo;&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [container] start CONTAINER&lt;/code>：启动容器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [container] stop CONTAINER&lt;/code>：停止容器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [container] restart CONTAINER&lt;/code>：重启容器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [contaienr] run -itd ubuntu:20.04&lt;/code>：创建并启动一个容器&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;code>docker [contaienr] run -it ubuntu:20.04&lt;/code>：创建启动并进入一个容器&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [container] attach CONTAINER&lt;/code>：进入容器&lt;/p>
-&lt;blockquote>
-&lt;p>先按&lt;code>Ctrl+p&lt;/code>，再按&lt;code>Ctrl+q&lt;/code>可以挂起容器&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [container] exec CONTAINER COMMAND&lt;/code>：在容器中执行命令&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;code>docker exec -it CONTAINER /bin/bash&lt;/code> 查看环境&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker [container] rm CONTAINER&lt;/code>：删除容器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker container prune&lt;/code>：删除所有已停止的容器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker export -o xxx.tar CONTAINER&lt;/code>：将容器CONTAINER导出到本地文件xxx.tar中&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker import xxx.tar image_name:tag&lt;/code>：将本地文件xxx.tar导入成镜像，并将镜像命名为image_name:tag&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker export/import&lt;/code>与&lt;code>docker save/load&lt;/code>的区别：&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;code>export/import&lt;/code>会丢弃历史记录和元数据信息，仅保存容器当时的快照状态
-&lt;code>save/load&lt;/code>会保存完整记录，体积更大&lt;/p>
-&lt;/blockquote>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker top CONTAINER&lt;/code>：查看某个容器内的所有进程&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker stats&lt;/code>：查看所有容器的统计信息，包括CPU、内存、存储、网络等信息&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker system df -v&lt;/code>：容器，镜像占用空间显示&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker inspect CONTAINER&lt;/code> : 可视化查看容器配置信息&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 列出 /var/lib/docker/overlay2 下的目录，筛选出以 G 结尾的行&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">du -h -d &lt;span class="m">1&lt;/span> /var/lib/docker/overlay2 &lt;span class="p">|&lt;/span> grep -E &lt;span class="s2">&amp;#34;G\b&amp;#34;&lt;/span> &lt;span class="p">|&lt;/span> head -n -1 &lt;span class="p">|&lt;/span> awk &lt;span class="s1">&amp;#39;{print $1, $2}&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="k">while&lt;/span> &lt;span class="nb">read&lt;/span> size dir&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取与当前目录匹配的容器 ID&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">container_id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>docker ps -qa &lt;span class="p">|&lt;/span> xargs -I &lt;span class="o">{}&lt;/span> sh -c &lt;span class="s2">&amp;#34;docker inspect --format=&amp;#39;{{.GraphDriver.Data.MergedDir}}&amp;#39; {} | grep &amp;#39;&lt;/span>&lt;span class="nv">$dir&lt;/span>&lt;span class="s2">&amp;#39; &amp;gt;/dev/null &amp;amp;&amp;amp; echo {}&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="o">[&lt;/span> -n &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$container_id&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 获取容器名称&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">container_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>docker ps -a --filter &lt;span class="nv">id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$container_id&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> --format &lt;span class="s2">&amp;#34;{{.Names}}&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># 输出所需格式&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$size&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="nv">$dir&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="nv">$container_id&lt;/span>&lt;span class="s2"> &lt;/span>&lt;span class="nv">$container_name&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">fi&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">done&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker cp xxx CONTAINER:xxx&lt;/code> 或 &lt;code>docker cp CONTAINER:xxx xxx&lt;/code>：在本地和容器间复制文件&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker rename CONTAINER1 CONTAINER2&lt;/code>：重命名容器&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>docker update CONTAINER --memory 500MB&lt;/code>：修改容器限制&lt;/p>
-&lt;/li>
-&lt;/ol></description></item></channel></rss>
+&lt;p>&lt;a href="https://www.runoob.com/python/python-reg-expressions.html"target="_blank" rel="external nofollow noopener noreferrer">菜鸟教程：python正则表达式&lt;/a>&lt;/p></description></item></channel></rss>

@@ -1,0 +1,261 @@
+<!doctype html><html itemscope itemtype=http://schema.org/WebPage lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=2"><meta name=robots content="noodp"><title>MPI 基础知识 - fengchen</title><meta name=author content="fengchen"><meta name=description content="并行编程"><meta name=keywords content='Computer,C++,C,Fortran'><meta itemprop=name content="MPI 基础知识"><meta itemprop=description content="并行编程"><meta itemprop=datePublished content="2025-08-07T13:33:12+08:00"><meta itemprop=dateModified content="2025-08-07T13:33:12+08:00"><meta itemprop=wordCount content="2623"><meta itemprop=keywords content="Computer,C++,C,Fortran"><meta property="og:url" content="http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"><meta property="og:site_name" content="fengchen"><meta property="og:title" content="MPI 基础知识"><meta property="og:description" content="并行编程"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-08-07T13:33:12+08:00"><meta property="article:modified_time" content="2025-08-07T13:33:12+08:00"><meta property="article:tag" content="Computer"><meta property="article:tag" content="C++"><meta property="article:tag" content="C"><meta property="article:tag" content="Fortran"><meta name=twitter:card content="summary"><meta name=twitter:title content="MPI 基础知识"><meta name=twitter:description content="并行编程"><meta name=application-name content="FixIt"><meta name=apple-mobile-web-app-title content="FixIt"><meta name=theme-color data-light=#f8f8f8 data-dark=#252627 content="#f8f8f8"><meta name=msapplication-TileColor content="#da532c"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=canonical type=text/html href=http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ title="MPI 基础知识 - fengchen"><link rel=prev type=text/html href=http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/ title=汇编语言><link rel=alternate type=text/markdown href=http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.md title="MPI 基础知识 - fengchen"><link rel=stylesheet href=/css/style.min.css><link rel=preload href=/lib/fontawesome-free/all.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.css></noscript><link rel=preload href=/lib/animate/animate.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.css></noscript><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"MPI 基础知识","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"http:\/\/fengchen321.github.io\/posts\/computer\/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/"},"genre":"posts","keywords":"Computer, C\u002b\u002b, C, Fortran","wordcount":2623,"url":"http:\/\/fengchen321.github.io\/posts\/computer\/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86\/","datePublished":"2025-08-07T13:33:12+08:00","dateModified":"2025-08-07T13:33:12+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"fengchen"},"description":"并行编程"}</script><script src=/js/head/color-scheme.min.js></script></head><body data-header-desktop=sticky data-header-mobile=auto><div class=wrapper data-page-style=normal><header class="desktop animate__faster" id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><nav><ul class=menu><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item delimiter"></li><li class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容…… id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></li><li class="menu-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></li></ul></nav></div></header><header class="mobile animate__faster" id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=fengchen><span class=header-title-text>fengchen</span></a><span class=header-subtitle></span></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><nav><ul class=menu id=menu-mobile><li class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容…… id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fa-solid fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fa-solid fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></li><li class=menu-item><a class=menu-link href=/about/ title=关于本站>关于本站</a></li><li class=menu-item><a class=menu-link href=/posts/>所有文章</a></li><li class=menu-item><a class=menu-link href=/tags/>标签</a></li><li class=menu-item><a class=menu-link href=/categories/>分类</a></li><li class="menu-item menu-system"><span class="menu-system-item theme-switch" title=切换主题><i class="fa-solid fa-adjust fa-fw" aria-hidden=true></i></span></li></ul></nav></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=container><aside class="aside-collection animate__animated animate__fadeIn animate__faster" aria-label=合集></aside><article class="page single"><div class=header><h1 class="single-title animate__animated animate__flipInX"><span>MPI 基础知识</span></h1></div><div class=post-meta><div class=post-meta-line><span class=post-author><span class=author><i class="fa-solid fa-user-circle" aria-hidden=true></i>
+fengchen</span></span><span class=post-included-in>&nbsp;收录于 <a href=/categories/computer/ class=post-category title="分类 - Computer"><i class="fa-regular fa-folder fa-fw" aria-hidden=true></i> Computer</a></span></div><div class=post-meta-line><span title="发布于 2025-08-07 13:33:12"><i class="fa-solid fa-calendar-days fa-fw me-1" aria-hidden=true></i><time datetime=2025-08-07>2025-08-07</time></span>&nbsp;<span title="2623 字"><i class="fa-solid fa-pencil-alt fa-fw me-1" aria-hidden=true></i>约 2700 字</span>&nbsp;<span><i class="fa-regular fa-clock fa-fw me-1" aria-hidden=true></i>预计阅读 6 分钟</span>&nbsp;</div></div><div class="details toc" id=toc-static data-kept=false><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fa-solid fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#核心概念>核心概念</a></li><li><a href=#6个基本函数>6个基本函数</a></li><li><a href=#其他函数>其他函数</a></li><li><a href=#点对点通信-p2p-communication>点对点通信 (P2P Communication)</a></li><li><a href=#群集通信collective-communication>群集通信(Collective Communication)</a><ul><li><a href=#广播mpi_bcast>广播(MPI_Bcast)</a></li><li><a href=#收集mpi_gather>收集（MPI_Gather)</a></li><li><a href=#散播mpi_scatter>散播（MPI_Scatter)</a></li><li><a href=#全局收集mpi_allgather>全局收集(MPI_Allgather)</a></li><li><a href=#全局交换mpi_alltoall>全局交换(MPI_Alltoall)</a></li><li><a href=#归约mpi_reduce>归约(MPI_Reduce)</a></li><li><a href=#扫描mpi_scan>扫描(MPI_Scan)</a></li><li><a href=#屏障mpi_barrier>屏障(MPI_Barrier)</a></li></ul></li><li><a href=#mpi-tracerhttpsgithubcomonewayforevermpi-tracer><a href=https://github.com/onewayforever/mpi-tracer>mpi-tracer</a></a><ul><li><a href=#源码分析>源码分析</a></li></ul></li><li><a href=#参考阅读>参考阅读</a></li></ul></nav></div></div><div class=content id=content><h2 id=mpi-基础知识 class=heading-element><span>MPI 基础知识</span>
+<a href=#mpi-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>MPI (Message Passing Interface)</p><blockquote><p>C/C++: <code>mpi,h</code> -> <code>libmpi.so</code> 编译：<code>mpicxx -o test_mpi_cpp test_mpi.cpp -lmpi</code></p><p>Fortran: <code>mpif.h</code>, 或者使用模板mpi<code>use mpi</code> -> <code>libmpi_mpifh.so</code> 编译：``mpifort test_mpi.F90 -o test_mpi_fortran`</p><p>运行 <code>mpirun -n 8 ./tests/mpi_tests/test_mpi_cpp</code></p></blockquote><h2 id=核心概念 class=heading-element><span>核心概念</span>
+<a href=#%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><strong>消息</strong>：数据（数，数组，字符等等）</p><p><strong>通信域</strong>(communicating domain)：定义一组能够互相发消息的进程，每个进程分配一个序号（rank），通信可以通过<code>rank</code>或者<code>消息标签tag</code>来进行</p><blockquote><p><code>MPI_COMM_WORLD</code>: 所有进程的集合，最大通信域；进入并行环境时自动创建。</p><p><code>MPI_COMM_SELF</code>：只包含使用它的进程</p></blockquote><p>函数格式：</p><blockquote><p>C/C++: <code>int MPI_Comm_size(MPI_Comm comm, int *size);</code></p><p>Fortran: <code>call MPI_Comm_size(comm, size, ieror)</code></p><p>C++: <code>int MPI::COMM::Get_size() const;</code></p></blockquote><h2 id=6个基本函数 class=heading-element><span>6个基本函数</span>
+<a href=#6%e4%b8%aa%e5%9f%ba%e6%9c%ac%e5%87%bd%e6%95%b0 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><code>MPI_Init(ierr)</code>: 初始化并行环境，通信域<code>MPI_COMM_WORLD</code>形成</p><p><code>MPI_Finalize(ierr)</code>: 退出并行环境</p><p><code>MPI_Comm_size(comm, size, ierr)</code>: 返回进程数size</p><p><code>MPI_Comm_rank(comm, rank, iree)</code>: 返回进程编号rank， <code>0~size-1</code></p><p><code>MPI_Send(buf, count, datatype, dest, tag, comm, ierr)</code>: 消息发送</p><p><code>MPI_Recv(buf, count, datatype, source, tag, comm, status, ierr)</code>: 消息接收</p><blockquote><p>消息缓冲（MessageBuffer）：消息起始地址（<code>buf</code>），数据个数（<code>count</code>）， 消息类型（<code> datatype</code>） 实际长度= datatype * count</p><p>消息信封（Message Envelop)：接收/发送进程号(<code>dest/source</code>)，消息标签 0-32767（<code>tag</code>），通信域（<code>comm</code>）</p><p><code>status</code>：消息接收的状态</p></blockquote><h2 id=其他函数 class=heading-element><span>其他函数</span>
+<a href=#%e5%85%b6%e4%bb%96%e5%87%bd%e6%95%b0 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><code>MPI_Abort(comm, errorcode, ireror)</code>: 出现特殊情况，需要中途停止MPI</p><p><code>MPI_Get_count(status, datatype, count, ierror)</code>: 接收数据的数量</p><p><code>MPI_Pack_size(incount, datatype, comm, size, ierror)</code>: 确定要打包的数据占用空间大小</p><p><code>MPI_Pack(inbuf, incount, datatype, outbuf, outsize, position, comm, ierror)</code>:将数据打包，由&lt;inbuf, incount, datatype>指定的消息到&lt;outbuf, outsize>指定的空间</p><h2 id=点对点通信-p2p-communication class=heading-element><span>点对点通信 (P2P Communication)</span>
+<a href=#%e7%82%b9%e5%af%b9%e7%82%b9%e9%80%9a%e4%bf%a1-p2p-communication class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p>通信模式</p><blockquote><p>同步发送(Synchrounous Send)</p><p>缓冲发送(Buffered Send)</p><p>标准发送(Standed Send)</p><p>就绪发送(Ready Send)</p></blockquote><blockquote><p>发送类别：4种通信模式 * （阻塞+ 非阻塞）</p><p><code>MPI_Send(buf, count, datatype, dest, tag, comm, ierr)</code></p><p><code>MPI_Isend(buf, count, datatype, dest, tag, comm, request, ierror)</code>： 标准非阻塞通信 request：通信请求</p><p><code>MPI_Ssend(buf, count, datatype, dest, tag, comm, ierror)</code>: 标准同步发送</p><p><code>MPI_Issend(buf, count, datatype, dest, tag, comm, request, ierror)</code></p><p><code>MPI_Bsend(buf, count, datatype, dest, tag, comm, ierror)</code>：具有用户指定缓冲的基本发送</p><p><code>MPI_Ibsend(buf, count, datatype, dest, tag, comm, request, ierror)</code></p><p><code>MPI_Rsend(buf, count, datatype, dest, tag, comm, ierror)</code></p><p><code>MPI_Irsend(buf, count, datatype, dest, tag, comm, request, ierror)</code></p><p>接收类别：阻塞和非阻塞</p><p><code>MPI_Recv(buf, count, datatype, source, tag, comm, status, ierror)</code></p><p><code>MPI_Irecv(buf, count, datatype, source, tag, comm, request, ierror)</code></p></blockquote><h2 id=群集通信collective-communication class=heading-element><span>群集通信(Collective Communication)</span>
+<a href=#%e7%be%a4%e9%9b%86%e9%80%9a%e4%bf%a1collective-communication class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><table><thead><tr><th><strong>类型</strong></th><th><strong>函数名</strong></th><th><strong>含义</strong></th></tr></thead><tbody><tr><td>通信</td><td><span style=color:red><strong>MPI_Bcast</strong></span></td><td>一对多广播同样的消息</td></tr><tr><td></td><td><span style=color:red><strong>MPI_Gather</strong></span></td><td>多对一收集各进程信息</td></tr><tr><td></td><td><code>MPI_Gatherv</code></td><td>一般化</td></tr><tr><td></td><td><span style=color:red><strong>MPI_Allgather</strong></span></td><td>全局收集，每个进程执行 Gather</td></tr><tr><td></td><td><code>MPI_Allgatherv</code></td><td>一般化</td></tr><tr><td></td><td><span style=color:red><strong>MPI_Scatter</strong></span></td><td>一对多散播不同消息</td></tr><tr><td></td><td><code>MPI_Scatterv</code></td><td>一般化</td></tr><tr><td></td><td><span style=color:red><strong>MPI_Alltoall</strong></span></td><td>多对多全局交换，每个进程执行 Scatter</td></tr><tr><td></td><td><code>MPI_Alltoallv</code></td><td>一般化</td></tr><tr><td>聚集</td><td><span style=color:red><strong>MPI_Reduce</strong></span></td><td>多对一归约</td></tr><tr><td></td><td><code>MPI_Allreduce</code></td><td>一般化</td></tr><tr><td></td><td><code>MPI_Reduce_scatter</code></td><td>归约并散播</td></tr><tr><td></td><td><span style=color:red><strong>MPI_Scan</strong></span></td><td>扫描。每个进程对自己前面的进程归约</td></tr><tr><td>同步</td><td><span style=color:red><strong>MPI_Barrier</strong></span></td><td>路障同步</td></tr></tbody></table><p><strong>多对一</strong>和<strong>一对多</strong>还需要指明root进程，<strong>多对多</strong>只需要指明通信域。</p><h3 id=广播mpi_bcast class=heading-element><span>广播(MPI_Bcast)</span>
+<a href=#%e5%b9%bf%e6%92%admpi_bcast class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Bcast(buffer, count, datatype, root, comm, ierror)</code></p><p>一对多，消息相同。有一个root进程，由它向所有进程发送消息。 对于root本身，缓冲区即是发送缓冲又是接收缓冲。</p><pre class=mermaid>sequenceDiagram
+    participant P0 as P0 (Root)
+    participant P1 as P1
+    participant P2 as P2
+    participant P3 as P3
+
+    P0->>P1: MPI_Bcast(A)
+    P0->>P2: MPI_Bcast(A)
+    P0->>P3: MPI_Bcast(A)
+    Note right of P0: 所有进程收到相同数据</pre><template>sequenceDiagram
+participant P0 as P0 (Root)
+participant P1 as P1
+participant P2 as P2
+participant P3 as P3
+P0->>P1: MPI_Bcast(A)
+P0->>P2: MPI_Bcast(A)
+P0->>P3: MPI_Bcast(A)
+Note right of P0: 所有进程收到相同数据</template><h3 id=收集mpi_gather class=heading-element><span>收集（MPI_Gather)</span>
+<a href=#%e6%94%b6%e9%9b%86mpi_gather class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Gather(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm, ierror)</code></p><p>多对一，消息相同。有一个root进程用来接收，其他(包含root)发送。 这n个消息按进程的标号进行拼接。所有非root进程忽略接收缓冲。</p><pre class=mermaid>sequenceDiagram
+    participant P0 as P0 (Root)
+    participant P1 as P1
+    participant P2 as P2
+    participant P3 as P3
+
+    Note over P1,P3: 各进程持有不同数据
+    P1->>P0: MPI_Gather(A)
+    P2->>P0: MPI_Gather(B)
+    P3->>P0: MPI_Gather(C)
+    Note over P0: 收集结果: [A,B,C]</pre><template>sequenceDiagram
+participant P0 as P0 (Root)
+participant P1 as P1
+participant P2 as P2
+participant P3 as P3
+Note over P1,P3: 各进程持有不同数据
+P1->>P0: MPI_Gather(A)
+P2->>P0: MPI_Gather(B)
+P3->>P0: MPI_Gather(C)
+Note over P0: 收集结果: [A,B,C]</template><h3 id=散播mpi_scatter class=heading-element><span>散播（MPI_Scatter)</span>
+<a href=#%e6%95%a3%e6%92%admpi_scatter class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Scatter(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, root, comm, ierror)</code></p><p>一对多，消息不同，顺序存储。有一个root进程，将发送缓冲中的数据按进程编号，有序的发送。非root进程忽略发送缓冲</p><pre class=mermaid>sequenceDiagram
+    participant P0 as P0 (Root)
+    participant P1 as P1
+    participant P2 as P2
+    participant P3 as P3
+
+    Note over P0: 初始数据: [A,B,C,D]
+    P0->>P1: MPI_Scatter(A)
+    P0->>P2: MPI_Scatter(B)
+    P0->>P3: MPI_Scatter(C)
+    Note left of P0: 最后一个元素D通常留在P0
+    Note right of P1: 各进程获得不同数据</pre><template>sequenceDiagram
+participant P0 as P0 (Root)
+participant P1 as P1
+participant P2 as P2
+participant P3 as P3
+Note over P0: 初始数据: [A,B,C,D]
+P0->>P1: MPI_Scatter(A)
+P0->>P2: MPI_Scatter(B)
+P0->>P3: MPI_Scatter(C)
+Note left of P0: 最后一个元素D通常留在P0
+Note right of P1: 各进程获得不同数据</template><h3 id=全局收集mpi_allgather class=heading-element><span>全局收集(MPI_Allgather)</span>
+<a href=#%e5%85%a8%e5%b1%80%e6%94%b6%e9%9b%86mpi_allgather class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Allgather(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, comm, ierror)</code></p><p>相当于每个进程都作为root进程执行了一次Gather操作。</p><pre class=mermaid>flowchart LR
+    subgraph 初始数据
+        P0((P0:A))
+        P1((P1:B))
+        P2((P2:C))
+        P3((P3:D))
+    end
+
+    subgraph Allgather结果
+        P0r[P0:A,B,C,D]
+        P1r[P1:A,B,C,D]
+        P2r[P2:A,B,C,D]
+        P3r[P3:A,B,C,D]
+    end
+
+    初始数据 -->|MPI_Allgather| Allgather结果</pre><template>flowchart LR
+subgraph 初始数据
+P0((P0:A))
+P1((P1:B))
+P2((P2:C))
+P3((P3:D))
+end
+subgraph Allgather结果
+P0r[P0:A,B,C,D]
+P1r[P1:A,B,C,D]
+P2r[P2:A,B,C,D]
+P3r[P3:A,B,C,D]
+end
+初始数据 -->|MPI_Allgather| Allgather结果</template><h3 id=全局交换mpi_alltoall class=heading-element><span>全局交换(MPI_Alltoall)</span>
+<a href=#%e5%85%a8%e5%b1%80%e4%ba%a4%e6%8d%a2mpi_alltoall class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Alltoall(sendbuf, sendcount, sendtype, recvbuf, recvcount, recvtype, comm, ierror)</code></p><p>相当于每个进程作为root进程执行了一次Scatter操作。</p><pre class=mermaid>flowchart LR
+    %% 初始数据
+    subgraph 初始数据
+        P0["P0: [A0,A1,A2,A3]"]
+        P1["P1: [B0,B1,B2,B3]"]
+        P2["P2: [C0,C1,C2,C3]"]
+        P3["P3: [D0,D1,D2,D3]"]
+    end
+
+    %% 通信规则（简化为关键路径）
+    P0 -->|A1| P1
+    P0 -->|A2| P2
+    P0 -->|A3| P3
+    P1 -->|B0| P0
+    P2 -->|C0| P0
+    P3 -->|D0| P0
+
+    %% 最终结果（突出显示）
+    subgraph 交换结果
+        P0_Result["P0: [A0,B0,C0,D0]"]
+        P1_Result["P1: [A1,B1,C1,D1]"]
+        P2_Result["P2: [A2,B2,C2,D2]"]
+        P3_Result["P3: [A3,B3,C3,D3]"]
+    end
+
+    %% 连接线
+    初始数据 --> 交换结果
+    style P0_Result fill:#e3f2fd,stroke:#2196f3
+    style P1_Result fill:#e8f5e9,stroke:#4caf50</pre><template>flowchart LR
+%% 初始数据
+subgraph 初始数据
+P0["P0: [A0,A1,A2,A3]"]
+P1["P1: [B0,B1,B2,B3]"]
+P2["P2: [C0,C1,C2,C3]"]
+P3["P3: [D0,D1,D2,D3]"]
+end
+%% 通信规则（简化为关键路径）
+P0 -->|A1| P1
+P0 -->|A2| P2
+P0 -->|A3| P3
+P1 -->|B0| P0
+P2 -->|C0| P0
+P3 -->|D0| P0
+%% 最终结果（突出显示）
+subgraph 交换结果
+P0_Result["P0: [A0,B0,C0,D0]"]
+P1_Result["P1: [A1,B1,C1,D1]"]
+P2_Result["P2: [A2,B2,C2,D2]"]
+P3_Result["P3: [A3,B3,C3,D3]"]
+end
+%% 连接线
+初始数据 --> 交换结果
+style P0_Result fill:#e3f2fd,stroke:#2196f3
+style P1_Result fill:#e8f5e9,stroke:#4caf50</template><h3 id=归约mpi_reduce class=heading-element><span>归约(MPI_Reduce)</span>
+<a href=#%e5%bd%92%e7%ba%a6mpi_reduce class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Reduce(sendbuf, recvbuf, count, datatype, op, root, comm, ierror)</code></p><p>多对一，且完成计算。每个进程将发送缓冲区中数据发到root进 程，root完成指定的操作，并将结果放到接收缓冲。</p><pre class=mermaid>flowchart TD
+    %% 初始数据
+    subgraph 初始数据
+        P0["P0: A"]
+        P1["P1: B"]
+        P2["P2: C"]
+        P3["P3: D"]
+    end
+
+    %% 归约操作（以求和为例）
+    subgraph 归约过程
+        P0 -->|A| Root
+        P1 -->|B| Root
+        P2 -->|C| Root
+        P3 -->|D| Root
+        Root["MPI_Reduce(OP=SUM)"] --> 结果
+    end
+
+    %% 最终结果
+    结果["Root进程结果: A+B+C+D"]
+
+    %% 样式
+    style Root fill:#ffebee,stroke:#f44336
+    style 结果 fill:#e8f5e9,stroke:#4caf50</pre><template>flowchart TD
+%% 初始数据
+subgraph 初始数据
+P0["P0: A"]
+P1["P1: B"]
+P2["P2: C"]
+P3["P3: D"]
+end
+%% 归约操作（以求和为例）
+subgraph 归约过程
+P0 -->|A| Root
+P1 -->|B| Root
+P2 -->|C| Root
+P3 -->|D| Root
+Root["MPI_Reduce(OP=SUM)"] --> 结果
+end
+%% 最终结果
+结果["Root进程结果: A+B+C+D"]
+%% 样式
+style Root fill:#ffebee,stroke:#f44336
+style 结果 fill:#e8f5e9,stroke:#4caf50</template><h3 id=扫描mpi_scan class=heading-element><span>扫描(MPI_Scan)</span>
+<a href=#%e6%89%ab%e6%8f%8fmpi_scan class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Scan(*sendbuf*, *recvbuf*, *count*, *datatype*, *op*, *comm*, *ierror*)</code></p><p>多对多。一种特殊的Reduce：每一个进程多作为root对排在他前面的进程执行归约操作。(类比前缀和)</p><pre class=mermaid>flowchart LR
+    %% 初始数据
+    subgraph 初始数据
+        P0["P0: A"]
+        P1["P1: B"]
+        P2["P2: C"]
+        P3["P3: D"]
+    end
+
+    %% 扫描过程（以累加为例）
+    subgraph 前缀扫描
+        direction TB
+        P0 -->|A| Scan0["P0结果: A"]
+        P0 -->|A| P1
+        P1 -->|A+B| Scan1["P1结果: A+B"]
+        P1 -->|A+B| P2
+        P2 -->|A+B+C| Scan2["P2结果: A+B+C"]
+        P2 -->|A+B+C| P3
+        P3 -->|A+B+C+D| Scan3["P3结果: A+B+C+D"]
+    end
+
+    %% 样式
+    style Scan0 fill:#e1f5fe,stroke:#039be5
+    style Scan3 fill:#e8f5e9,stroke:#4caf50</pre><template>flowchart LR
+%% 初始数据
+subgraph 初始数据
+P0["P0: A"]
+P1["P1: B"]
+P2["P2: C"]
+P3["P3: D"]
+end
+%% 扫描过程（以累加为例）
+subgraph 前缀扫描
+direction TB
+P0 -->|A| Scan0["P0结果: A"]
+P0 -->|A| P1
+P1 -->|A+B| Scan1["P1结果: A+B"]
+P1 -->|A+B| P2
+P2 -->|A+B+C| Scan2["P2结果: A+B+C"]
+P2 -->|A+B+C| P3
+P3 -->|A+B+C+D| Scan3["P3结果: A+B+C+D"]
+end
+%% 样式
+style Scan0 fill:#e1f5fe,stroke:#039be5
+style Scan3 fill:#e8f5e9,stroke:#4caf50</template><h3 id=屏障mpi_barrier class=heading-element><span>屏障(MPI_Barrier)</span>
+<a href=#%e5%b1%8f%e9%9a%9cmpi_barrier class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><p><code>MPI_Barrier(comm, ierror)</code></p><h2 id=mpi-tracerhttpsgithubcomonewayforevermpi-tracer class=heading-element><span><a href=https://github.com/onewayforever/mpi-tracer target=_blank rel="external nofollow noopener noreferrer">mpi-tracer</a></span>
+<a href=#mpi-tracerhttpsgithubcomonewayforevermpi-tracer class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><h3 id=源码分析 class=heading-element><span>源码分析</span>
+<a href=#%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90 class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h3><h2 id=参考阅读 class=heading-element><span>参考阅读</span>
+<a href=#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb class=heading-mark><svg class="octicon octicon-link" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5.0 114.95 4.95l-2.5 2.5a3.5 3.5.0 01-4.95.0.751.751.0 01.018-1.042.751.751.0 011.042-.018 1.998 1.998.0 002.83.0l2.5-2.5a2.002 2.002.0 00-2.83-2.83l-1.25 1.25a.751.751.0 01-1.042-.018.751.751.0 01-.018-1.042zm-4.69 9.64a1.998 1.998.0 002.83.0l1.25-1.25a.751.751.0 011.042.018.751.751.0 01.018 1.042l-1.25 1.25a3.5 3.5.0 11-4.95-4.95l2.5-2.5a3.5 3.5.0 014.95.0.751.751.0 01-.018 1.042.751.751.0 01-1.042.018 1.998 1.998.0 00-2.83.0l-2.5 2.5a1.998 1.998.0 000 2.83z"/></svg></a></h2><p><a href=https://mpitutorial.com/ target=_blank rel="external nofollow noopener noreferrer">MPI Tutorial</a></p><p><a href=https://www.open-mpi.org/doc/v4.1/ target=_blank rel="external nofollow noopener noreferrer">Open MPI documentation</a></p><p><a href=https://zhuanlan.zhihu.com/p/590277732 target=_blank rel="external nofollow noopener noreferrer">MPI 与并行计算入门 - 知乎</a></p><p><a href=http://fcode.cn/download/fcode/MPI_C,C++,Fortran_Bind.pdf target=_blank rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span title="更新于 2025-08-07 13:33:12">更新于 2025-08-07&nbsp;</span></div><div class=post-info-license><span><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 X" data-sharer=twitter data-url=http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ data-title="MPI 基础知识" data-hashtags=Computer,C++,C,Fortran><i class="fa-brands fa-x-twitter fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ data-hashtag=Computer><i class="fa-brands fa-facebook-square fa-fw" aria-hidden=true></i></a>
+<a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ data-title="MPI 基础知识"><i class="fa-brands fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fa-solid fa-tags fa-fw me-1" aria-hidden=true></i><a href=/tags/computer/ class=post-tag title="标签 - Computer">Computer</a><a href=/tags/c++/ class=post-tag title="标签 - C++">C++</a><a href=/tags/c/ class=post-tag title="标签 - C">C</a><a href=/tags/fortran/ class=post-tag title="标签 - Fortran">Fortran</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/ class=post-nav-item rel=prev title=汇编语言><i class="fa-solid fa-angle-left fa-fw" aria-hidden=true></i>汇编语言</a></div></div></article><aside class=toc id=toc-auto aria-label=目录><h2 class=toc-title>目录&nbsp;<i class="toc-icon fa-solid fa-angle-down fa-fw" aria-hidden=true></i></h2><div class="toc-content always-active" id=toc-content-auto></div></aside></main><footer class=footer><div class=footer-container><div class="footer-line powered">由 <a href=https://gohugo.io/ target=_blank rel="external nofollow noopener noreferrer" title="Hugo 0.139.0"><img class=hugo-icon src=/images/hugo.min.svg alt="Hugo logo"> Hugo</a> 强力驱动 | 主题 - <a href=https://github.com/hugo-fixit/FixIt target=_blank rel=external title="FixIt v0.3.15"><img class=fixit-icon src=/images/fixit.min.svg alt="FixIt logo"> FixIt</a></div><div class="footer-line copyright" itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw" aria-hidden=true></i>
+<span itemprop=copyrightYear>2024 - 2025</span><span class=author itemprop=copyrightHolder>
+<a href=/>fengchen</a></span><span class="license footer-divider"><a rel="license external nofollow noopener noreferrer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div class=widgets><div class="fixed-buttons animate__faster d-none"><div class="fixed-button back-to-top" role=button aria-label=回到顶部><i class="fa-solid fa-arrow-up fa-fw" aria-hidden=true></i><span class="variant-numeric d-none">0%</span></div></div><div id=mask></div><div class=reading-progress-bar style=left:0;top:0></div><noscript><div class=noscript-warning>该网站在启用 JavaScript 的情况下效果最佳。</div></noscript></div><script type=module>
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.3.0/dist/mermaid.esm.min.mjs';
+    
+    
+    
+    window.mermaid = mermaid;
+  </script><link rel=preload href=/lib/katex/katex.min.css as=style onload='this.removeAttribute("onload"),this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/katex/katex.min.css></noscript><link rel=stylesheet href=/lib/cookieconsent/cookieconsent.min.css><script src=/lib/autocomplete/autocomplete.min.js defer></script><script src=/lib/sharer/sharer.min.js async defer></script><script src=/lib/katex/katex.min.js defer></script><script src=/lib/katex/auto-render.min.js defer></script><script src=/lib/katex/copy-tex.min.js defer></script><script src=/lib/katex/mhchem.min.js defer></script><script src=/lib/cookieconsent/cookieconsent.min.js defer></script><script>window.config={code:{copyTitle:"复制到剪贴板",editLockTitle:"锁定可编辑代码块",editUnLockTitle:"解锁可编辑代码块",editable:!0,maxShownLines:100},comment:{enable:!1},cookieconsent:{content:{dismiss:"同意",link:"了解更多",message:"本网站使用 Cookies 来改善您的浏览体验。"},enable:!0,palette:{button:{background:"#f0f0f0"},popup:{background:"#1aa3ff"}},theme:"edgeless"},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},mermaid:{themes:["default","dark"]},search:{highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50},version:"v0.3.15"}</script><script src=/js/theme.min.js defer></script></body></html>
