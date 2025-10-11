@@ -157,6 +157,10 @@ KaTeX 默认不支持 numcases 环境，还是使用cases吧。
 
 [katex在线](https://katex.org/#demo)
 
+# 插件
+
+Export Bookmarks To Json 书签导出为json格式
+
 ---
 
 > 作者: fengchen  

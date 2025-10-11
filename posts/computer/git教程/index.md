@@ -184,6 +184,12 @@ git rebase --continue
 git push --force origin branch_name # 强制提交 
 
 git commit --amend --author=&#34;新名字 &lt;新邮箱&gt;&#34; # 修改最近一次commit的作者
+
+# 1. 添加忘记的文件
+git add --all  # 或者 git add 具体的文件
+
+#2.将新文件追加到上一次的 commit
+git commit --amend --no-edit
 ```
 
 **拉取远程分支**

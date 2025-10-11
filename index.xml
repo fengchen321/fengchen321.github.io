@@ -1,4 +1,334 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Thu, 07 Aug 2025 13:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>MPI 基础知识</title><link>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 07 Aug 2025 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="mpi-基础知识" class="heading-element">&lt;span>MPI 基础知识&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sat, 11 Oct 2025 10:00:00 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>📚 我的书签收藏</title><link>http://fengchen321.github.io/posts/other/bookmarks/</link><pubDate>Sat, 11 Oct 2025 10:00:00 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/bookmarks/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;p>后续整理 &amp;hellip;&lt;/p>
+&lt;div id="bookmarks-container" style="margin-top: 20px;">
+ &lt;div style="text-align: center; padding: 40px; color: #666;">
+ &lt;p>书签加载中...&lt;/p>
+ &lt;/div>
+&lt;/div>
+&lt;script>
+function renderBookmarks(data) {
+ const container = document.getElementById('bookmarks-container');
+ 
+ if (!data || Object.keys(data).length === 0) {
+ container.innerHTML = '&lt;div style="text-align: center; padding: 40px; color: #999;">没有书签数据&lt;/div>';
+ return;
+ }
+
+ let html = '&lt;div class="bookmarks-layout">';
+ 
+ Object.entries(data).forEach(([folderName, folderItems]) => {
+ html += `
+ &lt;div class="main-folder">
+ &lt;div class="folder-header">
+ &lt;svg class="folder-icon" viewBox="0 0 24 24" fill="currentColor">
+ &lt;path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+ &lt;/svg>
+ ${folderName}
+ &lt;/div>
+ &lt;div class="folder-content">
+ `;
+ 
+ if (Array.isArray(folderItems)) {
+ folderItems.forEach(item => {
+ if (typeof item === 'object' &amp;&amp; !item.href) {
+ // 子文件夹
+ Object.entries(item).forEach(([subFolderName, subItems]) => {
+ html += `
+ &lt;div class="sub-folder">
+ &lt;div class="sub-folder-header">
+ &lt;svg class="sub-folder-icon" viewBox="0 0 24 24" fill="currentColor">
+ &lt;path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+ &lt;/svg>
+ ${subFolderName}
+ &lt;/div>
+ &lt;div class="links-grid">
+ `;
+ 
+ if (Array.isArray(subItems)) {
+ subItems.forEach(subItem => {
+ if (subItem.href) {
+ // 使用实际的网站favicon
+ const domain = new URL(subItem.href).hostname;
+ const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&amp;sz=32`;
+ 
+ html += `
+ &lt;a href="${subItem.href}" target="_blank" class="bookmark-link" title="${subItem.name}">
+ &lt;img src="${faviconUrl}" alt="" class="favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+ &lt;svg class="fallback-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+ &lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+ &lt;/svg>
+ &lt;span class="link-text">${subItem.name}&lt;/span>
+ &lt;/a>
+ `;
+ }
+ });
+ }
+ 
+ html += '&lt;/div>&lt;/div>';
+ });
+ } 
+ else if (item.href) {
+ // 直接书签 - 使用网站favicon
+ const domain = new URL(item.href).hostname;
+ const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&amp;sz=32`;
+ 
+ html += `
+ &lt;a href="${item.href}" target="_blank" class="bookmark-link" title="${item.name}">
+ &lt;img src="${faviconUrl}" alt="" class="favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+ &lt;svg class="fallback-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+ &lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+ &lt;/svg>
+ &lt;span class="link-text">${item.name}&lt;/span>
+ &lt;/a>
+ `;
+ }
+ });
+ }
+ 
+ html += '&lt;/div>&lt;/div>';
+ });
+ 
+ html += '&lt;/div>';
+ container.innerHTML = html;
+}
+
+// 初始化加载
+document.addEventListener('DOMContentLoaded', () => {
+ fetch('/bookmarks.json')
+ .then(response => response.json())
+ .then(data => renderBookmarks(data))
+ .catch(error => {
+ console.error('加载书签失败:', error);
+ document.getElementById('bookmarks-container').innerHTML = 
+ '&lt;div style="text-align: center; padding: 40px; color: #e74c3c;">加载书签失败，请刷新页面重试&lt;/div>';
+ });
+});
+
+// 添加CSS样式
+const style = document.createElement('style');
+style.textContent = `
+ .bookmarks-layout {
+ display: grid;
+ grid-template-columns: 1fr);
+ gap: 30px;
+ margin-top: 20px;
+ max-width: 1400px;
+ margin-left: auto;
+ margin-right: auto;
+ }
+
+ .main-folder {
+ background: white;
+ border-radius: 20px;
+ padding: 30px;
+ box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+ border: 1px solid #f0f0f0;
+ transition: transform 0.3s, box-shadow 0.3s;
+ }
+
+ .main-folder:hover {
+ transform: translateY(-3px);
+ box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+ }
+
+ .folder-header {
+ font-weight: 700;
+ margin-bottom: 25px;
+ padding-bottom: 20px;
+ border-bottom: 3px solid #667eea;
+ color: #2d3748;
+ display: flex;
+ align-items: center;
+ font-size: 22px;
+ letter-spacing: -0.5px;
+ }
+
+ .folder-icon {
+ width: 24px;
+ height: 24px;
+ margin-right: 15px;
+ color: #667eea;
+ }
+
+ .folder-content {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr); /* 子文件夹2列 */
+ gap: 20px;
+ }
+
+ .sub-folder {
+ background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+ border-radius: 16px;
+ padding: 20px;
+ border: 1px solid #e2e8f0;
+ transition: transform 0.2s;
+ }
+
+ .sub-folder:hover {
+ transform: translateX(5px);
+ }
+
+ .sub-folder-header {
+ font-weight: 600;
+ margin-bottom: 16px;
+ color: #4a5568;
+ display: flex;
+ align-items: center;
+ font-size: 16px;
+ letter-spacing: -0.3px;
+ }
+
+ .sub-folder-icon {
+ width: 18px;
+ height: 18px;
+ margin-right: 10px;
+ color: #a78bfa;
+ }
+
+ .links-grid {
+ display: grid;
+ grid-template-columns: repeat(6, 1fr); /* 控制每个子文件夹内的列数 */
+ gap: 8px; /* 控制链接之间的间距 */
+ }
+
+ .bookmark-link {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: 10px 6px;
+ background: white;
+ border-radius: 12px;
+ text-decoration: none;
+ color: #4a5568;
+ font-size: 12px; /* 控制文字大小 */
+ border: 1px solid #e2e8f0;
+ transition: all 0.3s ease;
+ min-height: 70px; /* 控制链接卡片高度 */
+ text-align: center;
+ line-height: 1.4;
+ position: relative;
+ overflow: hidden;
+ }
+
+ .bookmark-link::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: -100%;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+ transition: left 0.5s;
+ }
+
+ .bookmark-link:hover {
+ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ color: white;
+ border-color: #667eea;
+ transform: translateY(-2px) scale(1.05);
+ box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+ }
+
+ .bookmark-link:hover::before {
+ left: 100%;
+ }
+
+ .bookmark-link:hover .link-text {
+ color: white;
+ }
+
+ .favicon {
+ width: 18px;
+ height: 18px;
+ margin-bottom: 6px;
+ border-radius: 4px;
+ transition: transform 0.3s ease;
+ }
+
+ .bookmark-link:hover .favicon {
+ transform: scale(1.2);
+ }
+
+ .fallback-icon {
+ width: 16px;
+ height: 16px;
+ margin-bottom: 6px;
+ color: #f59e0b;
+ transition: transform 0.3s ease;
+ }
+
+ .bookmark-link:hover .fallback-icon {
+ color: white;
+ transform: scale(1.2);
+ }
+
+ .link-text {
+ overflow: hidden;
+ text-overflow: ellipsis;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+ word-break: break-word;
+ font-weight: 500;
+ transition: color 0.3s ease;
+ }
+
+ /* 响应式设计 */
+ @media (max-width: 1200px) {
+ .bookmarks-layout {
+ grid-template-columns: 1fr;
+ gap: 25px;
+ max-width: 800px;
+ }
+ 
+ .links-grid {
+ grid-template-columns: repeat(5, 1fr);
+ }
+ }
+
+ @media (max-width: 768px) {
+ .bookmarks-layout {
+ gap: 20px;
+ }
+ 
+ .main-folder {
+ padding: 20px;
+ }
+ 
+ .links-grid {
+ grid-template-columns: repeat(4, 1fr);
+ gap: 6px;
+ }
+ 
+ .bookmark-link {
+ min-height: 60px;
+ font-size: 11px;
+ padding: 8px 4px;
+ }
+ 
+ .folder-header {
+ font-size: 20px;
+ }
+ }
+
+ @media (max-width: 480px) {
+ .links-grid {
+ grid-template-columns: repeat(3, 1fr);
+ }
+ 
+ .bookmark-link {
+ min-height: 55px;
+ }
+ }
+
+ @media (max-width: 360px) {
+ .links-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+ }
+`;
+document.head.appendChild(style);
+&lt;/script></description></item><item><title>MPI 基础知识</title><link>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 07 Aug 2025 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="mpi-基础知识" class="heading-element">&lt;span>MPI 基础知识&lt;/span>
  &lt;a href="#mpi-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -1322,7 +1652,12 @@
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;p>KaTeX 默认不支持 numcases 环境，还是使用cases吧。&lt;/p>
-&lt;p>&lt;a href="https://katex.org/#demo"target="_blank" rel="external nofollow noopener noreferrer">katex在线&lt;/a>&lt;/p></description></item><item><title>Blog配置</title><link>http://fengchen321.github.io/posts/other/blog/</link><pubDate>Sun, 24 Nov 2024 20:14:59 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/blog/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="安装hugo" class="heading-element">&lt;span>安装Hugo&lt;/span>
+&lt;p>&lt;a href="https://katex.org/#demo"target="_blank" rel="external nofollow noopener noreferrer">katex在线&lt;/a>&lt;/p>
+&lt;h2 id="插件" class="heading-element">&lt;span>插件&lt;/span>
+ &lt;a href="#%e6%8f%92%e4%bb%b6" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>Export Bookmarks To Json 书签导出为json格式&lt;/p></description></item><item><title>Blog配置</title><link>http://fengchen321.github.io/posts/other/blog/</link><pubDate>Sun, 24 Nov 2024 20:14:59 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/blog/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="安装hugo" class="heading-element">&lt;span>安装Hugo&lt;/span>
  &lt;a href="#%e5%ae%89%e8%a3%85hugo" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -20145,435 +20480,4 @@ padding: 2px;">&lt;/div>
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;p>&lt;a href="https://makefiletutorial.com/"target="_blank" rel="external nofollow noopener noreferrer">Makefile Tutorial By Example&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.gnu.org/software/make/manual/make.html#Complex-Makefile"target="_blank" rel="external nofollow noopener noreferrer">GNU make&lt;/a>&lt;/p></description></item><item><title>正则表达式</title><link>http://fengchen321.github.io/posts/computer/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link><pubDate>Sat, 15 Jul 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="正则表达式" class="heading-element">&lt;span>正则表达式&lt;/span>
- &lt;a href="#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h2 id="正则表达式语法" class="heading-element">&lt;span>正则表达式语法&lt;/span>
- &lt;a href="#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f%e8%af%ad%e6%b3%95" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h3 id="元字符" class="heading-element">&lt;span>元字符&lt;/span>
- &lt;a href="#%e5%85%83%e5%ad%97%e7%ac%a6" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th style="text-align: center">元字符&lt;/th>
- &lt;th>描述&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td style="text-align: center">.&lt;/td>
- &lt;td>句号匹配任意单个字符除了换行符。&lt;br />&amp;quot;&lt;code>.ar&lt;/code>&amp;quot; =&amp;gt; The &lt;font color=blue>car&lt;/font> &lt;font color=blue>par&lt;/font>ked in the &lt;font color=blue>gar&lt;/font>age.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">[ ]&lt;/td>
- &lt;td>匹配方括号内的任意字符&lt;br />&amp;quot;&lt;code>[Tt]he&lt;/code>&amp;quot; =&amp;gt; &lt;font color=blue>The&lt;/font> car parked in &lt;font color=blue>the&lt;/font> garage.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">[^ ]&lt;/td>
- &lt;td>否定的字符种类。匹配除了方括号里的任意字符&lt;br />&amp;quot;&lt;code>[^c]ar&lt;/code>=&amp;gt; The car &lt;font color=blue>par&lt;/font>ked in the &lt;font color=blue>gar&lt;/font>age.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">*&lt;/td>
- &lt;td>匹配&amp;gt;=0个重复的在*号之前的字符。&lt;br />&amp;quot;&lt;code>[a-z]*&lt;/code>&amp;quot; =&amp;gt; T&lt;font color=blue>he car parked in the garage&lt;/font> #21.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">+&lt;/td>
- &lt;td>匹配&amp;gt;=1个重复的+号前的字符。&lt;br />&amp;quot;&lt;code>c.+t&lt;/code>&amp;quot; =&amp;gt; The fat &lt;font color=blue>cat sat on the mat&lt;/font>.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">?&lt;/td>
- &lt;td>标记?之前的字符为可选.&lt;br />&amp;quot;&lt;code>[T]?he&lt;/code>&amp;quot; =&amp;gt; &lt;font color=blue>The&lt;/font> car is parked in t&lt;font color=blue>he&lt;/font> garage.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">{n,m}&lt;/td>
- &lt;td>匹配num个大括号之前的字符或字符集 (n &amp;lt;= num &amp;lt;= m).&lt;br />0~9之间匹配最少2位，最多3位的数字：&amp;quot;&lt;code>[0-9]{2,3}&lt;/code>&amp;quot; =&amp;gt; The number was 9.&lt;font color=blue>999&lt;/font>7 but we rounded it off to &lt;font color=blue>10&lt;/font>.0.&lt;br />0~9之间匹配只是2位的数字：&amp;quot;&lt;code>[0-9]{2,}&lt;/code>&amp;quot; =&amp;gt; The number was 9.&lt;font color=blue>9997&lt;/font> but we rounded it off to &lt;font color=blue>10&lt;/font>.0.&lt;br />0~9之间匹配3位数字：&amp;quot;&lt;code>[0-9]{3}&lt;/code>&amp;quot; =&amp;gt; The number was 9.&lt;font color=blue>999&lt;/font>7 but we rounded it off to 10.0.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">(xyz)&lt;/td>
- &lt;td>字符集，匹配与 xyz 完全相等的字符串.&lt;br />&amp;quot;`(c&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">|&lt;/td>
- &lt;td>或运算符，匹配符号前或后的字符.&lt;br /> &amp;ldquo;`(T&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\&lt;/td>
- &lt;td>转义字符,用于匹配一些保留的字符 &lt;code>[ ] ( ) { } . * + ? ^ $ \ |&lt;/code>&lt;br />&amp;quot;`(f&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">^&lt;/td>
- &lt;td>从开始行开始匹配&lt;br />`[T&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">$&lt;/td>
- &lt;td>从末端开始匹配&lt;br />&amp;quot;&lt;code>(at\.)&lt;/code>&amp;rdquo; =&amp;gt;The fat c&lt;font color=blue>at.&lt;/font> s&lt;font color=blue>at.&lt;/font> on the m&lt;font color=blue>at.&lt;/font>&lt;br />&amp;quot;&lt;code>(at\.$)&lt;/code>&amp;quot;=&amp;gt;The fat cat. sat. on the m&lt;font color=blue>at.&lt;/font>&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h3 id="简写字符集" class="heading-element">&lt;span>简写字符集&lt;/span>
- &lt;a href="#%e7%ae%80%e5%86%99%e5%ad%97%e7%ac%a6%e9%9b%86" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th style="text-align: center">简写&lt;/th>
- &lt;th>描述&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td style="text-align: center">.&lt;/td>
- &lt;td>除换行符外的所有字符&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\w&lt;/td>
- &lt;td>匹配所有字母数字，等同于 &lt;code>[a-zA-Z0-9_]&lt;/code>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\W&lt;/td>
- &lt;td>匹配所有非字母数字，即符号，等同于： &lt;code>[^\w]&lt;/code>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\d&lt;/td>
- &lt;td>匹配数字： &lt;code>[0-9]&lt;/code>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\D&lt;/td>
- &lt;td>匹配非数字： &lt;code>[^\d]&lt;/code>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\s&lt;/td>
- &lt;td>匹配所有空格字符，等同于： &lt;code>[\t\n\f\r\p{Z}]&lt;/code>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\S&lt;/td>
- &lt;td>匹配所有非空格字符： &lt;code>[^\s]&lt;/code>&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\f&lt;/td>
- &lt;td>匹配一个换页符&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\n&lt;/td>
- &lt;td>匹配一个换行符&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\r&lt;/td>
- &lt;td>匹配一个回车符&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\t&lt;/td>
- &lt;td>匹配一个制表符&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\v&lt;/td>
- &lt;td>匹配一个垂直制表符&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">\p&lt;/td>
- &lt;td>匹配 CR/LF（等同于 &lt;code>\r\n&lt;/code>），用来匹配 DOS 行终止符&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h3 id="零宽度断言" class="heading-element">&lt;span>零宽度断言&lt;/span>
- &lt;a href="#%e9%9b%b6%e5%ae%bd%e5%ba%a6%e6%96%ad%e8%a8%80" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th style="text-align: center">符号&lt;/th>
- &lt;th>描述&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td style="text-align: center">?=&lt;/td>
- &lt;td>正先行断言-存在&lt;br />“`(T&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">?!&lt;/td>
- &lt;td>负先行断言-排除&lt;br />“`(T&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">?&amp;lt;=&lt;/td>
- &lt;td>正后发断言-存在&lt;br />“`(?&amp;lt;=(T&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">?&amp;lt;!&lt;/td>
- &lt;td>负后发断言-排除&lt;br />“`(?&amp;lt;!(T&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h3 id="标志可选项" class="heading-element">&lt;span>标志(可选项)&lt;/span>
- &lt;a href="#%e6%a0%87%e5%bf%97%e5%8f%af%e9%80%89%e9%a1%b9" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th style="text-align: center">标志&lt;/th>
- &lt;th>描述&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td style="text-align: center">i&lt;/td>
- &lt;td>忽略大小写。&lt;br />&amp;quot;&lt;code>The/gi&lt;/code>&amp;quot; =&amp;gt; &lt;font color=blue>The&lt;/font> fat cat sat on &lt;font color=blue>the&lt;/font> mat.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">g&lt;/td>
- &lt;td>全局搜索。&lt;br />&amp;quot;&lt;code>.(at)/gi&lt;/code>&amp;quot; =&amp;gt; The &lt;font color=blue>fat&lt;/font> &lt;font color=blue>cat&lt;/font> &lt;font color=blue>sat&lt;/font> on the &lt;font color=blue>mat&lt;/font>.&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">m&lt;/td>
- &lt;td>多行修饰符：锚点元字符 &lt;code>^&lt;/code> &lt;code>$&lt;/code> 工作范围在每行的起始。&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h3 id="贪婪与惰性匹配" class="heading-element">&lt;span>贪婪与惰性匹配&lt;/span>
- &lt;a href="#%e8%b4%aa%e5%a9%aa%e4%b8%8e%e6%83%b0%e6%80%a7%e5%8c%b9%e9%85%8d" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;p>默认贪婪匹配，意味着会匹配尽可能长的子串&lt;/p>
-&lt;p>&lt;code>?&lt;/code>转为惰性匹配,则遇到就停&lt;/p>
-&lt;blockquote>
-&lt;p>&amp;ldquo;&lt;code>(.*at)&lt;/code>&amp;quot;=&amp;gt;&lt;font color=blue>The fat cat sat on the mat&lt;/font>.&lt;/p>
-&lt;p>&amp;ldquo;&lt;code>(.*?at)&lt;/code>&amp;quot;=&amp;gt;&lt;font color=blue>The fat&lt;/font> cat sat on the mat.&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="正则表达式操作" class="heading-element">&lt;span>正则表达式操作&lt;/span>
- &lt;a href="#%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f%e6%93%8d%e4%bd%9c" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h3 id="匹配" class="heading-element">&lt;span>匹配&lt;/span>
- &lt;a href="#%e5%8c%b9%e9%85%8d" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;regex&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="kt">bool&lt;/span> &lt;span class="nf">regex_match&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">basic_string&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">ST&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">SA&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">s&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">const&lt;/span> &lt;span class="n">basic_regex&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">traits&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">rgx&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_flag_type&lt;/span> &lt;span class="n">flags&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_default&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/**
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">	第一个参数s为：需要用正则表达式去匹配的字符串，简言之就是要处理的字符串。
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">	第二个参数rgx为：为一个basic_regex的一个对象，进行匹配的模式，用正则字符串表示，其声明为:
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">	(1)typedef basic_regex&amp;lt;char&amp;gt; regex;//正常字符处理（常用）
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">	(2)typedef basic_regex&amp;lt;wchar_t&amp;gt; wregex;//宽字符处理
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">	第三个参数flags是控制第二个参数如何去匹配，第三个参数处可以设置一个或多个常量去控制，一般设置有默认值
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">	返回值为：如果匹配成功，返回True,否则返回False
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm">*/&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="搜索" class="heading-element">&lt;span>搜索&lt;/span>
- &lt;a href="#%e6%90%9c%e7%b4%a2" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;span class="lnt">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">bool&lt;/span> &lt;span class="nf">regex_search&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">basic_string&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">ST&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">SA&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">s&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">const&lt;/span> &lt;span class="n">basic_regex&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">traits&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">rgx&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_flag_type&lt;/span> &lt;span class="n">flags&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_default&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//参数含义与regex_match一致，此方法不返回匹配成功的字符串，只是确定里面是否有满足正则式的字句
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kt">bool&lt;/span> &lt;span class="nf">regex_search&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">basic_string&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">ST&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">SA&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">s&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">match_results&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="k">typename&lt;/span> &lt;span class="n">basic_string&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">ST&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">SA&lt;/span>&lt;span class="o">&amp;gt;::&lt;/span>&lt;span class="n">const_iterator&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">Alloc&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">m&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">const&lt;/span> &lt;span class="n">basic_regex&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">traits&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">rgx&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_flag_type&lt;/span> &lt;span class="n">flags&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_default&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">//其他参数含义一样，多了一个m参数，其含义为此处为一个match_results的类型，其作用是存储匹配的结果或者满足子表达式匹配的结果，返回结果为一个迭代器
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="替换" class="heading-element">&lt;span>替换&lt;/span>
- &lt;a href="#%e6%9b%bf%e6%8d%a2" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;span class="lnt">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cpp" data-lang="cpp">&lt;span class="line">&lt;span class="cl">&lt;span class="n">basic_string&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">ST&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">SA&lt;/span>&lt;span class="o">&amp;gt;&lt;/span> &lt;span class="n">regex_replace&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="k">const&lt;/span> &lt;span class="n">basic_string&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">ST&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">SA&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">s&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">const&lt;/span> &lt;span class="n">basic_regex&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">charT&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">traits&lt;/span>&lt;span class="o">&amp;gt;&amp;amp;&lt;/span> &lt;span class="n">rgx&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">const&lt;/span> &lt;span class="n">charT&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">fmt&lt;/span>&lt;span class="p">,&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_flag_type&lt;/span> &lt;span class="n">flags&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">regex_constants&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">match_default&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//第一个参数s表示要被操作的字符串对象
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//第二个参数rgx为匹配正则表达式
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//第三个参数fmt为以何种方式进行替换
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//第四个参数flags为一种方式，代表怎样去替换
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//返回值为：如果匹配成功返回已经替换成功的字符串，否则匹配失败，返回原字符串
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="py-正则表达式操作" class="heading-element">&lt;span>py-正则表达式操作&lt;/span>
- &lt;a href="#py-%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f%e6%93%8d%e4%bd%9c" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;code>re&lt;/code> 模块的一般使用步骤&lt;/p>
-&lt;blockquote>
-&lt;p>使用&lt;code>compile&lt;/code>函数将正则表达式的字符串形式编译为一个 &lt;code>Pattern&lt;/code> 对象
-通过 &lt;code>Pattern&lt;/code> 对象提供的一系列方法对文本进行匹配查找，获得匹配结果（一个 &lt;code>Match&lt;/code> 对象）
-最后使用 &lt;code>Match &lt;/code>对象提供的属性和方法获得信息，根据需要进行其他的操作&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="compile函数" class="heading-element">&lt;span>compile函数&lt;/span>
- &lt;a href="#compile%e5%87%bd%e6%95%b0" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;blockquote>
-&lt;p>用于编译正则表达式，生成一个 Pattern 对象&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">re&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">compile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pattern&lt;/span>&lt;span class="p">[,&lt;/span> &lt;span class="n">flag&lt;/span>&lt;span class="p">])&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>pattern： 匹配的正则表达式&lt;/p>
-&lt;p>flag ：一个可选参数，表示匹配模式，比如忽略大小写，多行模式等&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="match" class="heading-element">&lt;span>match&lt;/span>
- &lt;a href="#match" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;blockquote>
-&lt;p>从字符串的起始位置匹配一个模式，如果不是起始位置匹配成功的话，match()就返回none。&lt;strong>必须从字符串开头匹配&lt;/strong>&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="k">match&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pattern&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">string&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">flags&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>pattern：匹配的正则表达式&lt;/p>
-&lt;p>string：要匹配的字符串&lt;/p>
-&lt;p>flags：标志位，用于控制正则表达式的匹配方式，如：是否区分大小写，多行匹配等等&lt;/p>
-&lt;/blockquote>
-&lt;p>返回一个匹配的对象，而不是匹配的内容。从起始位置开始没有匹配成功，即便其他部分包含需要匹配的内容，re.match()也会返回None。&lt;/p>
-&lt;p>一般一个小括号括起来就是一个捕获组。使用group()来提取每组匹配到的字符串。group()会返回一个包含所有小组字符串的元组，从 0 到 所含的小组号。&lt;/p>
-&lt;blockquote>
-&lt;ul>
-&lt;li>0：表示正则表达式中符合条件的字符串。&lt;/li>
-&lt;li>1：表示正则表达式中符合条件的字符串中的第一个() 中的字符串。&lt;/li>
-&lt;li>2：表示正则表达式中符合条件的字符串中的第二个() 中的字符串。&lt;/li>
-&lt;li>&amp;hellip;&lt;/li>
-&lt;/ul>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;span class="lnt">9
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">re&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">msg&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s1">&amp;#39;name:Alice,age:6,score:80&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">obj&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">re&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="k">match&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;name:(\w+),age:(\d+)&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">msg&lt;/span>&lt;span class="p">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1"># name:Alice,age:6 符合条件的字符串&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1"># Alice 第一匹配&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">group&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">2&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="c1"># 6 第二匹配&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">groups&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="c1"># (&amp;#39;Alice&amp;#39;, &amp;#39;6&amp;#39;)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">print&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">obj&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">span&lt;/span>&lt;span class="p">())&lt;/span> &lt;span class="c1"># (0, 16) 返回结果的范围&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="search" class="heading-element">&lt;span>search&lt;/span>
- &lt;a href="#search" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h3 id="findall" class="heading-element">&lt;span>findall&lt;/span>
- &lt;a href="#findall" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h3 id="finditer" class="heading-element">&lt;span>finditer&lt;/span>
- &lt;a href="#finditer" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h3 id="split" class="heading-element">&lt;span>split&lt;/span>
- &lt;a href="#split" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h3 id="sub" class="heading-element">&lt;span>sub&lt;/span>
- &lt;a href="#sub" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;blockquote>
-&lt;p>用于替换字符串中的匹配项&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pattern&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">repl&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">count&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">flags&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">):&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">_compile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">pattern&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">flags&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">sub&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">repl&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">string&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">count&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>pattern：该参数表示正则中的模式字符串；&lt;/p>
-&lt;p>repl：该参数表示要替换的字符串（即匹配到pattern后替换为repl），也可以是个函数；&lt;/p>
-&lt;p>string：该参数表示要被处理（查找替换）的原始字符串；&lt;/p>
-&lt;p>count：可选参数，表示是要替换的最大次数，而且必须是非负整数，该参数默认为0，即所有的匹配都会被替换；&lt;/p>
-&lt;p>flags：可选参数，表示编译时用的匹配模式（如忽略大小写、多行模式等），数字形式，默认为0。&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="subn" class="heading-element">&lt;span>subn&lt;/span>
- &lt;a href="#subn" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://www.apiref.com/cpp-zh/cpp/header/regex.html"target="_blank" rel="external nofollow noopener noreferrer">标准库头文件&amp;lt;regex&amp;gt;&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.cnblogs.com/zxin/archive/2013/01/26/2877765.html"target="_blank" rel="external nofollow noopener noreferrer">最全的常用正则表达式大全——包括校验数字、字符、一些特殊的需求等等&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/ziishaned/learn-regex/blob/master/translations/README-zh-simple.md"target="_blank" rel="external nofollow noopener noreferrer">学习正则表达式&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.cnblogs.com/coolcpp/p/cpp-regex.html"target="_blank" rel="external nofollow noopener noreferrer">C++正则表达式&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://regex101.com/"target="_blank" rel="external nofollow noopener noreferrer">在线正则表达式&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://regexper.com/"target="_blank" rel="external nofollow noopener noreferrer">正则表达式可视化&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://blog.csdn.net/jackandsnow/article/details/103885422"target="_blank" rel="external nofollow noopener noreferrer">re.sub()用法的详细介绍&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.runoob.com/python/python-reg-expressions.html"target="_blank" rel="external nofollow noopener noreferrer">菜鸟教程：python正则表达式&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;a href="https://www.gnu.org/software/make/manual/make.html#Complex-Makefile"target="_blank" rel="external nofollow noopener noreferrer">GNU make&lt;/a>&lt;/p></description></item></channel></rss>

@@ -1,4 +1,334 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>所有文章 - fengchen</title><link>http://fengchen321.github.io/posts/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Thu, 07 Aug 2025 13:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>MPI 基础知识</title><link>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 07 Aug 2025 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="mpi-基础知识" class="heading-element">&lt;span>MPI 基础知识&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>所有文章 - fengchen</title><link>http://fengchen321.github.io/posts/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sat, 11 Oct 2025 10:00:00 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>📚 我的书签收藏</title><link>http://fengchen321.github.io/posts/other/bookmarks/</link><pubDate>Sat, 11 Oct 2025 10:00:00 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/bookmarks/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;p>后续整理 &amp;hellip;&lt;/p>
+&lt;div id="bookmarks-container" style="margin-top: 20px;">
+ &lt;div style="text-align: center; padding: 40px; color: #666;">
+ &lt;p>书签加载中...&lt;/p>
+ &lt;/div>
+&lt;/div>
+&lt;script>
+function renderBookmarks(data) {
+ const container = document.getElementById('bookmarks-container');
+ 
+ if (!data || Object.keys(data).length === 0) {
+ container.innerHTML = '&lt;div style="text-align: center; padding: 40px; color: #999;">没有书签数据&lt;/div>';
+ return;
+ }
+
+ let html = '&lt;div class="bookmarks-layout">';
+ 
+ Object.entries(data).forEach(([folderName, folderItems]) => {
+ html += `
+ &lt;div class="main-folder">
+ &lt;div class="folder-header">
+ &lt;svg class="folder-icon" viewBox="0 0 24 24" fill="currentColor">
+ &lt;path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+ &lt;/svg>
+ ${folderName}
+ &lt;/div>
+ &lt;div class="folder-content">
+ `;
+ 
+ if (Array.isArray(folderItems)) {
+ folderItems.forEach(item => {
+ if (typeof item === 'object' &amp;&amp; !item.href) {
+ // 子文件夹
+ Object.entries(item).forEach(([subFolderName, subItems]) => {
+ html += `
+ &lt;div class="sub-folder">
+ &lt;div class="sub-folder-header">
+ &lt;svg class="sub-folder-icon" viewBox="0 0 24 24" fill="currentColor">
+ &lt;path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/>
+ &lt;/svg>
+ ${subFolderName}
+ &lt;/div>
+ &lt;div class="links-grid">
+ `;
+ 
+ if (Array.isArray(subItems)) {
+ subItems.forEach(subItem => {
+ if (subItem.href) {
+ // 使用实际的网站favicon
+ const domain = new URL(subItem.href).hostname;
+ const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&amp;sz=32`;
+ 
+ html += `
+ &lt;a href="${subItem.href}" target="_blank" class="bookmark-link" title="${subItem.name}">
+ &lt;img src="${faviconUrl}" alt="" class="favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+ &lt;svg class="fallback-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+ &lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+ &lt;/svg>
+ &lt;span class="link-text">${subItem.name}&lt;/span>
+ &lt;/a>
+ `;
+ }
+ });
+ }
+ 
+ html += '&lt;/div>&lt;/div>';
+ });
+ } 
+ else if (item.href) {
+ // 直接书签 - 使用网站favicon
+ const domain = new URL(item.href).hostname;
+ const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&amp;sz=32`;
+ 
+ html += `
+ &lt;a href="${item.href}" target="_blank" class="bookmark-link" title="${item.name}">
+ &lt;img src="${faviconUrl}" alt="" class="favicon" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+ &lt;svg class="fallback-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+ &lt;path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+ &lt;/svg>
+ &lt;span class="link-text">${item.name}&lt;/span>
+ &lt;/a>
+ `;
+ }
+ });
+ }
+ 
+ html += '&lt;/div>&lt;/div>';
+ });
+ 
+ html += '&lt;/div>';
+ container.innerHTML = html;
+}
+
+// 初始化加载
+document.addEventListener('DOMContentLoaded', () => {
+ fetch('/bookmarks.json')
+ .then(response => response.json())
+ .then(data => renderBookmarks(data))
+ .catch(error => {
+ console.error('加载书签失败:', error);
+ document.getElementById('bookmarks-container').innerHTML = 
+ '&lt;div style="text-align: center; padding: 40px; color: #e74c3c;">加载书签失败，请刷新页面重试&lt;/div>';
+ });
+});
+
+// 添加CSS样式
+const style = document.createElement('style');
+style.textContent = `
+ .bookmarks-layout {
+ display: grid;
+ grid-template-columns: 1fr);
+ gap: 30px;
+ margin-top: 20px;
+ max-width: 1400px;
+ margin-left: auto;
+ margin-right: auto;
+ }
+
+ .main-folder {
+ background: white;
+ border-radius: 20px;
+ padding: 30px;
+ box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+ border: 1px solid #f0f0f0;
+ transition: transform 0.3s, box-shadow 0.3s;
+ }
+
+ .main-folder:hover {
+ transform: translateY(-3px);
+ box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+ }
+
+ .folder-header {
+ font-weight: 700;
+ margin-bottom: 25px;
+ padding-bottom: 20px;
+ border-bottom: 3px solid #667eea;
+ color: #2d3748;
+ display: flex;
+ align-items: center;
+ font-size: 22px;
+ letter-spacing: -0.5px;
+ }
+
+ .folder-icon {
+ width: 24px;
+ height: 24px;
+ margin-right: 15px;
+ color: #667eea;
+ }
+
+ .folder-content {
+ display: grid;
+ grid-template-columns: repeat(2, 1fr); /* 子文件夹2列 */
+ gap: 20px;
+ }
+
+ .sub-folder {
+ background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+ border-radius: 16px;
+ padding: 20px;
+ border: 1px solid #e2e8f0;
+ transition: transform 0.2s;
+ }
+
+ .sub-folder:hover {
+ transform: translateX(5px);
+ }
+
+ .sub-folder-header {
+ font-weight: 600;
+ margin-bottom: 16px;
+ color: #4a5568;
+ display: flex;
+ align-items: center;
+ font-size: 16px;
+ letter-spacing: -0.3px;
+ }
+
+ .sub-folder-icon {
+ width: 18px;
+ height: 18px;
+ margin-right: 10px;
+ color: #a78bfa;
+ }
+
+ .links-grid {
+ display: grid;
+ grid-template-columns: repeat(6, 1fr); /* 控制每个子文件夹内的列数 */
+ gap: 8px; /* 控制链接之间的间距 */
+ }
+
+ .bookmark-link {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: 10px 6px;
+ background: white;
+ border-radius: 12px;
+ text-decoration: none;
+ color: #4a5568;
+ font-size: 12px; /* 控制文字大小 */
+ border: 1px solid #e2e8f0;
+ transition: all 0.3s ease;
+ min-height: 70px; /* 控制链接卡片高度 */
+ text-align: center;
+ line-height: 1.4;
+ position: relative;
+ overflow: hidden;
+ }
+
+ .bookmark-link::before {
+ content: '';
+ position: absolute;
+ top: 0;
+ left: -100%;
+ width: 100%;
+ height: 100%;
+ background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+ transition: left 0.5s;
+ }
+
+ .bookmark-link:hover {
+ background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+ color: white;
+ border-color: #667eea;
+ transform: translateY(-2px) scale(1.05);
+ box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+ }
+
+ .bookmark-link:hover::before {
+ left: 100%;
+ }
+
+ .bookmark-link:hover .link-text {
+ color: white;
+ }
+
+ .favicon {
+ width: 18px;
+ height: 18px;
+ margin-bottom: 6px;
+ border-radius: 4px;
+ transition: transform 0.3s ease;
+ }
+
+ .bookmark-link:hover .favicon {
+ transform: scale(1.2);
+ }
+
+ .fallback-icon {
+ width: 16px;
+ height: 16px;
+ margin-bottom: 6px;
+ color: #f59e0b;
+ transition: transform 0.3s ease;
+ }
+
+ .bookmark-link:hover .fallback-icon {
+ color: white;
+ transform: scale(1.2);
+ }
+
+ .link-text {
+ overflow: hidden;
+ text-overflow: ellipsis;
+ display: -webkit-box;
+ -webkit-line-clamp: 2;
+ -webkit-box-orient: vertical;
+ word-break: break-word;
+ font-weight: 500;
+ transition: color 0.3s ease;
+ }
+
+ /* 响应式设计 */
+ @media (max-width: 1200px) {
+ .bookmarks-layout {
+ grid-template-columns: 1fr;
+ gap: 25px;
+ max-width: 800px;
+ }
+ 
+ .links-grid {
+ grid-template-columns: repeat(5, 1fr);
+ }
+ }
+
+ @media (max-width: 768px) {
+ .bookmarks-layout {
+ gap: 20px;
+ }
+ 
+ .main-folder {
+ padding: 20px;
+ }
+ 
+ .links-grid {
+ grid-template-columns: repeat(4, 1fr);
+ gap: 6px;
+ }
+ 
+ .bookmark-link {
+ min-height: 60px;
+ font-size: 11px;
+ padding: 8px 4px;
+ }
+ 
+ .folder-header {
+ font-size: 20px;
+ }
+ }
+
+ @media (max-width: 480px) {
+ .links-grid {
+ grid-template-columns: repeat(3, 1fr);
+ }
+ 
+ .bookmark-link {
+ min-height: 55px;
+ }
+ }
+
+ @media (max-width: 360px) {
+ .links-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
+ }
+`;
+document.head.appendChild(style);
+&lt;/script></description></item><item><title>MPI 基础知识</title><link>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 07 Aug 2025 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="mpi-基础知识" class="heading-element">&lt;span>MPI 基础知识&lt;/span>
  &lt;a href="#mpi-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
