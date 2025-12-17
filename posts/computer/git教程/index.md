@@ -157,6 +157,31 @@
 
 &gt; 第一个提交后，第二个提交先pull新版本，合并本地修改冲突，再push自己的
 
+## 提交PR
+
+```shell
+# fork 仓库
+git clone git@github.com:fengchen321/rocm-systems.git # 克隆自己的仓库
+cd rocm-systems
+git remote add upstream https://github.com/ROCm/rocm-systems.git
+git remote -v
+
+git checkout develop
+git pull upstream develop
+git checkout -b fix-cache-info-name-bug
+修改后
+git add .
+git commit -m &#34;commit info&#34;
+git push origin fix-cache-info-name-bug
+
+访问自己的 fork仓库：https://github.com/fengchen321/rocm-systems
+黄色横幅提示 &#34;Compare &amp; pull request&#34;，点击；或者点击&#34;Pull requests&#34; 标签，然后点击 &#34;New pull request&#34;
+确保设置 base repository,base  -&gt; head repository，compare 是原仓库和自己仓库分支对应 
+填写PR信息提交即可
+```
+
+
+
 ## 常用
 
 ```shell
