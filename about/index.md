@@ -1,92 +1,48 @@
-# About
+# 
 
-
-# 👨‍💻 fengchen
-
-**折腾爱好者 | 思考探索 | 保持好奇**
-
-**C&#43;&#43;** 学习者
-
-## 💡 生活即探索，折腾不停歇！🚀
-
-## 🎲 小游戏：猜数字
-### 规则
-1. 系统会随机选择一个 1 到 10 之间的数字。
-2. 你需要通过点击按钮猜出这个数字。
-3. 每次点击后，系统会告诉你猜得太大还是太小。
-4. 你可以反复点击按钮直到猜对为止。
+# 🛠️ fengchen
+### CV Researcher → Trace &amp; Profiling Engineer
 
 ---
 
-### 游戏开始：
-&lt;details&gt;
-  &lt;summary&gt;点击开始游戏&lt;/summary&gt;
+## 🔍 快速概览
+[![C&#43;&#43;](https://img.shields.io/badge/C&#43;&#43;-17%2F20%2F23-blue?logo=c%2B%2B)](https://isocpp.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-red?logo=pytorch)](https://pytorch.org/)
+[![CUDA](https://img.shields.io/badge/CUDA-11%2B-green?logo=nvidia)](https://developer.nvidia.com/cuda-zone)
+[![LLVM](https://img.shields.io/badge/LLVM-Toolchain-orange?logo=llvm)](https://llvm.org/)
+[![Perf](https://img.shields.io/badge/Performance-Profiling-orange)](https://perf.wiki.kernel.org/)
+[![Linux](https://img.shields.io/badge/Linux-System-grey?logo=linux)](https://www.kernel.org/)
+[![GDB](https://img.shields.io/badge/GDB-Debugger-green?logo=gnu)](https://www.gnu.org/software/gdb/)
 
-  **请选择一个 1-10 之间的数字。**
 
-  &lt;div id=&#34;buttonsContainer&#34;&gt;&lt;/div&gt;
-  &lt;div id=&#34;feedback&#34;&gt;&lt;/div&gt;
-  &lt;div id=&#34;reward&#34; style=&#34;display:none;&#34;&gt;
-    &lt;div id=&#34;eggMessage&#34;&gt;&lt;/div&gt;
-  &lt;/div&gt;
+---
 
-  &lt;script&gt;
-    let secretNumber = Math.floor(Math.random() * 10) &#43; 1;
-    let attempts = 0;
+**学术期（CV 研究）**
 
-    // 动态生成数字按钮
-    function generateButtons() {
-      let container = document.getElementById(&#39;buttonsContainer&#39;);
-      container.innerHTML = &#39;&#39;;  // 清空之前的按钮
-      for (let i = 1; i &lt;= 10; i&#43;&#43;) {
-        let button = document.createElement(&#39;button&#39;);
-        button.innerText = i;
-        button.onclick = () =&gt; guessNumber(i);
-        container.appendChild(button);
-      }
-    }
+▸ 图像分类、目标检测、注意力机制、Vision Transformer
 
-    function guessNumber(userGuess) {
-      attempts&#43;&#43;;
+**工程期（Trace &amp; Profiling）**
 
-      // 清空之前的反馈
-      document.getElementById(&#39;feedback&#39;).innerHTML = &#39;&#39;;
+▸ 全链路调用追踪，精确定位 AI 模型性能瓶颈
 
-      if (userGuess === secretNumber) {
-        showReward();
-        disableButtons();
-      } else if (userGuess &lt; secretNumber) {
-        document.getElementById(&#39;feedback&#39;).innerHTML = `😢 你的猜测 ${userGuess} 太小了，再试试！`;
-      } else {
-        document.getElementById(&#39;feedback&#39;).innerHTML = `😢 你的猜测 ${userGuess} 太大了，再试试！`;
-      }
-    }
+▸ 多维度性能分析工具设计
 
-    function showReward() {
-      let eggMessage = &#39;&#39;;
-      if (attempts &lt;= 3) {
-        eggMessage = `🎉 哇！你真厉害，猜了 ${attempts} 次就猜对了！🎉&lt;br&gt;&lt;strong&gt;彩蛋&lt;/strong&gt;：你是数字猜测天才！`;
-      } else if (attempts &lt;= 6) {
-        eggMessage = `🎉 很棒！你用了 ${attempts} 次才猜对！&lt;br&gt;&lt;strong&gt;彩蛋&lt;/strong&gt;：你有很好的直觉！`;
-      } else {
-        eggMessage = `🎉 恭喜你终于猜对了！&lt;br&gt;&lt;strong&gt;彩蛋&lt;/strong&gt;：虽然用了 ${attempts} 次，但你还是完成了任务！`;
-      }
+▸ 实时性能监控与异常检测
 
-      document.getElementById(&#39;eggMessage&#39;).innerHTML = eggMessage;
-      document.getElementById(&#39;reward&#39;).style.display = &#39;block&#39;;
-    }
+---
 
-    function disableButtons() {
-      let buttons = document.querySelectorAll(&#39;#buttonsContainer button&#39;);
-      buttons.forEach(button =&gt; {
-        button.disabled = true;  // 禁用所有按钮
-      });
-    }
-    // 初始化游戏
-    generateButtons();
-  &lt;/script&gt;
+## 🌱 持续探索
 
-&lt;/details&gt;
+• 🔍 **细粒度 Trace**：函数级/算子级调用链追踪
+
+• ⚡ **Profiling 优化**：eBPF/BPF 零侵扰性能分析
+
+• 🎯 **瓶颈定位**：算子融合、内存分配、GPU 并发
+
+• 📊 **可视化分析**：交互式性能报告
+
+---
+
 
 ---
 
