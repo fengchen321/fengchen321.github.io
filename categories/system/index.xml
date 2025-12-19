@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>System - 分类 - fengchen</title><link>http://fengchen321.github.io/categories/system/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Thu, 18 Dec 2025 10:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/categories/system/index.xml" rel="self" type="application/rss+xml"/><item><title>ELF文件格式详解</title><link>http://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="http://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
+ &lt;a href="#elf%e6%96%87%e4%bb%b6%e6%a0%bc%e5%bc%8f%e8%af%a6%e8%a7%a3" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="什么是elf" class="heading-element">&lt;span>什么是ELF&lt;/span>
+ &lt;a href="#%e4%bb%80%e4%b9%88%e6%98%afelf" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>ELF（Executable and Linkable Format）是Linux平台的可执行和可链接文件的文件格式标准。ELF文件以文件开头的ELF字符串为标识，这个Magic String用于标记文件类型。&lt;/p></description></item><item><title>汇编语言</title><link>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="http://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
+ &lt;a href="#%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="配置安装" class="heading-element">&lt;span>配置安装&lt;/span>
+ &lt;a href="#%e9%85%8d%e7%bd%ae%e5%ae%89%e8%a3%85" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">apt install nasm gdb &lt;span class="c1"># 安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># vscode 插件 The Netwide Assembler (NASM) 后缀改成nas或者asm&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nasm -f elf -o hello.o hello.s &lt;span class="c1"># 编译&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ld -m elf_i386 -o hello.out hello.o &lt;span class="c1"># 链接&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-makefile" data-lang="makefile">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ASM&lt;/span> &lt;span class="o">=&lt;/span> nasm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LD&lt;/span> &lt;span class="o">=&lt;/span> ld
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ASM_FLAGS&lt;/span> &lt;span class="o">=&lt;/span> -f elf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LD_FLAGS&lt;/span> &lt;span class="o">=&lt;/span> -m elf_i386
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># Source and output files
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nv">TARGETS&lt;/span> &lt;span class="o">=&lt;/span> code01
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">SRCS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">$(&lt;/span>wildcard *.s&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">OBJS&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">$(&lt;/span>patsubst %.s, %.o, &lt;span class="k">$(&lt;/span>SRCS&lt;span class="k">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># Targets
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nf">all&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="k">$(&lt;/span>&lt;span class="nv">TARGETS&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">$(TARGETS)&lt;/span>&lt;span class="o">:&lt;/span> %: %.&lt;span class="n">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>LD&lt;span class="k">)&lt;/span> -o &lt;span class="nv">$@&lt;/span> $^ &lt;span class="k">$(&lt;/span>LD_FLAGS&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">%.o&lt;/span>&lt;span class="o">:&lt;/span> %.&lt;span class="n">s&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>ASM&lt;span class="k">)&lt;/span> &lt;span class="k">$(&lt;/span>ASM_FLAGS&lt;span class="k">)&lt;/span> $&amp;lt; -o &lt;span class="nv">$@&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">.PHONY&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">clean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">clean&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	rm -f *.o &lt;span class="k">$(&lt;/span>TARGETS&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="gdb" class="heading-element">&lt;span>gdb&lt;/span>
+ &lt;a href="#gdb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 启动配置文件 .gdbinit，需要设置安全设置生效&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat ~/.config/gdb/gdbinit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">add-auto-load-safe-path /home/username/compiler_test/lab01/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># .gdbinit&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">break&lt;/span> _start
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">run
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> disassembly-flavor intel &lt;span class="c1"># 默认att, 设置intel风格&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># set disassemble-next-line on&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">layout asm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">layout reg&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="常用gdb调试" class="heading-element">&lt;span>常用gdb调试&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8gdb%e8%b0%83%e8%af%95" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># nm 查看符号表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># x /选项 地址 查看各个变量内存信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">const char* &lt;span class="nv">str&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;test&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">x str &lt;span class="c1"># 默认16进制显示，内存存储内容和“test&amp;#34;相反（小端存储） 0x74736574&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">x /s str &lt;span class="c1"># 直接显示内容 ”test&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">x /d str &lt;span class="c1"># 十进制显示&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">x /4d str &lt;span class="c1"># 十进制显示，显示宽度为4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 变量非指针类型，如int， 先p &amp;amp;value_name, 使用x查看&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="x86体系结构" class="heading-element">&lt;span>X86体系结构&lt;/span>
+ &lt;a href="#x86%e4%bd%93%e7%b3%bb%e7%bb%93%e6%9e%84" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="寄存器" class="heading-element">&lt;span>寄存器&lt;/span>
+ &lt;a href="#%e5%af%84%e5%ad%98%e5%99%a8" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>分类&lt;/th>
+ &lt;th>英文全称&lt;/th>
+ &lt;th>16 位&lt;/th>
+ &lt;th>32 位&lt;/th>
+ &lt;th>64 位&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>通用寄存器&lt;/td>
+ &lt;td>Accumulator&lt;/td>
+ &lt;td>ax&lt;/td>
+ &lt;td>eax&lt;/td>
+ &lt;td>rax&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>通用寄存器&lt;/td>
+ &lt;td>Base&lt;/td>
+ &lt;td>bx&lt;/td>
+ &lt;td>ebx&lt;/td>
+ &lt;td>rbx&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>通用寄存器&lt;/td>
+ &lt;td>Counter&lt;/td>
+ &lt;td>cx&lt;/td>
+ &lt;td>ecx&lt;/td>
+ &lt;td>rcx&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>通用寄存器&lt;/td>
+ &lt;td>Data&lt;/td>
+ &lt;td>dx&lt;/td>
+ &lt;td>edx&lt;/td>
+ &lt;td>rdx&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>指针寄存器：栈指针，指向当前栈顶&lt;/td>
+ &lt;td>Stack Pointer&lt;/td>
+ &lt;td>sp&lt;/td>
+ &lt;td>esp&lt;/td>
+ &lt;td>rsp&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>指针寄存器：基址指针，通常用于访问栈帧中的局部变量&lt;/td>
+ &lt;td>Base Pointer&lt;/td>
+ &lt;td>bp&lt;/td>
+ &lt;td>ebp&lt;/td>
+ &lt;td>rbp&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>变地址寄存器：源变址寄存器&lt;/td>
+ &lt;td>Source Index&lt;/td>
+ &lt;td>si&lt;/td>
+ &lt;td>esi&lt;/td>
+ &lt;td>rsi&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>变地址寄存器：目的变址寄存器&lt;/td>
+ &lt;td>Destination Index&lt;/td>
+ &lt;td>di&lt;/td>
+ &lt;td>edi&lt;/td>
+ &lt;td>rdi&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>控制寄存器：指令指针，指向下一条要执行的指令&lt;/td>
+ &lt;td>Instruction Pointer&lt;/td>
+ &lt;td>ip&lt;/td>
+ &lt;td>eip&lt;/td>
+ &lt;td>rip&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>控制寄存器：标志寄存器，存储 CPU 的状态标志&lt;/td>
+ &lt;td>Flag&lt;/td>
+ &lt;td>flag&lt;/td>
+ &lt;td>eflag&lt;/td>
+ &lt;td>rflag&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>段寄存器&lt;/td>
+ &lt;td>Code Segment&lt;/td>
+ &lt;td>cs&lt;/td>
+ &lt;td>cs&lt;/td>
+ &lt;td>cs&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>段寄存器&lt;/td>
+ &lt;td>Data Segment&lt;/td>
+ &lt;td>ds&lt;/td>
+ &lt;td>ds&lt;/td>
+ &lt;td>ds&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>段寄存器&lt;/td>
+ &lt;td>Stack Segment&lt;/td>
+ &lt;td>ss&lt;/td>
+ &lt;td>ss&lt;/td>
+ &lt;td>ss&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>段寄存器&lt;/td>
+ &lt;td>Extra Segment&lt;/td>
+ &lt;td>es&lt;/td>
+ &lt;td>es&lt;/td>
+ &lt;td>es&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="基本汇编语法" class="heading-element">&lt;span>基本汇编语法&lt;/span>
+ &lt;a href="#%e5%9f%ba%e6%9c%ac%e6%b1%87%e7%bc%96%e8%af%ad%e6%b3%95" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="basic-instruction" class="heading-element">&lt;span>Basic Instruction&lt;/span>
+ &lt;a href="#basic-instruction" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">mov dest, src	; move src to desc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov eax, 4		; 将立即数 (immidiate) 存入到 eax 寄存器中
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov bx, ax ; bx = ax
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">add eax, 4		; eax = eax + 4
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sub ebx, edi	; ebx = ebx - edi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">inc ecx			; ecx++
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov eax, 10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov ebx, 20
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mul ebx 		; edx:eax = eax * ebx mul无符号,imul有符号 edx:eax 表示 64 位的值
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov eax, 100
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mov ebx, 20
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">div ebx ; eax = 5 (商), edx = 0 (余数) div无符号,idiv有符号
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; lea 将变量的地址加载到寄存器中,大致相当于c中的&amp;amp;q
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lea ebx, [eax + ecx * 4] 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; 数组索引计算：把eax寄存器中的值加上ecx乘以4（int）的结果，作为数组元素的地址放入ebx寄存器
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lea edx, [eax + offsetof(struct_name, member_name)] 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; 结构体成员访问：结构体struct_name中成员member_name的偏移量，将内存中的地址存入edx寄存器
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lea ecx, [ebp - size] 
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">; 动态内存分配：使用栈帧指针ebp减去size的值，得到内存分配的起始地址，并将结果存入ecx寄存器&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="directive-instruction" class="heading-element">&lt;span>Directive Instruction&lt;/span>
+ &lt;a href="#directive-instruction" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h4 id="定义常量" class="heading-element">&lt;span>定义常量&lt;/span>
+ &lt;a href="#%e5%ae%9a%e4%b9%89%e5%b8%b8%e9%87%8f" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">symbol equ 128
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">aaa equ 8
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">%define SIZE 128&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="定义内存" class="heading-element">&lt;span>定义内存&lt;/span>
+ &lt;a href="#%e5%ae%9a%e4%b9%89%e5%86%85%e5%ad%98" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">L1 db 0				; 定义一个字节, 并初始化为 0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">L2 dw0				; 定义一个字 (word), 并初始化为 0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">L3 resb 4			; 预留 4 个字节
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">L4 times 100 db 1		; 100 次定义字节, 初始化成 1&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="寻址模式" class="heading-element">&lt;span>寻址模式&lt;/span>
+ &lt;a href="#%e5%af%bb%e5%9d%80%e6%a8%a1%e5%bc%8f" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h4 id="立即寻址" class="heading-element">&lt;span>立即寻址&lt;/span>
+ &lt;a href="#%e7%ab%8b%e5%8d%b3%e5%af%bb%e5%9d%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">mov eax, 10 ; 将立即数 10 加载到 eax&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="寄存器寻址" class="heading-element">&lt;span>寄存器寻址&lt;/span>
+ &lt;a href="#%e5%af%84%e5%ad%98%e5%99%a8%e5%af%bb%e5%9d%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">mov eax, ebx ; 将 ebx 的值加载到 eax&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="直接寻址" class="heading-element">&lt;span>直接寻址&lt;/span>
+ &lt;a href="#%e7%9b%b4%e6%8e%a5%e5%af%bb%e5%9d%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">mov eax, [0x1000] ; 将地址 0x1000 处的值加载到 eax&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="寄存器间接寻址" class="heading-element">&lt;span>寄存器间接寻址&lt;/span>
+ &lt;a href="#%e5%af%84%e5%ad%98%e5%99%a8%e9%97%b4%e6%8e%a5%e5%af%bb%e5%9d%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">mov eax, [ebx] ; 将 ebx 指向的内存地址的值加载到 eax&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="基址加变址寻址" class="heading-element">&lt;span>基址加变址寻址&lt;/span>
+ &lt;a href="#%e5%9f%ba%e5%9d%80%e5%8a%a0%e5%8f%98%e5%9d%80%e5%af%bb%e5%9d%80" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">mov eax, [ebx+ecx*4] ; 将 ebx + ecx * 4 处的值加载到 eax&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="控制流" class="heading-element">&lt;span>控制流&lt;/span>
+ &lt;a href="#%e6%8e%a7%e5%88%b6%e6%b5%81" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h4 id="比较指令" class="heading-element">&lt;span>比较指令&lt;/span>
+ &lt;a href="#%e6%af%94%e8%be%83%e6%8c%87%e4%bb%a4" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">Bit&lt;/th>
+ &lt;th style="text-align: left">Label&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">0&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>CF&lt;/strong>&lt;/td>
+ &lt;td>Carry Flag(进位标志)：运算结果的最高有效位有进位（加法）或借位（减法）时，进位标志置1&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">2&lt;/td>
+ &lt;td style="text-align: left">PF&lt;/td>
+ &lt;td>Parity Flag（奇偶标志）：运算结果的所有位中1的个数是偶数置1&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">4&lt;/td>
+ &lt;td style="text-align: left">AF&lt;/td>
+ &lt;td>Auxiliary Carry flag（辅助进位标志位）：第3位向第4位发生了进位，那么AF标志位置1&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">6&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>ZF&lt;/strong>&lt;/td>
+ &lt;td>Zero Flag：结果为0，置1&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">7&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>SF&lt;/strong>&lt;/td>
+ &lt;td>Sign Flag：结果为负数（最高位为1），置1&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">8&lt;/td>
+ &lt;td style="text-align: left">TF&lt;/td>
+ &lt;td>Trap Flag：陷阱标志位 ，用于调试，置 1 时单步执行。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">9&lt;/td>
+ &lt;td style="text-align: left">IF&lt;/td>
+ &lt;td>Interrupt enable Flag：是否响应中断&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">10&lt;/td>
+ &lt;td style="text-align: left">DF&lt;/td>
+ &lt;td>Direction Flag（方向标志位）控制字符串操作的方向（0：递增，1：递减）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">11&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>OF&lt;/strong>&lt;/td>
+ &lt;td>Overflow Flag（溢出标志位）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">12-13&lt;/td>
+ &lt;td style="text-align: left">IOPL&lt;/td>
+ &lt;td>I/O privilege level：控制 I/O 指令的执行权限&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">14&lt;/td>
+ &lt;td style="text-align: left">NT&lt;/td>
+ &lt;td>Nested task&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">16&lt;/td>
+ &lt;td style="text-align: left">RF&lt;/td>
+ &lt;td>Resume Flag 用于调试，控制是否忽略断点&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">17&lt;/td>
+ &lt;td style="text-align: left">VM&lt;/td>
+ &lt;td>Virtual-8086 mode：置 1 时进入虚拟 8086 模式&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">18&lt;/td>
+ &lt;td style="text-align: left">AC&lt;/td>
+ &lt;td>Alignment check / Access Control：置 1 时启用对齐检查&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">19&lt;/td>
+ &lt;td style="text-align: left">VIF&lt;/td>
+ &lt;td>Virtual Interrupt Flag：虚拟模式下的中断标志&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">20&lt;/td>
+ &lt;td style="text-align: left">VIP&lt;/td>
+ &lt;td>Virtual Interrupt Pending：虚拟模式下的中断挂起状态。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">21&lt;/td>
+ &lt;td style="text-align: left">ID&lt;/td>
+ &lt;td>ID Flag ：支持 CPUID 指令的标志&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">cmp a, b ;计算 a-b 的值,并设置标志寄存器&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>对于无符号数字计算，存在以下场景: ZF(Zero Flag), CF(Carry Flag)&lt;/p></description></item></channel></rss>

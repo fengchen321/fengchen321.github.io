@@ -1,4 +1,965 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sat, 11 Oct 2025 10:00:00 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>我的书签收藏</title><link>http://fengchen321.github.io/posts/other/bookmarks/</link><pubDate>Sat, 11 Oct 2025 10:00:00 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/bookmarks/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;div id="bookmarks-container">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Thu, 18 Dec 2025 10:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>ELF文件格式详解</title><link>http://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="http://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
+ &lt;a href="#elf%e6%96%87%e4%bb%b6%e6%a0%bc%e5%bc%8f%e8%af%a6%e8%a7%a3" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="什么是elf" class="heading-element">&lt;span>什么是ELF&lt;/span>
+ &lt;a href="#%e4%bb%80%e4%b9%88%e6%98%afelf" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>ELF（Executable and Linkable Format）是Linux平台的可执行和可链接文件的文件格式标准。ELF文件以文件开头的ELF字符串为标识，这个Magic String用于标记文件类型。&lt;/p>
+&lt;h2 id="elf基本结构" class="heading-element">&lt;span>ELF基本结构&lt;/span>
+ &lt;a href="#elf%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>ELF文件主要由四部分组成：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ELF Header&lt;/strong>：文件头，包含文件的元信息&lt;/li>
+&lt;li>&lt;strong>ELF Program Header Table&lt;/strong>（程序头表）：执行视角的基本单位&lt;/li>
+&lt;li>&lt;strong>ELF Sections&lt;/strong>（节）：链接视角的基本单位&lt;/li>
+&lt;li>&lt;strong>ELF Section Header Table&lt;/strong>（节头表）：描述所有节的表&lt;/li>
+&lt;/ul>
+&lt;center>
+&lt;img 
+src="http://fengchen321.github.io/images/Computer/ELF文件格式详解.assets/ELF基本结构.png" width="600" />
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">ELF基本结构&lt;/div>
+&lt;/center>
+&lt;h3 id="两种视角" class="heading-element">&lt;span>两种视角&lt;/span>
+ &lt;a href="#%e4%b8%a4%e7%a7%8d%e8%a7%86%e8%a7%92" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>ELF文件具有两种不同的视角：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Linking View&lt;/strong>（链接视角）：从链接的角度考虑，以section为基本单位&lt;/li>
+&lt;li>&lt;strong>Execution View&lt;/strong>（执行视角）：从运行加载的角度考虑，以segment为基本单位&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>.o&lt;/code>文件是不可执行的，因此没有program header。&lt;/p>
+&lt;h2 id="常用指令" class="heading-element">&lt;span>常用指令&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看所有信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">readelf -a file_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看ELF Header&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">readelf -h file_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看程序段（segment） 等价于 readelf -l&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">readelf --segments file_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看符号表 --wide 选项用于避免输出被截断 也可以-W&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">readelf -s --wide file_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看节（section） 等价于 readelf -S ,可以显示 ELF 文件的 节区头信息，查看 file_name 是否是 debug 模式编译文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">readelf --sections file_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看动态段信息,比如共享库依赖、动态符号、重定位信息、程序入口点等&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">readelf -d file_name&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="elf-详细结构" class="heading-element">&lt;span>ELF 详细结构&lt;/span>
+ &lt;a href="#elf-%e8%af%a6%e7%bb%86%e7%bb%93%e6%9e%84" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;center>
+&lt;img 
+src="http://fengchen321.github.io/images/Computer/ELF文件格式详解.assets/ELF 详细结构.png" width="1000" />
+&lt;br>
+&lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;">ELF 详细结构&lt;/div>
+&lt;/center>
+&lt;h2 id="elf-头结构" class="heading-element">&lt;span>ELF 头结构&lt;/span>
+ &lt;a href="#elf-%e5%a4%b4%e7%bb%93%e6%9e%84" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">ELF Header:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Magic: 7f &lt;span class="m">45&lt;/span> 4c &lt;span class="m">46&lt;/span> &lt;span class="m">02&lt;/span> &lt;span class="m">01&lt;/span> &lt;span class="m">01&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span> &lt;span class="m">00&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Class: ELF64
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Data: 2&lt;span class="err">&amp;#39;&lt;/span>s complement, little endian
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Version: &lt;span class="m">1&lt;/span> &lt;span class="o">(&lt;/span>current&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> OS/ABI: UNIX - System V
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ABI Version: &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Type: EXEC &lt;span class="o">(&lt;/span>Executable file&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Machine: Advanced Micro Devices X86-64
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Version: 0x1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Entry point address: 0x2a7d00
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Start of program headers: &lt;span class="m">64&lt;/span> &lt;span class="o">(&lt;/span>bytes into file&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Start of section headers: &lt;span class="m">721384&lt;/span> &lt;span class="o">(&lt;/span>bytes into file&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Flags: 0x0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Size of this header: &lt;span class="m">64&lt;/span> &lt;span class="o">(&lt;/span>bytes&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Size of program headers: &lt;span class="m">56&lt;/span> &lt;span class="o">(&lt;/span>bytes&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Number of program headers: &lt;span class="m">11&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Size of section headers: &lt;span class="m">64&lt;/span> &lt;span class="o">(&lt;/span>bytes&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Number of section headers: &lt;span class="m">41&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Section header string table index: &lt;span class="m">39&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>ELF Header是一个&lt;code>Elf_Ehdr&lt;/code>结构体，包含以下关键字段：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>字段&lt;/th>
+ &lt;th>含义&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>e_ident&lt;/td>
+ &lt;td>Magic魔数标识&lt;/td>
+ &lt;td>前4字节为&lt;code>7f 45 4c 46&lt;/code>（ELF），后续标识架构、数据格式等&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_type&lt;/td>
+ &lt;td>文件类型&lt;/td>
+ &lt;td>ET_REL（可重定位）、ET_EXEC（可执行）、ET_DYN（共享对象）、ET_CORE（核心转储）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_machine&lt;/td>
+ &lt;td>目标架构&lt;/td>
+ &lt;td>如X86-64、AMD GPU等&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_version&lt;/td>
+ &lt;td>版本号&lt;/td>
+ &lt;td>一般为常数1&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_entry&lt;/td>
+ &lt;td>入口地址&lt;/td>
+ &lt;td>程序执行的起始地址&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_phoff&lt;/td>
+ &lt;td>程序头表偏移&lt;/td>
+ &lt;td>Program Header Table在文件中的偏移&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_shoff&lt;/td>
+ &lt;td>节头表偏移&lt;/td>
+ &lt;td>Section Header Table在文件中的偏移&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_flags&lt;/td>
+ &lt;td>ELF标志位&lt;/td>
+ &lt;td>与具体处理器相关&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_ehsize&lt;/td>
+ &lt;td>文件头大小&lt;/td>
+ &lt;td>ELF Header本身的大小&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_phentsize&lt;/td>
+ &lt;td>程序头大小&lt;/td>
+ &lt;td>Program Header entry 大小&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_phnum&lt;/td>
+ &lt;td>程序头数量&lt;/td>
+ &lt;td>Program Header entry的数目&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_shnum&lt;/td>
+ &lt;td>节头数量&lt;/td>
+ &lt;td>Section Header entry的数目&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>e_shstrndx&lt;/td>
+ &lt;td>节名字符串表索引&lt;/td>
+ &lt;td>指向节名字符串表在Section Header Table中的索引&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="文件类型" class="heading-element">&lt;span>文件类型&lt;/span>
+ &lt;a href="#%e6%96%87%e4%bb%b6%e7%b1%bb%e5%9e%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>通过&lt;code>e_type&lt;/code>字段区分：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>ET_REL&lt;/strong>（Relocatable File）：可重定位文件，&lt;code>.o&lt;/code>文件、静态库&lt;code>.a&lt;/code>&lt;/li>
+&lt;li>&lt;strong>ET_EXEC&lt;/strong>（Executable File）：位置相关的可执行文件&lt;/li>
+&lt;li>&lt;strong>ET_DYN&lt;/strong>（Shared Object File）：位置无关的可执行文件或共享目标文件，&lt;code>.so&lt;/code>文件&lt;/li>
+&lt;li>&lt;strong>ET_CORE&lt;/strong>（Core file）：核心转储文件&lt;/li>
+&lt;/ul>
+&lt;h2 id="section-header解析" class="heading-element">&lt;span>Section Header解析&lt;/span>
+ &lt;a href="#section-header%e8%a7%a3%e6%9e%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>Section Header是一个&lt;code>Elf_Shdr&lt;/code>结构体，描述每个节的详细信息：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>字段&lt;/th>
+ &lt;th>含义&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>sh_name&lt;/td>
+ &lt;td>节名&lt;/td>
+ &lt;td>指向&lt;code>.shstrtab&lt;/code>的偏移值&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_type&lt;/td>
+ &lt;td>节类型&lt;/td>
+ &lt;td>标识节的类型（SHT_NULL、SHT_PROGBITS、SHT_SYMTAB等）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_addr&lt;/td>
+ &lt;td>节地址&lt;/td>
+ &lt;td>被加载后的虚拟地址，未加载则为0&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_offset&lt;/td>
+ &lt;td>节偏移&lt;/td>
+ &lt;td>在文件中的偏移位置&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_size&lt;/td>
+ &lt;td>节大小&lt;/td>
+ &lt;td>节占用的字节数&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_entsize&lt;/td>
+ &lt;td>节项大小&lt;/td>
+ &lt;td>有些节包含了一些固定大小的项，如符号表，sh_entsize表示每个项的大小。如果为0，则表示该节不包含固定大小的项。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_flags&lt;/td>
+ &lt;td>节标志&lt;/td>
+ &lt;td>标识节的属性（SHF_WRITE、SHF_ALLOC、SHF_EXECINSTR等）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_link、sh_info&lt;/td>
+ &lt;td>链接信息&lt;/td>
+ &lt;td>相关节的索引或附加信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>sh_addralign&lt;/td>
+ &lt;td>地址对齐&lt;/td>
+ &lt;td>节的地址对齐方式&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="节类型sh_type" class="heading-element">&lt;span>节类型（sh_type）&lt;/span>
+ &lt;a href="#%e8%8a%82%e7%b1%bb%e5%9e%8bsh_type" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>常量&lt;/th>
+ &lt;th>含义&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>SHT_NULL&lt;/td>
+ &lt;td>无效节&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_PROGBITS&lt;/td>
+ &lt;td>&lt;strong>程序节&lt;/strong>（代码、数据等）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_SYMTAB&lt;/td>
+ &lt;td>&lt;strong>符号表&lt;/strong>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_STRTAB&lt;/td>
+ &lt;td>&lt;strong>字符串表&lt;/strong>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_HASH&lt;/td>
+ &lt;td>&lt;strong>符号表的哈希表&lt;/strong>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_DYNAMIC&lt;/td>
+ &lt;td>动态链接信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_NOTE&lt;/td>
+ &lt;td>提示性信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_NOBITS&lt;/td>
+ &lt;td>文件中无内容（如&lt;code>.bss&lt;/code>）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_RELA / SHT_REL&lt;/td>
+ &lt;td>&lt;strong>重定位表&lt;/strong>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHT_DNYSYM&lt;/td>
+ &lt;td>&lt;strong>动态链接的符号表&lt;/strong>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="节标志位sh_flags" class="heading-element">&lt;span>节标志位（sh_flags）&lt;/span>
+ &lt;a href="#%e8%8a%82%e6%a0%87%e5%bf%97%e4%bd%8dsh_flags" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>常量&lt;/th>
+ &lt;th>含义&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>SHF_WRITE (W)&lt;/td>
+ &lt;td>执行期间可被写入&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHF_ALLOC (A)&lt;/td>
+ &lt;td>执行期间需要分配内存&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHF_EXECINSTR (X)&lt;/td>
+ &lt;td>包含可执行指令&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHF_MERGE (M)&lt;/td>
+ &lt;td>可被合并&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHF_STRINGS (S)&lt;/td>
+ &lt;td>内容为字符串&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHF_GROUP (G)&lt;/td>
+ &lt;td>属于section group&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHF_TLS (T)&lt;/td>
+ &lt;td>线程本地存储&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SHF_COMPRESSED (C)&lt;/td>
+ &lt;td>含有压缩数据&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="常见section详解" class="heading-element">&lt;span>常见Section详解&lt;/span>
+ &lt;a href="#%e5%b8%b8%e8%a7%81section%e8%af%a6%e8%a7%a3" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="代码和数据段" class="heading-element">&lt;span>代码和数据段&lt;/span>
+ &lt;a href="#%e4%bb%a3%e7%a0%81%e5%92%8c%e6%95%b0%e6%8d%ae%e6%ae%b5" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>节名&lt;/th>
+ &lt;th>作用&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>.text&lt;/code>&lt;/td>
+ &lt;td>代码节，存放可执行指令&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.data&lt;/code>&lt;/td>
+ &lt;td>数据节，存放已初始化的数据&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.rodata&lt;/code>&lt;/td>
+ &lt;td>只读数据节，存放只读数据&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.bss&lt;/code>&lt;/td>
+ &lt;td>未初始化数据节，不占据文件空间&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="动态链接相关" class="heading-element">&lt;span>动态链接相关&lt;/span>
+ &lt;a href="#%e5%8a%a8%e6%80%81%e9%93%be%e6%8e%a5%e7%9b%b8%e5%85%b3" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>节名&lt;/th>
+ &lt;th>作用&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>.dynsym&lt;/code>&lt;/td>
+ &lt;td>动态链接符号表&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.dynstr&lt;/code>&lt;/td>
+ &lt;td>动态链接字符串表&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.plt&lt;/code>&lt;/td>
+ &lt;td>过程链接表，用于延迟加载&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.got&lt;/code>&lt;/td>
+ &lt;td>全局偏移表，保存外部符号地址&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.got.plt&lt;/code>&lt;/td>
+ &lt;td>PLT专用的全局偏移表&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.dynamic&lt;/code>&lt;/td>
+ &lt;td>动态链接器信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.hash&lt;/code>&lt;/td>
+ &lt;td>符号查找的哈希表&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="重定位表" class="heading-element">&lt;span>重定位表&lt;/span>
+ &lt;a href="#%e9%87%8d%e5%ae%9a%e4%bd%8d%e8%a1%a8" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>节名&lt;/th>
+ &lt;th>作用&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>.rel.a_section&lt;/code>&lt;/td>
+ &lt;td>节的重定位信息&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="程序执行控制" class="heading-element">&lt;span>程序执行控制&lt;/span>
+ &lt;a href="#%e7%a8%8b%e5%ba%8f%e6%89%a7%e8%a1%8c%e6%8e%a7%e5%88%b6" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>节名&lt;/th>
+ &lt;th>作用&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>.init&lt;/code>&lt;/td>
+ &lt;td>程序初始化代码（main之前）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.fini&lt;/code>&lt;/td>
+ &lt;td>程序结束代码（main之后）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.init_array&lt;/code>&lt;/td>
+ &lt;td>多个初始化动作&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.fini_array&lt;/code>&lt;/td>
+ &lt;td>多个结束动作&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.interp&lt;/code>&lt;/td>
+ &lt;td>动态链接器路径&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="符号和字符串表" class="heading-element">&lt;span>符号和字符串表&lt;/span>
+ &lt;a href="#%e7%ac%a6%e5%8f%b7%e5%92%8c%e5%ad%97%e7%ac%a6%e4%b8%b2%e8%a1%a8" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>节名&lt;/th>
+ &lt;th>作用&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>.symtab&lt;/code>&lt;/td>
+ &lt;td>符号表（包含所有符号）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.strtab&lt;/code>&lt;/td>
+ &lt;td>字符串表&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.shstrtab&lt;/code>&lt;/td>
+ &lt;td>节头表字符串表&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="异常处理和调试信息" class="heading-element">&lt;span>异常处理和调试信息&lt;/span>
+ &lt;a href="#%e5%bc%82%e5%b8%b8%e5%a4%84%e7%90%86%e5%92%8c%e8%b0%83%e8%af%95%e4%bf%a1%e6%81%af" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>节名&lt;/th>
+ &lt;th>作用&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>.eh_frame&lt;/code>&lt;/td>
+ &lt;td>C++异常处理和栈回退信息&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.eh_frame_hdr&lt;/code>&lt;/td>
+ &lt;td>二分查找表，加速eh_frame查找&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.debug_*&lt;/code>&lt;/td>
+ &lt;td>调试信息节（编译时加&lt;code>-g&lt;/code>产生）&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="符号表symbol-table" class="heading-element">&lt;span>符号表（Symbol Table）&lt;/span>
+ &lt;a href="#%e7%ac%a6%e5%8f%b7%e8%a1%a8symbol-table" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>符号表用于记录程序中的符号信息（函数、变量等）。&lt;/p>
+&lt;h3 id="符号属性" class="heading-element">&lt;span>符号属性&lt;/span>
+ &lt;a href="#%e7%ac%a6%e5%8f%b7%e5%b1%9e%e6%80%a7" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>属性&lt;/th>
+ &lt;th>类型&lt;/th>
+ &lt;th>含义&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>Type&lt;/strong>&lt;/td>
+ &lt;td>NOTYPE&lt;/td>
+ &lt;td>未指定类型&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>OBJECT&lt;/td>
+ &lt;td>数据对象（变量、数组等）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>FUNC&lt;/td>
+ &lt;td>可执行代码（函数）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>COMMON&lt;/td>
+ &lt;td>未初始化的数据块&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Bind&lt;/strong>&lt;/td>
+ &lt;td>LOCAL&lt;/td>
+ &lt;td>只能被当前文件可见&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>GLOBAL&lt;/td>
+ &lt;td>可被所有文件可见&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>Weak&lt;/td>
+ &lt;td>类似于GLOBAL，但可被覆盖&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Vis&lt;/strong>&lt;/td>
+ &lt;td>default&lt;/td>
+ &lt;td>可被其他组件可见&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>protected&lt;/td>
+ &lt;td>可见但不可覆盖&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>hidden&lt;/td>
+ &lt;td>不可被其他组件可见&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Ndx&lt;/strong>&lt;/td>
+ &lt;td>ABS&lt;/td>
+ &lt;td>绝对地址，不随重定位改变&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;/td>
+ &lt;td>UND&lt;/td>
+ &lt;td>未定义符号&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="查看符号表" class="heading-element">&lt;span>查看符号表&lt;/span>
+ &lt;a href="#%e6%9f%a5%e7%9c%8b%e7%ac%a6%e5%8f%b7%e8%a1%a8" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">readelf -s --wide file_name&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>注意：C++符号名是经过重整的，可以使用&lt;code>c++filt&lt;/code>查看原始名称。&lt;/p>
+&lt;h2 id="section-name解析示例" class="heading-element">&lt;span>Section Name解析示例&lt;/span>
+ &lt;a href="#section-name%e8%a7%a3%e6%9e%90%e7%a4%ba%e4%be%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>解析section name的步骤：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// step 1: 读取ELF Header
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="nf">memcpy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">hdr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">data&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">sizeof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">hdr&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// step 2: 读取节名字符串表的位置
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">spot&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">hdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e_shoff&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// section header偏移
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">strndx&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">hdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e_shstrndx&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 字符串表索引
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">stroff&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">spot&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">strndx&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="n">hdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e_shentsize&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="c1">// 字符串表实际偏移
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="nf">memcpy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">shdr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">char&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">data&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">stroff&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e_shentsize&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// step 3: 读取字符串表
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">strtable&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">char&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="nf">malloc&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">shdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">sh_size&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">memcpy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">strtable&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">char&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">data&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">shdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">sh_offset&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">shdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">sh_size&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// step 4: 遍历所有section header
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">hdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e_shnum&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="o">++&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">memcpy&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">shdr&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">char&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">data&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">spot&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">hdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e_shentsize&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">spot&lt;/span> &lt;span class="o">+=&lt;/span> &lt;span class="n">hdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">e_shentsize&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">sh_name&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">strtable&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">shdr&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">sh_name&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">printf&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;[%d] %s&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">sh_name&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>输出示例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">[0]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[1] .interp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[2] .note.gnu.property
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[3] .note.gnu.build-id
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[4] .note.ABI-tag
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[21] .init_array
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[22] .fini_array
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[23] .dynamic
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[24] .got
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[25] .data
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[26] .bss
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[27] .comment
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[28] .symtab
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[29] .strtab
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">[30] .shstrtab&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="异构elffat-binary" class="heading-element">&lt;span>异构ELF（Fat Binary）&lt;/span>
+ &lt;a href="#%e5%bc%82%e6%9e%84elffat-binary" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>异构程序（如HIP/ROCm）将CPU代码和GPU代码打包在同一个ELF文件中，形成&lt;strong>fat binary&lt;/strong>或&lt;strong>multiarchitecture binary&lt;/strong>。&lt;/p>
+&lt;h3 id="编译流程" class="heading-element">&lt;span>编译流程&lt;/span>
+ &lt;a href="#%e7%bc%96%e8%af%91%e6%b5%81%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ol>
+&lt;li>CPU主机代码编译为&lt;code>.cui&lt;/code>→&lt;code>.bc&lt;/code>→&lt;code>.out&lt;/code>&lt;/li>
+&lt;li>GPU设备代码按架构编译（gfx906、gfx926等）&lt;/li>
+&lt;li>使用&lt;code>clang-offload-bundler&lt;/code>打包成&lt;code>.hipfb&lt;/code>文件&lt;/li>
+&lt;li>通过&lt;code>clang -fcuda-include-gpubinary&lt;/code>将&lt;code>.hipfb&lt;/code>插入主机ELF的&lt;code>.hip_fatbin&lt;/code>节&lt;/li>
+&lt;/ol>
+&lt;h3 id="异构elf的特有节" class="heading-element">&lt;span>异构ELF的特有节&lt;/span>
+ &lt;a href="#%e5%bc%82%e6%9e%84elf%e7%9a%84%e7%89%b9%e6%9c%89%e8%8a%82" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>节名&lt;/th>
+ &lt;th>作用&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>.hip_fatbin&lt;/code>&lt;/td>
+ &lt;td>存储打包的设备端代码&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>.hipFatBinSegment&lt;/code>&lt;/td>
+ &lt;td>设备端代码段&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="hipfb文件结构" class="heading-element">&lt;span>hipfb文件结构&lt;/span>
+ &lt;a href="#hipfb%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Magic String
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Number of Bundle Entries
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Bundle Struct 1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Bundle Struct 2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Bundle Struct N
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Code Object 1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Code Object 2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">...
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Code Object N&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>每个Bundle Struct包含：&lt;/p>
+&lt;ul>
+&lt;li>Code Object Offset：代码对象在文件中的偏移&lt;/li>
+&lt;li>Code Object Size：代码对象大小&lt;/li>
+&lt;li>Entry ID Length：入口ID长度&lt;/li>
+&lt;li>Entry ID：入口标识&lt;/li>
+&lt;/ul>
+&lt;h3 id="设备端代码对象" class="heading-element">&lt;span>设备端代码对象&lt;/span>
+ &lt;a href="#%e8%ae%be%e5%a4%87%e7%ab%af%e4%bb%a3%e7%a0%81%e5%af%b9%e8%b1%a1" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>设备端ELF（如gfx906）的特点：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Machine&lt;/strong>：AMD GPU&lt;/li>
+&lt;li>&lt;strong>OS/ABI&lt;/strong>：unknown（设备端专用）&lt;/li>
+&lt;li>&lt;strong>ABI Version&lt;/strong>：1（HSA_V3）、2（HSA_V4）、3（HSA_V5）&lt;/li>
+&lt;li>&lt;strong>Entry point&lt;/strong>：通常为0x0&lt;/li>
+&lt;li>&lt;strong>Flags&lt;/strong>：包含GPU架构信息（如&lt;code>EF_AMDGPU_MACH_AMDGCN_GFX906&lt;/code>）&lt;/li>
+&lt;/ul>
+&lt;p>设备端常见的section：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>.note&lt;/code>：metadata&lt;/li>
+&lt;li>&lt;code>.AMDGPU.csdata&lt;/code>：记录kernel信息（FloatMode、IeeeMode等）&lt;/li>
+&lt;li>注意：设备端&lt;strong>没有&lt;/strong>&lt;code>.eh_frame&lt;/code>节，不支持异常处理&lt;/li>
+&lt;/ul>
+&lt;h3 id="异构elf的symbol解析" class="heading-element">&lt;span>异构ELF的Symbol解析&lt;/span>
+ &lt;a href="#%e5%bc%82%e6%9e%84elf%e7%9a%84symbol%e8%a7%a3%e6%9e%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>异构程序的符号表存在特殊性：&lt;/p>
+&lt;p>&lt;strong>主机端符号表&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">93: 0000000000208d78 8 OBJECT GLOBAL DEFAULT 21 _Z15matrixTransposePfS_i
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">95: 00000000000010e0 122 FUNC GLOBAL DEFAULT 13 _Z30__device_stub__matrixTransposePfS_i&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>设备端符号表&lt;/strong>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">Num: Value Size Type Bind Vis Ndx Name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1: 0000000000001000 148 FUNC GLOBAL PROTECTED 7 _Z15matrixTransposePfS_i
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2: 0000000000000540 64 OBJECT GLOBAL PROTECTED 6 _Z15matrixTransposePfS_i.kd&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>关键点：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>_Z30__device_stub__matrixTransposePfS_i&lt;/code>：编译器生成的辅助函数，用于启动设备端函数&lt;/li>
+&lt;li>&lt;code>_Z15matrixTransposePfS_i.kd&lt;/code>：kernel descriptor，包含kernel执行必要信息&lt;/li>
+&lt;li>主机端的&lt;code>_Z15matrixTransposePfS_i&lt;/code>（OBJECT类型）实际指向设备端的kernel descriptor&lt;/li>
+&lt;/ul>
+&lt;h3 id="kernel-descriptor" class="heading-element">&lt;span>Kernel Descriptor&lt;/span>
+ &lt;a href="#kernel-descriptor" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>设备端的kernel descriptor（&lt;code>.kd&lt;/code>）包含kernel执行所需的所有信息：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-llvm" data-lang="llvm">&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_kernel&lt;/span> &lt;span class="err">_Z&lt;/span>&lt;span class="m">15&lt;/span>&lt;span class="err">matrixTransposePfS_i&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_group_segment_fixed_size&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_private_segment_fixed_size&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_kernarg_size&lt;/span> &lt;span class="m">20&lt;/span> &lt;span class="err">//&lt;/span> &lt;span class="err">内核参数大小&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_user_sgpr_count&lt;/span> &lt;span class="m">6&lt;/span> &lt;span class="err">//&lt;/span> &lt;span class="err">用户SGPR数量&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_user_sgpr_dispatch_ptr&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_user_sgpr_kernarg_segment_ptr&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_user_sgpr_flat_scratch_init&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_system_sgpr_workgroup_id_&lt;/span>&lt;span class="k">x&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="err">amdhsa_system_sgpr_workgroup_id_y&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">.&lt;/span>&lt;span class="err">end_amdhsa_kernel&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="解析异构elf的步骤" class="heading-element">&lt;span>解析异构ELF的步骤&lt;/span>
+ &lt;a href="#%e8%a7%a3%e6%9e%90%e5%bc%82%e6%9e%84elf%e7%9a%84%e6%ad%a5%e9%aa%a4" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ol>
+&lt;li>解析ELF Header，找到Section Header Table位置&lt;/li>
+&lt;li>通过Section Header Table找到&lt;code>.hip_fatbin&lt;/code>的位置和大小&lt;/li>
+&lt;li>读取&lt;code>clang_offload_bundle_header&lt;/code>，校验Magic String&lt;/li>
+&lt;li>按顺序读取每个Bundle Struct，解析code object&lt;/li>
+&lt;li>解析code object的metadata&lt;/li>
+&lt;/ol>
+&lt;h2 id="实践工具" class="heading-element">&lt;span>实践工具&lt;/span>
+ &lt;a href="#%e5%ae%9e%e8%b7%b5%e5%b7%a5%e5%85%b7" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="查看设备端代码" class="heading-element">&lt;span>查看设备端代码&lt;/span>
+ &lt;a href="#%e6%9f%a5%e7%9c%8b%e8%ae%be%e5%a4%87%e7%ab%af%e4%bb%a3%e7%a0%81" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">llvm-amdgpu-objdump --inputs&lt;span class="o">=&lt;/span>MatrixTranspose&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>该指令会根据GPU架构生成ISA文件，包含metadata、kernel descriptor和kernel函数的反汇编。&lt;/p>
+&lt;p>反汇编操作&lt;/p>
+&lt;blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">llvm-objdump -d &lt;span class="c1"># 反汇编命令,默认cpu, &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">extractkernel -i &lt;span class="c1"># 反汇编命令,dcu&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">llvm-amdgpu-objdump --inputs&lt;span class="o">=&lt;/span> &lt;span class="c1"># 反汇编命令,amdgpu&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/blockquote>
+&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a href="https://docs.oracle.com/cd/E19683-01/816-7529/6mdhf5r3h/index.html"target="_blank" rel="external nofollow noopener noreferrer">Chapter 7 Object File Format&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://chuquan.me/2018/05/21/elf-introduce/"target="_blank" rel="external nofollow noopener noreferrer">计算机那些事(4)——ELF文件结构&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://llvm.org/doxygen/structllvm_1_1ELF_1_1Elf32__Shdr.html"target="_blank" rel="external nofollow noopener noreferrer">LLVM: llvm::ELF::Elf32_Shdr Struct Reference&lt;/a>&lt;/li>
+&lt;li>《程序员的自我修养——链接、装载与库》&lt;/li>
+&lt;/ul></description></item><item><title>我的书签收藏</title><link>http://fengchen321.github.io/posts/other/bookmarks/</link><pubDate>Sat, 11 Oct 2025 10:00:00 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/bookmarks/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;div id="bookmarks-container">
  &lt;div class="bm-loading">加载中...&lt;/div>
 &lt;/div>
 &lt;style>
@@ -621,7 +1582,7 @@
 &lt;/h2>&lt;p>&lt;a href="https://mpitutorial.com/"target="_blank" rel="external nofollow noopener noreferrer">MPI Tutorial&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.open-mpi.org/doc/v4.1/"target="_blank" rel="external nofollow noopener noreferrer">Open MPI documentation&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/590277732"target="_blank" rel="external nofollow noopener noreferrer">MPI 与并行计算入门 - 知乎&lt;/a>&lt;/p>
-&lt;p>&lt;a href="http://fcode.cn/download/fcode/MPI_C,C&amp;#43;&amp;#43;,Fortran_Bind.pdf"target="_blank" rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf&lt;/a>&lt;/p></description></item><item><title>汇编语言</title><link>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
+&lt;p>&lt;a href="http://fcode.cn/download/fcode/MPI_C,C&amp;#43;&amp;#43;,Fortran_Bind.pdf"target="_blank" rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf&lt;/a>&lt;/p></description></item><item><title>汇编语言</title><link>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="http://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
  &lt;a href="#%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -19483,827 +20444,4 @@ padding: 2px;">&lt;/div>
 &lt;p>&lt;a href="https://sqlite.readdevdocs.com/"target="_blank" rel="external nofollow noopener noreferrer">SQLite中文网&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.runoob.com/sqlite/sqlite-functions.html"target="_blank" rel="external nofollow noopener noreferrer">菜鸟教程-SQLite&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.cnblogs.com/hnrainll/archive/2011/09/08/2170506.html"target="_blank" rel="external nofollow noopener noreferrer">SQLite3　API编程手册&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/449739787"target="_blank" rel="external nofollow noopener noreferrer">玩转SQLite6：使用C语言来读写数据库&lt;/a>&lt;/p></description></item><item><title>CMake教程</title><link>http://fengchen321.github.io/posts/c++/cmake%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 15 Jul 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/c++/cmake%E6%95%99%E7%A8%8B/</guid><category domain="http://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="cmake教程" class="heading-element">&lt;span>CMake教程&lt;/span>
- &lt;a href="#cmake%e6%95%99%e7%a8%8b" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;code>CMakeLists.txt&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cmake_minimum_required&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">VERSION&lt;/span> &lt;span class="s">3.10&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">project&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">add_executable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span> &lt;span class="s">main.cpp&lt;/span> &lt;span class="s">factorial.cpp&lt;/span> &lt;span class="s">printhello.cpp&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>CMake 2.x&lt;/strong> 一般方便删除多余文件，新建Build文件夹用来生成文件&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">mkdir build
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> build
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cmake .. -DCMAKE_BUILD_TYPE&lt;span class="o">=&lt;/span>Release
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -j4
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make install
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./hello
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> ../
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rm -rf build
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cmake .. -DCMAKE_INSTALL_PREFIX&lt;span class="o">=&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>&lt;strong>CMake 3.x&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">cmake -B build -DCMAKE_BUILD_TYPE&lt;span class="o">=&lt;/span>Release
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cmake --build build --parallel &lt;span class="m">4&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cmake --build build --target install&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="基础知识" class="heading-element">&lt;span>基础知识&lt;/span>
- &lt;a href="#%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h3 id="简单项目" class="heading-element">&lt;span>简单项目&lt;/span>
- &lt;a href="#%e7%ae%80%e5%8d%95%e9%a1%b9%e7%9b%ae" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cmake_minimum_required&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">VERSION&lt;/span> &lt;span class="s">major.minor[.patch[.tweak]]&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;ol>
-&lt;li>指定了项目所需的CMake的最低版本&lt;/li>
-&lt;li>强制设置将CMake行为匹配到对应版本&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="nb">cmake_minimum_required&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">VERSION&lt;/span> &lt;span class="s">3.10&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>指定版本 3.10&lt;/p>
-&lt;/blockquote>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">project&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">projectName&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">[VERSION&lt;/span> &lt;span class="s">major[.minor[.patch[.tweak]]]]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">[LANGUAGES&lt;/span> &lt;span class="s">languageName&lt;/span> &lt;span class="s">...]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>&lt;code>projectName&lt;/code>：项目名称&lt;/p>
-&lt;p>&lt;code>LANGUAGES&lt;/code>：项目编程语言：&lt;code> C、CXX、JAVA&lt;/code>、&amp;hellip;多种语言空格分开；默认&lt;code>C&lt;/code>和&lt;code>CXX&lt;/code>&lt;/p>
-&lt;blockquote>
-&lt;p>3.0版本之前不支持&lt;code>LANGUAGES&lt;/code>关键字，&lt;code>project(hello CXX)&lt;/code>&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="nb">project&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>hello项目&lt;/p>
-&lt;/blockquote>
-&lt;/blockquote>
-&lt;h4 id="可执行文件" class="heading-element">&lt;span>可执行文件&lt;/span>
- &lt;a href="#%e5%8f%af%e6%89%a7%e8%a1%8c%e6%96%87%e4%bb%b6" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">add_executable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">targetName&lt;/span> &lt;span class="s">[WIN32]&lt;/span> &lt;span class="s">[MACOSX_BUNDLE]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">[EXCLUDE_FROM_ALL]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">source1&lt;/span> &lt;span class="s">[source2&lt;/span> &lt;span class="s">...]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>为一组源文件创建一个可执行文件&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="nb">add_executable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">test&lt;/span> &lt;span class="s">main.cpp&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>为main.cpp构建test可执行文件&lt;/p>
-&lt;/blockquote>
-&lt;h4 id="定义库" class="heading-element">&lt;span>定义库&lt;/span>
- &lt;a href="#%e5%ae%9a%e4%b9%89%e5%ba%93" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">add_library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">targetName&lt;/span> &lt;span class="s">[STATIC&lt;/span> &lt;span class="s">|&lt;/span> &lt;span class="s">SHARED&lt;/span> &lt;span class="s">|&lt;/span> &lt;span class="s">MODULE]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">[EXCLUDE_FROM_ALL]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">source1&lt;/span> &lt;span class="s">[source2&lt;/span> &lt;span class="s">...]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>&lt;code>STATIC | SHARED | MODULE&lt;/code>：静态库，动态库，动态加载库&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;code>cmake -DBUILD_SHARED_LIBS=YES /path/to/source&lt;/code>：&lt;code>-D&lt;/code>选项设置是否构建为动态库，否则为静态库。&lt;/p>
-&lt;/blockquote>
-&lt;blockquote>
-&lt;p>&lt;code>set(BUILD_SHARED_LIBS YES)&lt;/code>：要在 &lt;code>add_library() &lt;/code>命令之前设置，（灵活性较差）&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">add_library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">collector&lt;/span> &lt;span class="s">src1.cpp&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/blockquote>
-&lt;h4 id="目标链接" class="heading-element">&lt;span>目标链接&lt;/span>
- &lt;a href="#%e7%9b%ae%e6%a0%87%e9%93%be%e6%8e%a5" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;p>考虑A库依赖于B库，因此将A链接到B&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">target_link_libraries&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">targetName&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;lt;PRIVATE|PUBLIC|INTERFACE&amp;gt;&lt;/span> &lt;span class="s">item1&lt;/span> &lt;span class="s">[item2&lt;/span> &lt;span class="s">...]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">[&amp;lt;PRIVATE|PUBLIC|INTERFACE&amp;gt;&lt;/span> &lt;span class="s">item3&lt;/span> &lt;span class="s">[item4&lt;/span> &lt;span class="s">...]]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">...&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="小总结-1" class="heading-element">&lt;span>小总结 1&lt;/span>
- &lt;a href="#%e5%b0%8f%e6%80%bb%e7%bb%93-1" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;p>目标名称与项目名称无关，最好将项目名称和可执行文件名称分开&lt;/p>
-&lt;p>命名库的目标时，不要用lib作为名称的开头或结尾。lib会自动成为前缀&lt;/p>
-&lt;p>尽量避免直接将库指定 STATIC 或 SHARED&lt;/p>
-&lt;p>目标在调用 target_link_libraries() 时需要指定 PRIVATE 、 PUBLIC 和/或 INTERFACE&lt;/p>
-&lt;h3 id="变量" class="heading-element">&lt;span>变量&lt;/span>
- &lt;a href="#%e5%8f%98%e9%87%8f" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h4 id="基本变量" class="heading-element">&lt;span>基本变量&lt;/span>
- &lt;a href="#%e5%9f%ba%e6%9c%ac%e5%8f%98%e9%87%8f" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">varName&lt;/span> &lt;span class="s">value...&lt;/span> &lt;span class="s">[PARENT_SCOPE]&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>将所有变量都作为字符串处理，给定多个值，这些值将用 分号连接在一起。可以使用转义字符表示引号&lt;code>\&amp;quot;&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">myVar&lt;/span> &lt;span class="s">a&lt;/span> &lt;span class="s">b&lt;/span> &lt;span class="s">c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># myVar = &amp;#34;a;b;c&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">myVar&lt;/span> &lt;span class="s">a;b;c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># myVar = &amp;#34;a;b;c&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">myVar&lt;/span> &lt;span class="s2">&amp;#34;a b c&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># myVar = &amp;#34;a b c&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">myVar&lt;/span> &lt;span class="s">a&lt;/span> &lt;span class="s">b;c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># myVar = &amp;#34;a;b;c&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">myVar&lt;/span> &lt;span class="s">a&lt;/span> &lt;span class="s2">&amp;#34;b c&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="err">#&lt;/span> &lt;span class="err">myVar&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">&amp;#34;a;b&lt;/span> &lt;span class="err">c&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/blockquote>
-&lt;h4 id="环境变量" class="heading-element">&lt;span>环境变量&lt;/span>
- &lt;a href="#%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">ENV{PATH}&lt;/span> &lt;span class="s2">&amp;#34;$ENV{PATH}:/opt/myDir&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>只会影响当前的CMake实例，很少用到&lt;/p>
-&lt;/blockquote>
-&lt;h4 id="缓存变量" class="heading-element">&lt;span>缓存变量&lt;/span>
- &lt;a href="#%e7%bc%93%e5%ad%98%e5%8f%98%e9%87%8f" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">varName&lt;/span> &lt;span class="s">value...&lt;/span> &lt;span class="s">CACHE&lt;/span> &lt;span class="s">type&lt;/span> &lt;span class="s2">&amp;#34;docstring&amp;#34;&lt;/span> &lt;span class="s">[FORCE]&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>布尔缓存变量使用&lt;code>optio()&lt;/code>代替&lt;code>set()&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">option&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">optVar&lt;/span> &lt;span class="s">heilpstring&lt;/span> &lt;span class="s">[initialValue]&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># initialValue默认OFF
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">optVar&lt;/span> &lt;span class="s">initialValue&lt;/span> &lt;span class="s">CACHE&lt;/span> &lt;span class="s">BOOL&lt;/span> &lt;span class="s">hilpstring&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="err">#&lt;/span> &lt;span class="err">等价option&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="调试变量和诊断" class="heading-element">&lt;span>调试变量和诊断&lt;/span>
- &lt;a href="#%e8%b0%83%e8%af%95%e5%8f%98%e9%87%8f%e5%92%8c%e8%af%8a%e6%96%ad" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">[mode]&lt;/span> &lt;span class="s">msg1&lt;/span> &lt;span class="s">[msg2]...&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># 打印记录信息
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">variable_watch&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">myVar&lt;/span> &lt;span class="s">[command]&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">#&lt;/span> &lt;span class="err">监控变量，很少用&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="处理字符串" class="heading-element">&lt;span>处理字符串&lt;/span>
- &lt;a href="#%e5%a4%84%e7%90%86%e5%ad%97%e7%ac%a6%e4%b8%b2" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;p>查找和替换操作、正则表达式匹配、大小写转换、删除空格和其他常见字符串操作&lt;/p>
-&lt;p>&lt;strong>查找&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">FIND&lt;/span> &lt;span class="s">inputString&lt;/span> &lt;span class="s">subString&lt;/span> &lt;span class="s">outVar&lt;/span> &lt;span class="s">[REVERSE]&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">et&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">longStr&lt;/span> &lt;span class="s">abcdefabcdef&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">shortBit&lt;/span> &lt;span class="s">def&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">FIND&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">longStr&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">shortBit&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="s">fwdIndex&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">FIND&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">longStr&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">shortBit&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="s">revIndex&lt;/span> &lt;span class="s">REVERSE&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;fwdIndex = ${fwdIndex}, revIndex = ${revIndex}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># 输出 fwdIndex = 3, revIndex = 9
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="err">#&lt;/span> &lt;span class="err">代表子字符串被找到，第一次找到的时候索引为3；最后一次找到的索引为9&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/blockquote>
-&lt;p>&lt;strong>替换&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REPLACE&lt;/span> &lt;span class="s">matchString&lt;/span> &lt;span class="s">replaceWith&lt;/span> &lt;span class="s">outVar&lt;/span> &lt;span class="s">input&lt;/span> &lt;span class="s">[input...]&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>将使用 replaceWith 替换输入字符串中每个 matchString ，并将结果存储在 outVar&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>正则表达式&lt;/strong>&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REGEX&lt;/span> &lt;span class="s">MATCH&lt;/span> &lt;span class="s">regex&lt;/span> &lt;span class="s">outVar&lt;/span> &lt;span class="s">input&lt;/span> &lt;span class="s">[input...]&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REGEX&lt;/span> &lt;span class="s">MATCHALL&lt;/span> &lt;span class="s">regex&lt;/span> &lt;span class="s">outVar&lt;/span> &lt;span class="s">input&lt;/span> &lt;span class="s">[input...]&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">string&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REGEX&lt;/span> &lt;span class="s">REPLACE&lt;/span> &lt;span class="s">regex&lt;/span> &lt;span class="s">replaceWith&lt;/span> &lt;span class="s">outVar&lt;/span> &lt;span class="s">input&lt;/span> &lt;span class="s">[input...]&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="列表" class="heading-element">&lt;span>列表&lt;/span>
- &lt;a href="#%e5%88%97%e8%a1%a8" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LENGTH&lt;/span> &lt;span class="s">listVar&lt;/span> &lt;span class="s">outVar&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># 统计
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">GET&lt;/span> &lt;span class="s">listVar&lt;/span> &lt;span class="s">index&lt;/span> &lt;span class="s">[index...]&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="err">outVar&lt;/span> &lt;span class="c"># 检索
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">APPEND&lt;/span> &lt;span class="s">listVar&lt;/span> &lt;span class="s">item&lt;/span> &lt;span class="s">[item...]&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># 追加
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">INSERT&lt;/span> &lt;span class="s">listVar&lt;/span> &lt;span class="s">index&lt;/span> &lt;span class="s">item&lt;/span> &lt;span class="s">[item...]&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># 插入
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">FIND&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">value&lt;/span> &lt;span class="s">outVar&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># 查找
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 删除
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REMOVE_ITEM&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">value&lt;/span> &lt;span class="s">[value...]&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># 从列表中删除一个或多个目标项。如果目标项不在列表中，也不会出错
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REMOVE_AT&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">index&lt;/span> &lt;span class="s">[index...]&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># 指定一个或多个要删除的索引，超过索引报错
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REMOVE_DUPLICATES&lt;/span> &lt;span class="s">myList&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># 将确保列表不包含重复项。
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># 排序 (按字母顺序)
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">REVERSE&lt;/span> &lt;span class="s">myList&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">SORT&lt;/span> &lt;span class="s">myList&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">myList&lt;/span> &lt;span class="s">a&lt;/span> &lt;span class="s">b&lt;/span> &lt;span class="s">c&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c"># Creates the list &amp;#34;a;b;c&amp;#34;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LENGTH&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">len&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;length = ${len}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">GET&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">2&lt;/span> &lt;span class="s">1&lt;/span> &lt;span class="s">letters&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;letters = ${letters}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">APPEND&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">d&lt;/span> &lt;span class="s">e&lt;/span> &lt;span class="s">f&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;myList (first) = ${myList}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">INSERT&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">2&lt;/span> &lt;span class="s">X&lt;/span> &lt;span class="s">Y&lt;/span> &lt;span class="s">Z&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;myList (second) = ${myList}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">list&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">FIND&lt;/span> &lt;span class="s">myList&lt;/span> &lt;span class="s">d&lt;/span> &lt;span class="s">index&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;index = ${index}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># 输出
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="err">length&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">3
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">letters&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">c;b
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">myList&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s">first&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">a;b;c;d;e;f
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">myList&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s">second&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">a;b;X;Y;Z;c;d;e;f
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">index&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">6&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/blockquote>
-&lt;h4 id="数学表达式" class="heading-element">&lt;span>数学表达式&lt;/span>
- &lt;a href="#%e6%95%b0%e5%ad%a6%e8%a1%a8%e8%be%be%e5%bc%8f" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">math&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">EXPR&lt;/span> &lt;span class="s">outVar&lt;/span> &lt;span class="s">mathExpr&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;blockquote>
-&lt;p>第一个参数必须使用关键字 EXPR ，而 mathExpr 定义要计算的表达式，结果将存储在 outVar 中&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">x&lt;/span> &lt;span class="s">3&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">y&lt;/span> &lt;span class="s">7&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">math&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">EXPR&lt;/span> &lt;span class="s">z&lt;/span> &lt;span class="s2">&amp;#34;(${x}+${y}) / 2&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;result = ${z}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># 输出
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="err">result&lt;/span> &lt;span class="err">=&lt;/span> &lt;span class="err">5&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/blockquote>
-&lt;h3 id="控制流" class="heading-element">&lt;span>控制流&lt;/span>
- &lt;a href="#%e6%8e%a7%e5%88%b6%e6%b5%81" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h4 id="if" class="heading-element">&lt;span>if()&lt;/span>
- &lt;a href="#if" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">expression1&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># commands ...
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">elseif&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">expression2&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># commands ...
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">else&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># commands ...
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">endif&lt;/span>&lt;span class="p">()&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h4 id="循环" class="heading-element">&lt;span>循环&lt;/span>
- &lt;a href="#%e5%be%aa%e7%8e%af" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">foreach&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">loopVar&lt;/span> &lt;span class="s">IN&lt;/span> &lt;span class="s">[LISTS&lt;/span> &lt;span class="s">listVar1&lt;/span> &lt;span class="s">...]&lt;/span> &lt;span class="s">[ITEMS&lt;/span> &lt;span class="s">item1&lt;/span> &lt;span class="s">...]&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># ...
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">endforeach&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">while&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">condition&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># ...
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">endwhile&lt;/span>&lt;span class="p">()&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="子目录" class="heading-element">&lt;span>子目录&lt;/span>
- &lt;a href="#%e5%ad%90%e7%9b%ae%e5%bd%95" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;h4 id="add_subdirectory" class="heading-element">&lt;span>add_subdirectory()&lt;/span>
- &lt;a href="#add_subdirectory" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">add_subdirectory&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">sourceDir&lt;/span> &lt;span class="s">[&lt;/span> &lt;span class="s">binaryDir&lt;/span> &lt;span class="s">]&lt;/span> &lt;span class="s">[&lt;/span> &lt;span class="s">EXCLUDE_FROM_ALL&lt;/span> &lt;span class="s">]&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>允许项目将另一个目录引入到构建中&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;code>CMAKE_SOURCE_DIR &lt;/code>：源的最顶层目录（最顶层CMakeLists.txt所在位置）&lt;/p>
-&lt;p>&lt;code>CMAKE_BINARY_DIR&lt;/code>：构建的最顶层目录 就是build&lt;/p>
-&lt;p>&lt;code>CMAKE_CURRENT_SOURCE_DIR&lt;/code>：当前处理的CMakeLists.txt文件的目录&lt;/p>
-&lt;p>&lt;code>CMAKE_CURRENT_BINARY_DIR&lt;/code>：当前处理的CMakeLists.txt文件对应的构建目录&lt;/p>
-&lt;/blockquote>
-&lt;h4 id="include" class="heading-element">&lt;span>include()&lt;/span>
- &lt;a href="#include" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://cmake.org/cmake/help/latest/"target="_blank" rel="external nofollow noopener noreferrer">官方手册&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.haohan.pro:10443/doc/Professional-CMake-zh.pdf"target="_blank" rel="external nofollow noopener noreferrer">Professional-CMake&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.bookstack.cn/read/CMake-Cookbook/README.md"target="_blank" rel="external nofollow noopener noreferrer">cmake cookbook&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/493493849"target="_blank" rel="external nofollow noopener noreferrer">CMake的链接选项：PRIVATE，INTERFACE，PUBLIC - 知乎 (zhihu.com)&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://cliutils.gitlab.io/modern-cmake/"target="_blank" rel="external nofollow noopener noreferrer">An Introduction to Modern CMake &lt;/a>&lt;/p>
-&lt;p>vscode 插件 ： clangd&lt;/p>
-&lt;h2 id="make命令" class="heading-element">&lt;span>Make命令&lt;/span>
- &lt;a href="#make%e5%91%bd%e4%bb%a4" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>python版本的makefile: &lt;a href="https://scons-cookbook.readthedocs.io/en/latest/"target="_blank" rel="external nofollow noopener noreferrer">SCons&lt;/a>&lt;/p>
-&lt;p>make规则：&amp;ldquo;目标&amp;quot;是必需的，不可省略；&amp;ldquo;前置条件&amp;quot;和&amp;quot;命令&amp;quot;都是可选的，但是两者之中必须至少存在一个。&lt;/p>
-&lt;p>每条规则就明确两件事：构建目标的前置条件是什么，以及如何构建。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-make" data-lang="make">&lt;span class="line">&lt;span class="cl">&lt;span class="nf">&amp;lt;目标&amp;gt; &lt;/span>&lt;span class="o">:&lt;/span> &amp;lt;前置条件&amp;gt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&amp;lt;命令&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;ol>
-&lt;li>
-&lt;p>文本文件的编写&lt;/p>
-&lt;blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// functions.h
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#ifndef _FUNCTIONS_H_
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#define _FUNCTIONS_H_
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="kt">void&lt;/span> &lt;span class="nf">printhello&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="nf">factorial&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#endif
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="c1">// factorial.cpp
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;#34;functions.h&amp;#34;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="nf">factorial&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">n&lt;/span>&lt;span class="p">){&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="n">n&lt;/span> &lt;span class="o">*&lt;/span> &lt;span class="nf">factorial&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">n&lt;/span> &lt;span class="o">-&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//printhello.cpp
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;#34;functions.h&amp;#34;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="n">using&lt;/span> &lt;span class="n">namespace&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">void&lt;/span> &lt;span class="nf">printhello&lt;/span>&lt;span class="p">(){&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="s">&amp;#34;Hello world!&amp;#34;&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">//main.cpp
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;iostream&amp;gt;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;#34;functions.h&amp;#34;&lt;/span>&lt;span class="cp">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="n">using&lt;/span> &lt;span class="n">namespace&lt;/span> &lt;span class="n">std&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">(){&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nf">printhello&lt;/span>&lt;span class="p">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="s">&amp;#34;This is main: &amp;#34;&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">cout&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="s">&amp;#34;This factorial of 5 is: &amp;#34;&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="nf">factorial&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">5&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">&amp;lt;&amp;lt;&lt;/span> &lt;span class="n">endl&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>正常编译&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">g++ *.cpp -o hello
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./hello&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>写&lt;code>makefile&lt;/code>文件，管理工程，实现自动化编译（&lt;code>.o&lt;/code>）&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;span class="lnt">33
-&lt;/span>&lt;span class="lnt">34
-&lt;/span>&lt;span class="lnt">35
-&lt;/span>&lt;span class="lnt">36
-&lt;/span>&lt;span class="lnt">37
-&lt;/span>&lt;span class="lnt">38
-&lt;/span>&lt;span class="lnt">39
-&lt;/span>&lt;span class="lnt">40
-&lt;/span>&lt;span class="lnt">41
-&lt;/span>&lt;span class="lnt">42
-&lt;/span>&lt;span class="lnt">43
-&lt;/span>&lt;span class="lnt">44
-&lt;/span>&lt;span class="lnt">45
-&lt;/span>&lt;span class="lnt">46
-&lt;/span>&lt;span class="lnt">47
-&lt;/span>&lt;span class="lnt">48
-&lt;/span>&lt;span class="lnt">49
-&lt;/span>&lt;span class="lnt">50
-&lt;/span>&lt;span class="lnt">51
-&lt;/span>&lt;span class="lnt">52
-&lt;/span>&lt;span class="lnt">53
-&lt;/span>&lt;span class="lnt">54
-&lt;/span>&lt;span class="lnt">55
-&lt;/span>&lt;span class="lnt">56
-&lt;/span>&lt;span class="lnt">57
-&lt;/span>&lt;span class="lnt">58
-&lt;/span>&lt;span class="lnt">59
-&lt;/span>&lt;span class="lnt">60
-&lt;/span>&lt;span class="lnt">61
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-makefile" data-lang="makefile">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># VERDION 1
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nf">hello&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">main&lt;/span>.&lt;span class="n">cpp&lt;/span> &lt;span class="n">printhello&lt;/span>.&lt;span class="n">cpp&lt;/span> &lt;span class="n">factorial&lt;/span>.&lt;span class="n">cpp&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	g++ -o hello main.cpp printhello.cpp factorial.cpp
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># VERDION 2
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nv">CXX&lt;/span> &lt;span class="o">=&lt;/span> g++
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TARGET&lt;/span> &lt;span class="o">=&lt;/span> hello
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">OBJ&lt;/span> &lt;span class="o">=&lt;/span> main.o printhello.o factorial.o
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">$(TARGET)&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="k">$(&lt;/span>&lt;span class="nv">OBJ&lt;/span>&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> -o &lt;span class="k">$(&lt;/span>TARGET&lt;span class="k">)&lt;/span> &lt;span class="k">$(&lt;/span>OBJ&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">main.o&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">main&lt;/span>.&lt;span class="n">cpp&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> -c main.cpp
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">printhello.o&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">printhello&lt;/span>.&lt;span class="n">cpp&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> -c printhello.cpp
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">factorial.o&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">factorial&lt;/span>.&lt;span class="n">cpp&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> -c factorial.cpp
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># VERDION 3
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nv">CXX&lt;/span> &lt;span class="o">=&lt;/span> g++
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TARGET&lt;/span> &lt;span class="o">=&lt;/span> hello
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">OBJ&lt;/span> &lt;span class="o">=&lt;/span> main.o printhello.o factorial.o
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CXXFLAGS&lt;/span> &lt;span class="o">=&lt;/span> -c -Wall 
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># Wall 打开警告信息
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nf">$(TARGET)&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="k">$(&lt;/span>&lt;span class="nv">OBJ&lt;/span>&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> -o &lt;span class="nv">$@&lt;/span> $^
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">%.o&lt;/span>&lt;span class="o">:&lt;/span> %.&lt;span class="n">cpp&lt;/span>	
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> &lt;span class="k">$(&lt;/span>CXXFLAGS&lt;span class="k">)&lt;/span> $&amp;lt; -o &lt;span class="nv">$@&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">.PHONY&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">clean&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">clean&lt;/span>&lt;span class="o">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	rm -f *.o &lt;span class="k">$(&lt;/span>TARGET&lt;span class="k">)&lt;/span> 
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># VERDION 4
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nv">CXX&lt;/span> &lt;span class="o">=&lt;/span> g++
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">TARGET&lt;/span> &lt;span class="o">=&lt;/span> hello
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">SRC&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">$(&lt;/span>wildcard *.cpp&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">OBJ&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">$(&lt;/span>patsubst %.cpp, %.o, &lt;span class="k">$(&lt;/span>SRC&lt;span class="k">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CXXFLAGS&lt;/span> &lt;span class="o">=&lt;/span> -c -Wall
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">$(TARGET)&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="k">$(&lt;/span>&lt;span class="nv">OBJ&lt;/span>&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> -o &lt;span class="nv">$@&lt;/span> $^
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">%.o&lt;/span>&lt;span class="o">:&lt;/span> %.&lt;span class="n">cpp&lt;/span>	
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> &lt;span class="k">$(&lt;/span>CXXFLAGS&lt;span class="k">)&lt;/span> $&amp;lt; -o &lt;span class="nv">$@&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="c1"># 想看某些宏的时候在make加上-E即可&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	&lt;span class="k">$(&lt;/span>CXX&lt;span class="k">)&lt;/span> &lt;span class="k">$(&lt;/span>CXXFLAGS&lt;span class="k">)&lt;/span> -E $&amp;lt; &lt;span class="p">|&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> grep -ve &lt;span class="s1">&amp;#39;^#&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> clang-format - &amp;gt; &lt;span class="k">$(&lt;/span>basename &lt;span class="nv">$@&lt;/span>&lt;span class="k">)&lt;/span>.i
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">.PHONY&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="n">clean&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nf">clean&lt;/span>&lt;span class="o">:&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">	rm -f *.o &lt;span class="k">$(&lt;/span>TARGET&lt;span class="k">)&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># del -f *.o $(TARGET).exe
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c"># windows下要想在Makefile中通过命令行删除中间文件，需要将rm替换为del
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>使用&lt;code>make&lt;/code>命令执行&lt;code>makefile&lt;/code>文件中的指令集&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">make&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>在当前目录下执行&lt;code>main&lt;/code>程序&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">./hello
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make clean&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;/ol>
-&lt;h2 id="常用指令" class="heading-element">&lt;span>常用指令&lt;/span>
- &lt;a href="#%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">make &lt;span class="nv">VERBOSE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="c1"># 查看make具体指令&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make -nB &lt;span class="p">|&lt;/span> grep -ve &lt;span class="s1">&amp;#39;^\(\#|echo\|mkdir\)&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> vim -
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -n:只打印命令不运行&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -B:强制 make 所有目标&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># grep -v:反向匹配，表示只输出不匹配指定模式的行; -e:指定一个正则表达式模式&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># vim - :从标准输入（而不是文件）读取内容&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">.PHONY &lt;span class="c1"># 强制每次执行&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h2 id="参考阅读-1" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-1" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://makefiletutorial.com/"target="_blank" rel="external nofollow noopener noreferrer">Makefile Tutorial By Example&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.gnu.org/software/make/manual/make.html#Complex-Makefile"target="_blank" rel="external nofollow noopener noreferrer">GNU make&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/449739787"target="_blank" rel="external nofollow noopener noreferrer">玩转SQLite6：使用C语言来读写数据库&lt;/a>&lt;/p></description></item></channel></rss>
