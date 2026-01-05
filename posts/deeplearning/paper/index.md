@@ -70,6 +70,8 @@
 
 **FCOS**：[FCOS: Fully Convolutional One-Stage Object Detection](https://arxiv.org/abs/1904.01355)  (ICCV 2019)
 
+**Grounding DINO**： [Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection](https://arxiv.org/abs/2303.05499) （2023）
+
 ### Sparse Prediction (two-stage)
 
 #### anchor based
@@ -124,8 +126,6 @@
 &gt;
 &gt; **SFAM**： [M2Det: A Single-Shot Object Detector based on Multi-Level Feature Pyramid Network](https://arxiv.org/abs/1811.04533)  (AAAI 2019)
 
-## Image Segmentation
-
 ## 轻量化CNN
 
 **SqueezeNet**：[SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and &lt;0.5MB model size](https://arxiv.org/abs/1602.07360)  (2016)
@@ -150,9 +150,57 @@
 
 **GhostNet**： [GhostNet: More Features from Cheap Operations](https://arxiv.org/abs/1911.11907)  (2020)
 
-## GAN
+## Generative Models
 
-GAN：[Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
+**GAN**：[Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (2014)
+
+**Diffusion-models**：[High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752) (CVPR 2022)
+
+&gt; [The Principles of Diffusion Models](https://arxiv.org/abs/2510.21890)
+
+**DIT**：[Scalable Diffusion Models with Transformers](https://arxiv.org/abs/2212.09748) (ICCV 2023)
+
+**SDXL**：[SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis ](https://arxiv.org/abs/2307.01952)（2023）
+
+**Flux**：[FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space](https://arxiv.org/abs/2506.15742) （2025）
+
+**Wan**: [Wan: Open and Advanced Large-Scale Video Generative Models](https://arxiv.org/abs/2503.20314) (2025 Alibaba)
+
+##  document Parsing
+
+**MinerU2.5**：[MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing](https://arxiv.org/abs/2509.22186) （2025）
+
+## Recommender System
+
+**wide&amp;deep**：[Wide &amp; Deep Learning for Recommender Systems](https://arxiv.org/abs/1606.07792) （2016）
+
+## Autonomous Driving
+
+**MultiPath**：[MultiPath: Multiple Probabilistic Anchor Trajectory Hypotheses for Behavior Prediction](https://arxiv.org/abs/1910.05449)
+
+**UniAD**：[Planning-oriented Autonomous Driving](https://arxiv.org/abs/2212.10156) （CVPR 2023）
+
+**GameFormer**：[GameFormer: Game-theoretic Modeling and Learning of Transformer-based Interactive Prediction and Planning for Autonomous Driving](https://arxiv.org/abs/2303.05760) (ICCV 2023)
+
+**DriveDreamer**：[DriveDreamer: Towards Real-world-driven World Models for Autonomous Driving](https://arxiv.org/abs/2309.09777)
+
+**FlashOcc**：[FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin](https://arxiv.org/abs/2311.12058)
+
+## LLM训练/推理优化
+
+**FSDP**：[PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel ](https://arxiv.org/abs/2304.11277)（2023）
+
+**MARLIN**： [MARLIN: Mixed-Precision Auto-Regressive Parallel Inference on Large Language Models](https://arxiv.org/abs/2408.11743) （2024）
+
+## 拓展
+
+**[ComfyUI](https://github.com/comfyanonymous/ComfyUI)**：基于节点流程的 Stable Diffusion 高级图形界面。
+
+**[LightX2V](https://github.com/ModelTC/LightX2V)**：轻量级图像与视频生成推理框架。
+
+**[mppp](https://github.com/bluescarni/mppp)**：多精度数值计算库（C&#43;&#43;）。
+
+**[TFCC](https://github.com/Tencent/WeChat-TFCC)**：腾讯微信团队开发的服务端深度学习通用推理框架。
 
 # 如何读论文
 

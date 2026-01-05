@@ -76,7 +76,7 @@
 1. `git reset --hard HEAD^ `或``git reset --hard HEAD~ `：将代码库回滚到上一个版本
 2. `git reset --hard HEAD^^`：往上回滚两次，以此类推
 3. `git reset --hard HEAD~100`：往上回滚100个版本
-4. `git reset --hard 版本号`：回滚到某一特定版本  版本号为哈希值前7位
+4. `git reset --hard 版本号`：回滚到某一特定版本  版本号为哈希值前7位;之后所有改动进暂存区，一键打包成新提交，适合快速合并最近提交。
 5. `git reset --soft HEAD^`：撤销commit
 
 ### 远程仓库

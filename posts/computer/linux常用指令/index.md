@@ -448,6 +448,40 @@ find . -name &#39;*.py&#39; | xargs cat | wc -l
     perf stat -e instructions,cycles ls
    ```
 
+
+2. 常用编译选项
+
+   ```shell
+   -Xclang -fdump-vtable-layouts #  C&#43;&#43; 虚函数表（vtable）的布局信息
+   -fprofile-instr-generate -fcoverage-mapping # 代码覆盖率检测
+   ```
+   
+   ```bash
+   #!/bin/bash
+   rm *.profraw *.profdata -rf
+   SRC_FILES=main.cpp
+   CXX=clang&#43;&#43;
+   LLVM_PROFDATA=llvm-profdata
+   LLVM_COV=llvm-cov
+   CXX_PROFILE_INSTR_FLAGS=&#34;-fprofile-instr-generate -fcoverage-mapping&#34;
+   echo &#34;-------------------------------------------------------&#34; &amp;&amp; \
+   $CXX -O2 -std=c&#43;&#43;17 $SRC_FILES -o program_nomal -g &amp;&amp; \
+   ./program_nomal &amp;&amp; \
+   echo &#34;-------------------------------------------------------&#34; &amp;&amp; \
+   $CXX -O2 -std=c&#43;&#43;17 $CXX_PROFILE_INSTR_FLAGS $SRC_FILES -o program_instr -g &amp;&amp; \
+   ./program_instr &amp;&amp; \
+   echo &#34;-------------------------------------------------------&#34; &amp;&amp; \
+   echo &#34;merge profraw&#34; &amp;&amp; \
+   $LLVM_PROFDATA merge -output=program.profdata *.profraw &amp;&amp; \
+   echo &#34;-------------------------------------------------------&#34; &amp;&amp; \
+   echo &#34;show testPattern count&#34;  &amp;&amp; \
+   $LLVM_PROFDATA show --function=testPattern --counts --detailed-summary program.profdata  &amp;&amp; \
+   echo &#34;-------------------------------------------------------&#34; &amp;&amp; \
+   echo &#34;show source&#34; &amp;&amp; \
+   $LLVM_COV show ./program_instr -instr-profile=./program.profdata main.cpp &amp;&amp; \
+   echo &#34;-------------------------------------------------------&#34;
+   ```
+   
    
 
 
