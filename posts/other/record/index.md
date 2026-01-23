@@ -6,12 +6,32 @@
 ## WSL
 
 ```shell
+# wsl --list --online #查看可用发行版列表
+# wsl --list --verbose # 列出已安装的 Linux 分发版
+# wsl --status # 检查 WSL 状态
 wsl --install -d Ubuntu-22.04 # 安装后重启
 wsl --shutdown # 使其stop
 wsl --export Ubuntu-22.04 D:\wsl_ubuntu\Ubuntu.tar # 导出备份
 wsl --unregister Ubuntu-22.04 #删除当前安装的系统
 wsl --import Ubuntu-22.04 D:\wsl_ubuntu D:\wsl_ubuntu\Ubuntu.tar 
 Ubuntu2204 config --default-user fengchen
+```
+
+### 和windows共享代理
+
+在Windows用户目录下新建文件`.wslconfig`
+
+```txt
+[wsl2]
+memory=8GB
+processors=8
+[experimental]
+autoMemoryReclaim=gradual
+networkingMode=mirrored
+dnsTunneling=true
+firewall=true
+autoProxy=true
+sparseVhd=true
 ```
 
 ## VSCode远程连接AC平台
