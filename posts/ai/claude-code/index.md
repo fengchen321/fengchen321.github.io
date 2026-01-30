@@ -107,6 +107,34 @@ claude mcp add playwright npx @playwright/mcp@latest # 安装 playwright 服务�
 claude mcp remove playwright # 移除配置
 ```
 
+#### codex
+
+```shell
+# 安装 Codex CLI，并能在终端调用 codex 命令
+npm install -g @openai/codex
+# 配置~/.codex/auth.json 输入codex进去后填入apikey就会自动生成
+# 配置 ~/.codex/config.toml
+```
+```toml
+# ~/.codex/config.toml 使用自己的提供商
+model_provider = &#34;codex-for-me&#34;
+model = &#34;gpt-5.2-codex&#34;
+model_reasoning_effort = &#34;high&#34;
+disable_response_storage = true
+
+[model_providers.codex-for-me]
+name = &#34;codex-for-me&#34;
+base_url = &#34;https://api-vip.codex-for.me/v1&#34;
+wire_api = &#34;responses&#34;
+requires_openai_auth = true
+```
+
+```shell
+claude mcp add codex npx @anthropic-ai/mcp-codex@latest # 安装 codex 服务
+claude mcp add codex -s user -- codex -m gpt-5.1-codex-max -c model_reasoning_effort=&#34;high&#34; mcp-server
+claude mcp remove codex # 移除配置
+```
+
 ### hook
 
 调用工具的前后操作
