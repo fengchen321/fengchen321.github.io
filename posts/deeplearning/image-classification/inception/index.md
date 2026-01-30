@@ -2,7 +2,7 @@
 
 策略：&lt;font color=#f12c60&gt;**split-transform-merge**&lt;/font&gt;
 
-# InceptionV1（GoogLeNet）
+## InceptionV1（GoogLeNet）
 
 &gt;  文章标题：[Going Deeper with Convolutions](https://arxiv.org/abs/1409.4842)
 &gt;
@@ -16,7 +16,7 @@ GoogLeNet深度卷积神经网络结构，及其后续变种Inception-V1、Incep
 
 GoogLeNet在ILSVRC-2014图像分类竞赛中获得了top-5误差6.7%的冠军成绩。
 
-## Introduction
+### Introduction
 
 启发文献
 
@@ -30,7 +30,7 @@ GoogLeNet在ILSVRC-2014图像分类竞赛中获得了top-5误差6.7%的冠军成
 
   &gt; 用稀疏、分散的网络取代以前庞大密集臃肿的网络
 
-## Related work
+### Related work
 
 [LeNet](https://ieeexplore.ieee.org/document/6795724)，[AlexNet](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf)，[ZFNet](https://arxiv.org/abs/1311.2901)，[NiN](https://arxiv.org/abs/1312.4400)，[overfeat](https://arxiv.org/abs/1312.6229)
 
@@ -50,7 +50,7 @@ GoogLeNet在ILSVRC-2014图像分类竞赛中获得了top-5误差6.7%的冠军成
   &gt; 两个相连卷积层,两层同步增加卷积核个数，计算量将平方增加
   &gt; 如果很多权重训练后接近0，这部分计算就被浪费掉了
 
-## GoogLeNet
+### GoogLeNet
 
 原始Inception模块通道数越来越多，计算量爆炸。
 
@@ -127,7 +127,7 @@ Auxiliary classification outputs to inject additional gradient at lower layers
 
 测试阶段：去掉辅助分类器
 
-## Training Methodlogy
+### Training Methodlogy
 
 数据并行：一个batch均分k份，让不同节点前向和反向传播，再由中央param sever优化更新权重
 
@@ -149,7 +149,7 @@ asynchronous stochastic gradient descent：异步随机梯度下降
 &gt;
 &gt; $4\times3\times6\times2=144$个patch
 
-## 拓展阅读
+### 拓展阅读
 
 [ILSVRC2014竞赛汇报](https://www.youtube.com/watch?v=ySrj_G5gHWI)
 
@@ -167,7 +167,7 @@ Hebbian原则理解
 
 
 
-# InceptionV2（BN-Inception）
+## InceptionV2（BN-Inception）
 
 &gt;  文章标题：[Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift](https://arxiv.org/abs/1502.03167)
 &gt;
@@ -175,7 +175,7 @@ Hebbian原则理解
 &gt;
 &gt;  发表时间：(ICML 2015)
 
-## Abstract
+### Abstract
 
 训练慢和困难：**internal covariate shift** (ICS)
 
@@ -201,7 +201,7 @@ Batch Normalization
 &gt; &gt;
 &gt; &gt; 超过了人工评分的准确性。
 
-## Introduction
+### Introduction
 
 **使用mini-batch**
 
@@ -213,7 +213,7 @@ Batch Normalization
 
 &gt; 每一层数据的微小变化都会随着网络一层一层的传递而被逐渐放大。
 
-## Normalization via Mini-Batch Statistics
+### Normalization via Mini-Batch Statistics
 
 白化（Whitening）:对输入数据分布进行变换
 
@@ -280,7 +280,7 @@ $$
 
 训练阶段计算的是每一个batch的均值和方差，但是测试时用的是训练后的（指数加权平均）的均值和方差（吴恩达）
 
-## Inception V2 Architecture
+### Inception V2 Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -308,7 +308,7 @@ padding: 2px;&#34;&gt;InceptionV2 网络结构图&lt;/div&gt;
 &gt;
 &gt; &gt;  减少了计算成本，同时增加了训练时的内存消耗。
 
-## 拓展阅读
+### 拓展阅读
 
 [Batch Normalization详解以及pytorch实验](https://blog.csdn.net/qq_37541097/article/details/104434557?spm=1001.2014.3001.5501)
 
@@ -336,7 +336,7 @@ padding: 2px;&#34;&gt;InceptionV2 网络结构图&lt;/div&gt;
 
 &gt; **BN更有利于梯度下降**。绘制了VGG和NIN网络在有无BN层的情况下，loss surface的差异，包含初始点位置以及不同优化算法最终收敛到的local minima位置。**没有BN层的，其loss surface存在较大的高原，有BN层的则没有高原，而是山峰，因此更容易下降。**
 
-# InceptionV3
+## InceptionV3
 
 &gt;  文章标题：[Rethinking the Inception Architecture for Computer Vision](https://arxiv.org/abs/1512.00567)
 &gt;
@@ -350,7 +350,7 @@ padding: 2px;&#34;&gt;InceptionV2 网络结构图&lt;/div&gt;
 
 Inception V3具有强大的图像特征抽取和分类性能，是常用的迁移学习主干网络基模型。
 
-## General Design Principles通用设计原则（建议）
+### General Design Principles通用设计原则（建议）
 
 * 避免过度降维或收缩特征Bottleneck（避免过度的1 x 1卷积，特别是在网络浅层）
 
@@ -376,7 +376,7 @@ Inception V3具有强大的图像特征抽取和分类性能，是常用的迁�
 
   &gt; 两者同时提升，既可以提升性能，也能提升计算效率
 
-## Factorizing Convolutions with Large Filter Size卷积分解
+### Factorizing Convolutions with Large Filter Size卷积分解
 
 $5\times5$卷积分解成2个$3\times3$卷积；减少参数数量
 
@@ -428,7 +428,7 @@ $3\times3$卷积分解成$3\times1$卷积和$1\times3$卷积非对称（空间�
 &gt; padding: 2px;&#34;&gt;Inception Module C&lt;/div&gt;
 &gt; &lt;/center&gt;
 
-## Utility of Auxiliary Classifiers辅助分类器
+### Utility of Auxiliary Classifiers辅助分类器
 
 提出辅助分类器并不能帮助模型更快收敛和更快的特征演化。
 
@@ -460,7 +460,7 @@ $3\times3$卷积分解成$3\times1$卷积和$1\times3$卷积非对称（空间�
   padding: 2px;&#34;&gt;步长为2的卷积化&lt;/div&gt;
   &lt;/center&gt;
 
-## Inception V3
+### Inception V3
 
 &gt; [Inception-v3 的 PyTorch 版本](https://github.com/pytorch/vision/blob/master/torchvision/models/inception.py)
 &gt;
@@ -523,7 +523,7 @@ $$
 
 
 
-## 拓展阅读
+### 拓展阅读
 
 [在 Cloud TPU 上运行 Inception v3 的高级指南](https://cloud.google.com/tpu/docs/inception-v3-advanced)
 
@@ -535,7 +535,7 @@ $$
 
 
 
-# InceptionV4
+## InceptionV4
 
 &gt;  文章标题：[Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning](https://arxiv.org/abs/1602.07261)
 &gt;
@@ -559,7 +559,7 @@ Inception-ResNet-V1和Inception-V3准确率相近，Inception-ResNet-V2和Incept
 
 针对卷积核个数大于1000时残差模块早期训练不稳定的问题，提出了对残差分支幅度缩小的解决方案。
 
-## Inception-V4
+### Inception-V4
 
 &gt; V：不使用padding
 &gt;
@@ -616,7 +616,7 @@ padding: 2px;&#34;&gt;ReductionB&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
 
-## Inception-ResNet-V1
+### Inception-ResNet-V1
 
 &gt; 性能和InceptionV3相近
 
@@ -662,7 +662,7 @@ padding: 2px;&#34;&gt;Inception-ResNet-v1_Module_C&lt;/td&gt;
 &gt;
 &gt; 模块C输出Grid Size：$8\times8$
 
-## Inception-ResNet-V2
+### Inception-ResNet-V2
 
 &gt; Inception-ResNet-V1和Inception-ResNet-V2网络总体结构一样
 &gt;
@@ -706,7 +706,7 @@ padding: 2px;&#34;&gt;Inception-ResNet-v2_Module_C&lt;/td&gt;
 &gt;
 &gt; 模块C输出Grid Size：$8\times8$
 
-## Scaling of the Residuals
+### Scaling of the Residuals
 
 &lt;center&gt;
 &lt;img 
@@ -722,7 +722,7 @@ padding: 2px;&#34;&gt;InceptionV4_Scaling of the Residuals&lt;/div&gt;
 
 &gt; 在加法融合之前，对残差分支的结果乘以幅度缩小系数
 
-## 拓展阅读
+### 拓展阅读
 
 [论文版本1](https://arxiv.org/pdf/1602.07261.pdf)
 
@@ -740,7 +740,7 @@ padding: 2px;&#34;&gt;InceptionV4_Scaling of the Residuals&lt;/div&gt;
 
 
 
-# Xception
+## Xception
 
 &gt;  文章标题：[Xception: Deep Learning with Depthwise Separable Convolutions](https://arxiv.org/abs/1610.02357v3)
 &gt;
@@ -768,7 +768,7 @@ Inception：拓展多分支宽度，分别处理（解耦）再整合汇总
 
 在 DeeplabV3&#43; 中，作者将 Xception 做了进一步的改进，同时增加了 Xception 的层数，设计出了 Xception65 和 Xception71 的网络。
 
-## The Cxeption architecture
+### The Cxeption architecture
 
 假设：跨通道信息和长宽方向的空间信息可完全分离解耦
 
@@ -808,13 +808,13 @@ color: #999;
 padding: 2px;&#34;&gt;extreme version of Inception module&lt;/div&gt;
 &lt;/center&gt;
 
-## Effect of an intermediate activation after pointwise convolutions
+### Effect of an intermediate activation after pointwise convolutions
 
 非线性激活对空间-通道未解耦时有用
 
 对$1\times1$卷积后的特征图，非线性激活会导致信息丢失，不利于后续的深度可分离卷积。
 
-## 拓展阅读
+### 拓展阅读
 
 [Keras中的Xception预训练模型](https://github.com/keras-team/keras/blob/master/keras/applications/xception.py)
 
@@ -829,5 +829,5 @@ padding: 2px;&#34;&gt;extreme version of Inception module&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/inception/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/inception/  
 

@@ -1,8 +1,8 @@
 # Deep Learning Paper
 
-# Paper
+## Paper
 
-## Image Classification
+### Image Classification
 
 &lt;font face=&#34;Noto Serif SC&#34; color=#ff0000&gt;**ALexNet**&lt;/font&gt;：[ImageNet Classification with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf) (NIPS 2012)
 
@@ -30,11 +30,11 @@
 &gt;
 &gt; DenseNet：[Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)
 
-## Object Detection
+### Object Detection
 
-### Dense Prediction (one-stage)
+#### Dense Prediction (one-stage)
 
-#### anchor based
+##### anchor based
 
 **SSD**：[SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)  (ECCV 2016)
 
@@ -54,31 +54,31 @@
 &gt;
 &gt; **YOLOV5**：
 &gt;
-&gt; &gt; [Alpha-IoU:A Family of Power Intersection over Union Losses for Bounding Box Regression](https://arxiv.org/abs/2110.13675) （NIPS 2021）
+&gt; &gt; [Alpha-IoU:A Family of Power Intersection over Union Losses for Bounding Box Regression](https://arxiv.org/abs/2110.13675)  (NIPS 2021)
 
 **RetinaNet**：[Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002)  (ICCV 2017)
 
-#### anchor free
+##### anchor free
 
 **CornerNet**：CornerNet: Detecting Objects as Paired Keypoints](https://arxiv.org/abs/1808.01244)  (ECCV 2018)
 
 &gt; [CornerNet-Lite: Efficient Keypoint Based Object Detection](https://arxiv.org/abs/1904.08900) (BMVC 2020)
 
-**CenterNet**：[CenterNet: Keypoint Triplets for Object Detection](https://arxiv.org/abs/1904.08189)  （ICCV 2019)
+**CenterNet**：[CenterNet: Keypoint Triplets for Object Detection](https://arxiv.org/abs/1904.08189)   (ICCV 2019)
 
-**MatrixNe**t：[Matrix Nets: A New Deep Architecture for Object Detection](https://arxiv.org/abs/1908.04646)（ICCV 2019)
+**MatrixNe**t：[Matrix Nets: A New Deep Architecture for Object Detection](https://arxiv.org/abs/1908.04646) (ICCV 2019)
 
 **FCOS**：[FCOS: Fully Convolutional One-Stage Object Detection](https://arxiv.org/abs/1904.01355)  (ICCV 2019)
 
-**Grounding DINO**： [Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection](https://arxiv.org/abs/2303.05499) （2023）
+**Grounding DINO**： [Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection](https://arxiv.org/abs/2303.05499)  (2023)
 
-### Sparse Prediction (two-stage)
+#### Sparse Prediction (two-stage)
 
-#### anchor based
+##### anchor based
 
 **R-CNN**：[[Rich feature hierarchies for accurate object detection and semantic segmentation](https://arxiv.org/pdf/1311.2524.pdf)  (CVPR 2014)
 
-&gt; &gt; [Selective Search for Object Recognition](https://link.springer.com/article/10.1007/s11263-013-0620-5)（IJCV 2012）
+&gt; &gt; [Selective Search for Object Recognition](https://link.springer.com/article/10.1007/s11263-013-0620-5) (IJCV 2012)
 &gt; &gt;
 &gt; &gt; [**Path-aggregation blocks-FPN**](####Path-aggregation blocks)
 &gt;
@@ -96,13 +96,13 @@
 &gt;
 &gt; **Sparse R-CNN**：[Sparse R-CNN: End-to-End Object Detection with Learnable Proposals](https://arxiv.org/abs/2011.12450) (CVPR 2021)
 
-#### anchor free
+##### anchor free
 
 **RepPoints**：[RepPoints: Point Set Representation for Object Detection](https://arxiv.org/abs/1904.11490) (ICCV 2019)
 
-### Neck
+#### Neck
 
-#### Additional  blocks
+##### Additional  blocks
 
 &gt; **SPP**：[Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition](https://arxiv.org/abs/1406.4729)  (TPAMI 2015)
 &gt;
@@ -112,7 +112,7 @@
 &gt;
 &gt; **SAM**：[CBAM: Convolutional Block Attention Module](https://arxiv.org/abs/1807.06521)  (ECCV 2018)
 
-#### Path-aggregation blocks
+##### Path-aggregation blocks
 
 &gt; **FPN**：[Feature Pyramid Networks for Object Detection](https://arxiv.org/abs/1612.03144)  (CVPR 2017)
 &gt;
@@ -126,7 +126,7 @@
 &gt;
 &gt; **SFAM**： [M2Det: A Single-Shot Object Detector based on Multi-Level Feature Pyramid Network](https://arxiv.org/abs/1811.04533)  (AAAI 2019)
 
-## 轻量化CNN
+### 轻量化CNN
 
 **SqueezeNet**：[SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and &lt;0.5MB model size](https://arxiv.org/abs/1602.07360)  (2016)
 
@@ -150,7 +150,7 @@
 
 **GhostNet**： [GhostNet: More Features from Cheap Operations](https://arxiv.org/abs/1911.11907)  (2020)
 
-## Generative Models
+### Generative Models
 
 **GAN**：[Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (2014)
 
@@ -160,25 +160,27 @@
 
 **DIT**：[Scalable Diffusion Models with Transformers](https://arxiv.org/abs/2212.09748) (ICCV 2023)
 
-**SDXL**：[SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis ](https://arxiv.org/abs/2307.01952)（2023）
+**SDXL**：[SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis ](https://arxiv.org/abs/2307.01952) (2023)
 
-**Flux**：[FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space](https://arxiv.org/abs/2506.15742) （2025）
+**Flux**：[FLUX.1 Kontext: Flow Matching for In-Context Image Generation and Editing in Latent Space](https://arxiv.org/abs/2506.15742)  (2025)
 
 **Wan**: [Wan: Open and Advanced Large-Scale Video Generative Models](https://arxiv.org/abs/2503.20314) (2025 Alibaba)
 
-##  document Parsing
+###  document Parsing
 
-**MinerU2.5**：[MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing](https://arxiv.org/abs/2509.22186) （2025）
+**MinerU2.5**：[MinerU2.5: A Decoupled Vision-Language Model for Efficient High-Resolution Document Parsing](https://arxiv.org/abs/2509.22186)  (2025)
 
-## Recommender System
+### Recommender System
 
-**wide&amp;deep**：[Wide &amp; Deep Learning for Recommender Systems](https://arxiv.org/abs/1606.07792) （2016）
+**wide&amp;deep**：[Wide &amp; Deep Learning for Recommender Systems](https://arxiv.org/abs/1606.07792)  (2016)
 
-## Autonomous Driving
+### Autonomous Driving
 
 **MultiPath**：[MultiPath: Multiple Probabilistic Anchor Trajectory Hypotheses for Behavior Prediction](https://arxiv.org/abs/1910.05449)
 
-**UniAD**：[Planning-oriented Autonomous Driving](https://arxiv.org/abs/2212.10156) （CVPR 2023）
+**UniAD**：[Planning-oriented Autonomous Driving](https://arxiv.org/abs/2212.10156) (CVPR 2023)
+
+**CMT**：[Cross Modal Transformer: Towards Fast and Robust 3D Object Detection](https://arxiv.org/abs/2301.01283) (ICCV 2023)
 
 **GameFormer**：[GameFormer: Game-theoretic Modeling and Learning of Transformer-based Interactive Prediction and Planning for Autonomous Driving](https://arxiv.org/abs/2303.05760) (ICCV 2023)
 
@@ -186,23 +188,23 @@
 
 **FlashOcc**：[FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin](https://arxiv.org/abs/2311.12058)
 
-## LLM训练/推理优化
+### LLM训练/推理优化
 
-**FSDP**：[PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel ](https://arxiv.org/abs/2304.11277)（2023）
+**FSDP**：[PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel ](https://arxiv.org/abs/2304.11277) (2023)
 
-**MARLIN**： [MARLIN: Mixed-Precision Auto-Regressive Parallel Inference on Large Language Models](https://arxiv.org/abs/2408.11743) （2024）
+**MARLIN**： [MARLIN: Mixed-Precision Auto-Regressive Parallel Inference on Large Language Models](https://arxiv.org/abs/2408.11743)  (2024)
 
-## 拓展
+### 拓展
 
 **[ComfyUI](https://github.com/comfyanonymous/ComfyUI)**：基于节点流程的 Stable Diffusion 高级图形界面。
 
 **[LightX2V](https://github.com/ModelTC/LightX2V)**：轻量级图像与视频生成推理框架。
 
-**[mppp](https://github.com/bluescarni/mppp)**：多精度数值计算库（C&#43;&#43;）。
+**[mppp](https://github.com/bluescarni/mppp)**：多精度数值计算库 (C&#43;&#43;)。
 
 **[TFCC](https://github.com/Tencent/WeChat-TFCC)**：腾讯微信团队开发的服务端深度学习通用推理框架。
 
-# 如何读论文
+## 如何读论文
 
 &gt; [李沐](https://www.bilibili.com/video/BV1H44y1t75x?spm_id_from=333.999.0.0)
 
@@ -216,5 +218,5 @@
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/paper/  
+> URL: https://fengchen321.github.io/posts/deeplearning/paper/  
 

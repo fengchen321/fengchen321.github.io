@@ -1,24 +1,24 @@
 # Spatial Attention
 
-# 基于 RNN 的方法
+## 基于 RNN 的方法
 
-## RAM
+### RAM
 
 &gt; 文章标题：
 &gt; 作者：
 &gt; 发表时间：()
 
-# 使用子网络来显式预测相关区域
+## 使用子网络来显式预测相关区域
 
-## STN
+### STN
 
-# 使用子网络来隐式预测软掩码以选择重要区域
+## 使用子网络来隐式预测软掩码以选择重要区域
 
-## GENet
+### GENet
 
-# 自注意力相关
+## 自注意力相关
 
-## Non-local
+### Non-local
 
 &gt; 文章标题：[Non-local Neural Networks](https://arxiv.org/abs/1711.07971v3)
 &gt; 作者：Xiaolong Wang,  Ross Girshick,  Abhinav Gupta,  Kaiming He
@@ -54,5 +54,5 @@ $$
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/attention/spatial-attention/  
+> URL: https://fengchen321.github.io/posts/deeplearning/attention/spatial-attention/  
 

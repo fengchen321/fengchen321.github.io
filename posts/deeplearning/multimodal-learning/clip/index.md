@@ -1,6 +1,6 @@
 # CLIP
 
-# CLIP
+## CLIP
 
 &gt; 文章标题：[Learning Transferable Visual Models From Natural Language Supervision](https://arxiv.org/abs/2103.00020) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F6f870f7f02a8c59c3e23f407f3ef00dd1dcf8fc4%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Learning-Transferable-Visual-Models-From-Natural-Radford-Kim/6f870f7f02a8c59c3e23f407f3ef00dd1dcf8fc4)
 &gt;
@@ -39,7 +39,7 @@
 
 使用超大规模 web Image Text 数据集
 
-## Related work
+### Related work
 
 [Learning visual n-grams from web data](https://arxiv.org/abs/1612.09161)：和CLIP相似，没有transformer和大规模数据集，效果很差
 
@@ -49,7 +49,7 @@
 
 [ConVIRT (MLHC 2022)](https://arxiv.org/abs/2010.00747) 和CLIP类似，只在医疗图像上做了实验
 
-## Methods
+### Methods
 
 &lt;center&gt;
     &lt;img src=&#34;/images/MultiModal learning/CLIP.assets/CLIP.png&#34;&gt;
@@ -111,7 +111,7 @@
 
 * 交叉熵目标函数  一个是 Image loss；一个是 text loss； 把两个 loss 加起来取平均
 
-## 推荐阅读
+### 推荐阅读
 
 [官方博客](https://openai.com/blog/clip/)
 
@@ -125,7 +125,7 @@
 
 [How to Train Really Large Models on Many GPUs?](https://lilianweng.github.io/posts/2021-09-25-train-large/)
 
-# LSeg
+## LSeg
 
 &gt; 文章标题：[Language-driven Semantic Segmentation](https://arxiv.org/abs/2201.03546) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fcc9826c222ac1e81b4b374dd9e0df130f298b1e8%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Language-driven-Semantic-Segmentation-Li-Weinberger/cc9826c222ac1e81b4b374dd9e0df130f298b1e8)
 &gt;
@@ -166,7 +166,7 @@
 
 
 
-# GroupViT
+## GroupViT
 
 &gt; 文章标题：[GroupViT: Semantic Segmentation Emerges from Text Supervision](https://arxiv.org/abs/2202.11094) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F0b5f27a5766c5d1394a6282ad94fec21d620bd6b%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/GroupViT%3A-Semantic-Segmentation-Emerges-from-Text-Xu-Mello/0b5f27a5766c5d1394a6282ad94fec21d620bd6b)
 &gt;
@@ -184,7 +184,7 @@
 &gt;
 &gt; &gt; 类似于有一些聚类中心点，从这个点开始发散，把附近周围相似的点逐渐扩充成一个group，那这个group相当是一个segametation mask。
 
-## Methods
+### Methods
 
 **ViT &#43; grouping block &#43; 可学习的group tokens**
 
@@ -236,7 +236,7 @@
   &gt; 局限性：最多只能检测到8类；没有很好的利用dense prediction的特性；CLIP 这种训练方式
   &gt; 没有办法学到这些背景类（语义太模糊）
 
-# VILD
+## VILD
 
 &gt; 文章标题：[Open-vocabulary Object Detection via Vision and Language Knowledge Distillation](https://arxiv.org/abs/2104.13921) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fcf9b8da26d9b92e75ba49616ed2a1033f59fce14%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Open-vocabulary-Object-Detection-via-Vision-and-Gu-Lin/cf9b8da26d9b92e75ba49616ed2a1033f59fce14)
 &gt;
@@ -246,7 +246,7 @@
 &gt;
 &gt; [offical code](https://github.com/tensorflow/tpu/tree/master/models/official/detection/projects/vild)
 
-## Methods
+### Methods
 
 &lt;center&gt;
     &lt;img src=&#34;/images/MultiModal learning/CLIP.assets/VILD_1.png&#34;&gt;
@@ -318,11 +318,11 @@
 
   &gt; 不论是基础类还是新类都通过prompt再通过这个文本编码器得到所有的这些text embedding；然后让Mask RCNN抽取的region embedding去和text embedding做相似度计算，计算结果最大的那个，就是模型输出的检测到的类型。
 
-## 拓展阅读
+### 拓展阅读
 
 [利用图像文本的知识蒸馏来进行开放词表目标检测](https://zhuanlan.zhihu.com/p/565836721)
 
-# GLIP
+## GLIP
 
 &gt; 文章标题：[Grounded Language-Image Pre-training](https://arxiv.org/abs/2112.03857) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F5341b412383c43f4a693ad63ec4489e3ec7688c8%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Grounded-Language-Image-Pre-training-Li-Zhang/5341b412383c43f4a693ad63ec4489e3ec7688c8)
 &gt;
@@ -364,11 +364,11 @@ phrase  grounding：给定图片和文本，根据文本把物体找出来
 * 图片通过图像编码器得到一些region embedding；文本通过文本编码器得到一些text embedding
 * 用Cross Attention啊把这个文本和图像的特征交互一下
 
-## 拓展阅读
+### 拓展阅读
 
 
 
-# CLIPasso
+## CLIPasso
 
 &gt; 文章标题：[CLIPasso: Semantically-Aware Object Sketching](https://arxiv.org/abs/2202.05822) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F9dec819778bebae4a468c7813f7638534c826f52%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/CLIPasso%3A-Semantically-Aware-Object-Sketching-Vinker-Pajouheshgar/9dec819778bebae4a468c7813f7638534c826f52)
 &gt;
@@ -415,11 +415,11 @@ phrase  grounding：给定图片和文本，根据文本把物体找出来
 &gt;
 &gt; 通过控制笔画数去控制图片的抽象程度 （手动--优化参数）
 
-## 拓展阅读
+### 拓展阅读
 
 [Multimodal Neurons in Artificial Neural Networks](https://distill.pub/2021/multimodal-neurons/)  可视化分析 CLIP
 
-# CLIP4Clip
+## CLIP4Clip
 
 &gt; 文章标题：[CLIP4Clip: An Empirical Study of CLIP for End to End Video Clip Retrieval](https://arxiv.org/abs/2104.08860) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F281ad83e06d731d5d686acf07cd701576f1188c4%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/CLIP4Clip%3A-An-Empirical-Study-of-CLIP-for-End-to-Luo-Ji/281ad83e06d731d5d686acf07cd701576f1188c4)
 &gt;
@@ -451,7 +451,7 @@ phrase  grounding：给定图片和文本，根据文本把物体找出来
 
 
 
-# ActionCLIP
+## ActionCLIP
 
 &gt; 文章标题：[ActionCLIP: A New Paradigm for Video Action Recognition](https://arxiv.org/abs/2109.08472) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fdc05240a06326b5b1664f7e8c95c330b08cd0349%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/ActionCLIP%3A-A-New-Paradigm-for-Video-Action-Wang-Xing/dc05240a06326b5b1664f7e8c95c330b08cd0349)
 &gt;
@@ -485,7 +485,7 @@ phrase  grounding：给定图片和文本，根据文本把物体找出来
     &lt;/div&gt;
 &lt;/center&gt;
 
-# PointCLIP
+## PointCLIP
 
 &gt; 文章标题：[PointCLIP: Point Cloud Understanding by CLIP](https://arxiv.org/abs/2112.02413) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Ff3ce9ba3fcec362b70263a7ed63d9404975496a0%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/PointCLIP%3A-Point-Cloud-Understanding-by-CLIP-Zhang-Guo/f3ce9ba3fcec362b70263a7ed63d9404975496a0)
 &gt;
@@ -511,7 +511,7 @@ phrase  grounding：给定图片和文本，根据文本把物体找出来
 文本端通过prompt变成了句子point cloud depth Map of a 『CLASS』
 
 
-# DepthCLIP
+## DepthCLIP
 
 &gt; 文章标题：[Can Language Understand Depth?](https://arxiv.org/abs/2207.01077) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F9d0afe58801fe9e5537902e853d6e9e385340a92%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Can-Language-Understand-Depth-Zhang-Zeng/9d0afe58801fe9e5537902e853d6e9e385340a92)
 &gt;
@@ -537,5 +537,5 @@ phrase  grounding：给定图片和文本，根据文本把物体找出来
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/multimodal-learning/clip/  
+> URL: https://fengchen321.github.io/posts/deeplearning/multimodal-learning/clip/  
 

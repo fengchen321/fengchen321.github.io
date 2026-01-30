@@ -1,6 +1,6 @@
 # ConvNeXt
 
-# ConvNeXt 
+## ConvNeXt 
 
 &gt; 文章标题：[A ConvNet for the 2020s](https://arxiv.org/abs/2201.03545v1)
 &gt; 作者：[Zhuang Liu](https://liuzhuang13.github.io/), Hanzi Mao, Chao-Yuan Wu, Christoph Feichtenhofer, Trevor Darrell, Saining Xie
@@ -11,7 +11,7 @@
 &gt;
 &gt; ResNet的Transformer版
 
-## Modernizing a ConvNet: a Roadmap路线图
+### Modernizing a ConvNet: a Roadmap路线图
 
 &lt;center&gt;
 &lt;img 
@@ -23,7 +23,7 @@ color: #999;
 padding: 2px;&#34;&gt;深色为 ResNet-50/Swin-T；灰色为ResNet-200/Swin-B；阴影为未修改&lt;/div&gt;
 &lt;/center&gt;
 
-### Detailed Architectures
+#### Detailed Architectures
 
 &lt;center&gt;
 &lt;img 
@@ -48,7 +48,7 @@ padding: 2px;&#34;&gt;Detailed results for modernizing a ResNet-200&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
 
-### macro design 宏观设计
+#### macro design 宏观设计
 
 * **Changing stage compute ratio   (78.8%---&gt;79.4%)**
 
@@ -79,7 +79,7 @@ padding: 2px;&#34;&gt;Detailed results for modernizing a ResNet-200&lt;/td&gt;
   &gt;
   &gt; 
 
-### ResNeXt (79.4%---&gt;80.5%)
+#### ResNeXt (79.4%---&gt;80.5%)
 
 Use more groups, expand width 使用更多的组，扩大宽度
 
@@ -87,7 +87,7 @@ Use more groups, expand width 使用更多的组，扩大宽度
 &gt;
 &gt; 将网络宽度增加到与Swin-T的通道数量相同（从64到&lt;font color=#f12c60&gt;**96**&lt;/font&gt;）
 
-### Inverted bottleneck  (80.5%---&gt;80.6%)
+#### Inverted bottleneck  (80.5%---&gt;80.6%)
 
 &lt;center&gt;
 &lt;img 
@@ -103,12 +103,12 @@ padding: 2px;&#34;&gt;Block modifications and resulted specifications&lt;/div&gt
 &gt;
 &gt; d=4（维度系数）
 
-### large kernel size
+#### large kernel size
 
 &gt; * 使用[c图](###Inverted bottleneck  (80.5%---&gt;80.6%))深度卷积位置&lt;font color=#f12c60&gt;**上移后的倒残差结构**&lt;/font&gt;   **(退化到79.9%)**
 &gt; * 使用&lt;font color=#f12c60&gt;**$7\times7$**&lt;/font&gt;卷积   **（79.9% (3×3) ---&gt; 80.6%） (7×7)**
 
-###  various layer-wise micro designs各种层级的微观设计
+####  various layer-wise micro designs各种层级的微观设计
 
 &lt;center&gt;
 &lt;img 
@@ -198,9 +198,9 @@ class Block(nn.Module):
   &gt;     self.downsample_layers.append(downsample_layer)
   &gt; ```
 
-## Empirical Evaluations on ImageNet
+### Empirical Evaluations on ImageNet
 
-###  ConvNeXt 变体配置
+####  ConvNeXt 变体配置
 
 &gt; | ConvNeXt 系列 |     C_channels      | B_stage_blocks | IN-1K top-1 acc_input_224 |
 &gt; | :-----------: | :-----------------: | :------------: | :-----------------------: |
@@ -210,7 +210,7 @@ class Block(nn.Module):
 &gt; |  ConvNeXt-L   | (192,384,768,1536)  |   (3,3,27,3)   |           84.3            |
 &gt; |  ConvNeXt-XL  | (256,512,1024,2048) |   (3,3,27,3)   |  IN-22K pre-trained-87.0  |
 
-### Training Techniques
+#### Training Techniques
 
 ImageNet-1K
 
@@ -252,7 +252,7 @@ ImageNet-1K
 |      Top-1 acc      |        75.3        | 80.4 |    80.674    | 82.1 |
 
 
-## 拓展阅读
+### 拓展阅读
 
 [ConvNeXt：手把手教你改模型](https://zhuanlan.zhihu.com/p/456432890?)
 
@@ -265,5 +265,5 @@ ImageNet-1K
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/convnext-/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/convnext-/  
 

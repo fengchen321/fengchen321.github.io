@@ -168,5 +168,5 @@ feature map cell 就是将 feature map 切分成 8×8 或者 4×4 之后的一�
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/object-detection/ssd/  
+> URL: https://fengchen321.github.io/posts/deeplearning/object-detection/ssd/  
 

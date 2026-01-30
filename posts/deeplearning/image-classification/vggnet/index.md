@@ -1,6 +1,6 @@
 # VGGNet
 
-# VGGNet
+## VGGNet
 &gt; 文章标题：[Very Deep Convolutional Networks for Large-Scale Visual Recognition](https://arxiv.org/abs/1409.1556)
 &gt; 作者：[Simonyan K](https://scholar.google.com/citations?hl=zh-CN&amp;user=L7lMQkQAAAAJ), [Zisserman A. V](https://scholar.google.com/citations?hl=zh-CN&amp;user=UZ5wscMAAAAJ)
 &gt; 发表时间：(ICLR 2015)
@@ -16,7 +16,7 @@ VGG将LeNet和AlexNet奠定的经典串行卷积神经网络结构的深度和�
 
 VGG模型结构虽然简单，但臃肿复杂，参数过多（超过一亿个），速度慢，第一个全连接层占据了大量参数。
 
-## Architecture
+### Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -53,7 +53,7 @@ padding: 2px;&#34;&gt;VGGNet16参数计算&lt;/div&gt;
 &lt;/center&gt;
 前两层卷积占据绝大部分内存；第一层全连接层占据绝大部分参数。
 
-## Training
+### Training
 
 更快收敛：小的卷积核和深的网络起到隐式的正则化；对某些层进行权重初始化策略
 
@@ -67,7 +67,7 @@ padding: 2px;&#34;&gt;VGGNet16参数计算&lt;/div&gt;
 
   &gt; 随机从[256,512]选取
 
-## Tseting
+### Tseting
 
 下面设缩放后图片短边为$Q$
 
@@ -85,7 +85,7 @@ padding: 2px;&#34;&gt;VGGNet16参数计算&lt;/div&gt;
 
 * 裁剪：还是AlexNet的思路，作者每个尺度裁剪50张图片，三个尺度一共150张图片（注意这里还是需要裁剪出224 x 224的）
 
-## Experiments
+### Experiments
 
 * $Q$为固定值
   * LRN在这里不起作用
@@ -132,13 +132,13 @@ padding: 2px;&#34;&gt;train多尺度，test单尺度（全卷积）&lt;/div&gt;
   &lt;/center&gt;
 * 模型集成
 
-## Localisation
+### Localisation
 
 Localisation定位问题（可看成目标检测的特例）（模型预测是bbox与Ground Truth的IoU大于0.5即可）：VGGNet改成预测bounding box（下面都简称为bbox）的模型，一个bbox用中心坐标、长、宽四个数确定，最后一个FC层换成4维（single-class regression，SCR，对所有类别不区分对待，即训练1个bbox）或4000维的向量（per-class regression，PCR，每个类别区分对待，即训练1000个bbox）。Softmax损失换成L2损失，训练单尺度模型，模型初始化使用之前的分类的模型，最后一层FC层随机初始化。
 
 预测时：第一种方法是仅裁剪出图片中间的一块；第二种方法是用前面的全卷积，这种情况下最后会输出一堆bbox，于是可以对它们进行合并（基于前面分类的结果合并）。这里没有使用可以进一步提高结果的multiple pooling offsets和resolution enhancement technique（有待研究）。
 
-## 拓展阅读
+### 拓展阅读
 
 [牛津大学视觉组（VGG）官方网站](http://www.robots.ox.ac.uk/~vgg/)
 
@@ -159,5 +159,5 @@ Localisation定位问题（可看成目标检测的特例）（模型预测是bb
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/vggnet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/vggnet/  
 

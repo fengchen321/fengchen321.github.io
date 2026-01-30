@@ -55,6 +55,16 @@ valgrind --tool=memcheck --leak-check=no ./demo
 
 BPF 是一种内核追踪技术，可用于内存检测。
 
+### [BCC](https://github.com/iovisor/bcc/tree/master)
+
+### 参考阅读
+
+- [Brendan Gregg&#39;s Homepage](https://www.brendangregg.com/)
+- [Home - eBPF.party](https://ebpf.party/)
+- [bpf – blog](https://kernelreload.club/wordpress/archives/tag/bpf)
+- [ebpf入门](http://kerneltravel.net/blog/2021/ebpf_beginner/ebpf.pdf)
+- [bilibili-linux内核调试追踪技术20讲](https://space.bilibili.com/646178510/lists/468091?type=season)
+
 ## 其他工具
 
 ```shell
@@ -66,8 +76,8 @@ time -l ./demo    # macOS
 coverity: https://scan.coverity.com/
 
 # 性能分析
-gpertools
-heaptrack
+gpertools: https://github.com/gperftools/gperftools
+heaptrack: https://github.com/KDE/heaptrack
 ```
 
 ---
@@ -332,8 +342,11 @@ int main(void) {
     return 0;
 }
 ```
+### 参考阅读
 
----
+- [malloc_hook 研究](https://blog.csdn.net/hejinjing_tom_com/article/details/124007460)
+- [memray: Python 内存分析器](https://github.com/bloomberg/memray)
+- [mem_profile](https://github.com/codeinred/mem_profile)
 
 ## 栈回溯 (Backtrace)
 
@@ -391,21 +404,13 @@ int main(void) {
 }
 ```
 
-### 推荐库
+### 参考阅读
 
 - [backward-cpp](https://github.com/bombela/backward-cpp): 美观的 C&#43;&#43; 栈回溯打印库
-
----
-
-## 参考阅读
-
-- [malloc_hook 研究](https://blog.csdn.net/hejinjing_tom_com/article/details/124007460)
-- [memray: Python 内存分析器](https://github.com/bloomberg/memray)
-- [mem_profile](https://github.com/codeinred/mem_profile)
 
 
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/c&#43;&#43;/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/  
+> URL: https://fengchen321.github.io/posts/c&#43;&#43;/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/  
 

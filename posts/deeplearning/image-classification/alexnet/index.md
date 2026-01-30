@@ -1,6 +1,6 @@
 # AlexNet
 
-# AlexNet
+## AlexNet
 
 &gt; 文章标题：[ImageNet Classification with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fabd1c342495432171beb7ca8fd9551ef13cbd0ff%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/ImageNet-classification-with-deep-convolutional-Krizhevsky-Sutskever/abd1c342495432171beb7ca8fd9551ef13cbd0ff)
 &gt;
@@ -18,7 +18,7 @@ AlexNet采用了**ReLU激活函数、双GPU模型并行、LRN局部响应归一�
 
 AlexNet包含五个卷积层，池化层，Dropout层和三个全连接层，最终通过1000个输出神经元进行softmax分类。
 
-## The Dataset
+### The Dataset
 
 &gt; ImageNet
 
@@ -27,13 +27,13 @@ AlexNet包含五个卷积层，池化层，Dropout层和三个全连接层，最
 &gt; Top1:概率最高的预测类别为正确标签
 &gt; Top5:五个预测类别里包含正确标莶
 
-## The Architecture
+### The Architecture
 
-### ReLu激活函数
+#### ReLu激活函数
 
 在AlexNet中用的非线性非饱和函数是$f=max(0,x)$，即ReLU。实验结果表明，要将深度网络训练至training error rate达到25%的话，ReLU只需5个epochs的迭代，但tanh单元需要35个epochs的迭代，用ReLU比tanh快6倍。
 
-### 多GPU模型并行
+#### 多GPU模型并行
 
  为提高运行速度和提高网络运行规模，作者采用双GPU的设计模式。并且规定**GPU只能在特定的层进行通信交流**。其实就是每一个GPU负责一半的运算处理。作者的实验数据表示，two-GPU方案会比只用one-GPU跑半个上面大小网络的方案，在准确度上提高了1.7%的top-1和1.2%的top-5。值得注意的是，虽然one-GPU网络规模只有two-GPU的一半，但其实这两个网络其实并非等价的。
 
@@ -41,7 +41,7 @@ AlexNet包含五个卷积层，池化层，Dropout层和三个全连接层，最
 
 双GPU(全参数)的训练时间比单GPU(半参数)更短；单GPU(半参数)模型中最后一个卷积层和全连接层数量和双GPU(全参数)模型相同，因此“半参数”并非真的只有一半的参数。
 
-### LRN局部响应归一化
+#### LRN局部响应归一化
 
 ReLU本来是不需要对输入进行标准化来避免信号陷入饱和，但本文发现进行局部标准化能提高性能。
 $$
@@ -59,13 +59,13 @@ $(k,\alpha,\beta,n)=(2,10^{-4},0.75,5)$AlexNet所用参数他们的值是在验�
 
 卷积核矩阵的排序是随机任意，并且在训练之前就已经决定好顺序。这种LRN形成了一种侧向抑制机制。
 
-### Overlapping Pooling
+#### Overlapping Pooling
 
 池层是相同卷积核领域周围神经元的输出。池层被认为是由空间距离s个像素的池单元网格的组成。也可以理解成以大小为步长对前面卷积层的结果进行分块，对块大小为的卷积映射结果做总结。Pooling单元在总结提取特征的时候，其输入会受到相邻pooling单元的输入影响，也就是提取出来的结果可能是有重复的(对max pooling而言)。而且，实验表示使用带交叠的Pooling的效果比的传统要好，在top-1和top-5上分别提高了0.4%和0.3%，在训练阶段有避免过拟合的作用。
 
 &gt; 后来的paper不采用这种方法
 
-### 总体结构
+#### 总体结构
 
 &gt; [网络结构详解](https://www.bilibili.com/video/BV1p7411T7Pc)
 &gt;
@@ -124,9 +124,9 @@ padding: 2px;&#34;&gt;AlexNet网络结构&lt;/div&gt;
 
 11. FC8：用一个维度为$4096\times1000$矩阵完成输入输出的全连接，输出$1\times 1000$
 
-## Reducing Overfiting
+### Reducing Overfiting
 
-### Data Augmentation数据增强
+#### Data Augmentation数据增强
 
 针对==位置==：
 
@@ -140,7 +140,7 @@ padding: 2px;&#34;&gt;AlexNet网络结构&lt;/div&gt;
 
 * 对图像的RGB数据进行PCA处理,并对主成分做一个标准差为0.1的高斯扰动,增加些噪声,（修改RGB通道像素值）这个 Trick可以让错误率再下降1%。
 
-### Dropout 随机失活
+#### Dropout 随机失活
 
 &gt; 随机：dropout probability (eg: p=0.5)
 &gt;
@@ -159,7 +159,7 @@ Dropout减少过拟合的理由
 * 稀疏性
 * 等价于正则项
 
-## 拓展阅读
+### 拓展阅读
 
 [AlexNet – ImageNet Classification with Deep Convolutional Neural Networks](https://neurohive.io/en/popular-networks/alexnet-imagenet-classification-with-deep-convolutional-neural-networks/)
 
@@ -183,7 +183,7 @@ Dropout减少过拟合的理由
 
 
 
-# ZFNet
+## ZFNet
 
 &gt; 文章标题：[Visualizing and Understanding Convolutional Networks](https://arxiv.org/abs/1311.2901)
 &gt; 作者：Matthew D Zeiler，Rob Fergus
@@ -223,7 +223,7 @@ src=&#34;/images/Image Classification/AlexNet.assets/ZFNet_AlexNet.png&#34;&gt;
 
 
 
-## 拓展阅读
+### 拓展阅读
 
 [原作者讲解视频](https://www.youtube.com/watch?v=ghEmQSxT6tw)（视频中有几页ppt播放顺序错误）
 
@@ -232,5 +232,5 @@ src=&#34;/images/Image Classification/AlexNet.assets/ZFNet_AlexNet.png&#34;&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/alexnet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/alexnet/  
 

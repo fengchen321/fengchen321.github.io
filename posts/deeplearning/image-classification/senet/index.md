@@ -1,6 +1,6 @@
 # SENet
 
-# SENet
+## SENet
 
 &gt; 文章标题：[Squeeze-and-Excitation Networks](https://arxiv.org/abs/1709.01507)
 &gt; 作者：Jie Hu, Li Shen, Samuel Albanie, Gang Sun, Enhua Wu
@@ -10,7 +10,7 @@
 &gt;
 &gt; [External-Attention-pytorch](https://github.com/xmu-xiaoma666/External-Attention-pytorch#4-squeeze-and-excitation-attention-usage)  [senet.pytorch](https://github.com/moskomule/senet.pytorch)
 
-## Squeeze-and-Excitation blocks
+### Squeeze-and-Excitation blocks
 
 **关注channel之间的关系，希望模型可以自动学习到不同channel特征的重要程度**
 
@@ -100,7 +100,7 @@ padding: 2px;&#34;&gt;SE-ResNet-module&lt;/td&gt;
     &lt;/tr&gt;
 &lt;/table&gt;
 
-## Model and computational complexity
+### Model and computational complexity
 
 &lt;center&gt;
 &lt;img 
@@ -122,7 +122,7 @@ $$
 
 $r$表示降维比；$S$：第几个stage；$C_s$ 表示输出通道的维度；$N_s $表示第$s$个stage的重复块的数量
 
-## Ablation study
+### Ablation study
 
 * 不同Reduction ratio也进行了消融实验。
 
@@ -174,7 +174,7 @@ $r$表示降维比；$S$：第几个stage；$C_s$ 表示输出通道的维度；
   &gt;
   &gt; &gt; 以更少的参数实现了可比的分类精度
 
-## Role of SE blocks
+### Role of SE blocks
 
 **Effect of Squeeze**：强调了挤压操作的重要，作为对比，它添加了相同数量的参数，删除了池化操作，用具有相同通道维度的相应 $1\times1 $卷积替换了两个 FC 层，即 NoSqueeze，其中激励输出保持空间维度作为输入。
 
@@ -215,7 +215,7 @@ $$
 &gt;
 &gt; 为网络提供重新校准方面不如之前的块重要，通过移除最后阶段的 SE 块，可以显着减少额外的参数计数，而性能只有**边际损失**
 
-## 训练细节
+### 训练细节
 
 * 每个瓶颈构建块的前$ 1\times1 $卷积通道的数量减半以降低模型的计算成本性能下降最小。 
 
@@ -231,13 +231,13 @@ $$
 
 *  使用 8 个服务器（64 个 GPU）并行进行训练，以实现大批量（2048 个）。初始学习率设置为 1.0
 
-## 拓展阅读
+### 拓展阅读
 
 [CV27 Momenta研发总监 孙刚 Squeeze and Excitation Networks上](https://www.youtube.com/watch?v=FUiUfD7bdqw)
 
 [CV27 Momenta研发总监 孙刚 Squeeze and Excitation Networks下](https://www.youtube.com/watch?v=-8nqA4F7XNU)
 
-# SKNet
+## SKNet
 
 &gt; 文章标题：[Selective Kernel Networks](https://arxiv.org/abs/1903.06586)
 &gt; 作者：Xiang Li, Wenhai Wang, Xiaolin Hu, Jian Yang
@@ -245,7 +245,7 @@ $$
 &gt;
 &gt; [Official Code](https://github.com/implus/SKNet)
 
-## Selective Kernel Convolution
+### Selective Kernel Convolution
 
 **用multiple scale feature汇总的information来channel-wise地指导如何分配侧重使用哪个kernel的表征**
 
@@ -371,7 +371,7 @@ class SKAttention(nn.Module):
 
 
 
-## Network Architecture
+### Network Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -383,7 +383,7 @@ color: #999;
 padding: 2px;&#34;&gt;SKNet&lt;/div&gt;
 &lt;/center&gt;
 
-## Ablation Studies
+### Ablation Studies
 
 * The dilation D and group number 
 
@@ -419,7 +419,7 @@ padding: 2px;&#34;&gt;SKNet&lt;/div&gt;
   &gt;
   &gt;  (3) 使用 SK attention，模型从 M = 2 到 M = 3 的性能增益是微不足道的（top-1 error 从 20.79% 下降到 20.76%）。为了更好地权衡性能和效率，M = 2 是首选
 
-## 拓展阅读
+### 拓展阅读
 
 [SKNet——SENet孪生兄弟篇](https://zhuanlan.zhihu.com/p/59690223)
 
@@ -427,5 +427,5 @@ padding: 2px;&#34;&gt;SKNet&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/senet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/senet/  
 

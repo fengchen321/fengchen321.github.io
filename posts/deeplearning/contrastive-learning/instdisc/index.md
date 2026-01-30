@@ -1,6 +1,6 @@
 # InstDisc
 
-# InstDisc
+## InstDisc
 
 &gt; 文章标题：[Unsupervised Feature Learning via Non-Parametric Instance-level Discrimination](https://arxiv.org/abs/1805.01978) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F41b03c500922893906d04403cff16a5d08f26ea7%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Unsupervised-Feature-Learning-via-Non-Parametric-Wu-Xiong/41b03c500922893906d04403cff16a5d08f26ea7)
 &gt;
@@ -12,7 +12,7 @@
 
 &gt; 把每一个 instance都看成是一个类别，也就是每一张图片都看作是一个类别，目标是能学一种特征能把每一个图片都区分开来
 
-## Approach
+### Approach
 
 &lt;center&gt;
     &lt;img src = &#34;/images/Contrastive learning/InstDisc.assets/InstDisc_net.png&#34;&gt;
@@ -40,7 +40,7 @@
 - 用NCE loss 计算对比学习的目标函数
 - 更新网络后，把 mini batch里的数据样本所对应的那些特征，在 memory bank 里进行更新；不停更新，最后学到这个特征尽可能的有区分性
 
-# CPC
+## CPC
 
 &gt; 文章标题：[Representation Learning with Contrastive Predictive Coding)](https://arxiv.org/abs/1807.03748) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fb227f3e4c0dc96e5ac5426b85485a70f2175a205%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Representation-Learning-with-Contrastive-Predictive-Oord-Li/b227f3e4c0dc96e5ac5426b85485a70f2175a205)
 &gt;
@@ -78,7 +78,7 @@ CPC不仅可以处理音频，还可以处理图片、文字以及在强化学�
 
 CPC V2用了更大的模型、用了更大的图像块、做了更多方向上的预测任务，把batch norm 换成了 layer norm，而使用了更多的数据增强。
 
-# InvaSpread
+## InvaSpread
 
 &gt; 文章标题：[Unsupervised Embedding Learning via Invariant and Spreading Instance Feature](https://arxiv.org/abs/1904.03436) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fe4bde6fe33b6c2cf9d1647ac0b041f7d1ba29c5b%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Unsupervised-Embedding-Learning-via-Invariant-and-Ye-Zhang/e4bde6fe33b6c2cf9d1647ac0b041f7d1ba29c5b)
 &gt;
@@ -107,7 +107,7 @@ CPC V2用了更大的模型、用了更大的图像块、做了更多方向上�
 &gt;
 &gt; 对于相似的图片、相似的物体，特征应该保持不变性，但是对于不相似的物体或者完全不沾边的物体，特征应该尽可能的分散开
 
-## Method
+### Method
 
 &lt;center&gt;
     &lt;img src = &#34;/images/Contrastive learning/InstDisc.assets/InvaSpread_2.png&#34;&gt;
@@ -132,7 +132,7 @@ CPC V2用了更大的模型、用了更大的图像块、做了更多方向上�
 
 - 所用的目标函数也是 NCE loss 的一个变体
 
-# CMC
+## CMC
 
 &gt; 文章标题：Contrastive Multiview Coding [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F97f4d09175705be4677d675fa27e55defac44800%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Contrastive-Multiview-Coding-Tian-Krishnan/97f4d09175705be4677d675fa27e55defac44800)
 &gt;
@@ -170,5 +170,5 @@ open AI的clip模型：有一个图片，还有一个描述这个图片的文本
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/contrastive-learning/instdisc/  
+> URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/instdisc/  
 

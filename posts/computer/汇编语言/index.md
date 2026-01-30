@@ -251,5 +251,5 @@ ret				;函数返回
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/  
+> URL: https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/  
 

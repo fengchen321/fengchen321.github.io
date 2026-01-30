@@ -1,6 +1,6 @@
 # GhostNet
 
-# GhostNet
+## GhostNet
 
 &gt; 文章标题：[GhostNet: More Features from Cheap Operations](https://arxiv.org/abs/1911.11907)
 &gt;
@@ -10,7 +10,7 @@
 &gt;
 &gt; [官方源码](https://github.com/huawei-noah/Efficient-AI-Backbones)
 
-# GhostNets
+## GhostNets
 
 &gt; 文章标题：[GhostNets on Heterogeneous Devices via Cheap Operations](https://arxiv.org/abs/2201.03297)
 &gt;
@@ -25,5 +25,5 @@
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/light-weight/ghostnet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/light-weight/ghostnet/  
 

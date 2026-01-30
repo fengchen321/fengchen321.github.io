@@ -341,5 +341,5 @@ flowchart LR
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/  
+> URL: https://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/  
 

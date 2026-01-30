@@ -1,6 +1,6 @@
 # GAN
 
-# GAN
+## GAN
 
 &gt; 文章标题：[Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
 &gt; 作者：Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley, Sherjil Ozair,
@@ -80,7 +80,7 @@ padding: 2px;&#34;&gt;流程&lt;/td&gt;
 &gt; 
 &gt; k 的设计目标：使得 D 和 G 的更新进度差不多
 
-## 全局最优解证明
+### 全局最优解证明
 
 &lt;center&gt;
 &lt;img 
@@ -172,7 +172,7 @@ $$
   JS(P_1 || P_2)=\frac{1}{2}KL(P_1||\frac{P_1&#43;P_2}{2})&#43;\frac{1}{2}KL(P_2||\frac{P_1&#43;P_2}{2})
 $$
 
-## 拓展阅读
+### 拓展阅读
 
 趣味demo
 
@@ -220,5 +220,5 @@ $$
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/generative-model/gan/  
+> URL: https://fengchen321.github.io/posts/deeplearning/generative-model/gan/  
 

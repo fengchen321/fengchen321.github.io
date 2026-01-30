@@ -1,6 +1,6 @@
 # MobileNet
 
-# MobileNetV1
+## MobileNetV1
 
 &gt;  文章标题：[MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications](https://arxiv.org/abs/1704.04861)
 &gt;
@@ -14,7 +14,7 @@ MobileNet V1是谷歌2017年提出的轻量化卷积神经网络，用于在移�
 
 在ImageNet图像分类、Stanford Dog细粒度图像分类、目标检测、人脸属性识别、人脸编码、以图搜地等计算机视觉任务上，结合知识蒸馏进行评估，MobileNet表现出极致的轻量化和速度性能。
 
-## Prior Work
+### Prior Work
 
 **压缩已有模型**
 
@@ -66,9 +66,9 @@ MobileNet V1是谷歌2017年提出的轻量化卷积神经网络，用于在移�
 &gt;
 &gt; Openvino
 
-## MobileNet Architecture
+### MobileNet Architecture
 
-### Depthwise Separable Convolution 深度可分离卷积
+#### Depthwise Separable Convolution 深度可分离卷积
 
 * 将标准卷积分为两部分：**depthwise convolution**，$1\times1$ **pointwise convolution**
 
@@ -98,7 +98,7 @@ MobileNet V1是谷歌2017年提出的轻量化卷积神经网络，用于在移�
   * 深度可分离卷积参数计算：$D_K\times D_K\times M&#43;M\times N$; 
   * 深度可分离卷积计算量：$D_K\times D_K\times M\times D_F\times D_F&#43;M\times N \times D_F \times D_F$
 
-### Network Structure and Training
+#### Network Structure and Training
 
 &lt;center&gt;
 &lt;img 
@@ -145,7 +145,7 @@ padding: 2px;&#34;&gt;MobileNet Body Architecture&lt;/div&gt;
 &gt; &gt; padding: 2px;&#34;&gt;MobileNetV1的计算量和参数分布&lt;/div&gt;
 &gt; &gt; &lt;/center&gt;
 
-### Width and Resolution Multiplier 宽度$\alpha $和分辨率$ \rho$超参数
+#### Width and Resolution Multiplier 宽度$\alpha $和分辨率$ \rho$超参数
 
 **宽度超参数$\alpha $**：控制卷积层卷积核个数
 
@@ -173,7 +173,7 @@ padding: 2px;&#34;&gt;MobileNetV1的计算例子&lt;/td&gt;
 &lt;/table&gt;
 深度卷积在GPU上运行速度还不如一般的标准卷积，因为depthwise 的卷积核复用率比普通卷积要小很多，计算和内存访问的比值比普通卷积更小，因此会花更多时间在内存开销上，而且per-channel的矩阵计算很小不容易并行导致的更慢，但理论上计算量和参数量都是大大减少的，只是底层优化的问题。
 
-## 代码
+### 代码
 
 ```python
 import torch.nn as nn
@@ -226,7 +226,7 @@ class MobileNet(nn.Module):
         return x
 ```
 
-## 扩展阅读
+### 扩展阅读
 
 [Keras中的MobileNet预训练模型文档](https://keras.io/api/applications/mobilenet/)
 
@@ -246,7 +246,7 @@ class MobileNet(nn.Module):
 
 [Google’s MobileNets on the iPhone](https://machinethink.net/blog/googles-mobile-net-architecture-on-iphone/)
 
-# MobileNetV2
+## MobileNetV2
 
 &gt;  文章标题：[MobileNetV2: Inverted Residuals and Linear Bottlenecks](https://arxiv.org/abs/1801.04381) 
 &gt;
@@ -254,11 +254,11 @@ class MobileNet(nn.Module):
 &gt;
 &gt;  发表时间：(CVPR 2018)
 
-## Preliminaries, discussion and intuition
+### Preliminaries, discussion and intuition
 
-### [Depthwise Separable Convolution](###Depthwise Separable Convolution 深度可分离卷积)
+#### [Depthwise Separable Convolution](###Depthwise Separable Convolution 深度可分离卷积)
 
-### linear bottleneck
+#### linear bottleneck
 
 &lt;center&gt;
 &lt;img 
@@ -292,7 +292,7 @@ padding: 2px;&#34;&gt;MobileNetV2微结构&lt;/div&gt;
 &gt;
 &gt; ReLU激活函数对低维特征信息造成大量损失。
 
-### Inverted residuals
+#### Inverted residuals
 
 &lt;center&gt;
 &lt;img 
@@ -344,7 +344,7 @@ padding: 2px;&#34;&gt;compress&lt;/div&gt;
 
 扩展层充当解压缩器（如`unzip`），首先将数据恢复为完整形式，然后深度层执行网络此阶段重要的任何过滤，最后投影层压缩数据以使其再次变小。
 
-## Model Architecture
+### Model Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -358,7 +358,7 @@ padding: 2px;&#34;&gt;MobileNetV2 Architecture&lt;/div&gt;
 
 &gt; t：expansion rate；c：卷积核个数；n：重复次数；s：首个模块的步长，其他为1
 
-## Experiments
+### Experiments
 
 &lt;center&gt;
 &lt;img 
@@ -384,7 +384,7 @@ padding: 2px;&#34;&gt;Object Detection&lt;/div&gt;
 
 获取最后一个基础网络层的输出，还获取前几个层的输出，并将这些输出送到 SSD 层。MobileNet 层的工作是将输入图像中的像素转换为描述图像内容的**特征**，并将这些**特征**传递给其他层。因此，此处使用 MobileNet 作为第二个神经网络的**特征提取器**。
 
-## 拓展阅读
+### 拓展阅读
 
 [Keras预训练MobileNetV2源代码](https://github.com/keras-team/keras/blob/master/keras/applications/mobilenet_v2.py)
 
@@ -400,7 +400,7 @@ padding: 2px;&#34;&gt;Object Detection&lt;/div&gt;
 
 [MobileNet version 2](https://machinethink.net/blog/mobilenet-v2/)
 
-# MobileNetV3
+## MobileNetV3
 
 &gt;  文章标题：[Searching for MobileNetV3](https://arxiv.org/abs/1905.02244)
 &gt;
@@ -468,7 +468,7 @@ $$
 
 
 
-## MobileNetV3 Architecture
+### MobileNetV3 Architecture
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
@@ -487,7 +487,7 @@ padding: 2px;&#34;&gt;Specification for MobileNetV3-Small&lt;/td&gt;
 
 
 
-# MobileNeXt
+## MobileNeXt
 
 &gt; 文章标题：[Rethinking Bottleneck Structure for Efficient Mobile Network Design](https://arxiv.org/abs/2007.02269)
 &gt;
@@ -603,7 +603,7 @@ padding: 2px;&#34;&gt;Specification for MobileNetV3-Small&lt;/td&gt;
 
 注意，$M\neq N$时不添加shortcut
 
-## MobileNeXt Architecture
+### MobileNeXt Architecture
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
@@ -639,7 +639,7 @@ $$
 
 
 
-# ReXNet
+## ReXNet
 
 &gt; 文章标题：[Rethinking Channel Dimensions for Efficient Model Design](https://arxiv.org/abs/2007.00992)
 &gt;
@@ -653,7 +653,7 @@ $$
 
 ReXNet,ReXNet 是 NAVER 集团 ClovaAI 研发中心基于一种网络架构设计新范式而构建的网络。针对现有网络中存在的 Representational Bottleneck 问题，作者提出了一组新的设计原则。作者认为传统的网络架构设计范式会产生表达瓶颈，进而影响模型的性能。为研究此问题，作者研究了上万个随机网络生成特征的 matric rank，同时进一步研究了网络层中通道配置方案。基于此，作者提出了一组简单而有效的设计原则，以消除表达瓶颈问题。
 
-## Designing an Expansion Layer
+### Designing an Expansion Layer
 
 &lt;center&gt;
   &lt;img 
@@ -709,7 +709,7 @@ ReXNet,ReXNet 是 NAVER 集团 ClovaAI 研发中心基于一种网络架构设�
 
 
 
-## Network upgrade
+### Network upgrade
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
@@ -760,7 +760,7 @@ MB1和MB6指的是MobileNetV2的inverted bottleneck，扩展率分别为1和6。
 
 [ReXNet｜消除表达瓶颈，提升性能指标](https://zhuanlan.zhihu.com/p/155504072)
 
-# MixNet
+## MixNet
 
 &gt; 文章标题：[MixConv: Mixed Depthwise Convolutional Kernels](https://arxiv.org/abs/1907.09595v3)
 &gt;
@@ -776,5 +776,5 @@ MixConv,MixNet 是谷歌出的一篇关于轻量级网络的文章，主要工�
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/light-weight/mobilenet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/light-weight/mobilenet/  
 

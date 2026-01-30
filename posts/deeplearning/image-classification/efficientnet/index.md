@@ -1,6 +1,6 @@
 # EfficientNet
 
-# EfficientNet
+## EfficientNet
 
 &gt; 文章标题：[EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks](https://arxiv.org/abs/1905.11946)
 &gt; 作者：Mingxing Tan, Quoc V. Le
@@ -38,7 +38,7 @@ padding: 2px;&#34;&gt;Scaling Up EfficientNet-B0 with Different Methods&lt;/div&
 &gt; 
 &gt; 增加输入网络的**图像分辨率**能够潜在得获得更高细粒度的特征模板，但对于非常高的输入分辨率，准确率的增益也会减小，并且大分辨率图像会增加计算量。
 
-## Scaling Dimensions
+### Scaling Dimensions
 
 &lt;center&gt;
 &lt;img 
@@ -72,7 +72,7 @@ padding: 2px;&#34;&gt;Scaling Network Width for Different Baseline Networks&lt;/
 &gt;
 &gt; In order to pursue better accuracy and efficiency, it is critical to balance all dimensions of network width, depth, and resolution during ConvNet scaling.
 
-## Problem Formulation
+### Problem Formulation
 $N = \bigodot_{i=1...s} F_i^{L_i}(X_{&lt;H_i,W_i,C_i&gt;})$
 &gt; $ \bigodot_{i=1...s}$：连乘运算
 &gt;
@@ -119,7 +119,7 @@ $$
 
 
 
-## EfficientNet Architecture
+### EfficientNet Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -191,11 +191,11 @@ padding: 2px;&#34;&gt;SE&lt;/div&gt;
 &gt;
 &gt; - **dropout_rate**是最后一个全连接层前的`dropout`层（在`stage9`的Pooling与FC之间）的`dropout_rate`。
 
-## 拓展阅读
+### 拓展阅读
 
 [EfficientNet网络详解](https://blog.csdn.net/qq_37541097/article/details/114434046)
 
-# EfficientNetV2
+## EfficientNetV2
 
 &gt; 文章标题：[EfficientNetV2: Smaller Models and Faster Training](https://arxiv.org/abs/2104.00298)
 &gt; 作者：Mingxing Tan, Quoc V. Le
@@ -219,7 +219,7 @@ padding: 2px;&#34;&gt;SE&lt;/div&gt;
 &gt;
 &gt; &gt; 解决方法：非均匀的缩放策略来缩放模型
 
-## Fused-MBConv
+### Fused-MBConv
 
 &lt;center&gt;
 &lt;img 
@@ -245,7 +245,7 @@ padding: 2px;&#34;&gt;Replacing MBConv with Fused-MBConv&lt;/div&gt;
 
 &gt; 只替换stage1-3，用NAS搜索出来的结果
 
-## EfficientNetV2 Architecture
+### EfficientNetV2 Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -327,7 +327,7 @@ efficientnetv2_params = {
 
 
 
-## progressive learning渐进式学习
+### progressive learning渐进式学习
 
 在训练早期，先对图像尺寸小且正则化程度较弱的网络进行训练(如dropout、data augmentation)，然后逐渐增大图像尺寸并加入更强的正则化。
 
@@ -343,7 +343,7 @@ color: #999;
 padding: 2px;&#34;&gt;EfficientNetV2_Algorithm_1.&lt;/div&gt;
 &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 [EfficientNetV2网络详解](https://blog.csdn.net/qq_37541097/article/details/116933569)
 
@@ -352,5 +352,5 @@ padding: 2px;&#34;&gt;EfficientNetV2_Algorithm_1.&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/efficientnet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/efficientnet/  
 

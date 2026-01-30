@@ -1,8 +1,8 @@
 # Branch Channel Attention
 
-# different branches
+##  different branches
 
-## SKNet
+### SKNet
 
 &gt; 文章标题：[Selective Kernel Networks](https://arxiv.org/abs/1903.06586)
 &gt; 作者：Xiang Li, Wenhai Wang, Xiaolin Hu, Jian Yang
@@ -137,9 +137,9 @@ class SKAttention(nn.Module):
         return V
 ```
 
-# different conv kernels
+## different conv kernels
 
-## CondConv
+### CondConv
 
 &gt; 文章标题：[CondConv: Conditionally Parameterized Convolutions for Efficient Inference](https://arxiv.org/abs/1904.04971?context=cs.LG)
 &gt; 作者：Brandon Yang, Gabriel Bender, Quoc V. Le, Jiquan Ngiam
@@ -167,7 +167,7 @@ $$
     \\ global\ average\ pooling\rightarrow linear \ layer\rightarrow sigmoid
 $$
 
-## DynamicConv
+### DynamicConv
 
 &gt; 文章标题：[Dynamic Convolution: Attention over Convolution Kernels](https://arxiv.org/abs/1912.03458)
 &gt; 作者：Yinpeng Chen, Xiyang Dai, Mengchen Liu, Dongdong Chen, Lu Yuan, Zicheng Liu
@@ -196,5 +196,5 @@ $$
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/attention/branch_channel-attention/  
+> URL: https://fengchen321.github.io/posts/deeplearning/attention/branch_channel-attention/  
 

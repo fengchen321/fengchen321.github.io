@@ -1,9 +1,9 @@
 # Channel &amp;&amp; Spatial Attention
 
 
-# Directly estimate 3D attention map
+## Directly estimate 3D attention map
 
-## Residual Attention
+### Residual Attention
 
 &gt; 文章标题：[Residual Attention Network for Image Classification](https://arxiv.org/abs/1704.06904)
 &gt; 作者：Fei Wang, Mengqing Jiang, Chen Qian, Shuo Yang, Cheng Li, Honggang Zhang, Xiaogang Wang, Xiaoou Tang
@@ -44,7 +44,7 @@ s = \sigma(Conv_2^{1\times1}(Conv_1^{1\times1}(h_{up}(h_{down}(X)))))
 \\ top\_down\ network\rightarrow bottom\_down\ network\rightarrow 1\times1Conv\rightarrow Sigmoid
 $$
 
-## SimAM
+### SimAM
 
 &gt; 文章标题：[Simam: A simple, parameter-free attention module for convolutional neural networks](http://proceedings.mlr.press/v139/yang21o/yang21o.pdf) 
 &gt; 作者：Lingxiao Yang,  Ru-Yuan Zhang, Lida Li,  Xiaohua Xie ,
@@ -79,7 +79,7 @@ class simam_module(torch.nn.Module):
         return x * self.activaton(y)
 ```
 
-## Strip Pooling
+### Strip Pooling
 
 &gt; 文章标题：[Strip Pooling: Rethinking spatial pooling for scene parsing](https://arxiv.org/abs/2003.13328)
 &gt; 作者：Qibin Hou,  Li Zhang,  Ming-Ming Cheng,  Jiashi Feng (一作Coordinate Attention)
@@ -158,7 +158,7 @@ class StripPooling(nn.Module):
         return F.relu_(x &#43; out)
 ```
 
-## SCNet
+### SCNet
 
 &gt; 文章标题：[Improving convolutional networks with self-calibrated convolutions](https://openaccess.thecvf.com/content_CVPR_2020/papers/Liu_Improving_Convolutional_Networks_With_Self-Calibrated_Convolutions_CVPR_2020_paper.pdf)
 &gt; 作者：Jiang-Jiang Liu, Qibin Hou, Ming-Ming Cheng, Changhu Wang, Jiashi Feng
@@ -212,7 +212,7 @@ class SCConv(nn.Module):
         return out
 ```
 
-## VAN
+### VAN
 
 &gt; 文章标题：[Visual Attention Network](https://arxiv.org/abs/2202.09741)
 &gt; 作者：Meng-Hao Guo, Cheng-Ze Lu, Zheng-Ning Liu, Ming-Ming Cheng, Shi-Min Hu
@@ -279,9 +279,9 @@ class Attention(nn.Module):
 
 
 
-# split channel and spitial attention
+## split channel and spitial attention
 
-## CBAM
+### CBAM
 
 &gt; 文章标题：[CBAM: Convolutional Block Attention Modul](https://arxiv.org/abs/1807.06521)
 &gt; 作者：Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon
@@ -332,7 +332,7 @@ $$
 
 缺点：CBAM 采用卷积来生成空间注意力图，因此空间子模块可能会受到有限的感受野的影响
 
-## BAM
+### BAM
 
 &gt; 文章标题：[BAM: Bottleneck Attention Module](https://arxiv.org/abs/1807.06514)
 &gt; 作者：Jongchan Park, Sanghyun Woo, Joon-Young Lee, In So Kweon (同CBAM作者)
@@ -362,7 +362,7 @@ $$
 
 缺点：尽管扩张卷积有效地扩大了感受野，但它仍然无法捕获远程上下文信息以及编码跨域关系
 
-## scSE
+### scSE
 
 &gt; 文章标题：[Recalibrating Fully Convolutional Networks with Spatial and Channel &#39;Squeeze &amp; Excitation&#39; Blocks](https://arxiv.org/abs/1808.08127 ) 
 &gt;
@@ -411,13 +411,13 @@ class SCSEModule(nn.Module):
         return x * self.cSE(x) &#43; x * self.sSE(x)
 ```
 
-## PSA
+### PSA
 
 &gt; [Polarized Self-Attention: Towards High-quality Pixel-wise Regression](https://arxiv.org/abs/2107.00782)
 
-## Cross-dimension interaction
+### Cross-dimension interaction
 
-### Triplet Attention
+#### Triplet Attention
 
 &gt; 文章标题：[Rotate to attend: Convolutional triplet attention module](https://arxiv.org/abs/2010.03045)
 &gt;
@@ -467,9 +467,9 @@ triplet attention 强调捕获跨域交互的重要性，而不是独立计算�
 
 **[GCBlock](https://arxiv.org/abs/1904.11492) = SEBlock &#43; Simplified selfattention**
 
-## Long-range dependencies
+### Long-range dependencies
 
-### Coordinate Attention
+#### Coordinate Attention
 
 &gt; 文章标题：[Coordinate attention for efficient mobile network design](https://openaccess.thecvf.com/content/CVPR2021/papers/Hou_Coordinate_Attention_for_Efficient_Mobile_Network_Design_CVPR_2021_paper.pdf)
 &gt;
@@ -544,7 +544,7 @@ class CoordAtt(nn.Module):
         return out
 ```
 
-### DANet
+#### DANet
 
 &gt; 文章标题：[Dual Attention Network for Scene Segmentation](https://arxiv.org/abs/1809.02983)
 &gt;
@@ -584,9 +584,9 @@ Q,K,V=W_qX,W_kX,W_vX
 $$
 
 
-## Relation-aware attention
+### Relation-aware attention
 
-### RGA
+#### RGA
 
 &gt; 文章标题：[Relation-Aware Global Attention for Person Re-identification](https://arxiv.org/abs/1904.02998)
 &gt;
@@ -625,5 +625,5 @@ channel和spital形式一样。位置上的空间注意力得分$a_i$
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/attention/channlespatial-attention/  
+> URL: https://fengchen321.github.io/posts/deeplearning/attention/channlespatial-attention/  
 

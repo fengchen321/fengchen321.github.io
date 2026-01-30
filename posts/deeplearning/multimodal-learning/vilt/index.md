@@ -1,6 +1,6 @@
 # VILT
 
-# VILT
+## VILT
 
 &gt; 文章标题：[ViLT: Vision-and-Language Transformer Without Convolution or Region Supervision](https://arxiv.org/abs/2102.03334) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F0839722fb5369c0abaff8515bfc08299efc790a1%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/ViLT%3A-Vision-and-Language-Transformer-Without-or-Kim-Son/0839722fb5369c0abaff8515bfc08299efc790a1)
 &gt;
@@ -12,7 +12,7 @@
 &gt;
 &gt; 第一个摆脱了目标检测的视觉文本模型
 
-## Abstract
+### Abstract
 
 Vision and Language Pre-training(VLP) 当前的工作主要集中在图像特征抽取上，一般来讲，图像特征抽取的越好，下游任务中的表现就越好。
 
@@ -22,7 +22,7 @@ Vision and Language Pre-training(VLP) 当前的工作主要集中在图像特征
 &gt;
 &gt;   &gt; 目标检测数据集不够大，规模不够大。如果模型不是端到端学习，只是从预训练模型抽取特征，大概率来说不是最优解。
 
-## Relate work
+### Relate work
 
 &lt;center&gt;
     &lt;img src=&#34;/images/MultiModal learning/VILT.assets/vilt_model.png&#34;&gt;
@@ -73,7 +73,7 @@ Vision and Language Pre-training(VLP) 当前的工作主要集中在图像特征
 
 VILT 把模态的特征抽取做到了极小化，主要计算量在模态融合部分，提高模型推理速度。移除了Region feature 
 
-## Methods
+### Methods
 
 &lt;center&gt;
     &lt;img src=&#34;/images/MultiModal learning/VILT.assets/vilt.png&#34;&gt;
@@ -105,13 +105,13 @@ Transformer Encoder的输入为$（N&#43;L&#43;2)\times H$的矩阵。* 代表 [
 
 Transformer 的输出为$1\times H$的矩阵，经过$H\times H$的pooler(权重矩阵)得到仍是$1\times H$的矩阵，最后经过一个FC层进行二分类任务。
 
-### Whole word masking
+#### Whole word masking
 
 例如giraffe长颈鹿这个单词，由三个词根组成，分别是gi，raf，fe，如果mask 的时候mask “raf”这个token。由于开头为gi结尾为fe的单词不多，模型就记住了中间一定是raf，就相当于模型学到了shortcut，这样泛化性就不好。
 
 直接mask “giraffe” 整个单词。这样就需要借助图像信息，因此就加强了图像文本的联系。
 
-### Image Augmentation
+#### Image Augmentation
 
 &gt; 为什么前边的研究没有使用数据增强？
 &gt;
@@ -120,7 +120,7 @@ Transformer 的输出为$1\times H$的矩阵，经过$H\times H$的pooler(权重
 
 不适用color inversion和cutout避免与文本信息不匹配。
 
-## Experiments
+### Experiments
 
 预训练所用的数据集叫4million(4个数据集图片加起来这个数)
 
@@ -129,7 +129,7 @@ Transformer 的输出为$1\times H$的矩阵，经过$H\times H$的pooler(权重
 &gt; GCC：3.01M图片对
 &gt; SBU：867K图片对
 
-## Future work
+### Future work
 
 **scalability**：transformer都是越大越好，数据集越大越好（做的更大）
 
@@ -143,7 +143,7 @@ Transformer 的输出为$1\times H$的矩阵，经过$H\times H$的pooler(权重
 
 &gt; [MixGen: A New Multi-Modal Data Augmentation](https://arxiv.org/abs/2206.08358)
 
-## 推荐阅读
+### 推荐阅读
 
 [ViLT 论文精读](https://www.bilibili.com/video/BV14r4y1j74y/?spm_id_from=333.788&amp;vd_source=d28e92983881d85b633a5acf8e46efaa)
 
@@ -156,5 +156,5 @@ Transformer 的输出为$1\times H$的矩阵，经过$H\times H$的pooler(权重
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/multimodal-learning/vilt/  
+> URL: https://fengchen321.github.io/posts/deeplearning/multimodal-learning/vilt/  
 

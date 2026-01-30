@@ -1,12 +1,12 @@
 # SqueezeNet
 
-# SqueezeNet
+## SqueezeNet
 
 &gt; 文章标题：[SqueezeNet: AlexNet-level accuracy with 50x fewer parameters and &lt;0.5MB model size](https://arxiv.org/abs/1602.07360)
 &gt; 作者：
 &gt; 发表时间：(ICLR 2016)
 
-# SqueezeNext
+## SqueezeNext
 
 &gt; 文章标题：[SqueezeNext: Hardware-Aware Neural Network Design](https://arxiv.org/abs/1803.10615)
 &gt; 作者：
@@ -48,5 +48,5 @@
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/light-weight/squeezenet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/light-weight/squeezenet/  
 

@@ -1,6 +1,6 @@
 # BERT
 
-# BERT
+## BERT
 
 &gt; 文章标题：[BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
 &gt; 作者：Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova
@@ -18,7 +18,7 @@ BERT: 用深的、双向的、transformer 来做预训练，用来做语言理�
 &gt;
 &gt; language understanding: 更广义，transformer 主要用在机器翻译 MT
 
-## Abstract
+### Abstract
 
 新的语言表征模型 BERT: **B**idirectional **E**ncoder **R**epresentations from **T**ransformers 
 
@@ -42,7 +42,7 @@ BERT: 用深的、双向的、transformer 来做预训练，用来做语言理�
 &gt; &gt;
 &gt; &gt; BERT = ELMo 的 bidirectional 信息 &#43; GPT 的新架构 transformer
 
-## Introduction
+### Introduction
 
 NLP任务分两类
 
@@ -74,7 +74,7 @@ BERT训练方法
 &gt;
 &gt; 好的预训练模型，不用对特定任务做一些模型架构的改动
 
-## Related Work
+### Related Work
 
 Unsupervised Feature-based approaches
 
@@ -88,7 +88,7 @@ Transfer Learning from Supervised Data
 
 &gt; 在有标签的数据上做迁移学习。
 
-## Bert
+### Bert
 
 **预训练 &#43; 微调** 
 
@@ -189,11 +189,11 @@ transformer 的 position embedding 是给定的。
 &gt; &gt; 每个句子后 &#43; **[ SEP ]** 表示 seperate
 &gt; &gt; 学一个嵌入层 来表示整个句子是第一句还是第二句
 
-### Pre-training BERT
+#### Pre-training BERT
 
 预训练的 key factors: 目标函数，预训练的数据
 
-#### MLM
+##### MLM
 
 由 WordPiece 生成的词源序列中的词源，它有 15% 的概率会随机替换成一个掩码。但是对于特殊的词源不
 做替换
@@ -218,7 +218,7 @@ transformer 的 position embedding 是给定的。
 &gt; &gt;
 &gt; &gt; 3）针对有两个及两个以上连续字组成的词，随机mask字割裂了连续字之间的相关性，使模型不太容易学习到词的语义信息。主要针对这一短板，因此google此后发表了BERT-WWM，国内的哈工大联合讯飞发表了中文版的BERT-WWM。
 
-#### NSP
+##### NSP
 
 输入序列有 2 个句子 A 和 B，50% 正例，50%反例
 
@@ -238,7 +238,7 @@ padding: 2px;&#34;&gt;NSP&lt;/div&gt;
 
 
 
-### Fine-tuning BERT
+#### Fine-tuning BERT
 
 BERT 经过微小的改造（增加一个小小的层），就可以用于各种各样的语言任务。
 
@@ -258,7 +258,7 @@ color: #999;
 padding: 2px;&#34;&gt;differernt tasks&lt;/div&gt;
 &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 [BERT 论文逐段精读【论文精读】](https://www.bilibili.com/video/BV1PL411M7eQ?spm_id_from=333.999.0.0)
 
@@ -282,5 +282,5 @@ padding: 2px;&#34;&gt;differernt tasks&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/transformer_nlp/bert/  
+> URL: https://fengchen321.github.io/posts/deeplearning/transformer_nlp/bert/  
 

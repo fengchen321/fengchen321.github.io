@@ -2,7 +2,7 @@
 
 [toc]
 
-# YOLO V1
+## YOLO V1
 
 &gt; 文章标题：[You Only Look Once:Unified, Real-Time Object Detection](https://arxiv.org/abs/1506.02640) 
 &gt; 作者：[Joseph Redmon](https://pjreddie.com/), Santosh Divvalay, [Ross Girshick](http://www.rossgirshick.info/), [Ali Farhadi](https://homes.cs.washington.edu/~ali/index.html)
@@ -10,7 +10,7 @@
 
 YOLO算法是单阶段目标检测的经典算法，能实现快速、实时、高精度的图像识别和目标检测。 
 
-## Abstract
+### Abstract
 
 介绍yolo算法及其速度快的优点
 
@@ -20,7 +20,7 @@ YOLO算法是单阶段目标检测的经典算法，能实现快速、实时、�
 &gt;
 &gt; 出现较多coordinate errors定位误差，但YOLO 有更少的 background errors背景误差。
 
-## Introduction
+### Introduction
 
 yolo简单原理图；与R-CNN相比yolo的优点；与传统检测算法相比yolo的优点
 
@@ -41,7 +41,7 @@ padding: 2px;&#34;&gt;yolo流程图&lt;/div&gt;
 2. Run convolutional network.输入到神经网络中
 3. Non-max suppression.使用非极大值抑制到最后结果
 
-## Unified Detection
+### Unified Detection
 
 one stage detection算法的原理与细节
 
@@ -99,7 +99,7 @@ Comfidence Score：指的是一个边界框中包含某个物体的可能性大�
 
 YOLO的bbox是没有设定大小和形状的，只是对两个bbox进行预测，保留预测比较准的bbox。YOLO的2个bounding box事先并不知道会在什么位置，只有经过前向计算，网络会输出2个bounding box，这两个bounding box与样本中对象实际的bounding box计算IOU。
 
-### Network design
+#### Network design
 
 &lt;center&gt;
 &lt;img 
@@ -125,7 +125,7 @@ padding: 2px;&#34;&gt;yolo网络结构&lt;/div&gt;
 
 2层全连接层回归得到$7\times7\times30$的Tensor
 
-### Training
+#### Training
 
 &gt;  yolo训练方法，损失函数及参数
 
@@ -196,7 +196,7 @@ padding: 2px;&#34;&gt;yolov1损失函数&lt;/div&gt;
     &gt; &gt;
     &gt; &gt; 在HSV色彩空间中使用1.5的因子来随机调整图像的曝光和饱和度。
 
-### Inference
+#### Inference
 
 **yolo预测阶段细节**
 
@@ -206,7 +206,7 @@ $$
 $$
 &gt; 等式左边第一项就是每个网格预测的类别信息，第二三项就是每个bounding box预测的confidence。这个乘积即encode了预测的box属于某一类的概率，也有该box准确度的信息。
 
- ### Limitations of YOLO
+#### Limitations of YOLO
 
 * 速度快：把检测作为回归问题处理，流程简单，仅需要输入一张图
 
@@ -218,7 +218,7 @@ $$
 
 * 分类正确但定位误差大
 
-## Comparison to Other Detection Systems
+### Comparison to Other Detection Systems
 
 **DPM**
 
@@ -248,7 +248,7 @@ $$
 
 &gt; 使用全卷积网络进行高效滑窗运算
 
-## Experiments
+### Experiments
 
 &lt;center&gt;
 &lt;img 
@@ -272,15 +272,15 @@ padding: 2px;&#34;&gt;R-T Systems on pas VOC 2007结果分析&lt;/div&gt;
 
 **各类错误比例分析**
 
-## Real-Time Detection In The Wild
+### Real-Time Detection In The Wild
 
 yolo可以连接摄像头进行实时检测
 
-## Conclusion
+### Conclusion
 
 结论再次强调yolo的优点：one-stage 快速 鲁棒
 
-## 拓展阅读
+### 拓展阅读
 
 [Object Detection in 20 Years: A Survey](https://arxiv.org/abs/1905.05055)
 
@@ -310,7 +310,7 @@ yolo可以连接摄像头进行实时检测
 
 
 
-# YOLO V2
+## YOLO V2
 
 &gt; 文章标题：[YOLO9000: Better, Faster, Stronger](https://arxiv.org/abs/1612.08242)
 &gt; 作者：[Joseph Redmon](https://pjreddie.com/),   [Ali Farhadi](https://homes.cs.washington.edu/~ali/index.html)
@@ -324,7 +324,7 @@ YOLOV2是YOLO目标检测系列算法的第二个版本。
 
 CVPR 2017论文：YOLO9000: Better, Faster, Stronger，获得CVPR 2017 Best Paper Honorable Mention
 
-## Better
+### Better
 
 其目的是弥补YOLO的两个缺陷：
 
@@ -344,17 +344,17 @@ color: #999;
 padding: 2px;&#34;&gt;YOLOv2相比YOLOv1的改进策略&lt;/div&gt;
 &lt;/center&gt;
 
-### [Batch Normalization](https://arxiv.org/abs/1502.03167)
+#### [Batch Normalization](https://arxiv.org/abs/1502.03167)
 
 &gt; CNN网络通用的方法，不但能够改善网络的收敛性，而且能够抑制过拟合，有正则化的作用。
 &gt;
 &gt; BN与Dropout通常不一起使用
 
-### High Resolution Classifier
+#### High Resolution Classifier
 
 &gt; 在YOLO V2中使用ImageNet数据集，首先使用224×224的分辨率训练160个epochs，然后调整为448×448在训练10个epochs。
 
-### Convolutional With Anchor Boxes
+#### Convolutional With Anchor Boxes
 
 &gt; 在YOLO V2中借鉴 Fast R-CNN中的Anchor的思想。
 &gt;
@@ -368,7 +368,7 @@ padding: 2px;&#34;&gt;YOLOv2相比YOLOv1的改进策略&lt;/div&gt;
 &gt;
 &gt; * **Anchor Boxes**（ 提高object的定位准确率）在YOLO中，每个grid cell只预测2个bbox，最终只能预测$7\times7\times2=98$个bbox。在YOLO V2中引入了Anchor Boxes的思想，，每个grid cell只预测5个anchor box，预测$13\times13\times5=845$个bbox。    总性能下降；recall增大；precision降低
 
-### Dimension Clusters  （聚类）
+#### Dimension Clusters  （聚类）
 
 (解决每个Grid Cell生成的bounding box的个数问题)
 
@@ -380,7 +380,7 @@ K均值聚类
 &gt;
 &gt; 选择k=5
 
-### Direct location prediction
+#### Direct location prediction
 
  模型不稳定,由于预测box的位置(x,y)引起的
 
@@ -424,7 +424,7 @@ K均值聚类
 &gt; &gt; padding: 2px;&#34;&gt;边框预测&lt;/div&gt;
 &gt; &gt; &lt;/center&gt;
 
-### Fine-Grained Features  细粒度特征
+#### Fine-Grained Features  细粒度特征
 
 &gt; 提出一种称之为“直通”层（passthrough layer）的操作，也是将具有丰富纹理信息的浅层特征与具有丰富语义信息的深层特征进行融合，实现对目标的“大小通吃”。
 &gt;
@@ -440,15 +440,15 @@ color: #999;
 padding: 2px;&#34;&gt;passthrough&lt;/div&gt;
 &lt;/center&gt;
 
-### Multi-Scale Training
+#### Multi-Scale Training
 
 &gt; 通过不同分辨率图片的训练来提高网络的适应性。
 &gt;
 &gt; &gt; 采用了{320,352,...,608}等10种输入图像的尺寸，这些尺寸的输入图像对应输出的特征图宽和高是{10,11,...19}。训练时每10个batch就随机更换一种尺寸，使网络能够适应各种大小的对象检测。
 
-## Faster
+### Faster
 
-### Darknet-19
+#### Darknet-19
 
 &lt;center&gt;
 &lt;img 
@@ -460,7 +460,7 @@ color: #999;
 padding: 2px;&#34;&gt;BackBone：Darknet19&lt;/div&gt;
 &lt;/center&gt;
 
-### Training for detection
+#### Training for detection
 
 &lt;center&gt;
 &lt;img 
@@ -472,7 +472,7 @@ color: #999;
 padding: 2px;&#34;&gt;YOLOV2模型框架&lt;/div&gt;
 &lt;/center&gt;
 
-### 损失函数
+#### 损失函数
 
 
 $$
@@ -510,9 +510,9 @@ W：输出特征图宽度13；H：输出特征图高度13； A：先验框个数
   &gt;
   &gt; &gt; $truth^c$：标注框类别；$b_{ijk}^c$：预测框类别
 
-## Stronger
+### Stronger
 
-## 拓展阅读
+### 拓展阅读
 
 [可视化YOLOv2网络结构](https://ethereon.github.io/netscope/#/gist/d08a41711e48cf111e330827b1279c31)
 
@@ -534,7 +534,7 @@ W：输出特征图宽度13；H：输出特征图高度13； A：先验框个数
 
 [目标检测之YOLO V2 V3](https://www.cnblogs.com/wangguchangqing/p/10480995.html)
 
-# YOLO V3
+## YOLO V3
 
 &gt; 文章标题：[YOLOv3: An Incremental Improvement](https://arxiv.org/abs/1804.02767)
 &gt; 作者：[Joseph Redmon](https://pjreddie.com/) ，[Ali Farhadi](https://homes.cs.washington.edu/~ali/index.html)
@@ -544,9 +544,9 @@ YOLOV3是单阶段目标检测算法YOLO系列的第三个版本，由华盛顿�
 
 改进了正负样本选取、损失函数、Darknet-53骨干网络，并引入了特征金字塔多尺度预测，显著提升了速度和精度。
 
-## The Deal
+### The Deal
 
-### [Bounding Box Prediction](###Direct location prediction)
+#### [Bounding Box Prediction](###Direct location prediction)
 
 正负样本的匹配
 
@@ -558,7 +558,7 @@ YOLOV3是单阶段目标检测算法YOLO系列的第三个版本，由华盛顿�
 &gt;
 &gt; 忽略：IOU&gt;0.5但非最大
 
-### Predictions Across Scales多尺度
+#### Predictions Across Scales多尺度
 
 |         |      输入      |                grid cell                 | Anchor |        预测框数         |      输出张量的数据结构       |
 | :-----: | :------------: | :--------------------------------------: | :----: | :---------------------: | :---------------------------: |
@@ -569,7 +569,7 @@ YOLOV3是单阶段目标检测算法YOLO系列的第三个版本，由华盛顿�
 
 &gt; Yolov3借鉴了[FPN](https://arxiv.org/abs/1612.03144)特征图思想，小尺寸特征图用于检测大尺寸物体，而大尺寸特征图检测小尺寸物体。特征图的输出维度为 $N\times N\times[3\times(4&#43;1&#43;80)]$，$N\times N为$输出特征图格点数，一共3个Anchor框，每个框有4维预测框数值$t_x,t_y,t_w,t_h$  ，1维预测框置信度，80维物体类别数。
 
-### yolov3网络图
+#### yolov3网络图
 
 &lt;center&gt;
 &lt;img 
@@ -625,7 +625,7 @@ padding: 2px;&#34;&gt;YOLOV3测试过程&lt;/div&gt;
 &lt;/center&gt;
 
 
-## 损失函数
+### 损失函数
 
 
 $$
@@ -654,7 +654,7 @@ $$
 
 &gt; $BCE=-\hat c_ilog(c_i)-(1-\hat c_i)log(1-c_i)$：二元交叉熵损失函数(Binary Cross Entropy)；$\hat c_i$标签值(非0即1)；$ c_i$预测值(0-1之间)
 
-## 拓展阅读
+### 拓展阅读
 
 [YOLOV3目标检测Demo视频](https://www.youtube.com/watch?v=MPU2HistivI)
 
@@ -698,7 +698,7 @@ $$
 
 [结构解析](https://www.jiangdabai.com/vcat/%E3%80%8A30%E5%A4%A9%E5%85%A5%E9%97%A8%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8B%E7%B3%BB%E5%88%97%E8%AF%BE%E7%A8%8B)
 
- # YOLO V4
+## YOLO V4
 
 &gt; 文章标题：[YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934)
 &gt; 作者：Alexey Bochkovskiy,Chien-Yao Wang,  Hong-Yuan Mark Liao
@@ -708,19 +708,19 @@ $$
 &gt;
 &gt; [YoloV4-pytorch代码](https://github.com/Tianxiaomo/pytorch-YOLOv4)
 
-## Introduction
+### Introduction
 
 * 提出了一种实时、高精度的目标检测模型。 它是可以使用1080Ti 或 2080Ti 等通用 GPU 来训练快速和准确的目标检测器；
 * 在检测器训练阶段，验证了一些最先进的 Bag-of-Freebies 和 Bag-of-Specials 方法的效果；
 * 对 SOTA 方法进行改进，使其效率更高，更适合单 GPU 训练，包括 [CBN](https://arxiv.org/abs/2002.05712)，[PAN](https://arxiv.org/abs/1803.01534) 和 [SAM](https://arxiv.org/abs/1807.06521) 等。
 
-## Related work
+### Related work
 
-### Bag of freebies
+#### Bag of freebies
 
 &gt; 只改变训练策略或只增加训练成本，不影响推理成本的方法；白给的提高精度（赠品）
 
-#### Data Augmentation 数据增强
+##### Data Augmentation 数据增强
 
 &gt; 增加输入图片的可变性；更高的鲁棒性。
 &gt;
@@ -761,7 +761,7 @@ $$
 &gt; 风格迁移
 &gt;
 
-#### 类别不平衡
+##### 类别不平衡
 
 **Two stage：RCNN ...**
 
@@ -773,13 +773,13 @@ $$
 
 &gt; [Focal Loss](https://arxiv.org/abs/1708.02002)
 
-#### One-hot难表达类别之间的关联
+##### One-hot难表达类别之间的关联
 
 &gt; [label smoothing](https://arxiv.org/abs/1708.02002)(Inception V3)：将硬标签转化为软标签进行训练，可以使模型更具有鲁棒性
 &gt;
 &gt; [knowledge distillation](https://arxiv.org/abs/1703.00551)：引入**知识蒸馏**的概念并用于设计标签细化网络
 
-#### BBox Regression
+##### BBox Regression
 
 &gt; &gt; * 重叠面积
 &gt; &gt; * 中心点距离
@@ -879,11 +879,11 @@ $$
 &gt; &gt;
 &gt; &gt; $CIOU\_{Loss}=1-CIOU$：同时考虑到重叠面积和中心点之间的距离以及长宽比
 
-### Bag of specials
+#### Bag of specials
 
 &gt; 少量增加了推理成本，却显著提升性能的插件模块和后处理方法；不免费，但很实惠（特价）
 
-#### Enlarging Receptive Field 扩大感受野
+##### Enlarging Receptive Field 扩大感受野
 
 &gt; [SPP](https://arxiv.org/abs/1406.4729) ：SPP将SPM集成到CNN使用max-pooling操作而不是bag-of-word运算；
 &gt;
@@ -899,7 +899,7 @@ $$
 &gt;
 &gt; [RFB](https://arxiv.org/abs/1711.07767)  ：几个$k×k$核，缩放比例为$k$，步长1的空洞卷积
 
-#### Attention Mechanism 注意力机制
+##### Attention Mechanism 注意力机制
 
 channel-wise attention 
 
@@ -921,7 +921,7 @@ point-wise attention
 &gt; &gt; padding: 2px;&#34;&gt;SAM&lt;/div&gt;
 &gt; &gt; &lt;/center&gt;
 
-#### Feature Integration 特征融合模块
+##### Feature Integration 特征融合模块
 
 &gt; [skip connection](https://arxiv.org/abs/1411.4038)  (FCN)
 &gt;
@@ -933,7 +933,7 @@ point-wise attention
 &gt;
 &gt; [BiFPN](https://arxiv.org/abs/1911.09070)  :提出了多输入加权残差连接以执行按 scale-wise级别重新加权，然后添加不同尺度的特征图。
 
-####  Activation  Function 激活函数
+#####  Activation  Function 激活函数
 
 &gt; 让梯度更有效地传播，同时不会造成太多额外的计算成本
 &gt;
@@ -951,7 +951,7 @@ point-wise attention
 &gt; &gt;
 &gt; &gt; Mish 属性有助于更好的表现力和信息流。由于在上面无界，Mish 避免了饱和，这通常会由于接近零的梯度而导致训练减慢。下界也是有利的，因为它会产生很强的正则化效果。
 
-#### Post-processing  Method   后处理方法
+##### Post-processing  Method   后处理方法
 
 &gt; 用来过滤对同一物体预测不好的BBoxes，只保留响应较高的候选BBoxes
 &gt;
@@ -963,7 +963,7 @@ point-wise attention
 &gt;
 &gt; Anchor free里不使用NMS后处理：NMS都没有直接涉及提取特征图
 
-## Methodology
+### Methodology
 
 目的是在输入网络分辨率、卷积层数目、参数数量和每层输出个数之间找到最佳平衡
 
@@ -1130,9 +1130,9 @@ padding: 2px;&#34;&gt;YOLOV4_CSP网络图&lt;/div&gt;
 &gt;
 &gt;   &gt; Mish激活函数，SPP模块，SAM模块，路径聚合模块（PAN）, DIoU-NMS
 
-## Experiments
+### Experiments
 
-### 实验设置
+#### 实验设置
 
 **ImageNet图像分类实验**
 
@@ -1162,7 +1162,7 @@ padding: 2px;&#34;&gt;YOLOV4_CSP网络图&lt;/div&gt;
 &gt;
 &gt; &gt; 搜索学习率=0.00261，动量=0.949，IoU阈值= 0.213， loss normalizer 0.07。
 
-### 不同技巧对分类器和检测器训练的影响
+#### 不同技巧对分类器和检测器训练的影响
 
 分类器训练的BoF-backbone (Bag of Freebies)包括CutMix和Mosaic数据增强、类别标签smoothing。
 
@@ -1207,17 +1207,17 @@ color: #999;
 padding: 2px;&#34;&gt;Ablation Studies of BOS&lt;/div&gt;
 &lt;/center&gt;
 
-### 不同backbone和预训练权重对检测器训练的影响
+#### 不同backbone和预训练权重对检测器训练的影响
 
 CSPDarknet53比CSPResNeXt50更适合于做检测器的backbone
 
-### 不同的mini-batch size对检测器训练的影响
+#### 不同的mini-batch size对检测器训练的影响
 
 训练时加入BoF和BoS后mini-batch大小几乎对检测器性能没有任何影响
 
 &gt; 不再需要使用昂贵的GPU来进行训练;一个即可
 
-## 拓展阅读
+### 拓展阅读
 
 [知乎：YOLOv4 介绍及其模型优化方法](https://zhuanlan.zhihu.com/p/342570549)
 
@@ -1241,7 +1241,7 @@ CSPDarknet53比CSPResNeXt50更适合于做检测器的backbone
 
 [Explanation of YOLO V4 a one stage detector](https://becominghuman.ai/explaining-yolov4-a-one-stage-detector-cdac0826cbd7)
 
-# Scaled-YOLOv4
+## Scaled-YOLOv4
 
 &gt; 文章标题：[Scaled-YOLOv4: Scaling Cross Stage Partial Network](https://openaccess.thecvf.com/content/CVPR2021/html/Wang_Scaled-YOLOv4_Scaling_Cross_Stage_Partial_Network_CVPR_2021_paper.html)
 &gt;
@@ -1261,13 +1261,13 @@ color: #999;
 padding: 2px;&#34;&gt;scaled YOLOV4_L网络图&lt;/div&gt;
 &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 [Review — Scaled-YOLOv4: Scaling Cross Stage Partial Network](https://sh-tsang.medium.com/review-scaled-yolov4-scaling-cross-stage-partial-network-51e3c515b0a7)
 
 [YOLO演進 — 4 — Scaled-YOLOv4](https://medium.com/ching-i/yolo%E6%BC%94%E9%80%B2-4-scaled-yolov4-c8c361b4f33f)
 
-# YOLO V5
+## YOLO V5
 
 &gt; [原始代码](https://github.com/ultralytics/yolov5)
 &gt;
@@ -1325,7 +1325,7 @@ padding: 2px;&#34;&gt;YOLOV5_L网络图&lt;/div&gt;
 &gt;
 &gt; Evolve hyper-parameters
 
-## 损失计算
+### 损失计算
 Classes loss, 分类损失，采用的是BCE loss, 注意只计算正样本的分类损失。
 
 Objectness loss, obj损失，采用的依然是BCE loss,注意这里的ob指的是网络预测的目标边界框与GT Box的CIoU。这里计算的是所有样本的obj损失。
@@ -1335,7 +1335,7 @@ $$
 Loss = \lambda_1L_{cls} &#43; \lambda_2L_{obj} &#43; \lambda_3L_{loc}
 $$
 
-### 平衡不同尺度损失
+#### 平衡不同尺度损失
 
 针对三个预测特征层（P3，P4，P5）上的obj损失采用不同权重
 $$
@@ -1343,7 +1343,7 @@ L_{obj} = 4.0\cdot L_{obj}^{small}&#43;1.0 L_{obj}^{medum}&#43;0.4 L_{obj}^{larg
 $$
 
 
-## 拓展阅读
+### 拓展阅读
 
 [YOLOv5网络详解](https://www.bilibili.com/video/BV1T3411p7zR)
 
@@ -1363,7 +1363,7 @@ $$
 - [冻结层的迁移学习](https://github.com/ultralytics/yolov5/issues/1314) ⭐新的
 - [架构总结](https://github.com/ultralytics/yolov5/issues/6998) ⭐新的
 
-# YOLOX
+## YOLOX
 
 &gt; 文章标题：[YOLOX: Exceeding YOLO Series in 2021](https://arxiv.org/abs/2107.08430)
 &gt;
@@ -1401,13 +1401,13 @@ padding: 2px;&#34;&gt;YOLOX_L网络图&lt;/div&gt;
 
 
 
-## 拓展阅读
+### 拓展阅读
 
 [知乎：深入浅出Yolo系列之Yolox核心基础完整讲解](https://zhuanlan.zhihu.com/p/397993315)
 
 [B站：YoloX网络详解](https://www.bilibili.com/video/BV1JW4y1k76c)
 
-# YOLO V7
+## YOLO V7
 
 &gt; 文章标题：[YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors](https://arxiv.org/abs/2207.02696)
 &gt;
@@ -1421,5 +1421,5 @@ padding: 2px;&#34;&gt;YOLOX_L网络图&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/object-detection/yolo/  
+> URL: https://fengchen321.github.io/posts/deeplearning/object-detection/yolo/  
 

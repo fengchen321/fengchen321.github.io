@@ -9,9 +9,7 @@
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 source ~/.bashrc
 nvm --version # 验证 nvm 安装
-nvm install 20 # 安装 Node.js 20
-nvm use 20 # 使用这个版本
-nvm alias default 20 # 设置为默认版本
+nvm install --lts 
 node --version 
 npm --version  
 
@@ -202,5 +200,5 @@ anyio.run(main)
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/ai/claude-code/  
+> URL: https://fengchen321.github.io/posts/ai/claude-code/  
 

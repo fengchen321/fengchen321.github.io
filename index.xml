@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>http://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Jan 2026 12:33:12 +0800</lastBuildDate><atom:link href="http://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude code</title><link>http://fengchen321.github.io/posts/ai/claude-code/</link><pubDate>Fri, 23 Jan 2026 12:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/ai/claude-code/</guid><category domain="http://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="claude-code" class="heading-element">&lt;span>Claude code&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>https://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Jan 2026 12:33:12 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude code</title><link>https://fengchen321.github.io/posts/ai/claude-code/</link><pubDate>Fri, 23 Jan 2026 12:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/claude-code/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="claude-code" class="heading-element">&lt;span>Claude code&lt;/span>
  &lt;a href="#claude-code" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -21,17 +21,13 @@
 &lt;/span>&lt;span class="lnt">11
 &lt;/span>&lt;span class="lnt">12
 &lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装 nvm&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh &lt;span class="p">|&lt;/span> bash
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> ~/.bashrc
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvm --version &lt;span class="c1"># 验证 nvm 安装&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvm install &lt;span class="m">20&lt;/span> &lt;span class="c1"># 安装 Node.js 20&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvm use &lt;span class="m">20&lt;/span> &lt;span class="c1"># 使用这个版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvm &lt;span class="nb">alias&lt;/span> default &lt;span class="m">20&lt;/span> &lt;span class="c1"># 设置为默认版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nvm install --lts 
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node --version 
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm --version 
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
@@ -364,7 +360,7 @@
  &lt;/a>
 &lt;/h2>&lt;p>&lt;a href="https://anthropic.skilljar.com/claude-code-in-action"target="_blank" rel="external nofollow noopener noreferrer">claude-code-in-action&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/"target="_blank" rel="external nofollow noopener noreferrer">Claude Code: A Highly Agentic Coding Assistant&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://code.claude.com/docs"target="_blank" rel="external nofollow noopener noreferrer">Claude Code overview - Claude Code Docs&lt;/a>&lt;/p></description></item><item><title>Memory Detection</title><link>http://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</link><pubDate>Wed, 14 Jan 2026 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</guid><category domain="http://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="内存检测" class="heading-element">&lt;span>内存检测&lt;/span>
+&lt;p>&lt;a href="https://code.claude.com/docs"target="_blank" rel="external nofollow noopener noreferrer">Claude Code overview - Claude Code Docs&lt;/a>&lt;/p></description></item><item><title>Memory Detection</title><link>https://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</link><pubDate>Wed, 14 Jan 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="内存检测" class="heading-element">&lt;span>内存检测&lt;/span>
  &lt;a href="#%e5%86%85%e5%ad%98%e6%a3%80%e6%b5%8b" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -443,6 +439,21 @@
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;p>BPF 是一种内核追踪技术，可用于内存检测。&lt;/p>
+&lt;h3 id="bcchttpsgithubcomiovisorbcctreemaster" class="heading-element">&lt;span>&lt;a href="https://github.com/iovisor/bcc/tree/master"target="_blank" rel="external nofollow noopener noreferrer">BCC&lt;/a>&lt;/span>
+ &lt;a href="#bcchttpsgithubcomiovisorbcctreemaster" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h3 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;a href="https://www.brendangregg.com/"target="_blank" rel="external nofollow noopener noreferrer">Brendan Gregg&amp;rsquo;s Homepage&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://ebpf.party/"target="_blank" rel="external nofollow noopener noreferrer">Home - eBPF.party&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://kernelreload.club/wordpress/archives/tag/bpf"target="_blank" rel="external nofollow noopener noreferrer">bpf – blog&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://kerneltravel.net/blog/2021/ebpf_beginner/ebpf.pdf"target="_blank" rel="external nofollow noopener noreferrer">ebpf入门&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://space.bilibili.com/646178510/lists/468091?type=season"target="_blank" rel="external nofollow noopener noreferrer">bilibili-linux内核调试追踪技术20讲&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;h2 id="其他工具" class="heading-element">&lt;span>其他工具&lt;/span>
  &lt;a href="#%e5%85%b6%e4%bb%96%e5%b7%a5%e5%85%b7" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
@@ -469,8 +480,8 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">coverity: https://scan.coverity.com/
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 性能分析&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gpertools
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">heaptrack&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">gpertools: https://github.com/gperftools/gperftools
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">heaptrack: https://github.com/KDE/heaptrack&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;hr>
 &lt;h2 id="手动内存检测" class="heading-element">&lt;span>手动内存检测&lt;/span>
@@ -986,7 +997,15 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;hr>
+&lt;/div>&lt;h3 id="参考阅读-1" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-1" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;a href="https://blog.csdn.net/hejinjing_tom_com/article/details/124007460"target="_blank" rel="external nofollow noopener noreferrer">malloc_hook 研究&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/bloomberg/memray"target="_blank" rel="external nofollow noopener noreferrer">memray: Python 内存分析器&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/codeinred/mem_profile"target="_blank" rel="external nofollow noopener noreferrer">mem_profile&lt;/a>&lt;/li>
+&lt;/ul>
 &lt;h2 id="栈回溯-backtrace" class="heading-element">&lt;span>栈回溯 (Backtrace)&lt;/span>
  &lt;a href="#%e6%a0%88%e5%9b%9e%e6%ba%af-backtrace" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
@@ -1115,23 +1134,13 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="推荐库" class="heading-element">&lt;span>推荐库&lt;/span>
- &lt;a href="#%e6%8e%a8%e8%8d%90%e5%ba%93" class="heading-mark">
+&lt;/div>&lt;h3 id="参考阅读-2" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-2" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h3>&lt;ul>
 &lt;li>&lt;a href="https://github.com/bombela/backward-cpp"target="_blank" rel="external nofollow noopener noreferrer">backward-cpp&lt;/a>: 美观的 C++ 栈回溯打印库&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;ul>
-&lt;li>&lt;a href="https://blog.csdn.net/hejinjing_tom_com/article/details/124007460"target="_blank" rel="external nofollow noopener noreferrer">malloc_hook 研究&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/bloomberg/memray"target="_blank" rel="external nofollow noopener noreferrer">memray: Python 内存分析器&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/codeinred/mem_profile"target="_blank" rel="external nofollow noopener noreferrer">mem_profile&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Trace Event</title><link>http://fengchen321.github.io/posts/computer/trace-event/</link><pubDate>Tue, 13 Jan 2026 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/trace-event/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="google-trace-event-json-格式详解兼容-trace-viewer--perfetto" class="heading-element">&lt;span>Google Trace Event JSON 格式详解（兼容 Trace Viewer / Perfetto）&lt;/span>
+&lt;/ul></description></item><item><title>Trace Event</title><link>https://fengchen321.github.io/posts/computer/trace-event/</link><pubDate>Tue, 13 Jan 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/trace-event/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="google-trace-event-json-格式详解兼容-trace-viewer--perfetto" class="heading-element">&lt;span>Google Trace Event JSON 格式详解（兼容 Trace Viewer / Perfetto）&lt;/span>
  &lt;a href="#google-trace-event-json-%e6%a0%bc%e5%bc%8f%e8%af%a6%e8%a7%a3%e5%85%bc%e5%ae%b9-trace-viewer--perfetto" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -1454,7 +1463,7 @@
  &lt;td>提供状态信息&lt;/td>
  &lt;/tr>
  &lt;/tbody>
-&lt;/table></description></item><item><title>ELF文件格式详解</title><link>http://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="http://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
+&lt;/table></description></item><item><title>ELF文件格式详解</title><link>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
  &lt;a href="#elf%e6%96%87%e4%bb%b6%e6%a0%bc%e5%bc%8f%e8%af%a6%e8%a7%a3" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -1476,7 +1485,7 @@
 &lt;/ul>
 &lt;center>
 &lt;img 
-src="http://fengchen321.github.io/images/Computer/ELF文件格式详解.assets/ELF基本结构.png" width="600" />
+src="https://fengchen321.github.io/images/Computer/ELF文件格式详解.assets/ELF基本结构.png" width="600" />
 &lt;br>
 &lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1542,7 +1551,7 @@ padding: 2px;">ELF基本结构&lt;/div>
  &lt;/a>
 &lt;/h2>&lt;center>
 &lt;img 
-src="http://fengchen321.github.io/images/Computer/ELF文件格式详解.assets/ELF 详细结构.png" width="1000" />
+src="https://fengchen321.github.io/images/Computer/ELF文件格式详解.assets/ELF 详细结构.png" width="1000" />
 &lt;br>
 &lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -2415,7 +2424,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;li>&lt;a href="http://chuquan.me/2018/05/21/elf-introduce/"target="_blank" rel="external nofollow noopener noreferrer">计算机那些事(4)——ELF文件结构&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://llvm.org/doxygen/structllvm_1_1ELF_1_1Elf32__Shdr.html"target="_blank" rel="external nofollow noopener noreferrer">LLVM: llvm::ELF::Elf32_Shdr Struct Reference&lt;/a>&lt;/li>
 &lt;li>《程序员的自我修养——链接、装载与库》&lt;/li>
-&lt;/ul></description></item><item><title>我的书签收藏</title><link>http://fengchen321.github.io/posts/other/bookmarks/</link><pubDate>Sat, 11 Oct 2025 10:00:00 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/bookmarks/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;div id="bookmarks-container">
+&lt;/ul></description></item><item><title>我的书签收藏</title><link>https://fengchen321.github.io/posts/other/bookmarks/</link><pubDate>Sat, 11 Oct 2025 10:00:00 +0800</pubDate><guid>https://fengchen321.github.io/posts/other/bookmarks/</guid><category domain="https://fengchen321.github.io/categories/other/">Other</category><description>&lt;div id="bookmarks-container">
  &lt;div class="bm-loading">加载中...&lt;/div>
 &lt;/div>
 &lt;style>
@@ -2571,7 +2580,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
  '&lt;div class="bm-error">加载失败，请刷新重试&lt;/div>';
  });
 })();
-&lt;/script></description></item><item><title>MPI 基础知识</title><link>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 07 Aug 2025 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><category domain="http://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="mpi-基础知识" class="heading-element">&lt;span>MPI 基础知识&lt;/span>
+&lt;/script></description></item><item><title>MPI 基础知识</title><link>https://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link><pubDate>Thu, 07 Aug 2025 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/mpi-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="mpi-基础知识" class="heading-element">&lt;span>MPI 基础知识&lt;/span>
  &lt;a href="#mpi-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -3038,7 +3047,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;/h2>&lt;p>&lt;a href="https://mpitutorial.com/"target="_blank" rel="external nofollow noopener noreferrer">MPI Tutorial&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.open-mpi.org/doc/v4.1/"target="_blank" rel="external nofollow noopener noreferrer">Open MPI documentation&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/590277732"target="_blank" rel="external nofollow noopener noreferrer">MPI 与并行计算入门 - 知乎&lt;/a>&lt;/p>
-&lt;p>&lt;a href="http://fcode.cn/download/fcode/MPI_C,C&amp;#43;&amp;#43;,Fortran_Bind.pdf"target="_blank" rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf&lt;/a>&lt;/p></description></item><item><title>汇编语言</title><link>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="http://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
+&lt;p>&lt;a href="http://fcode.cn/download/fcode/MPI_C,C&amp;#43;&amp;#43;,Fortran_Bind.pdf"target="_blank" rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf&lt;/a>&lt;/p></description></item><item><title>汇编语言</title><link>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
  &lt;a href="#%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -3659,7 +3668,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;/h2>&lt;p>&lt;a href="https://www.bilibili.com/video/BV147yDYzETr/"target="_blank" rel="external nofollow noopener noreferrer">汇编语言-B站&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://copy.sh/v86/?profile=archlinux"target="_blank" rel="external nofollow noopener noreferrer">Arch Linux - v86 (copy.sh)&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.cs.cmu.edu/%7Efp/courses/15213-s07/misc/asm64-handout.pdf"target="_blank" rel="external nofollow noopener noreferrer">x86-64 Machine-Level Programming&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gcc/Using-Assembly-Language-with-C.html"target="_blank" rel="external nofollow noopener noreferrer">在 C 中使用汇编语言（使用 GNU 编译器集合 （GCC））&lt;/a>&lt;/p></description></item><item><title>Record</title><link>http://fengchen321.github.io/posts/other/record/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/record/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="常用工具" class="heading-element">&lt;span>常用工具&lt;/span>
+&lt;p>&lt;a href="https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gcc/Using-Assembly-Language-with-C.html"target="_blank" rel="external nofollow noopener noreferrer">在 C 中使用汇编语言（使用 GNU 编译器集合 （GCC））&lt;/a>&lt;/p></description></item><item><title>Record</title><link>https://fengchen321.github.io/posts/other/record/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/other/record/</guid><category domain="https://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="常用工具" class="heading-element">&lt;span>常用工具&lt;/span>
  &lt;a href="#%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -3936,7 +3945,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
  &lt;a href="#%e6%8f%92%e4%bb%b6" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>Export Bookmarks To Json 书签导出为json格式&lt;/p></description></item><item><title>Blog配置</title><link>http://fengchen321.github.io/posts/other/blog/</link><pubDate>Sun, 24 Nov 2024 20:14:59 +0800</pubDate><guid>http://fengchen321.github.io/posts/other/blog/</guid><category domain="http://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="安装hugo" class="heading-element">&lt;span>安装Hugo&lt;/span>
+&lt;/h2>&lt;p>Export Bookmarks To Json 书签导出为json格式&lt;/p></description></item><item><title>Blog配置</title><link>https://fengchen321.github.io/posts/other/blog/</link><pubDate>Sun, 24 Nov 2024 20:14:59 +0800</pubDate><guid>https://fengchen321.github.io/posts/other/blog/</guid><category domain="https://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="安装hugo" class="heading-element">&lt;span>安装Hugo&lt;/span>
  &lt;a href="#%e5%ae%89%e8%a3%85hugo" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -4114,7 +4123,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;p>&lt;a href="https://ratmomo.github.io/p/2024/06/%E4%BD%BF%E7%94%A8-hugo--github-pages-%E9%83%A8%E7%BD%B2%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"target="_blank" rel="external nofollow noopener noreferrer">使用 Hugo + Github Pages 部署个人博客&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://matrix-a.github.io/"target="_blank" rel="external nofollow noopener noreferrer">matrix-a&lt;/a>&lt;/p></description></item><item><title>C++并发</title><link>http://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</link><pubDate>Sun, 15 Oct 2023 13:33:12 +0800</pubDate><guid>http://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</guid><category domain="http://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-concurrency" class="heading-element">&lt;span>C++ Concurrency&lt;/span>
+&lt;p>&lt;a href="https://matrix-a.github.io/"target="_blank" rel="external nofollow noopener noreferrer">matrix-a&lt;/a>&lt;/p></description></item><item><title>C++并发</title><link>https://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</link><pubDate>Sun, 15 Oct 2023 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-concurrency" class="heading-element">&lt;span>C++ Concurrency&lt;/span>
  &lt;a href="#c-concurrency" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>

@@ -2,7 +2,7 @@
 
 [toc]
 
-# Vision Transformer (VIT)
+## Vision Transformer (VIT)
 
 &gt; 文章标题：[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
 &gt; 作者：Alexey Dosovitskiy; Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn,Xiaohua Zhai
@@ -26,7 +26,7 @@ color: #999;
 padding: 2px;&#34;&gt;vit&lt;/div&gt;
 &lt;/center&gt;
 
-## Introdouction
+### Introdouction
 
 Transformer 应用在 CV 的难点
 
@@ -70,12 +70,12 @@ Transformer 比 CNN 少 inductive biases 归纳偏置(先验知识 or 提前的�
 &gt; ViT 用了图片 2d 结构 的 inductive bias 地方：resolution adjustment 尺寸改变 和 patch extraction 抽patches
 
 
-## Related work
+### Related work
 [ICLR 2020](https://arxiv.org/abs/1911.03584) 从输入图片里抽取 2 * 2 patches。
 
 &gt; CIFAR-10 32 * 32 图片，2 * 2足够，16 * 16 会过大。 抽好 patch 之后，在 patches 上 做 self-attention。
 
-## VIT Model
+### VIT Model
 
 &gt; ViT-B/16为例
 &gt;
@@ -117,7 +117,7 @@ Transformer 比 CNN 少 inductive biases 归纳偏置(先验知识 or 提前的�
 &gt; &gt; padding: 2px;&#34;&gt;vit_Position_Embedding&lt;/div&gt;
 &gt; &gt; &lt;/center&gt;
 
-### Vit Architecture
+#### Vit Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -135,7 +135,7 @@ padding: 2px;&#34;&gt;vit_Architecture&lt;/div&gt;
 &gt;
 &gt; &gt; 在训练ImageNet21K时是由`Linear`&#43;`tanh激活函数`&#43;`Linear`组成。但是迁移到ImageNet1K上或者你自己的数据上时，只用一个`Linear`即可
 
-### Hybrid Architecture
+#### Hybrid Architecture
 
 前 CNN &#43; 后 Transformer
 
@@ -159,7 +159,7 @@ color: #999;
 padding: 2px;&#34;&gt;Hybrid_Architecture&lt;/div&gt;
 &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 代码
 
@@ -177,7 +177,7 @@ padding: 2px;&#34;&gt;Hybrid_Architecture&lt;/div&gt;
 
 
 
-# Swin Transformer
+## Swin Transformer
 
 &gt; 文章标题：[Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030)
 &gt; 作者：Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo
@@ -216,7 +216,7 @@ Swin Transformer是一个用了移动窗口的层级式的Vision Transformer
 &gt;
 &gt; &gt; 把相邻的小 patch 合成一个大 patch，这样合并出来的这一个大patch其实就能看到之前四个小patch看到的内容，它的感受野就增大了，同时也能抓住多尺寸的特征
 
-## Overall Architecture
+### Overall Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -274,7 +274,7 @@ Stage 3 经过Patch Merging后，尺寸减半，通道数翻倍，变成了$ 14\
 
 Stage 4 经过Patch Merging后，尺寸减半，通道数翻倍，变成了$ 7\times7\times768$，再经过 2 个 Swin Transformer Block，输出$ 7\times7\times768$。
 
-### Path Merging
+#### Path Merging
 
 &gt; $H\times W \times C -&gt; \ \frac{H}{2}\times \frac{W}{2} \times 4C-&gt; \ \frac{H}{2}\times \frac{W}{2} \times 2C$
 
@@ -288,7 +288,7 @@ color: #999;
 padding: 2px;&#34;&gt;swin_Path_Merging&lt;/div&gt;
 &lt;/center&gt;
 
-### Swin Transformer Block
+#### Swin Transformer Block
 
 &gt; **W-MSA**
 &gt;
@@ -470,7 +470,7 @@ color: #999;
 padding: 2px;&#34;&gt;Relative position bias&lt;/div&gt;
 &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 [Pytorch实现代码](pytorch_classification/swin_transformer)
 
@@ -490,5 +490,5 @@ padding: 2px;&#34;&gt;Relative position bias&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/transformer_cv/vit/  
+> URL: https://fengchen321.github.io/posts/deeplearning/transformer_cv/vit/  
 

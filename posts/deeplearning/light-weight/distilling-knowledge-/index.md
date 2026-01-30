@@ -1,6 +1,6 @@
 # Distilling Knowledge 
 
-# Distilling knowledge 
+## Distilling knowledge 
 
 &gt;  文章标题：[Distilling the knowledge in a neural network](https://arxiv.org/abs/1503.02531)
 &gt;
@@ -8,7 +8,7 @@
 &gt;
 &gt;  发表时间：(NIPS 2014)
 
-## Distillation
+### Distillation
 
 $$
 q_i = \frac{exp(z_i/T)}{\sum _j exp(z_j/T)}
@@ -16,7 +16,7 @@ $$
 
 
 
-## 拓展阅读
+### 拓展阅读
 
 [论文主页](https://scholar.google.com/citations?view_op=view_citation&amp;hl=zh-CN&amp;user=JicYPdAAAAAJ&amp;citation_for_view=JicYPdAAAAAJ:jlhcAiayVhoC)
 
@@ -75,5 +75,5 @@ $$
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/light-weight/distilling-knowledge-/  
+> URL: https://fengchen321.github.io/posts/deeplearning/light-weight/distilling-knowledge-/  
 

@@ -1,6 +1,6 @@
 # ALBEF
 
-# ALBEF
+## ALBEF
 
 &gt; 文章标题：[Align before Fuse: Vision and Language Representation Learning with Momentum Distillation](https://arxiv.org/abs/2107.07651)  [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fb82c5f9efdb2ae56baa084ca41aeddd8a665c1d1%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Align-before-Fuse%3A-Vision-and-Language-Learning-Li-Selvaraju/b82c5f9efdb2ae56baa084ca41aeddd8a665c1d1)
 &gt;
@@ -39,11 +39,11 @@ BERT前六层去做文本编码，剩下的六层transformer encoder直接当成
 
 动量蒸馏 momentum distillation
 
-## 拓展阅读
+### 拓展阅读
 
 [ALBEF offical blog](https://blog.salesforceairesearch.com/align-before-fuse/)
 
-# VLMo
+## VLMo
 
 &gt; 文章标题：[VLMo: Unified Vision-Language Pre-Training with Mixture-of-Modality-Experts](https://arxiv.org/abs/2111.02358)  [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fcf7c2e0e4fb2af689aaf4b7a7cddf7b1f4d5e3f0%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/VLMo%3A-Unified-Vision-Language-Pre-Training-with-Wang-Bao/cf7c2e0e4fb2af689aaf4b7a7cddf7b1f4d5e3f0)
 &gt;
@@ -65,5 +65,5 @@ BERT前六层去做文本编码，剩下的六层transformer encoder直接当成
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/multimodal-learning/albef/  
+> URL: https://fengchen321.github.io/posts/deeplearning/multimodal-learning/albef/  
 

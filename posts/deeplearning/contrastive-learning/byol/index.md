@@ -1,6 +1,6 @@
 # BYOL
 
-# SwAV
+## SwAV
 
 &gt; 文章标题：[Unsupervised Learning of Visual Features by Contrasting Cluster Assignments](https://arxiv.org/abs/2006.09882) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F10161d83d29fc968c4612c9e9e2b61a2fc25842e%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Unsupervised-Learning-of-Visual-Features-by-Cluster-Caron-Misra/10161d83d29fc968c4612c9e9e2b61a2fc25842e)
 &gt;
@@ -10,7 +10,7 @@
 &gt;
 &gt; 对比学习和聚类结合
 
-## methods
+### methods
 
 给定同样一张图片，如果生成不同的视角，不同的 views 的话，希望可以用一个视角得到的特征去预测另外一个视角得到的特征
 
@@ -35,7 +35,7 @@
 &gt;
 &gt; 一个图片 $ X$，做两次数据增强得到了$X_1、X_2$，然后所有的样本通过一个编码器 $f_{\theta}$，输出一个特征$Z_1、Z_2$，先通过clustering让特征 $Z$ 和prototype $C$ 生成目标$Q_1、Q_2$；C点乘$Z_1$去预测$Q_2$，换位预测
 
-## **multi crop**  
+### **multi crop**  
 
 &gt; 思想：全局的和这个局部的特征都要关注
 
@@ -67,7 +67,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 &gt;
 &gt; 如果没有这个multi crop的这个技术其实SwAV的性能也就跟MoCo v2是差不多的
 
-# BYOL
+## BYOL
 
 &gt; 文章标题：[Bootstrap your own latent: A new approach to self-supervised Learning](https://arxiv.org/abs/2006.07733) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F38f93092ece8eee9771e61c1edaf11b1293cae1b%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Bootstrap-Your-Own-Latent%3A-A-New-Approach-to-Grill-Strub/38f93092ece8eee9771e61c1edaf11b1293cae1b)
 &gt;
@@ -79,7 +79,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 &gt;
 &gt; [openmmlab](https://github.com/open-mmlab/mmselfsup/blob/master/mmselfsup/models/algorithms/byol.py)
 
-## 标题
+### 标题
 
 **Bootstrap your own latent: A new approach to self-supervised Learning**
 
@@ -97,7 +97,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 &gt; &gt;
 &gt; &gt; &gt; 如果输出的所有特征都一样，那在负样本的 loss 无穷大；模型更新让正样本和负样本的 loss 都往下降，达到一个最优解
 
-## methods
+### methods
 
 &lt;center&gt;
     &lt;img src = &#34;/images/Contrastive learning/BYOL.assets/BYOL_1.png&#34;&gt;
@@ -143,7 +143,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
     &lt;/div&gt;
 &lt;/center&gt;
 
-## 推荐阅读
+### 推荐阅读
 
 &gt; [Understanding self-supervised and contrastive learning with &#34;Bootstrap Your Own Latent&#34;(BYOL)](https://generallyintelligent.com/blog/2020-08-24-understanding-self-supervised-contrastive-learning/)
 &gt;
@@ -155,7 +155,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 &gt;
 &gt; &gt; BYOL 不需要  batch norm 提供的那些 batch 的这个统计量照样能工作，回应之前博客里提出来假设
 
-# SimSiam
+## SimSiam
 
 &gt; 文章标题：[Exploring Simple Siamese Representation Learning](https://arxiv.org/abs/2011.10566) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F0e23d2f14e7e56e81538f4a63e11689d8ac1eb9d%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Exploring-Simple-Siamese-Representation-Learning-Chen-He/0e23d2f14e7e56e81538f4a63e11689d8ac1eb9d)
 &gt;
@@ -169,7 +169,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 &gt;
 &gt; 可以看成是一种 EM 算法，通过这种逐步更新的方式避免模型坍塌
 
-## methods
+### methods
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
@@ -233,7 +233,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 
 
 
-# Barlow Twins
+## Barlow Twins
 
 &gt; 文章标题： [Barlow Twins: Self-Supervised Learning via Redundancy Reduction](https://arxiv.org/abs/2103.03230) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F8a9d84d86ac0d76e63914802f9738325c3bece9c%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Barlow-Twins%3A-Self-Supervised-Learning-via-Zbontar-Jing/8a9d84d86ac0d76e63914802f9738325c3bece9c)
 &gt;
@@ -241,7 +241,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 &gt;
 &gt; 发表时间: (ICML 2021)
 
-## methods
+### methods
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
@@ -266,7 +266,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 
 
 
-# DINO
+## DINO
 
 &gt; 文章标题：[Emerging Properties in Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.14294)  [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fad4a0938c48e61b7827869e4ac3baffd0aefab35%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Emerging-Properties-in-Self-Supervised-Vision-Caron-Touvron/ad4a0938c48e61b7827869e4ac3baffd0aefab35)
 &gt;
@@ -282,7 +282,7 @@ SwAV：大的crop抓住的是整个场景的特征，如果更想学习这些局
 一个完全不用任何标签信息训练出的 Vision Transformer ；如果把它的自注意力图进行可视化；发现它能非常准确的抓住每个物体的轮廓 (媲美图像分割)
 
 
-## methods
+### methods
 
 MoCo：左边的网络叫做 query 编码器；右边叫做 key 编码器
 BYOL ：左边的网络叫做 online network；右边叫做 target network
@@ -311,5 +311,5 @@ DINO ：左边的网络叫做 student network；右边叫做 teacher network
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/contrastive-learning/byol/  
+> URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/byol/  
 

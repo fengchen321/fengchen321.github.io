@@ -1,13 +1,13 @@
 # Transformer
 
-# Transformer
+## Transformer
 &gt; 文章标题：[Attention Is All You Need](https://arxiv.org/abs/1706.03762#)
 &gt; 作者：Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin
 &gt; 发表时间：(NIPS 2017)
 &gt;
 &gt; 继MLP、CNN、RNN后的第四大类架构
 
-## Introduction
+### Introduction
 
 **sequence transduction:** 序列转录，序列到序列的生成。input一个序列，output一个序列。
 
@@ -23,7 +23,7 @@ RNN ：从左往右一步一步计算，对第 t 个状态 $h_t$，由 $h_{t-1}$
 &gt;
 &gt; &gt; 时序长的时候一个大的 $h_t$存历史信息。每一个 计算步都需要存储，内存开销大
 
-## Background
+### Background
 
 CNN（局部像素--&gt;全部像素；多通道 --&gt; multi-head）
 
@@ -33,7 +33,7 @@ CNN（局部像素--&gt;全部像素；多通道 --&gt; multi-head）
 
 自注意力，是一种将单个序列的不同位置关联起来以计算序列表示的注意力机制
 
-## Model Architecture
+### Model Architecture
 
 &lt;center&gt;
 &lt;img 
@@ -89,7 +89,7 @@ padding: 2px;&#34;&gt;The Transformer - model architecture&lt;/div&gt;
 
 加入位置编码后再进行dropout=0.1。
 
-### Encoder 
+#### Encoder 
 
 Transformer的编码器是由多(N=6)个相同的层叠加而成的，每个层都有两个子层（子层表示为sublayer）。
 
@@ -137,7 +137,7 @@ Transformer的编码器是由多(N=6)个相同的层叠加而成的，每个层�
 &gt; &gt;
 &gt; &gt; LayerNorm 更稳定，不管样本长还是短，均值和方差是在每个样本内计算。 
 
-#### Attention
+##### Attention
 
 注意力函数是 一个将一个 query 和一些 key - value 对 映射成一个输出的函数，其中所有的 query、key、value 和 output 都是一些向量。
 
@@ -159,7 +159,7 @@ color: #999;
 padding: 2px;&#34;&gt;Transformer_attention&lt;/div&gt;
 &lt;/center&gt;
 
-##### Scaled Dot-product Attention
+###### Scaled Dot-product Attention
 
 &lt;center&gt;
 &lt;img 
@@ -203,7 +203,7 @@ $$
 &gt; &gt;
 &gt; &gt; mask是个 0 1矩阵，和attention（scale QK）size一样，t 时刻以后 mask 为 0。
 
-##### Multi-Head Attention
+###### Multi-Head Attention
 
 1. 多头机制扩大了模型对不同位置的关注能力
 
@@ -227,7 +227,7 @@ color: #999;
 padding: 2px;&#34;&gt;concat过程&lt;/div&gt;
 &lt;/center&gt;
 
-### Decoder
+#### Decoder
 
 Decoder 是 auto-regressive 自回归。当前时刻的输入是之前一些时刻的输出。做预测时，decoder 不能看到之后时刻的输出。
 
@@ -290,7 +290,7 @@ softmax层将这些分数转换成概率值（都是正值，且加和为1），
 src=&#34;/images/Transformer_NLP/Transformer.assets/transformer_decoder_output_softmax.png&#34; &gt;
 &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 [哈佛注释版：The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html)
 
@@ -324,5 +324,5 @@ src=&#34;/images/Transformer_NLP/Transformer.assets/transformer_decoder_output_s
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/transformer_nlp/transformer/  
+> URL: https://fengchen321.github.io/posts/deeplearning/transformer_nlp/transformer/  
 

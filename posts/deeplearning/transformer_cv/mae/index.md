@@ -1,6 +1,6 @@
 # MAE
 
-# MAE
+## MAE
 
 &gt; 文章标题：[Masked Autoencoders Are Scalable Vision Learners](https://arxiv.org/abs/2111.06377)
 &gt; 作者：Kaiming He, Xinlei Chen, Saining Xie, Yanghao Li, Piotr Dollár, Ross Girshick
@@ -25,7 +25,7 @@ Masked Autoencoders are scalable vision learners 带掩码的自编码器 是可
 &gt; 样本 x 和 标号 y 来自于同样的句子里面的词 --&gt; auto
 &gt; 加 auto 在 encoder之前，MAE 的图片标号是图片本身，区分于其它工作
 
-## What makes masked autoencoding different between vision and language？
+### What makes masked autoencoding different between vision and language？
 什么使得 带掩码的自编码器模型在 CV 和 NLP 处理上的不一样呢？
 
 CV 使用 CNN，卷积窗口不好将 mask 放进去
@@ -55,7 +55,7 @@ The autoencoder‘s decoder
 &gt; 图片分类、目标检测的 decoder：一个全连接层
 &gt; 语义分割（像素级别的输出）：一个全连接层不够，很有可能使用一个转置的卷积神经网络、来做一个比较大解码器。
 
-## Approach
+### Approach
 
 **随机盖住图片里的一些块(patch, image 的一个块)，再重构缺失的像素。**
 
@@ -85,7 +85,7 @@ encoder 比 decoder 高：计算量主要来自于 encoder，对图片的像素�
 
 用 MAE 做一个 CV 的任务，只需要用编码器。一张图片进来，不需要做掩码，直接切成 patches 格子块，然后得到所有 patches 的特征表示，当成是这张图片的特征表达，用来做 CV 的任务
 
-## Simple implementation
+### Simple implementation
 
 对每一个输入 patch 生成 a token：一个一个 patch 的线性投影 &#43; 位置信息
 随机采样：randomly shuffle 随机打断序列，把最后一块拿掉。
@@ -97,7 +97,7 @@ after encoding 解码时：append 跟以前长度一样的这些掩码的一些�
 
 &gt; MSE 算误差时，跟原始图的 patches 对应
 
-## 拓展阅读
+### 拓展阅读
 
 [MAE 论文逐段精读【论文精读】](https://www.bilibili.com/video/BV1sq4y1q77t?spm_id_from=333.1007.top_right_bar_window_history.content.click)
 
@@ -106,5 +106,5 @@ after encoding 解码时：append 跟以前长度一样的这些掩码的一些�
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/transformer_cv/mae/  
+> URL: https://fengchen321.github.io/posts/deeplearning/transformer_cv/mae/  
 

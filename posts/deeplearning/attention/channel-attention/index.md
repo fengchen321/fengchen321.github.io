@@ -1,7 +1,7 @@
 # Channel Attention
 
 
-# SENet
+## SENet
 
 &gt; 文章标题：[Squeeze-and-Excitation Networks](https://arxiv.org/abs/1709.01507)
 &gt; 作者：Jie Hu, Li Shen, Samuel Albanie, Gang Sun, Enhua Wu
@@ -97,9 +97,9 @@ class SEAttention(nn.Module):
 
 [CV27 Momenta研发总监 孙刚 Squeeze and Excitation Networks下](https://www.youtube.com/watch?v=-8nqA4F7XNU)
 
-# 改进挤压模块
+## 改进挤压模块
 
-## EncNet
+### EncNet
 
 &gt; 文章标题：[Context Encoding for Semantic Segmentation](https://arxiv.org/abs/1803.08904)
 &gt; 作者：Hang Zhang, Kristin Dana, Jianping Shi, Zhongyue Zhang, Xiaogang Wang, Ambrish Tyagi, Amit Agrawal
@@ -157,7 +157,7 @@ class EncModule(nn.Module):
 
 
 
-## GSoP-Net
+### GSoP-Net
 
 &gt; 文章标题：[Global Second-order Pooling Convolutional Networks](https://openaccess.thecvf.com/content_CVPR_2019/papers/Gao_Global_Second-Order_Pooling_Convolutional_Networks_CVPR_2019_paper.pdf)
 &gt; 作者：Zilin Gao, Jiangtao Xie, Qilong Wang, Peihua Li
@@ -288,7 +288,7 @@ class MultiSpectralAttentionLayer(torch.nn.Module):
         return x * y.expand_as(x)
 ```
 
-## Billinear attention
+### Billinear attention
 
 &gt; 文章标题：[Bilinear Attention Networks for Person Retrieval](https://openaccess.thecvf.com/content_ICCV_2019/papers/Fang_Bilinear_Attention_Networks_for_Person_Retrieval_ICCV_2019_paper.pdf)
 &gt; 作者：Pengfei Fang , Jieming Zhou , Soumava Kumar Roy , Lars Petersson , Mehrtash Harandi,
@@ -318,9 +318,9 @@ $$
 
 
 
-# 改进激励模块
+## 改进激励模块
 
-## ECANet
+### ECANet
 
 &gt; 文章标题：[ECA-Net: Efficient Channel Attention for Deep Convolutional Neural Networks](https://arxiv.org/abs/1910.03151)
 &gt; 作者：Qilong Wang, Banggu Wu, Pengfei Zhu, Peihua Li, Wangmeng Zuo, Qinghua Hu
@@ -393,7 +393,7 @@ class eca_layer(nn.Module):
         return x * y.expand_as(x)     
 ```
 
-## RCAN
+### RCAN
 
 &gt; 文章标题：[Image Super-Resolution Using Very Deep Residual Channel Attention Networks](https://openaccess.thecvf.com/content_ECCV_2018/papers/Yulun_Zhang_Image_Super-Resolution_Using_ECCV_2018_paper.pdf)
 &gt; 作者：Yulun Zhang, Kunpeng Li
@@ -439,7 +439,7 @@ class CALayer(nn.Module):
         return x * y
 ```
 
-## DIANet
+### DIANet
 
 &gt; 文章标题：[DIANet: Dense-and-Implicit Attention Network](https://arxiv.org/abs/1905.10671)
 &gt; 作者：Zhongzhan Huang, Senwei Liang, Mingfu Liang, Haizhao Yang
@@ -511,8 +511,8 @@ class DIA_Attention(nn.Module):
 
 
 
-# 同时改进挤压、激励模块
-## SRM
+## 同时改进挤压、激励模块
+### SRM
 
 &gt; 文章标题：[SRM : A Style-based Recalibration Module for Convolutional Neural Networks](https://openaccess.thecvf.com/content_ICCV_2019/papers/Lee_SRM_A_Style-Based_Recalibration_Module_for_Convolutional_Neural_Networks_ICCV_2019_paper.pdf)
 &gt; 作者：HyunJae Lee,  Hyo-Eun Kim,  Hyeonseob Nam
@@ -568,7 +568,7 @@ class SRMLayer(nn.Module):
         return x * g.expand_as(x)
 ```
 
-## GCT
+### GCT
 
 &gt; 文章标题：[Gated Channel Transformation for Visual Recognition](https://arxiv.org/abs/1909.11519)
 &gt; 作者：Zongxin Yang, Linchao Zhu, Yu Wu, Yi Yang
@@ -629,7 +629,7 @@ class GCT(nn.Module):
         return x * gate
 ```
 
-## SoCA
+### SoCA
 
 &gt; 文章标题：[Second-order Attention Network for Single Image Super-Resolution](https://www4.comp.polyu.edu.hk/~cslzhang/paper/CVPR19-SAN.pdf)
 &gt; 作者：Tao Dai1,2, Jianrui Cai , Yongbing Zhang
@@ -707,5 +707,5 @@ class SOCA(nn.Module):
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/attention/channel-attention/  
+> URL: https://fengchen321.github.io/posts/deeplearning/attention/channel-attention/  
 

@@ -1,6 +1,6 @@
 # AutoML
 
-# NIR
+## NIR
 
 &gt; 文章标题：[Neural Inheritance Relation Guided One-Shot Layer Assignment Search](https://arxiv.org/abs/2002.12580)
 &gt; 作者：[Rang Meng](https://arxiv.org/search/cs?searchtype=author&amp;query=Meng%2C&#43;R), [Weijie Chen](https://arxiv.org/search/cs?searchtype=author&amp;query=Chen%2C&#43;W), [Di Xie](https://arxiv.org/search/cs?searchtype=author&amp;query=Xie%2C&#43;D), [Yuan Zhang](https://arxiv.org/search/cs?searchtype=author&amp;query=Zhang%2C&#43;Y), [Shiliang Pu](https://arxiv.org/search/cs?searchtype=author&amp;query=Pu%2C&#43;S)
@@ -8,7 +8,7 @@
 
 相同FLOPs里，各个stage里层数的调整；层数搜索单独摘出来，更加存粹的探究神经网络结构之间的关系，并希望网络结构关系的思路，可以给NAS社区带来一些insight，进一步得到更加通用的高效NAS方案。
 
-# RegNet
+## RegNet
 
 &gt; 文章标题：[Designing Network Design Spaces](https://arxiv.org/abs/2003.13678)
 &gt; 作者：Ilija Radosavovic, Raj Prateek Kosaraju, Ross Girshick, [Kaiming He](http://kaiminghe.com/), Piotr Dollár
@@ -22,7 +22,7 @@ RegNet 是由 facebook 于 2020 年提出，旨在深化设计空间理念的概
 
 输入是一个初始设计空间，输出是一个细化的设计空间，其中每个设计步骤的目的是发现能够产生更简单或性能更好的模型群体的设计原
 
-## AnyNet Design Space
+### AnyNet Design Space
 &lt;center&gt;
 &lt;img 
 src=&#34;/images/Image Classification/AutoML.assets/Design_space.png&#34; &gt;
@@ -44,7 +44,7 @@ src=&#34;/images/Image Classification/AutoML.assets/X_block.png&#34; &gt;
 
 AnyNetX(B)
 
-## 拓展阅读
+### 拓展阅读
 
 [自动驾驶系列论文解读（一）：RegNet——颠覆NAS的AutoML文章](https://www.bilibili.com/video/BV1s34y1X7Jo?spm_id_from=333.337.search-card.all.click)
 
@@ -53,5 +53,5 @@ AnyNetX(B)
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/automl/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/automl/  
 

@@ -1,6 +1,6 @@
 # SimCLR
 
-# SimCLR-V1
+## SimCLR-V1
 
 &gt; 文章标题：[A Simple Framework for Contrastive Learning of Visual Representations](https://arxiv.org/abs/2002.05709) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F34733eaf66007516347a40ad5d9bbe1cc9dacb6b%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/A-Simple-Framework-for-Contrastive-Learning-of-Chen-Kornblith/34733eaf66007516347a40ad5d9bbe1cc9dacb6b)
 &gt;
@@ -55,7 +55,7 @@ SimCLR和InvaSpread区别
 
 
 
-# SimCLR-V2
+## SimCLR-V2
 
 &gt; 文章标题：[Big Self-Supervised Models are Strong Semi-Supervised Learners](https://arxiv.org/abs/2006.10029) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F3e7f5f4382ac6f9c4fef6197dd21abf74456acd1%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Big-Self-Supervised-Models-are-Strong-Learners-Chen-Kornblith/3e7f5f4382ac6f9c4fef6197dd21abf74456acd1)
 &gt;
@@ -86,5 +86,5 @@ SimCLR和InvaSpread区别
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/contrastive-learning/simclr/  
+> URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/simclr/  
 

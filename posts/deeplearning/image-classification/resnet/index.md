@@ -1,6 +1,6 @@
 # ResNet
 
-# ResNet
+## ResNet
 &gt; 文章标题：[Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 &gt;
 &gt; &gt; [代码地址](https://github.com/KaimingHe/deep-residual-networks)
@@ -19,7 +19,7 @@ ResNet在ILSVRC-2015图像分类竞赛中获得了top-5误差3.57%的冠军成�
 
 提出残差学习结构解决深网络的退化问题和训练问题。
 
-## Introduction
+### Introduction
 
 Question: 简单叠加神经网络层可以吗？
 
@@ -33,7 +33,7 @@ Phenomenon：
 * 模型退化问题并非过拟合导致，增加深度导致训练集错误率提升
 * 深层网络不能比浅层网络错误率更高——identity mapping恒等映射
 
-### Residual block
+#### Residual block
 
 &gt; - 残差路径如何设计？
 &gt; - shortcut路径如何设计？
@@ -74,7 +74,7 @@ padding: 2px;&#34;&gt;Residual block&lt;/div&gt;
 * 解决退化问题
 * 可以很深
 
-## Related Work
+### Related Work
 
 残差表示( Residual Representations)：
 
@@ -93,7 +93,7 @@ padding: 2px;&#34;&gt;Residual block&lt;/div&gt;
 * Highway Networks——门控函数扮演残差角色，门控参数由学习得到
 * Residual Learning——提高信息流效率
 
-## Deep Residual Learning
+### Deep Residual Learning
 
 传统多层网络难以拟合恒等映射
 
@@ -175,7 +175,7 @@ padding: 2px;&#34;&gt;ResNet&lt;/div&gt;
 - 每个卷积层之后都紧接着BatchNorm layer。
 
 
-## 拓展阅读
+### 拓展阅读
 
 **ResNet解决退化问题机理**
 
@@ -233,7 +233,7 @@ PreResNet：[Identity Mappings in Deep Residual Networks-2016](https://arxiv.org
 
 
 
-# ResNeXt
+## ResNeXt
 
 &gt; 文章标题：[Aggregated Residual Transformations for Deep Neural Networks](https://arxiv.org/abs/1611.05431)
 &gt;
@@ -253,7 +253,7 @@ PreResNet：[Identity Mappings in Deep Residual Networks-2016](https://arxiv.org
 
 
 
-## ResNeXt
+### ResNeXt
 
 &lt;center&gt;
 &lt;img 
@@ -295,7 +295,7 @@ padding: 2px;&#34;&gt;ResNeXt&lt;/div&gt;
 
 &gt; ResNeXt-50（32x4d）：32指进入网络的第一个**ResNeXt基本结构的分组数量C**（即**cardinality基数**）为32，4d表示depth即每一个分组的通道数为4（所以第一个基本结构输入通道数为128）
 
-## 拓展阅读
+### 拓展阅读
 
 [Review: ResNeXt — 1st Runner Up in ILSVRC 2016 (Image Classification)](https://towardsdatascience.com/review-resnext-1st-runner-up-of-ilsvrc-2016-image-classification-15d7f17b42ac)
 
@@ -305,7 +305,7 @@ padding: 2px;&#34;&gt;ResNeXt&lt;/div&gt;
 
 &gt; 在 2019 年，facebook 通过弱监督学习研究了该系列网络在 ImageNet 上的精度上限，为了区别之前的 ResNeXt 网络，该系列网络的后缀为 wsl，其中 wsl 是弱监督学习（weakly-supervised-learning）的简称。为了能有更强的特征提取能力，研究者将其网络宽度进一步放大，其中最大的 ResNeXt101_32x48d_wsl 拥有 8 亿个参数，将其在 9.4 亿的弱标签图片下训练并在 ImageNet-1k 上做 finetune，最终在 ImageNet-1k 的 top-1 达到了 85.4%。Fix-ResNeXt 中，作者使用了更大的图像分辨率，针对训练图片和验证图片数据预处理不一致的情况下做了专门的 Fix 策略，并使得 ResNeXt101_32x48d_wsl 拥有了更高的精度，由于其用到了 Fix 策略，故命名为 Fix-ResNeXt101_32x48d_wsl。
 
-# ResNeSt
+## ResNeSt
 
 &gt; 文章标题：[ResNeSt: Split-Attention Networks](https://arxiv.org/abs/2004.08955)
 &gt;
@@ -315,15 +315,15 @@ padding: 2px;&#34;&gt;ResNeXt&lt;/div&gt;
 &gt;
 &gt; [Official Code](https://github.com/zhanghang1989/ResNeSt)
 
-## Split-Attention Networks
+### Split-Attention Networks
 
-### Split-Attention Block
+#### Split-Attention Block
 
 &gt; **featuremap group** and **split attention** operations
 &gt;
 &gt; ResNeSt中每个块将特征图沿着channel维度划分为几个组（groups）和更细粒度的子组（splits），每个组的特征表示是由其splits的表示的加权组合来确定的（根据全局上下文信息来确定权重），将得到的这个单元称之为 Split-Attention block
 
-### featuremap group
+#### featuremap group
 
 &gt; 借鉴了ResNeXt网络的思想，将输入分为**K个，每一个记为Cardinal1-k** ，然后又将每个Cardinal拆分成**R个，每一个记为Split1-r**，所以总共有**G=KR**个组
 &gt;
@@ -337,7 +337,7 @@ padding: 2px;&#34;&gt;ResNeXt&lt;/div&gt;
 &gt; padding: 2px;&#34;&gt;ResNeSt Block&lt;/div&gt;
 &gt; &lt;/center&gt;
 
-### **Split Attention in Cardinal Groups**
+#### **Split Attention in Cardinal Groups**
 
 &lt;center&gt;
 &lt;img 
@@ -372,7 +372,7 @@ V =Concat\{V^1,V^2,...,V^K\}
 $$
 &gt; $\hat V^k\in R^{H\times W\times C/K}$
 
-### **Radix-major Split-Attention Block**
+#### **Radix-major Split-Attention Block**
 
 转换成这一形式是为了便于使用标准的CNN进行加速（像group convolution， group fully connectd layer等）
 
@@ -479,7 +479,7 @@ class Splat(nn.Module):
         return out.contiguous()
 ```
 
-## Network and Training 
+### Network and Training 
 
 **Network Tweaks**
 
@@ -495,7 +495,7 @@ class Splat(nn.Module):
 &gt; * [Mixup Training]( https://arxiv.org/abs/1710.09412)
 &gt; * 则化：可以选择dropout、DropBlock、L2正则化方法。
 
-## Ablation Study
+### Ablation Study
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
@@ -522,7 +522,7 @@ padding: 2px;&#34;&gt;radix vs. cardinality under ResNeSt-fast setting&lt;/td&gt
 &gt;
 &gt; 2s2x40d ：radix=2, cardinality=2 and width=40
 
-## 拓展阅读
+### 拓展阅读
 
 [张航-ResNeSt：拆分注意力网络](https://www.bilibili.com/video/BV1PV411k7ch#reply3078900535)
 
@@ -538,7 +538,7 @@ https://github.com/zhanghang1989/ResNeSt/issues/4
 
 https://github.com/zhanghang1989/ResNeSt/issues/41
 
-# DenseNet
+## DenseNet
 
 &gt; 文章标题：[Densely Connected Convolutional Networks](https://arxiv.org/abs/1608.06993)
 &gt;
@@ -556,7 +556,7 @@ DenseNet 将所有的 dense-block 堆叠，组合成了一个密集连接型网�
 
 密集的连接方式使得 DenseNet更容易进行梯度的反向传播，使得网络更容易训练。
 
-## Motivation动机
+### Motivation动机
 
 **DenseNets 不是从极深或极宽的架构中汲取表征能力，而是通过特征重用来利用网络的潜力。**
 
@@ -592,7 +592,7 @@ color: #999;
 padding: 2px;&#34;&gt;Memory-Efficient Implementation of DenseNets&lt;/div&gt;
 &lt;/center&gt;
 
-## DenseNet
+### DenseNet
 
 假如我们有$L$层卷积神经网路，那就有$L$个(层与层之间的)连结。但是DenseNet设计成有$\frac{L(L&#43;1)}{2}$个连结。
 
@@ -640,7 +640,7 @@ DenseNet首先使用同ResNet一样的单卷积层和最大汇聚层。
 
 与ResNet类似，最后接上全局汇聚层和全连接层来输出结果。
 
-## 拓展阅读
+### 拓展阅读
 
 [DenseNet Architecture Explained with PyTorch Implementation from TorchVision](https://amaarora.github.io/2020/08/02/densenets.html)
 
@@ -650,7 +650,7 @@ DenseNet首先使用同ResNet一样的单卷积层和最大汇聚层。
 
 
 
-# DPN
+## DPN
 
 &gt; 文章标题：[Dual Path Networks](https://arxiv.org/abs/1707.01629)
 &gt;
@@ -705,7 +705,7 @@ padding: 2px;&#34;&gt;DPN&lt;/div&gt;
 - $3\times3$ 的卷积层采用的是 group convolution
 - $1×1×256(&#43;16) $中的 256 代表的是 ResNet 的通道数，16 代表的是 DenseNet 一层的输出通道数，将结果分成 256 和 16 两部分，256 的 element-wise 的加到 ResNet 通道，16 的 concat 到 DenseNet 通道，然后继续下一个 block，同样输出 256 &#43; 16 个通道，重复操作。
 
-## 拓展阅读
+### 拓展阅读
 
 [代码](https://github.com/cypw/DPNs)
 
@@ -717,7 +717,7 @@ padding: 2px;&#34;&gt;DPN&lt;/div&gt;
 
 [【论文阅读】—— Dual Path Network](http://vincentho.name/2018/12/11/%E3%80%90%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E3%80%91%E2%80%94%E2%80%94-Dual-Path-Network/)
 
-# HarDNet
+## HarDNet
 
 &gt; 文章标题：[HarDNet: A Low Memory Traffic Network](https://arxiv.org/abs/1909.00948)
 &gt;
@@ -805,11 +805,11 @@ HardNet-68 中每个 HDB 的专用增长率 k 提高了 CIO 效率。
 
 &gt; 提高了局部特征学习，有利于小规模目标检测。相比之下，分类任务更多地依赖全局特征学习，因此专注于低分辨率可以获得更高的准确度和更低的计算复杂度
 
-## 拓展阅读
+### 拓展阅读
 
 [HarDNet简析](https://zhuanlan.zhihu.com/p/257874749)
 
-# ResNet_D
+## ResNet_D
 
 &gt; 文章标题：[Bag of Tricks for Image Classification with Convolutional Neural Networks](https://arxiv.org/abs/1812.01187)
 &gt;
@@ -819,7 +819,7 @@ HardNet-68 中每个 HDB 的专用增长率 k 提高了 CIO 效率。
 &gt;
 &gt; [Official Code](https://github.com/dmlc/gluon-cv)
 
-## Basline Implemention
+### Basline Implemention
 
 - 预处理与数据增强
   - 随机sample并且转化为[0,255]之间的32位宽浮点数
@@ -835,9 +835,9 @@ HardNet-68 中每个 HDB 的专用增长率 k 提高了 CIO 效率。
   - 共训练120 epoch
   - lr 0.1(30,60,90 epoch上除以10)
 
-## Efficient Training
+### Efficient Training
 
-### Large-batch training
+#### Large-batch training
 
 与小批量训练的模型相比，使用大批量训练训练的模型的验证精度降低
 
@@ -867,7 +867,7 @@ HardNet-68 中每个 HDB 的专用增长率 k 提高了 CIO 效率。
 &gt;
 &gt; &gt; 将权值衰减应用于卷积层和全连接层中的权值。其他参数，包括偏置和在BN层的γ和β，保持不正则化
 
-### Low-precision training
+#### Low-precision training
 
 &gt; 将所有参数和激活存储在FP16中，并使用FP16计算梯度。同时，所有参数在FP32中都有一个副本，用于参数更新。此外，将一个标量乘以损失，以更好地将梯度范围对齐到FP16
 
@@ -887,7 +887,7 @@ padding: 2px;&#34;&gt;Efficient_Training&lt;/div&gt;
 
 仅通过线性缩放学习率将批量大小从256增加到1024会导致top-1准确率下降0.9%，而堆叠其余三个启发式方法可以弥补这一差距。训练结束时从FP32切换到FP16不会影响精度。
 
-## Model Tweaks
+### Model Tweaks
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
@@ -922,7 +922,7 @@ color: #999;
 padding: 2px;&#34;&gt;model_conclusion&lt;/div&gt;
 &lt;/center&gt;
 
-## Training Refinements
+### Training Refinements
 
 **Cosine learning rate decay**
 
@@ -962,13 +962,13 @@ padding: 2px;&#34;&gt;training_refinements&lt;/div&gt;
 
 &gt; 可能解释是：教师模型不是来自于学生的同一家庭，因此在预测中分布不同，给模型带来了负面影响
 
-## 拓展阅读
+### 拓展阅读
 
 [Bag of tricks for image classification with convolutional neural networks review [cdm]](https://www.slideshare.net/DongminChoi6/bag-of-tricks-for-image-classification-with-convolutional-neural-networks-review-cdm)
 
 [ResNet strikes back: An improved training procedure in timm](https://arxiv.org/abs/2110.00476) Top-1：80.4%
 
-# Res2Net
+## Res2Net
 
 &gt; 文章标题：[Res2Net: A New Multi-scale Backbone Architecture](https://arxiv.org/abs/1904.01169)
 &gt;
@@ -1007,11 +1007,11 @@ padding: 2px;&#34;&gt;Res2Net_Module &#43; group_conv &#43; SE_block集成&lt;/t
 
 忽略了第一个分组的卷积层：这也是一种特征复用的形式，减少参数并增加$s $的数量
 
-## 拓展阅读
+### 拓展阅读
 
 [作者博客](https://mmcheng.net/res2net/)
 
-# RedNet
+## RedNet
 
 &gt; 文章标题：[Involution: Inverting the Inherence of Convolution for Visual Recognition](https://arxiv.org/abs/2103.06255)
 &gt;
@@ -1071,13 +1071,13 @@ padding: 2px;&#34;&gt;RedNet_involution&lt;/div&gt;
 
 在 ResNet的stem中（使用$3\times 3$或$7\times7$ involution进行分类或密集预测）和trunk（对所有任务使用$7\times7$ involution）位置中的所有bottleneck位置上替换掉了$3\times 3$卷积，但保留了所有的$1\times 1$卷积用于通道映射和融合。这些精心重新设计的实体联合起来，形成了一种新的高效 Backbone 网络，称为 RedNet。
 
-## 拓展阅读
+### 拓展阅读
 
 [超越卷积、自注意力机制：强大的神经网络新算子involution](https://www.linkresearcher.com/theses/6ba69226-7c28-4e8d-8fe2-bba6e9496587)
 
 [论文笔记](https://www.yuque.com/lart/papers/frxyq3#FVXRR)
 
-# DCDC
+## DCDC
 
 &gt; 文章标题：[Dual Complementary Dynamic Convolution for Image Recognition](https://arxiv.org/abs/2211.06163)
 &gt;
@@ -1091,5 +1091,5 @@ padding: 2px;&#34;&gt;RedNet_involution&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/image-classification/resnet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/resnet/  
 

@@ -1,6 +1,6 @@
 # DALL·E·2
 
-#  DALL·E·2
+##  DALL·E·2
 
 &gt; 文章标题：[Hierarchical Text-Conditional Image Generation with CLIP Latents](https://arxiv.org/abs/2204.06125)     |[![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fc57293882b2561e1ba03017902df9fc2f289dea2%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Hierarchical-Text-Conditional-Image-Generation-with-Ramesh-Dhariwal/c57293882b2561e1ba03017902df9fc2f289dea2)  
 &gt; 作者：Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, Mark Chen
@@ -11,13 +11,13 @@
 &gt;
 &gt;  CLIP &#43; Diffusion models
 
-## title
+### title
 
 使用CLIP训练好的特征做层级式的依托于文本的图像生成
 
 &gt; 层级式：先生成一个小分辨率的图片再多次上采样成高清大图
 
-## Methods
+### Methods
 
 &lt;center&gt;
 &lt;img 
@@ -51,7 +51,7 @@ $$
 P(x|y)=P(x,z_i|y)=P(x|z_i,y)P(z_i|y)
 $$
 
-## 拓展阅读
+### 拓展阅读
 
 [DALL·E 2【论文精读】](https://www.bilibili.com/video/BV17r4y1u77B/?spm_id_from=333.788)
 
@@ -60,5 +60,5 @@ $$
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/generative-model/dall_e2/  
+> URL: https://fengchen321.github.io/posts/deeplearning/generative-model/dall_e2/  
 

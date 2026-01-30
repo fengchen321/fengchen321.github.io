@@ -486,5 +486,5 @@ make -nB | grep -ve &#39;^\(\#|echo\|mkdir\)&#39; | vim -
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/c&#43;&#43;/cmake%E6%95%99%E7%A8%8B/  
+> URL: https://fengchen321.github.io/posts/c&#43;&#43;/cmake%E6%95%99%E7%A8%8B/  
 

@@ -230,5 +230,5 @@ git merge FETCH_HEAD  #FETCH_HEAD 是一个 Git 内部的引用，表示最近�
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/computer/git%E6%95%99%E7%A8%8B/  
+> URL: https://fengchen321.github.io/posts/computer/git%E6%95%99%E7%A8%8B/  
 

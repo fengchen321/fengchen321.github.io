@@ -1,6 +1,6 @@
 # ShuffleNet
 
-# ShuffleNetV1
+## ShuffleNetV1
 
 &gt; 文章标题：[Shufflenet: An extremely efficient convolutional neural network for mobile devices](https://openaccess.thecvf.com/content_cvpr_2018/html/Zhang_ShuffleNet_An_Extremely_CVPR_2018_paper.html)
 &gt; 作者：[Xiangyu Zhang](https://scholar.google.com/citations?user=yuB-cfoAAAAJ&amp;hl=zh-CN&amp;oi=sra)，[Xinyu Zhou](https://scholar.google.com/citations?user=Jv4LCj8AAAAJ&amp;hl=zh-CN&amp;oi=sra)，[Mengxiao Lin](https://scholar.google.com/citations?user=SCwGvlUAAAAJ&amp;hl=zh-CN&amp;oi=sra) ，[Jian Sun](https://scholar.google.com/citations?user=ALVSZAYAAAAJ&amp;hl=zh-CN&amp;oi=sra) ，Megvii Inc (Face&#43;&#43;)
@@ -12,9 +12,9 @@ ShuffleNet V1，ShuffleNet主要包含两个新型的结构：**分组逐点卷�
 
 
 
-## Related work
+### Related work
 
-### Group Convolution
+#### Group Convolution
 
 每个卷积核不再处理所有输入通道，而只是处理一部分通道。
 
@@ -28,9 +28,9 @@ color: #999;
 padding: 2px;&#34;&gt;CondenseNet: An Efficient DenseNet using Learned Group Convolutions&lt;/div&gt;
 &lt;/center&gt;
 
-## Approach
+### Approach
 
-### Channel Shuffle for Group Convolutions
+#### Channel Shuffle for Group Convolutions
 
 &lt;center&gt;
 &lt;img 
@@ -78,7 +78,7 @@ def shuffle_channels(x, groups):
 
 
 
-### ShuffleNet unit
+#### ShuffleNet unit
 
 &lt;center&gt;
 &lt;img 
@@ -125,7 +125,7 @@ color: #999;
 padding: 2px;&#34;&gt;ShuffleNetV1 architecture&lt;/div&gt;
 &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 [旷视科技官网](https://www.megvii.com/)
 
@@ -133,13 +133,13 @@ padding: 2px;&#34;&gt;ShuffleNetV1 architecture&lt;/div&gt;
 
 [ShuffleNet V1/V2 | 轻量级深层神经网络](https://blog.csdn.net/qiu931110/article/details/86586704)
 
-# ShuffleNetV2
+## ShuffleNetV2
 
 &gt; 文章标题：[ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design](https://openaccess.thecvf.com/content_ECCV_2018/html/Ningning_Light-weight_CNN_Architecture_ECCV_2018_paper.html)
 &gt; 作者：Ningning Ma, Xiangyu Zhang, Hai-Tao Zheng, Jian Sun
 &gt; 发表时间：(ECCV 2018)
 
-## 高效网络设计的四个指导原则
+### 高效网络设计的四个指导原则
 
 * **G1：当输入和输出的通道数相同时，conv计算所需的MAC最小(保持FLOPs不变)；**
 
@@ -234,7 +234,7 @@ padding: 2px;&#34;&gt;ShuffleNetV1 architecture&lt;/div&gt;
   &gt;
   &gt; 采用的是Resnet50的瓶颈结构（bottleneck）,分别去掉其中的 ReLU 和跳跃连接，然后测试它们各自的运行速度。可以看到无论是去掉其中哪一个操作，运行速度都会加快。
   
-## ShuffleNet V2
+### ShuffleNet V2
 
   
 
@@ -260,7 +260,7 @@ padding: 2px;&#34;&gt;ShuffleNetV1 architecture&lt;/div&gt;
   padding: 2px;&#34;&gt;ShuffleNetV2 architecture&lt;/div&gt;
   &lt;/center&gt;
 
-## 拓展阅读
+### 拓展阅读
 
 [知乎：如何评价shufflenet V2？](https://www.zhihu.com/question/287433673/answer/455350957)
 
@@ -283,5 +283,5 @@ padding: 2px;&#34;&gt;ShuffleNetV1 architecture&lt;/div&gt;
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/light-weight/shufflenet/  
+> URL: https://fengchen321.github.io/posts/deeplearning/light-weight/shufflenet/  
 

@@ -1,6 +1,6 @@
 # Moco
 
-# MoCo
+## MoCo
 
 &gt; 文章标题：[Momentum Contrast for Unsupervised Visual Representation Learning](https://arxiv.org/abs/1911.05722) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fec46830a4b275fd01d4de82bffcabe6da086128f%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Momentum-Contrast-for-Unsupervised-Visual-Learning-He-Fan/ec46830a4b275fd01d4de82bffcabe6da086128f)
 &gt;
@@ -39,7 +39,7 @@ CV 领域 设计巧妙的代理任务 pre-text task，人为设立一些规则 �
 - CMC 论文：一个物体的不同视角 view（正面、背面；RGB 图像、深度图像）作为不同形式的正样本。
 - 多模态领域：Open AI 的 CLIP 模型
 
-## MoCo标题
+### MoCo标题
 
 &gt; Momentum Contrast for Unsupervised Visual Representation Learning 
 &gt;
@@ -69,7 +69,7 @@ Momentum Contrast: 动量对比学习
 - **一个移动平均的编码器**：让字典的特征尽可能的保持一致
 - 一个大的、一致的字典，有利于无监督的对比学习训练。
 
-## Introduction
+### Introduction
 
 **NLP 的离散单词更具语义性，CV的连续、高维信号不好构建字典**
 
@@ -106,7 +106,7 @@ $f_{11} $当成 query 在 $f_{12}, f_2, f_3, ..., f_n$ 组成的字典的 key �
 &gt; &gt;
 &gt; &gt; 如果字典的 key 是由不同的编码器得到的，query q 做字典查询时，很有可能 找到和 query 使用同一个 or 相似编码器生成的 key，而不是语义相似的 key。另一种形式的 shortcut solution
 
-## Related work
+### Related work
 
 两个可以做的点：pretext tasks and loss functions
 
@@ -132,7 +132,7 @@ $f_{11} $当成 query 在 $f_{12}, f_2, f_3, ..., f_n$ 组成的字典的 key �
 - CPC contrastive predictive coding 用上下文信息预测未来  -----  context auto-encoding 上下文自编码
 - CMC contrastive multiview coding 利用一个物体的不同视角做对比 -----  olorization 图片上色（同一个图片的 2 个视角：黑白 和 彩色）
 
-## Methods
+### Methods
 
 对比学习和最近的发展，都可以看成是一个训练一个 encoder 来做 字典查询 的任务
 
@@ -202,11 +202,11 @@ BN会阻止模型学习好的表征，可能是由于样本中间的信息（由
 
 
 
-## 拓展阅读
+### 拓展阅读
 
 [MoCo 论文逐段精读【论文精读】](https://www.bilibili.com/video/BV1C3411s7t9/?vd_source=d28e92983881d85b633a5acf8e46efaa)
 
-# MoCo-V2
+## MoCo-V2
 
 &gt; 文章标题：[Improved Baselines with Momentum Contrastive Learning](https://arxiv.org/abs/2003.04297) [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2Fa1b8a8df281bbaec148a897927a49ea47ea31515%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/Improved-Baselines-with-Momentum-Contrastive-Chen-Fan/a1b8a8df281bbaec148a897927a49ea47ea31515)
 &gt;
@@ -226,7 +226,7 @@ MoCo v2发现SimCLR里的那些技术都是即插即用型的，引入了mlp pro
 &gt;
 &gt; 训练更长的 epoch，从200变到了800
 
-# MoCo-V3
+## MoCo-V3
 
 &gt; 文章标题：[An Empirical Study of Training Self-Supervised Vision Transformers](https://arxiv.org/abs/2104.02057)  [![citation](https://img.shields.io/badge/dynamic/json?label=citation&amp;query=citationCount&amp;url=https%3A%2F%2Fapi.semanticscholar.org%2Fgraph%2Fv1%2Fpaper%2F739ceacfafb1c4eaa17509351b647c773270b3ae%3Ffields%3DcitationCount)](https://www.semanticscholar.org/paper/An-Empirical-Study-of-Training-Self-Supervised-Chen-Xie/739ceacfafb1c4eaa17509351b647c773270b3ae)
 &gt;
@@ -262,5 +262,5 @@ MoCo v2发现SimCLR里的那些技术都是即插即用型的，引入了mlp pro
 ---
 
 > 作者: fengchen  
-> URL: http://fengchen321.github.io/posts/deeplearning/contrastive-learning/moco/  
+> URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/moco/  
 
