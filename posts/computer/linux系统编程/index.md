@@ -1,4 +1,4 @@
-# Linx系统编程
+# Linux系统编程
 
 # Linx系统编程
 
@@ -6318,5 +6318,5 @@ Linux-UNIX系统编程手册（上、下册） (Michael Kerrisk)
 ---
 
 > 作者: fengchen  
-> URL: https://fengchen321.github.io/posts/computer/linx%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/  
+> URL: https://fengchen321.github.io/posts/computer/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/  
 

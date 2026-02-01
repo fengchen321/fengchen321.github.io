@@ -130,7 +130,6 @@ requires_openai_auth = true
 ```
 
 ```shell
-claude mcp add codex npx @anthropic-ai/mcp-codex@latest # 安装 codex 服务
 claude mcp add codex -s user -- codex -m gpt-5.1-codex-max -c model_reasoning_effort=&#34;high&#34; mcp-server
 claude mcp remove codex # 移除配置
 ```

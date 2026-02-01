@@ -1,4 +1,4 @@
-# Linx常用指令
+# Linux常用指令
 
 # Linux基础
 

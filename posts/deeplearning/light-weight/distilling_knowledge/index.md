@@ -75,5 +75,5 @@ $$
 ---
 
 > 作者: fengchen  
-> URL: https://fengchen321.github.io/posts/deeplearning/light-weight/distilling-knowledge-/  
+> URL: https://fengchen321.github.io/posts/deeplearning/light-weight/distilling_knowledge/  
 

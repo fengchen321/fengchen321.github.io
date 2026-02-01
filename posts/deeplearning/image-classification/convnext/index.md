@@ -15,7 +15,7 @@
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Image Classification/ConvNeXt .assets/ConvNeXt_Roadmap.png&#34; &gt;
+src=&#34;/images/Image Classification/ConvNeXt.assets/ConvNeXt_Roadmap.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -27,7 +27,7 @@ padding: 2px;&#34;&gt;深色为 ResNet-50/Swin-T；灰色为ResNet-200/Swin-B；
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Image Classification/ConvNeXt .assets/ConvNeXt.png&#34; &gt;
+src=&#34;/images/Image Classification/ConvNeXt.assets/ConvNeXt.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -37,8 +37,8 @@ padding: 2px;&#34;&gt;ConvNeXt&lt;/div&gt;
 
 &lt;table border=&#34;0&#34;&gt;
     &lt;tr&gt;
-        &lt;td  align=&#34;center&#34;&gt;&lt;img src=&#34;/images/Image Classification/ConvNeXt .assets/ConvNeXt_ResNet50.png&#34;&gt;&lt;/td&gt;  
-        &lt;td  align=&#34;center&#34;&gt;&lt;img src=&#34;/images/Image Classification/ConvNeXt .assets/ConvNeXt_ResNet200.png&#34; &gt;&lt;/td&gt;
+        &lt;td  align=&#34;center&#34;&gt;&lt;img src=&#34;/images/Image Classification/ConvNeXt.assets/ConvNeXt_ResNet50.png&#34;&gt;&lt;/td&gt;  
+        &lt;td  align=&#34;center&#34;&gt;&lt;img src=&#34;/images/Image Classification/ConvNeXt.assets/ConvNeXt_ResNet200.png&#34; &gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr &gt;
             &lt;td  align=&#34;center&#34; style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;color: #999;
@@ -91,7 +91,7 @@ Use more groups, expand width 使用更多的组，扩大宽度
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Image Classification/ConvNeXt .assets/ConvNeXt_Inverted_bottleneck.png&#34; &gt;
+src=&#34;/images/Image Classification/ConvNeXt.assets/ConvNeXt_Inverted_bottleneck.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -112,7 +112,7 @@ padding: 2px;&#34;&gt;Block modifications and resulted specifications&lt;/div&gt
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Image Classification/ConvNeXt .assets/ConvNeXt_Block.png&#34; &gt;
+src=&#34;/images/Image Classification/ConvNeXt.assets/ConvNeXt_Block.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -265,5 +265,5 @@ ImageNet-1K
 ---
 
 > 作者: fengchen  
-> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/convnext-/  
+> URL: https://fengchen321.github.io/posts/deeplearning/image-classification/convnext/  
 

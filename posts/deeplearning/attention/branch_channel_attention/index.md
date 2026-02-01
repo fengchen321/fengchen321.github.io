@@ -12,7 +12,7 @@
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/branch_channel Attention.assets/SK-pipeline.jpg&#34; &gt;
+src=&#34;/images/Attention/branch_channel_Attention.assets/SK-pipeline.jpg&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -153,7 +153,7 @@ class SKAttention(nn.Module):
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/branch_channel Attention.assets/CondConv.png&#34; &gt;
+src=&#34;/images/Attention/branch_channel_Attention.assets/CondConv.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -177,7 +177,7 @@ $$
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/branch_channel Attention.assets/DynamicConv.png&#34; &gt;
+src=&#34;/images/Attention/branch_channel_Attention.assets/DynamicConv.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -196,5 +196,5 @@ $$
 ---
 
 > 作者: fengchen  
-> URL: https://fengchen321.github.io/posts/deeplearning/attention/branch_channel-attention/  
+> URL: https://fengchen321.github.io/posts/deeplearning/attention/branch_channel_attention/  
 

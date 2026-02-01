@@ -15,7 +15,7 @@
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/Residual_Attention_2017.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/Residual_Attention_2017.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -54,7 +54,7 @@ $$
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/simam.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/simam.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -89,7 +89,7 @@ class simam_module(torch.nn.Module):
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/Strip_Pooling.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/Strip_Pooling.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -168,7 +168,7 @@ class StripPooling(nn.Module):
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/SC_conv.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/SC_conv.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -222,7 +222,7 @@ class SCConv(nn.Module):
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/VAN_LKA.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/VAN_LKA.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -232,7 +232,7 @@ padding: 2px;&#34;&gt;LKA&lt;/div&gt;
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/VAN_stage.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/VAN_stage.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -293,12 +293,12 @@ class Attention(nn.Module):
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/CBAM1.png&#34;  / &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/CBAM1.png&#34;  / &gt;
 &lt;/center&gt;
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/CBAM2.png&#34;  / &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/CBAM2.png&#34;  / &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -342,7 +342,7 @@ $$
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/BAM.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/BAM.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -375,7 +375,7 @@ $$
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/scSE.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/scSE.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -428,7 +428,7 @@ class SCSEModule(nn.Module):
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/triplet.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/triplet.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -438,7 +438,7 @@ padding: 2px;&#34;&gt;Structural Design of Triplet Attention Module.&lt;/div&gt;
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/triplet_comp.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/triplet_comp.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -480,7 +480,7 @@ triplet attention 强调捕获跨域交互的重要性，而不是独立计算�
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/coordinate_attention.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/coordinate_attention.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -555,7 +555,7 @@ class CoordAtt(nn.Module):
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/danet.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/danet.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -565,7 +565,7 @@ padding: 2px;&#34;&gt;danet&lt;/div&gt;
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/danet_1.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/danet_1.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -597,7 +597,7 @@ $$
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Attention/Channle&amp;Spatial Attention.assets/RGA.png&#34; &gt;
+src=&#34;/images/Attention/Channel&amp;Spatial Attention.assets/RGA.png&#34; &gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -625,5 +625,5 @@ channel和spital形式一样。位置上的空间注意力得分$a_i$
 ---
 
 > 作者: fengchen  
-> URL: https://fengchen321.github.io/posts/deeplearning/attention/channlespatial-attention/  
+> URL: https://fengchen321.github.io/posts/deeplearning/attention/channelspatial-attention/  
 
