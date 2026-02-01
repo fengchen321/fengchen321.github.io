@@ -3,11 +3,34 @@
 
 # 内存检测
 
-## 内存检测工具
+内存问题是 C/C&#43;&#43; 程序中最常见也最隐蔽的 bug 类型，包括：
+
+- 内存泄漏（Memory Leak）
+- 堆栈溢出（Buffer Overflow/Underflow）
+- 释放后使用（Use-After-Free）
+- 重复释放（Double-Free）
+- 未初始化内存使用
+- 线程竞争（Thread Sanitizer）
+
+## 工具对比
+
+| 工具 | 检测类型 | 性能开销 | 适用场景 |
+|------|----------|----------|----------|
+| **ASAN** | 越界、UAF、泄漏 | ~2x | 开发阶段快速定位 |
+| **TSAN** | 线程竞争、数据竞争 | ~2-5x | 多线程程序 |
+| **MSAN** | 未初始化内存 | ~2x | 隐蔽 Bug 检测 |
+| **LSAN** | 泄漏检测 | 低 | 轻量级泄漏检测 |
+| **Valgrind** | 泄漏、错误 | ~20-50x | 全面检测、无源码 |
+
+&gt; 通常开发阶段使用 ASAN，CI 中使用 Valgrind，多线程程序配合 TSAN。
+
+---
 
 ## ASAN (AddressSanitizer)
 
-[AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html) 是 Google 开发的快速内存错误检测器，可在运行时检测：
+[AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html) 是 Google 开发的快速内存错误检测器。
+
+### 检测范围
 
 - 堆溢出和下溢
 - 栈溢出
@@ -16,77 +39,308 @@
 - 重复释放 (Double-free)
 - 内存泄漏
 
-编译选项
+### 编译选项
 
 ```shell
-# 直接编译后运行
+# GCC/Clang 编译
 gcc -fsanitize=address -fno-omit-frame-pointer -g -O1 demo.c -o demo
 
-# CMake 中启用
+# CMake
 cmake -DADDRESS_SANITIZER=TRUE ..
 ```
 
-运行时使用
+### 常用选项
 
 ```shell
-# 通过 LD_PRELOAD 加载
-LD_PRELOAD=libclang_rt.asan-x86_64.so ASAN_OPTIONS=halt_on_error=0,detect_odr_violation=0,log_path=./log_asan.txt ./demo
+# 通过环境变量配置
+ASAN_OPTIONS=detect_leaks=1:halt_on_error=0:log_path=./asan.log ./demo
+
+# 常用选项
+ASAN_OPTIONS=detect_leaks=1           # 启用泄漏检测
+ASAN_OPTIONS=halt_on_error=0          # 错误后继续运行
+ASAN_OPTIONS=symbolize=1              # 启用符号解析
+ASAN_OPTIONS=detect_stack_use_after_return=1  # 检测栈 UAF
 ```
+
+### 输出示例
+
+```
+==12345==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x602000000010
+WRITE of size 4 at 0x602000000000
+    #0 0x7ffff7a5c123 in main demo.c:10
+    #1 0x7ffff7a2d0b3 in __libc_start_main
+```
+
+---
 
 ## Valgrind
 
 [Valgrind](https://valgrind.org/) 是一套 Linux 程序调试和性能分析工具，Memcheck 工具可检测内存泄漏和内存错误。
 
+### 基本使用
+
 ```shell
 # 完整检测
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./demo
 
-# 基础检测
-valgrind --tool=memcheck --leak-check=no ./demo
+# 快速检测
+valgrind --tool=memcheck ./demo
 ```
 
-参数说明：
-- `--leak-check=full`: 详细检查内存泄漏
-- `--show-leak-kinds=all`: 显示所有类型的内存泄漏
-- `--track-origins=yes`: 追踪未初始化的值的来源
-- `--verbose`: 显示详细信息
+### 常用参数
+
+| 参数 | 说明 |
+|------|------|
+| `--leak-check=full` | 详细检查内存泄漏 |
+| `--show-leak-kinds=all` | 显示所有类型的泄漏 |
+| `--track-origins=yes` | 追踪未初始化值来源 |
+| `--verbose` | 显示详细信息 |
+
+### 输出解读
+
+```
+==12345== HEAP SUMMARY:
+==12345==     in use at exit: 0 bytes in 0 blocks
+==12345==   total heap usage: 1,000 allocs, 1,000 frees, 50,000 bytes allocated
+
+==12345== LEAK SUMMARY:
+==12345==    definitely lost: 0 bytes in 0 blocks
+==12345==    indirectly lost: 0 bytes in 0 blocks
+==12345==      possibly lost: 256 bytes in 1 blocks
+```
 
 ## BPF (eBPF)
 
-BPF 是一种内核追踪技术，可用于内存检测。
+eBPF（extended Berkeley Packet Filter）是一种内核追踪技术，可在不修改内核代码的情况下动态追踪和分析系统行为。
 
-### [BCC](https://github.com/iovisor/bcc/tree/master)
+&lt;center&gt;
+&lt;img 
+src=&#34;/images/C&#43;&#43;/memory_detection.assets/bpf_support.png&#34; &gt;
+&lt;br&gt;
+&lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;&#34;&gt;bpf support&lt;/div&gt;
+&lt;/center&gt;
 
+events介绍： **tracepoint** :内核静态追踪， **kprobes**: 内核动态追踪, **uprobes**:用户级动态追踪, **perf_events**：定时采样和 PMC。
+
+&lt;center&gt;
+&lt;img 
+src=&#34;/images/C&#43;&#43;/memory_detection.assets/ebpf-tracing.png&#34; &gt;
+&lt;br&gt;
+&lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;&#34;&gt;ebpf-tracing&lt;/div&gt;
+&lt;/center&gt;
+
+BPF程序生成BPF字节码，把字节码注册进BPF内核虚拟机里，BPF程序进行事件配置，通过Perf Buffer从内核里把输出拿到用户空间进行显示出来。
+
+BPF 程序有两种方式将测量数据反馈到用户空间：一种是按事件详细数据传递，另一种是通过 BPF 映射。BPF 映射可以实现数组、关联数组和直方图，并适合传递摘要统计数据。
+
+###  [BCC](https://github.com/iovisor/bcc/tree/master)工具包
+
+BCC（BPF Compiler Collection）提供丰富的内存分析工具。
+
+#### 安装
+
+```shell
+# Ubuntu/Debian
+sudo apt-get install bpfcc-tools
+
+# 验证安装
+dpkg -L bpfcc-tools | head -20
+ls /usr/sbin/*-bpfcc
+python3 -c &#34;from bcc import BPF; print(&#39;BCC OK&#39;)&#34; #  检查 BCC Python 模块
+```
+```py
+#!/usr/bin/python
+from bcc import BPF
+
+# This may not work for 4.17 on x64, you need replace kprobe__sys_clone with kprobe____x64_sys_clone
+BPF(text=&#39;int kprobe__sys_clone(void *ctx) { bpf_trace_printk(&#34;Hello, World!\\n&#34;); return 0; }&#39;).trace_print()
+```
+```
+sudo python3 hello_world.py
+zsh-443524  [010] ...21 171874.434960: bpf_trace_printk: Hello, World!&#39;
+进程名字-id， cpu, 时间戳
+```
+### [bpftrace](https://github.com/bpftrace/bpftrace)
+
+基于bcc实现，安装 `sudo apt-get install -y bpftrace`，教程：[One-Liner Tutorial](https://bpftrace.org/tutorial-one-liners)
+
+```bash
+# 追踪所有 malloc 调用，按进程统计
+sudo bpftrace -e &#39;uprobe:/lib/x86_64-linux-gnu/libc.so.6:malloc { @[comm] = count(); }&#39;
+
+# 列出所有探针
+sudo bpftrace -l &#39;tracepoint:syscalls:sys_enter_*&#39;
+
+# 追踪 openat 系统调用并打印进程名和文件路径
+sudo bpftrace -e &#39;tracepoint:syscalls:sys_enter_openat { printf(&#34;%s %s\n&#34;, comm, str(args-&gt;filename)); }&#39;
+
+# 按进程名统计所有系统调用次数
+sudo bpftrace -e &#39;tracepoint:raw_syscalls:sys_enter { @[comm] = count(); }&#39;
+
+# 为指定 PID 的 read 系统调用返回值生成延迟直方图,/.../：这是一个滤波器,该动作只有在过滤表达式为真时才执行
+sudo bpftrace -e &#39;tracepoint:syscalls:sys_exit_read /pid == 18644/ { @bytes = hist(args-&gt;ret); }&#39;
+
+# 用线性直方图统计 vfs_read 返回值（读取字节数）分布
+sudo bpftrace -e &#39;kretprobe:vfs_read { @bytes = lhist(retval, 0, 2000, 200); }&#39;
+
+# 测量 vfs_read 函数执行延迟并按进程生成直方图
+sudo bpftrace -e &#39;kprobe:vfs_read { @start[tid] = nsecs; } kretprobe:vfs_read /@start[tid]/ { @ns[comm] = hist(nsecs - @start[tid]); delete(@start[tid]); }&#39;
+
+# 统计 5 秒内所有调度器相关 tracepoint 触发次数
+sudo bpftrace -e &#39;tracepoint:sched:sched* { @[probe] = count(); } interval:s:5 { exit(); }&#39;
+
+# 99Hz 采样生成内核调用栈火焰图数据
+sudo bpftrace -e &#39;profile:hz:99 { @[kstack] = count(); }&#39;
+
+# 捕获进程切换时的内核调用栈分布
+sudo bpftrace -e &#39;tracepoint:sched:sched_switch { @[kstack] = count(); }&#39;
+
+# 统计块设备 I/O 请求大小分布直方图
+sudo bpftrace -e &#39;tracepoint:block:block_rq_issue { @ = hist(args-&gt;bytes); }&#39;
+```
+### [libbpf](https://github.com/libbpf/libbpf)
+
+```shell
+sudo apt install -y libelf-dev pkg-config
+sudo apt install clang
+git clone https://github.com/libbpf/libbpf.git
+cd libbpf/src
+NO_PKG_CONFIG=1 make
+mkdir build root
+sudo BUILD_STATIC_ONLY=y PREFIX=/usr/local/bpf make install
+
+ls /usr/lib/linux-tools/*/bpftool 2&gt;/dev/null | head -1
+sudo ln -sf $(ls /usr/lib/linux-tools/*/bpftool | head -1) /usr/local/bin/bpftool
+```
+
+```cmake
+cmake_minimum_required(VERSION 3.16)
+project(ebpf_test C)
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(BPFTOOL_EXECUTABLE &#34;/usr/local/bin/bpftool&#34;)
+
+find_path(LIBBPF_INCLUDE_DIR
+  NAMES bpf/libbpf.h
+  PATHS /usr/local/bpf/include /usr/include
+  DOC &#34;libbpf include directory&#34;
+)
+find_library(LIBBPF_STATIC_LIB
+  NAMES libbpf.a
+  PATHS /usr/local/bpf/lib64 /usr/lib /usr/lib64
+  DOC &#34;libbpf static library&#34;
+)
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(Libbpf
+  REQUIRED_VARS LIBBPF_INCLUDE_DIR LIBBPF_STATIC_LIB BPFTOOL_EXECUTABLE
+)
+if(Libbpf_FOUND)
+  message(STATUS &#34;Found libbpf: ${LIBBPF_STATIC_LIB}&#34;)
+  message(STATUS &#34;Found bpftool: ${BPFTOOL_EXECUTABLE}&#34;)
+endif()
+
+find_library(LIBELF elf REQUIRED)
+find_library(LIBZ z REQUIRED)
+find_library(LIBPTHREAD pthread REQUIRED)
+find_library(LIBM m REQUIRED)
+
+# ========== 生成 vmlinux.h ==========
+set(VMLINUX_H ${CMAKE_BINARY_DIR}/include/vmlinux.h)
+
+add_custom_command(
+  OUTPUT ${VMLINUX_H}
+  COMMAND /bin/bash -c &#34;mkdir -p ${CMAKE_BINARY_DIR}/include &amp;&amp; ${BPFTOOL_EXECUTABLE} btf dump file /sys/kernel/btf/vmlinux format c &gt; ${VMLINUX_H}&#34;
+  COMMENT &#34;Generating vmlinux.h from BTF&#34;
+  VERBATIM
+)
+
+# ========== 1. 编译 BPF 程序 ==========
+set(BPF_BYTECODE ${CMAKE_BINARY_DIR}/hello.bpf.o)
+set(SKEL_HEADER ${CMAKE_BINARY_DIR}/hello.skel.h)
+
+add_custom_command(
+  OUTPUT ${BPF_BYTECODE}
+  DEPENDS ${CMAKE_SOURCE_DIR}/src/hello.bpf.c ${VMLINUX_H}
+  COMMAND ${CLANG_EXECUTABLE} -g -O2 -target bpf -D__TARGET_ARCH_x86_64
+          -I${CMAKE_BINARY_DIR}/include
+          -I${CMAKE_SOURCE_DIR}/inlcude
+          -I${LIBBPF_INCLUDE_DIR}
+          -c ${CMAKE_SOURCE_DIR}/src/hello.bpf.c
+          -o ${BPF_BYTECODE}
+  COMMENT &#34;Compiling BPF bytecode: hello.bpf.c → hello.bpf.o&#34;
+  VERBATIM
+)
+
+# ========== 2. 生成 skeleton 头文件 ==========
+add_custom_command(
+  OUTPUT ${SKEL_HEADER}
+  DEPENDS ${BPF_BYTECODE}
+  COMMAND ${BPFTOOL_EXECUTABLE} gen skeleton ${BPF_BYTECODE} &gt; ${SKEL_HEADER}
+  COMMENT &#34;Generating skeleton: hello.skel.h&#34;
+  VERBATIM
+)
+
+add_custom_target(generate_bpf ALL DEPENDS ${SKEL_HEADER})
+
+# ========== 3. 编译用户态程序 ==========
+add_executable(hello ${CMAKE_SOURCE_DIR}/src/hello.c)
+target_include_directories(hello PRIVATE
+  ${CMAKE_BINARY_DIR}/include
+  ${CMAKE_BINARY_DIR}
+  ${CMAKE_SOURCE_DIR}/inlcude
+  ${LIBBPF_INCLUDE_DIR}
+)
+target_link_libraries(hello PRIVATE
+  ${LIBBPF_STATIC_LIB}
+  ${LIBELF}
+  ${LIBZ}
+  ${LIBPTHREAD}
+  ${LIBM}
+)
+target_compile_options(hello PRIVATE -Wall -Wextra)
+
+add_dependencies(hello generate_bpf)
+
+install(TARGETS hello RUNTIME DESTINATION bin)
+install(FILES ${BPF_BYTECODE} DESTINATION share/ebpf)
+```
 ### 参考阅读
 
 - [Brendan Gregg&#39;s Homepage](https://www.brendangregg.com/)
-- [Home - eBPF.party](https://ebpf.party/)
+- [awesome-ebpf](https://github.com/zoidyzoidzoid/awesome-ebpf)
+- [eBPF.io](https://ebpf.io/)
+- [Libbpf-c&#43;&#43;](https://docs.ebpf.io/ebpf-library/libbpf/)
+- [eBPF.party](https://ebpf.party/)
 - [bpf – blog](https://kernelreload.club/wordpress/archives/tag/bpf)
 - [ebpf入门](http://kerneltravel.net/blog/2021/ebpf_beginner/ebpf.pdf)
+- [eBPF Tutorial](https://www.cse.iitb.ac.in/~puru/courses/spring2024-25/lectures/ebpf-introduction.pdf)
 - [bilibili-linux内核调试追踪技术20讲](https://space.bilibili.com/646178510/lists/468091?type=season)
+- [bilibili-ebpf零基础入门](https://www.bilibili.com/video/BV1JmVjzaEVX/)
 
 ## 其他工具
 
-```shell
-# 系统资源监控
-time -v ./demo    # Linux
-time -l ./demo    # macOS
+| 工具 | 用途 |
+|------|------|
+| `time -v` | 系统资源监控 |
+| [coverity](https://scan.coverity.com/) | 静态分析 |
+| [gpertools](https://github.com/gperftools/gperftools) | 性能分析 &#43; heap 检查 |
+| [heaptrack](https://github.com/KDE/heaptrack) | KDE 内存分析器 |
 
-# 静态分析
-coverity: https://scan.coverity.com/
-
-# 性能分析
-gpertools: https://github.com/gperftools/gperftools
-heaptrack: https://github.com/KDE/heaptrack
-```
-
----
 
 ## 手动内存检测
 
 ### 方法一：宏定义截获 malloc/free
 
-&gt; 适用于单文件简单场景
+适用于单文件简单场景：
 
 ```cpp
 #include &lt;unistd.h&gt;
@@ -104,9 +358,10 @@ void *_malloc(size_t size, const char *filename, int line) {
 }
 
 void _free(void *ptr, const char *filename, int line) {
+    if (!ptr) return;
     char buff[128] = {0};
     sprintf(buff, &#34;./%p.mem&#34;, ptr);
-    if (unlink(buff) &lt; 0) {  // file no exist;
+    if (unlink(buff) &lt; 0) {
         printf(&#34;double free: %p at %s:%d\n&#34;, ptr, filename, line);
         return;
     }
@@ -117,10 +372,9 @@ void _free(void *ptr, const char *filename, int line) {
 #define malloc(size) _malloc(size, __FILE__, __LINE__)
 #define free(ptr) _free(ptr, __FILE__, __LINE__)
 ```
-
 ### 方法二：使用 __libc_malloc 重载
 
-&gt; 直接重载 libc 库中的 malloc/free 实现
+直接重载 libc 库中的 malloc/free 实现:
 
 ```c
 // gcc -shared -fPIC -o methods_1.so methods_1.c
@@ -206,18 +460,17 @@ void free(void *p) {
 }
 ```
 
-### 方法三：使用 dlsym 解析 hook
+### 方法三：使用 dlsym hook
 
-&gt; 使用 `RTLD_NEXT` 获取真实函数地址（需链接 `-ldl`）
+使用 `RTLD_NEXT` 获取真实函数地址（需链接 `-ldl`）：
 
 ```cpp
-// g&#43;&#43; -shared -fPIC -o methods_2.so methods_2.cpp -ldl
-// LD_PRELOAD=./methods_2.so ./a.out
+// g&#43;&#43; -shared -fPIC -o mem_hook.so mem_hook.cpp -ldl
+// LD_PRELOAD=./mem_hook.so ./demo
 #define _GNU_SOURCE
 #include &lt;dlfcn.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-#include &lt;unistd.h&gt;
 
 typedef void *(*malloc_t)(size_t size);
 typedef void (*free_t)(void *ptr);
@@ -237,8 +490,8 @@ void *malloc(size_t size) {
         char buff[128] = {0};
         sprintf(buff, &#34;./%p.mem&#34;, p);
         FILE *fp = fopen(buff, &#34;w&#34;);
-        fprintf(fp, &#34;[&#43;]%p addr:%p, size: %ld\n&#34;, caller, p, size);
-        fflush(fp);
+        fprintf(fp, &#34;[&#43;]%p --&gt; addr:%p, size:%zu\n&#34;, caller, p, size);
+        fclose(fp);
         enable_malloc_hook = 1;
     } else {
         p = malloc_f(size);
@@ -246,19 +499,18 @@ void *malloc(size_t size) {
     return p;
 }
 
-void free(void* ptr){
+void free(void* ptr) {
     if (!ptr) return;
-    if (enable_free_hook){
+    if (enable_free_hook) {
         enable_free_hook = 0;
         char buff[128] = {0};
         sprintf(buff, &#34;./%p.mem&#34;, ptr);
-        if (unlink(buff) &lt; 0){ // file no exist;
+        if (unlink(buff) &lt; 0) {
             printf(&#34;double free: %p\n&#34;, ptr);
         }
         free_f(ptr);
         enable_free_hook = 1;
-    }
-    else {
+    } else {
         free_f(ptr);
     }
 }
@@ -278,7 +530,7 @@ static void init_hook(void) {
 
 ### 方法四：使用 malloc hook（已弃用）
 
-&gt; glibc 2.24&#43; 已弃用 __malloc_hook，仅作学习参考
+glibc 2.24&#43; 已弃用 __malloc_hook，仅作学习参考:
 
 ```cpp
 // g&#43;&#43; ./methods_3.cpp -o methods_3    
@@ -354,22 +606,20 @@ int main(void) {
 
 | 方法 | 说明 | 限制 |
 |------|------|------|
-| `backtrace()` | 直接调用 libc 函数 | 通用 |
-| `__builtin_return_address` | GCC 内置函数获取返回地址 | 需 `-O0` |
-| 内嵌汇编 | 读取寄存器获取返回地址 | 需 `-O0` |
+| `backtrace()` | libc 函数 | 通用 |
+| `__builtin_return_address` | GCC 内置 | 需 `-O0` |
 | `unw_backtrace()` | [libunwind.so](https://github.com/libunwind/libunwind) 接口 | 通用 |
 | `std::stacktrace_entry` | C&#43;&#43;23 标准库 | C&#43;&#43;23&#43; |
 
 [测试](https://godbolt.org/z/7Gdq6GEhx)
-
 ### 示例代码
 
 ```cpp
-// g&#43;&#43; ./backtrace.cpp -o backtrace
 #include &lt;execinfo.h&gt;
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;dlfcn.h&gt;
+
 static void print_backtrace(const char *context) {
     const int max_frames = 64;
     void *buffer[max_frames];
@@ -389,7 +639,6 @@ static void print_backtrace(const char *context) {
     free(strings);
 }
 
-
 void foo(void) {
     print_backtrace(&#34;foo&#34;);
 }
@@ -406,7 +655,7 @@ int main(void) {
 
 ### 参考阅读
 
-- [backward-cpp](https://github.com/bombela/backward-cpp): 美观的 C&#43;&#43; 栈回溯打印库
+- [backward-cpp](https://github.com/bombela/backward-cpp): 美观的 C&#43;&#43; 栈回溯库
 
 
 ---
