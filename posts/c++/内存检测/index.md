@@ -111,6 +111,8 @@ valgrind --tool=memcheck ./demo
 
 ## BPF (eBPF)
 
+详细ebpf学习记录可参考：[**learn_ebpf**]([fengchen321/learn_ebpf](https://github.com/fengchen321/learn_ebpf))
+
 eBPF（extended Berkeley Packet Filter）是一种内核追踪技术，可在不修改内核代码的情况下动态追踪和分析系统行为。
 
 &lt;center&gt;
@@ -161,11 +163,6 @@ from bcc import BPF
 # This may not work for 4.17 on x64, you need replace kprobe__sys_clone with kprobe____x64_sys_clone
 BPF(text=&#39;int kprobe__sys_clone(void *ctx) { bpf_trace_printk(&#34;Hello, World!\\n&#34;); return 0; }&#39;).trace_print()
 ```
-```
-sudo python3 hello_world.py
-zsh-443524  [010] ...21 171874.434960: bpf_trace_printk: Hello, World!&#39;
-进程名字-id， cpu, 时间戳
-```
 ### [bpftrace](https://github.com/bpftrace/bpftrace)
 
 基于bcc实现，安装 `sudo apt-get install -y bpftrace`，教程：[One-Liner Tutorial](https://bpftrace.org/tutorial-one-liners)
@@ -204,128 +201,6 @@ sudo bpftrace -e &#39;tracepoint:sched:sched_switch { @[kstack] = count(); }&#39
 # 统计块设备 I/O 请求大小分布直方图
 sudo bpftrace -e &#39;tracepoint:block:block_rq_issue { @ = hist(args-&gt;bytes); }&#39;
 ```
-### [libbpf](https://github.com/libbpf/libbpf)
-
-```shell
-sudo apt install -y libelf-dev pkg-config
-sudo apt install clang
-git clone https://github.com/libbpf/libbpf.git
-cd libbpf/src
-NO_PKG_CONFIG=1 make
-mkdir build root
-sudo BUILD_STATIC_ONLY=y PREFIX=/usr/local/bpf make install
-
-ls /usr/lib/linux-tools/*/bpftool 2&gt;/dev/null | head -1
-sudo ln -sf $(ls /usr/lib/linux-tools/*/bpftool | head -1) /usr/local/bin/bpftool
-```
-
-```cmake
-cmake_minimum_required(VERSION 3.16)
-project(ebpf_test C)
-
-set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-
-set(BPFTOOL_EXECUTABLE &#34;/usr/local/bin/bpftool&#34;)
-
-find_path(LIBBPF_INCLUDE_DIR
-  NAMES bpf/libbpf.h
-  PATHS /usr/local/bpf/include /usr/include
-  DOC &#34;libbpf include directory&#34;
-)
-find_library(LIBBPF_STATIC_LIB
-  NAMES libbpf.a
-  PATHS /usr/local/bpf/lib64 /usr/lib /usr/lib64
-  DOC &#34;libbpf static library&#34;
-)
-include(FindPackageHandleStandardArgs)
-find_package_handle_standard_args(Libbpf
-  REQUIRED_VARS LIBBPF_INCLUDE_DIR LIBBPF_STATIC_LIB BPFTOOL_EXECUTABLE
-)
-if(Libbpf_FOUND)
-  message(STATUS &#34;Found libbpf: ${LIBBPF_STATIC_LIB}&#34;)
-  message(STATUS &#34;Found bpftool: ${BPFTOOL_EXECUTABLE}&#34;)
-endif()
-
-find_library(LIBELF elf REQUIRED)
-find_library(LIBZ z REQUIRED)
-find_library(LIBPTHREAD pthread REQUIRED)
-find_library(LIBM m REQUIRED)
-
-# ========== 生成 vmlinux.h ==========
-set(VMLINUX_H ${CMAKE_BINARY_DIR}/include/vmlinux.h)
-
-add_custom_command(
-  OUTPUT ${VMLINUX_H}
-  COMMAND /bin/bash -c &#34;mkdir -p ${CMAKE_BINARY_DIR}/include &amp;&amp; ${BPFTOOL_EXECUTABLE} btf dump file /sys/kernel/btf/vmlinux format c &gt; ${VMLINUX_H}&#34;
-  COMMENT &#34;Generating vmlinux.h from BTF&#34;
-  VERBATIM
-)
-
-# ========== 1. 编译 BPF 程序 ==========
-set(BPF_BYTECODE ${CMAKE_BINARY_DIR}/hello.bpf.o)
-set(SKEL_HEADER ${CMAKE_BINARY_DIR}/hello.skel.h)
-
-add_custom_command(
-  OUTPUT ${BPF_BYTECODE}
-  DEPENDS ${CMAKE_SOURCE_DIR}/src/hello.bpf.c ${VMLINUX_H}
-  COMMAND ${CLANG_EXECUTABLE} -g -O2 -target bpf -D__TARGET_ARCH_x86_64
-          -I${CMAKE_BINARY_DIR}/include
-          -I${CMAKE_SOURCE_DIR}/inlcude
-          -I${LIBBPF_INCLUDE_DIR}
-          -c ${CMAKE_SOURCE_DIR}/src/hello.bpf.c
-          -o ${BPF_BYTECODE}
-  COMMENT &#34;Compiling BPF bytecode: hello.bpf.c → hello.bpf.o&#34;
-  VERBATIM
-)
-
-# ========== 2. 生成 skeleton 头文件 ==========
-add_custom_command(
-  OUTPUT ${SKEL_HEADER}
-  DEPENDS ${BPF_BYTECODE}
-  COMMAND ${BPFTOOL_EXECUTABLE} gen skeleton ${BPF_BYTECODE} &gt; ${SKEL_HEADER}
-  COMMENT &#34;Generating skeleton: hello.skel.h&#34;
-  VERBATIM
-)
-
-add_custom_target(generate_bpf ALL DEPENDS ${SKEL_HEADER})
-
-# ========== 3. 编译用户态程序 ==========
-add_executable(hello ${CMAKE_SOURCE_DIR}/src/hello.c)
-target_include_directories(hello PRIVATE
-  ${CMAKE_BINARY_DIR}/include
-  ${CMAKE_BINARY_DIR}
-  ${CMAKE_SOURCE_DIR}/inlcude
-  ${LIBBPF_INCLUDE_DIR}
-)
-target_link_libraries(hello PRIVATE
-  ${LIBBPF_STATIC_LIB}
-  ${LIBELF}
-  ${LIBZ}
-  ${LIBPTHREAD}
-  ${LIBM}
-)
-target_compile_options(hello PRIVATE -Wall -Wextra)
-
-add_dependencies(hello generate_bpf)
-
-install(TARGETS hello RUNTIME DESTINATION bin)
-install(FILES ${BPF_BYTECODE} DESTINATION share/ebpf)
-```
-### 参考阅读
-
-- [Brendan Gregg&#39;s Homepage](https://www.brendangregg.com/)
-- [awesome-ebpf](https://github.com/zoidyzoidzoid/awesome-ebpf)
-- [eBPF.io](https://ebpf.io/)
-- [Libbpf-c&#43;&#43;](https://docs.ebpf.io/ebpf-library/libbpf/)
-- [eBPF.party](https://ebpf.party/)
-- [bpf – blog](https://kernelreload.club/wordpress/archives/tag/bpf)
-- [ebpf入门](http://kerneltravel.net/blog/2021/ebpf_beginner/ebpf.pdf)
-- [eBPF Tutorial](https://www.cse.iitb.ac.in/~puru/courses/spring2024-25/lectures/ebpf-introduction.pdf)
-- [bilibili-linux内核调试追踪技术20讲](https://space.bilibili.com/646178510/lists/468091?type=season)
-- [bilibili-ebpf零基础入门](https://www.bilibili.com/video/BV1JmVjzaEVX/)
-
 ## 其他工具
 
 | 工具 | 用途 |

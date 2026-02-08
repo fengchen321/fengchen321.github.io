@@ -638,7 +638,8 @@
  &lt;a href="#bpf-ebpf" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>eBPF（extended Berkeley Packet Filter）是一种内核追踪技术，可在不修改内核代码的情况下动态追踪和分析系统行为。&lt;/p>
+&lt;/h2>&lt;p>详细ebpf学习记录可参考：&lt;a href="[fengchen321/learn_ebpf]%28https://github.com/fengchen321/learn_ebpf%29">&lt;strong>learn_ebpf&lt;/strong>&lt;/a>&lt;/p>
+&lt;p>eBPF（extended Berkeley Packet Filter）是一种内核追踪技术，可在不修改内核代码的情况下动态追踪和分析系统行为。&lt;/p>
 &lt;center>
 &lt;img 
 src="https://fengchen321.github.io/images/C++/memory_detection.assets/bpf_support.png" >
@@ -702,17 +703,6 @@ padding: 2px;">ebpf-tracing&lt;/div>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># This may not work for 4.17 on x64, you need replace kprobe__sys_clone with kprobe____x64_sys_clone&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">BPF&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;int kprobe__sys_clone(void *ctx) { bpf_trace_printk(&amp;#34;Hello, World!&lt;/span>&lt;span class="se">\\&lt;/span>&lt;span class="s1">n&amp;#34;); return 0; }&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">trace_print&lt;/span>&lt;span class="p">()&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl">sudo python3 hello_world.py
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">zsh-443524 [010] ...21 171874.434960: bpf_trace_printk: Hello, World!&amp;#39;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">进程名字-id， cpu, 时间戳&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="bpftracehttpsgithubcombpftracebpftrace" class="heading-element">&lt;span>&lt;a href="https://github.com/bpftrace/bpftrace"target="_blank" rel="external nofollow noopener noreferrer">bpftrace&lt;/a>&lt;/span>
  &lt;a href="#bpftracehttpsgithubcombpftracebpftrace" class="heading-mark">
@@ -788,241 +778,7 @@ padding: 2px;">ebpf-tracing&lt;/div>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 统计块设备 I/O 请求大小分布直方图&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo bpftrace -e &lt;span class="s1">&amp;#39;tracepoint:block:block_rq_issue { @ = hist(args-&amp;gt;bytes); }&amp;#39;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="libbpfhttpsgithubcomlibbpflibbpf" class="heading-element">&lt;span>&lt;a href="https://github.com/libbpf/libbpf"target="_blank" rel="external nofollow noopener noreferrer">libbpf&lt;/a>&lt;/span>
- &lt;a href="#libbpfhttpsgithubcomlibbpflibbpf" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">sudo apt install -y libelf-dev pkg-config
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install clang
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git clone https://github.com/libbpf/libbpf.git
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> libbpf/src
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">NO_PKG_CONFIG&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> make
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkdir build root
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo &lt;span class="nv">BUILD_STATIC_ONLY&lt;/span>&lt;span class="o">=&lt;/span>y &lt;span class="nv">PREFIX&lt;/span>&lt;span class="o">=&lt;/span>/usr/local/bpf make install
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls /usr/lib/linux-tools/*/bpftool 2&amp;gt;/dev/null &lt;span class="p">|&lt;/span> head -1
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo ln -sf &lt;span class="k">$(&lt;/span>ls /usr/lib/linux-tools/*/bpftool &lt;span class="p">|&lt;/span> head -1&lt;span class="k">)&lt;/span> /usr/local/bin/bpftool&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;span class="lnt">33
-&lt;/span>&lt;span class="lnt">34
-&lt;/span>&lt;span class="lnt">35
-&lt;/span>&lt;span class="lnt">36
-&lt;/span>&lt;span class="lnt">37
-&lt;/span>&lt;span class="lnt">38
-&lt;/span>&lt;span class="lnt">39
-&lt;/span>&lt;span class="lnt">40
-&lt;/span>&lt;span class="lnt">41
-&lt;/span>&lt;span class="lnt">42
-&lt;/span>&lt;span class="lnt">43
-&lt;/span>&lt;span class="lnt">44
-&lt;/span>&lt;span class="lnt">45
-&lt;/span>&lt;span class="lnt">46
-&lt;/span>&lt;span class="lnt">47
-&lt;/span>&lt;span class="lnt">48
-&lt;/span>&lt;span class="lnt">49
-&lt;/span>&lt;span class="lnt">50
-&lt;/span>&lt;span class="lnt">51
-&lt;/span>&lt;span class="lnt">52
-&lt;/span>&lt;span class="lnt">53
-&lt;/span>&lt;span class="lnt">54
-&lt;/span>&lt;span class="lnt">55
-&lt;/span>&lt;span class="lnt">56
-&lt;/span>&lt;span class="lnt">57
-&lt;/span>&lt;span class="lnt">58
-&lt;/span>&lt;span class="lnt">59
-&lt;/span>&lt;span class="lnt">60
-&lt;/span>&lt;span class="lnt">61
-&lt;/span>&lt;span class="lnt">62
-&lt;/span>&lt;span class="lnt">63
-&lt;/span>&lt;span class="lnt">64
-&lt;/span>&lt;span class="lnt">65
-&lt;/span>&lt;span class="lnt">66
-&lt;/span>&lt;span class="lnt">67
-&lt;/span>&lt;span class="lnt">68
-&lt;/span>&lt;span class="lnt">69
-&lt;/span>&lt;span class="lnt">70
-&lt;/span>&lt;span class="lnt">71
-&lt;/span>&lt;span class="lnt">72
-&lt;/span>&lt;span class="lnt">73
-&lt;/span>&lt;span class="lnt">74
-&lt;/span>&lt;span class="lnt">75
-&lt;/span>&lt;span class="lnt">76
-&lt;/span>&lt;span class="lnt">77
-&lt;/span>&lt;span class="lnt">78
-&lt;/span>&lt;span class="lnt">79
-&lt;/span>&lt;span class="lnt">80
-&lt;/span>&lt;span class="lnt">81
-&lt;/span>&lt;span class="lnt">82
-&lt;/span>&lt;span class="lnt">83
-&lt;/span>&lt;span class="lnt">84
-&lt;/span>&lt;span class="lnt">85
-&lt;/span>&lt;span class="lnt">86
-&lt;/span>&lt;span class="lnt">87
-&lt;/span>&lt;span class="lnt">88
-&lt;/span>&lt;span class="lnt">89
-&lt;/span>&lt;span class="lnt">90
-&lt;/span>&lt;span class="lnt">91
-&lt;/span>&lt;span class="lnt">92
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-cmake" data-lang="cmake">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cmake_minimum_required&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">VERSION&lt;/span> &lt;span class="s">3.16&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">project&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">ebpf_test&lt;/span> &lt;span class="s">C&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">CMAKE_C_STANDARD&lt;/span> &lt;span class="s">11&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">CMAKE_C_STANDARD_REQUIRED&lt;/span> &lt;span class="s">ON&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">CMAKE_EXPORT_COMPILE_COMMANDS&lt;/span> &lt;span class="s">ON&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">BPFTOOL_EXECUTABLE&lt;/span> &lt;span class="s2">&amp;#34;/usr/local/bin/bpftool&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">find_path&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LIBBPF_INCLUDE_DIR&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">NAMES&lt;/span> &lt;span class="s">bpf/libbpf.h&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">PATHS&lt;/span> &lt;span class="s">/usr/local/bpf/include&lt;/span> &lt;span class="s">/usr/include&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">DOC&lt;/span> &lt;span class="s2">&amp;#34;libbpf include directory&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">find_library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LIBBPF_STATIC_LIB&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">NAMES&lt;/span> &lt;span class="s">libbpf.a&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">PATHS&lt;/span> &lt;span class="s">/usr/local/bpf/lib64&lt;/span> &lt;span class="s">/usr/lib&lt;/span> &lt;span class="s">/usr/lib64&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">DOC&lt;/span> &lt;span class="s2">&amp;#34;libbpf static library&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">include&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">FindPackageHandleStandardArgs&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">find_package_handle_standard_args&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">Libbpf&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">REQUIRED_VARS&lt;/span> &lt;span class="s">LIBBPF_INCLUDE_DIR&lt;/span> &lt;span class="s">LIBBPF_STATIC_LIB&lt;/span> &lt;span class="s">BPFTOOL_EXECUTABLE&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">Libbpf_FOUND&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span> &lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">STATUS&lt;/span> &lt;span class="s2">&amp;#34;Found libbpf: ${LIBBPF_STATIC_LIB}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span> &lt;span class="nb">message&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">STATUS&lt;/span> &lt;span class="s2">&amp;#34;Found bpftool: ${BPFTOOL_EXECUTABLE}&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">endif&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">find_library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LIBELF&lt;/span> &lt;span class="s">elf&lt;/span> &lt;span class="s">REQUIRED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">find_library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LIBZ&lt;/span> &lt;span class="s">z&lt;/span> &lt;span class="s">REQUIRED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">find_library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LIBPTHREAD&lt;/span> &lt;span class="s">pthread&lt;/span> &lt;span class="s">REQUIRED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">find_library&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">LIBM&lt;/span> &lt;span class="s">m&lt;/span> &lt;span class="s">REQUIRED&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># ========== 生成 vmlinux.h ==========
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">VMLINUX_H&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_BINARY_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/include/vmlinux.h&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">add_custom_command&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">OUTPUT&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">VMLINUX_H&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">COMMAND&lt;/span> &lt;span class="s">/bin/bash&lt;/span> &lt;span class="s">-c&lt;/span> &lt;span class="s2">&amp;#34;mkdir -p ${CMAKE_BINARY_DIR}/include &amp;amp;&amp;amp; ${BPFTOOL_EXECUTABLE} btf dump file /sys/kernel/btf/vmlinux format c &amp;gt; ${VMLINUX_H}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">COMMENT&lt;/span> &lt;span class="s2">&amp;#34;Generating vmlinux.h from BTF&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">VERBATIM&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># ========== 1. 编译 BPF 程序 ==========
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">BPF_BYTECODE&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_BINARY_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/hello.bpf.o&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">set&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">SKEL_HEADER&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_BINARY_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/hello.skel.h&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">add_custom_command&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">OUTPUT&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">BPF_BYTECODE&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">DEPENDS&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_SOURCE_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/src/hello.bpf.c&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">VMLINUX_H&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">COMMAND&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">CLANG_EXECUTABLE&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="s">-g&lt;/span> &lt;span class="s">-O2&lt;/span> &lt;span class="s">-target&lt;/span> &lt;span class="s">bpf&lt;/span> &lt;span class="s">-D__TARGET_ARCH_x86_64&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">-I&lt;/span>&lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_BINARY_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/include&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">-I&lt;/span>&lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_SOURCE_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/inlcude&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">-I&lt;/span>&lt;span class="o">${&lt;/span>&lt;span class="nv">LIBBPF_INCLUDE_DIR&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">-c&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_SOURCE_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/src/hello.bpf.c&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">-o&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">BPF_BYTECODE&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">COMMENT&lt;/span> &lt;span class="s2">&amp;#34;Compiling BPF bytecode: hello.bpf.c → hello.bpf.o&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">VERBATIM&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># ========== 2. 生成 skeleton 头文件 ==========
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">add_custom_command&lt;/span>&lt;span class="p">(&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">OUTPUT&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">SKEL_HEADER&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">DEPENDS&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">BPF_BYTECODE&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">COMMAND&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">BPFTOOL_EXECUTABLE&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="s">gen&lt;/span> &lt;span class="s">skeleton&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">BPF_BYTECODE&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="s">&amp;gt;&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">SKEL_HEADER&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">COMMENT&lt;/span> &lt;span class="s2">&amp;#34;Generating skeleton: hello.skel.h&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">VERBATIM&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">add_custom_target&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">generate_bpf&lt;/span> &lt;span class="s">ALL&lt;/span> &lt;span class="s">DEPENDS&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">SKEL_HEADER&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="c"># ========== 3. 编译用户态程序 ==========
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="nb">add_executable&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_SOURCE_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/src/hello.c&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">target_include_directories&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span> &lt;span class="s">PRIVATE&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_BINARY_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/include&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_BINARY_DIR&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">CMAKE_SOURCE_DIR&lt;/span>&lt;span class="o">}&lt;/span>&lt;span class="s">/inlcude&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">LIBBPF_INCLUDE_DIR&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">target_link_libraries&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span> &lt;span class="s">PRIVATE&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">LIBBPF_STATIC_LIB&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">LIBELF&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">LIBZ&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">LIBPTHREAD&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">${&lt;/span>&lt;span class="nv">LIBM&lt;/span>&lt;span class="o">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">target_compile_options&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span> &lt;span class="s">PRIVATE&lt;/span> &lt;span class="s">-Wall&lt;/span> &lt;span class="s">-Wextra&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">add_dependencies&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">hello&lt;/span> &lt;span class="s">generate_bpf&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">install&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">TARGETS&lt;/span> &lt;span class="s">hello&lt;/span> &lt;span class="s">RUNTIME&lt;/span> &lt;span class="s">DESTINATION&lt;/span> &lt;span class="s">bin&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="err">
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="err">&lt;/span>&lt;span class="nb">install&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">FILES&lt;/span> &lt;span class="o">${&lt;/span>&lt;span class="nv">BPF_BYTECODE&lt;/span>&lt;span class="o">}&lt;/span> &lt;span class="s">DESTINATION&lt;/span> &lt;span class="s">share/ebpf&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://www.brendangregg.com/"target="_blank" rel="external nofollow noopener noreferrer">Brendan Gregg&amp;rsquo;s Homepage&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/zoidyzoidzoid/awesome-ebpf"target="_blank" rel="external nofollow noopener noreferrer">awesome-ebpf&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://ebpf.io/"target="_blank" rel="external nofollow noopener noreferrer">eBPF.io&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.ebpf.io/ebpf-library/libbpf/"target="_blank" rel="external nofollow noopener noreferrer">Libbpf-c++&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://ebpf.party/"target="_blank" rel="external nofollow noopener noreferrer">eBPF.party&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://kernelreload.club/wordpress/archives/tag/bpf"target="_blank" rel="external nofollow noopener noreferrer">bpf – blog&lt;/a>&lt;/li>
-&lt;li>&lt;a href="http://kerneltravel.net/blog/2021/ebpf_beginner/ebpf.pdf"target="_blank" rel="external nofollow noopener noreferrer">ebpf入门&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.cse.iitb.ac.in/~puru/courses/spring2024-25/lectures/ebpf-introduction.pdf"target="_blank" rel="external nofollow noopener noreferrer">eBPF Tutorial&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://space.bilibili.com/646178510/lists/468091?type=season"target="_blank" rel="external nofollow noopener noreferrer">bilibili-linux内核调试追踪技术20讲&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.bilibili.com/video/BV1JmVjzaEVX/"target="_blank" rel="external nofollow noopener noreferrer">bilibili-ebpf零基础入门&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h2 id="其他工具" class="heading-element">&lt;span>其他工具&lt;/span>
+&lt;/div>&lt;h2 id="其他工具" class="heading-element">&lt;span>其他工具&lt;/span>
  &lt;a href="#%e5%85%b6%e4%bb%96%e5%b7%a5%e5%85%b7" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -1555,8 +1311,8 @@ padding: 2px;">ebpf-tracing&lt;/div>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="参考阅读-1" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-1" class="heading-mark">
+&lt;/div>&lt;h3 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h3>&lt;ul>
@@ -1685,8 +1441,8 @@ padding: 2px;">ebpf-tracing&lt;/div>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">;&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="参考阅读-2" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-2" class="heading-mark">
+&lt;/div>&lt;h3 id="参考阅读-1" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-1" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h3>&lt;ul>
