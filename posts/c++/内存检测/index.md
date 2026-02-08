@@ -111,7 +111,7 @@ valgrind --tool=memcheck ./demo
 
 ## BPF (eBPF)
 
-详细ebpf学习记录可参考：[**learn_ebpf**]([fengchen321/learn_ebpf](https://github.com/fengchen321/learn_ebpf))
+详细ebpf学习记录可参考：[**learn_ebpf**](https://github.com/fengchen321/learn_ebpf)
 
 eBPF（extended Berkeley Packet Filter）是一种内核追踪技术，可在不修改内核代码的情况下动态追踪和分析系统行为。
 
