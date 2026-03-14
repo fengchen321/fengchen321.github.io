@@ -188,6 +188,8 @@
 
 **FlashOcc**：[FlashOcc: Fast and Memory-Efficient Occupancy Prediction via Channel-to-Height Plugin](https://arxiv.org/abs/2311.12058)
 
+**DVGT**: [DVGT: Driving Visual Geometry Transformer](https://arxiv.org/abs/2512.16919) (2025 xiaomi)
+
 ### LLM训练/推理优化
 
 **FSDP**：[PyTorch FSDP: Experiences on Scaling Fully Sharded Data Parallel ](https://arxiv.org/abs/2304.11277) (2023)

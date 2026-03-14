@@ -166,6 +166,24 @@ display 变量名
 display {var1, var2, var3} # 多变量名时，长度要相同
 undisplay 变量编号 # 取消自动显示，info display可查看编号
 enabele/disable display 变量编号 # 启用/禁用自动显示
+
+# gdb内source py脚本
+# 加载 libstdc&#43;&#43; 的 pretty-printer 来美化 STL 容器
+source  /usr/share/gdb/auto-load/usr/lib64/libstdc&#43;&#43;.so.6.0.19-gdb.py
+
+# 无法美化打印情况， 比如查看map底层结构
+# 1。 _M_header._M_parent（根节点地址）和 _M_node_count（元素个数）
+p your_map  # _M_header._M_parent（根节点地址）和 _M_node_count（元素个数）
+# 2.定义节点指针
+set $node = (std::_Rb_tree_node&lt;std::pair&lt;const Key, Value&gt; &gt;*)根节点地址 
+# 3.# 获取键值对
+set $pair = (std::pair&lt;const Key, Value&gt;*)(&amp;$node-&gt;_M_storage)、
+# 4.打印键和值
+p $pair-&gt;first
+p $pair-&gt;second
+# 5，遍历其他节点对左右子节点重复步骤 2–4。
+p $node-&gt;_M_left
+p $node-&gt;_M_right
 ```
 
 ### 查看变量类型

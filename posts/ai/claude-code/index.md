@@ -18,6 +18,8 @@ npm install -g @anthropic-ai/claude-code
 # 验证
 which claude
 claude --help
+# 更新
+claude update
 ```
 
 ## Tools with Claude code
@@ -55,11 +57,13 @@ git助手： 直接提交就行
 
 `/commit`：智能生成提交信息并提交代码
 
+`!command`：执行命令，例如:`!ls`
+
 ### 管理上下文
 
-`claude -c`  恢复之前的对话上下文
+`claude -c`  恢复之前的对话上下文 `claude --continue`
 
-`claude -r` 从历史会话中选择
+`claude -r` 从历史会话中选择 `claude --resume`
 
 `/export` 导出会话为 Markdown
 

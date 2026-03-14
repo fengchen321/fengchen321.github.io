@@ -39,7 +39,7 @@
 
 11. 按下`Ctrl &#43; B`  后松开，然后按`d`：挂起当前session。
 
-12. `tmux a`：打开之前挂起的session。
+12. `tmux a`：打开之前挂起的session。`tmux attach`
 
 13. 按下`Ctrl &#43; B`  后松开，然后按`s`：选择其它session。
 
