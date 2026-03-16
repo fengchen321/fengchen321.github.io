@@ -4249,7 +4249,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
  &lt;tr>
  &lt;td style="text-align: left">2&lt;/td>
  &lt;td style="text-align: left">PF&lt;/td>
- &lt;td>Parity Flag（奇偶标志）：运算结果的所有位中1的个数是偶数置1&lt;/td>
+ &lt;td>Parity Flag（奇偶标志）：运算结果的最低8位中1的个数是偶数置1&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: left">4&lt;/td>
