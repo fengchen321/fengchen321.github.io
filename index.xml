@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>https://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Jan 2026 12:33:12 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Claude code</title><link>https://fengchen321.github.io/posts/ai/claude-code/</link><pubDate>Fri, 23 Jan 2026 12:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/claude-code/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="claude-code" class="heading-element">&lt;span>Claude code&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>https://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Jan 2026 12:33:12 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>AI agent</title><link>https://fengchen321.github.io/posts/ai/ai_agent/</link><pubDate>Fri, 23 Jan 2026 12:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/ai_agent/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="claude-code" class="heading-element">&lt;span>Claude code&lt;/span>
  &lt;a href="#claude-code" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;h2 id="安装" class="heading-element">&lt;span>安装&lt;/span>
+&lt;/h2>&lt;h3 id="安装" class="heading-element">&lt;span>安装&lt;/span>
  &lt;a href="#%e5%ae%89%e8%a3%85" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -41,11 +41,11 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 更新&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">claude update&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="tools-with-claude-code" class="heading-element">&lt;span>Tools with Claude code&lt;/span>
+&lt;/div>&lt;h3 id="tools-with-claude-code" class="heading-element">&lt;span>Tools with Claude code&lt;/span>
  &lt;a href="#tools-with-claude-code" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;table>
+&lt;/h3>&lt;table>
  &lt;thead>
  &lt;tr>
  &lt;th>Name&lt;/th>
@@ -91,11 +91,11 @@
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;h2 id="基础使用" class="heading-element">&lt;span>基础使用&lt;/span>
+&lt;h3 id="基础使用" class="heading-element">&lt;span>基础使用&lt;/span>
  &lt;a href="#%e5%9f%ba%e7%a1%80%e4%bd%bf%e7%94%a8" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;table>
+&lt;/h3>&lt;table>
  &lt;thead>
  &lt;tr>
  &lt;th>file&lt;/th>
@@ -125,22 +125,23 @@
 &lt;p>git助手： 直接提交就行&lt;/p>
 &lt;p>&lt;code>/commit&lt;/code>：智能生成提交信息并提交代码&lt;/p>
 &lt;p>&lt;code>!command&lt;/code>：执行命令，例如:&lt;code>!ls&lt;/code>&lt;/p>
-&lt;h3 id="管理上下文" class="heading-element">&lt;span>管理上下文&lt;/span>
+&lt;h4 id="管理上下文" class="heading-element">&lt;span>管理上下文&lt;/span>
  &lt;a href="#%e7%ae%a1%e7%90%86%e4%b8%8a%e4%b8%8b%e6%96%87" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;p>&lt;code>claude -c&lt;/code> 恢复之前的对话上下文 &lt;code>claude --continue&lt;/code>&lt;/p>
+&lt;/h4>&lt;p>&lt;code>claude -c&lt;/code> 恢复之前的对话上下文 &lt;code>claude --continue&lt;/code>&lt;/p>
 &lt;p>&lt;code>claude -r&lt;/code> 从历史会话中选择 &lt;code>claude --resume&lt;/code>&lt;/p>
 &lt;p>&lt;code>/export&lt;/code> 导出会话为 Markdown&lt;/p>
 &lt;p>&lt;code>Esc&lt;/code>：中断 claude, 允许你重新引导它或给出替代指令&lt;/p>
-&lt;p>&lt;code>Escape + Escape&lt;/code>：回退对话，恢复到之前的消息，移除与当前任务无关的上下文&lt;/p>
+&lt;p>&lt;code>Escape + Escape&lt;/code>：回退对话，恢复到之前的消息，移除与当前任务无关的上下文 &lt;code>/rewind&lt;/code>&lt;/p>
 &lt;p>&lt;code>/compact&lt;/code>：清除对话历史但是总结当前对话的所有信息，在新任务时候保持知识连贯&lt;/p>
 &lt;p>&lt;code>/clear&lt;/code>：清空整个对话历史&lt;/p>
-&lt;h3 id="创建自己的指令" class="heading-element">&lt;span>创建自己的指令&lt;/span>
+&lt;p>&lt;code>/btw&lt;/code>: by the way 对于不需要上下文的快速问题，不会进入对话记录&lt;/p>
+&lt;h4 id="创建自己的指令" class="heading-element">&lt;span>创建自己的指令&lt;/span>
  &lt;a href="#%e5%88%9b%e5%bb%ba%e8%87%aa%e5%b7%b1%e7%9a%84%e6%8c%87%e4%bb%a4" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;p>&lt;code>/&lt;/code> : 可以看到很多内置指令&lt;/p>
+&lt;/h4>&lt;p>&lt;code>/&lt;/code> : 可以看到很多内置指令&lt;/p>
 &lt;p>&lt;code>.claude/commands/audit.md&lt;/code> 文件名就是指令，里面内容是指令的操作步骤，重启后就能使用&lt;code>/audit&lt;/code>.下面文档就是示例。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -161,11 +162,11 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2.Run &lt;span class="sb">`npm audit fix`&lt;/span> to apply updates
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3.Run tests and verify the updates didn&amp;#39;t break anything&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="mcp服务器添加新工具和功能" class="heading-element">&lt;span>MCP服务器添加新工具和功能&lt;/span>
- &lt;a href="#mcp%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%b7%bb%e5%8a%a0%e6%96%b0%e5%b7%a5%e5%85%b7%e5%92%8c%e5%8a%9f%e8%83%bd" class="heading-mark">
+&lt;/div>&lt;h4 id="mcphttpscodeclaudecomdocsenmcp" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/mcp"target="_blank" rel="external nofollow noopener noreferrer">MCP&lt;/a>&lt;/span>
+ &lt;a href="#mcphttpscodeclaudecomdocsenmcp" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;p>&lt;code>.claude/settings.local.json&lt;/code> 里配置权限&lt;/p>
+&lt;/h4>&lt;p>&lt;code>.claude/settings.local.json&lt;/code> 里配置权限&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -196,64 +197,22 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Open the browser and navigate to localhost:3000&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">claude mcp remove playwright &lt;span class="c1"># 移除配置&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="codex" class="heading-element">&lt;span>codex&lt;/span>
- &lt;a href="#codex" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装 Codex CLI，并能在终端调用 codex 命令&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm install -g @openai/codex
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置~/.codex/auth.json 输入codex进去后填入apikey就会自动生成&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置 ~/.codex/config.toml&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># ~/.codex/config.toml 使用自己的提供商&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">model_provider&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;codex-for-me&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">model&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;gpt-5.2-codex&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">model_reasoning_effort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;high&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">disable_response_storage&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">model_providers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">codex-for-me&lt;/span>&lt;span class="p">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">name&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;codex-for-me&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">base_url&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;https://api-vip.codex-for.me/v1&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">wire_api&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;responses&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">requires_openai_auth&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">claude mcp add codex -s user -- codex -m gpt-5.1-codex-max -c &lt;span class="nv">model_reasoning_effort&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;high&amp;#34;&lt;/span> mcp-server
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># codex cli安装好之后配置mcp&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">claude mcp add codex -s user -- codex -m gpt-5.1-codex-max -c &lt;span class="nv">model_reasoning_effort&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;high&amp;#34;&lt;/span> mcp-server
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">claude mcp remove codex &lt;span class="c1"># 移除配置&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="hook" class="heading-element">&lt;span>hook&lt;/span>
- &lt;a href="#hook" class="heading-mark">
+&lt;/div>&lt;h4 id="hookshttpscodeclaudecomdocsenhooks" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/hooks"target="_blank" rel="external nofollow noopener noreferrer">Hooks&lt;/a>&lt;/span>
+ &lt;a href="#hookshttpscodeclaudecomdocsenhooks" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;p>调用工具的前后操作&lt;/p>
+&lt;/h4>&lt;p>调用工具的前后操作&lt;/p>
 &lt;ol>
 &lt;li>决定使用PreToolUse（工具使用前）或PostToolUse（工具使用后）钩子&lt;/li>
 &lt;li>确定需要监控的工具调用类型&lt;/li>
@@ -379,11 +338,11 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">main&lt;/span>&lt;span class="p">();&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="claude-code-sdk" class="heading-element">&lt;span>claude code sdk&lt;/span>
- &lt;a href="#claude-code-sdk" class="heading-mark">
+&lt;/div>&lt;h4 id="claude-code-sdkhttpsgithubcomanthropicsclaude-agent-sdk-python" class="heading-element">&lt;span>&lt;a href="https://github.com/anthropics/claude-agent-sdk-python"target="_blank" rel="external nofollow noopener noreferrer">claude code sdk&lt;/a>&lt;/span>
+ &lt;a href="#claude-code-sdkhttpsgithubcomanthropicsclaude-agent-sdk-python" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -412,13 +371,227 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># cli: claude -p &amp;#34;Hello, Claude! Tell me a joke.&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+&lt;/div>&lt;h4 id="pluginhttpscodeclaudecomdocsenplugins" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/plugins"target="_blank" rel="external nofollow noopener noreferrer">plugin&lt;/a>&lt;/span>
+ &lt;a href="#pluginhttpscodeclaudecomdocsenplugins" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">my-plugin/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">├── .claude-plugin/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">│ └── plugin.json
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">└── skills/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── code-review/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── SKILL.md&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="skillshttpscodeclaudecomdocsenskills" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/skills"target="_blank" rel="external nofollow noopener noreferrer">Skills&lt;/a>&lt;/span>
+ &lt;a href="#skillshttpscodeclaudecomdocsenskills" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;blockquote>
+&lt;p>可重复使用的说明、知识或工作流程&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="常用skills" class="heading-element">&lt;span>常用skills&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8skills" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h5>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">/plugin list &lt;span class="c1"># 列出插件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/plugin uninstall &amp;lt;plugin-name&amp;gt; &lt;span class="c1"># 卸载插件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/plugin marketplace remove &amp;lt;marketplace-name&amp;gt; &lt;span class="c1"># 移除市场&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;a href="https://github.com/gsd-build/get-shit-done/tree/main"target="_blank" rel="external nofollow noopener noreferrer">get-shit-done&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/obra/superpowers"target="_blank" rel="external nofollow noopener noreferrer">superpowers&lt;/a> 中&lt;code>test-driven-development&lt;/code>和&lt;code> brainstorming&lt;/code>&lt;/p>
+&lt;h5 id="创建自己的skill" class="heading-element">&lt;span>创建自己的skill&lt;/span>
+ &lt;a href="#%e5%88%9b%e5%bb%ba%e8%87%aa%e5%b7%b1%e7%9a%84skill" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h5>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">位置&lt;/th>
+ &lt;th style="text-align: left">路径&lt;/th>
+ &lt;th style="text-align: left">Applies to 适用于&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">Personal&lt;/td>
+ &lt;td style="text-align: left">&lt;code>~/.claude/skills/&amp;lt;skill-name&amp;gt;/SKILL.md&lt;/code>&lt;/td>
+ &lt;td style="text-align: left">所有项目&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">Project&lt;/td>
+ &lt;td style="text-align: left">&lt;code>.claude/skills/&amp;lt;skill-name&amp;gt;/SKILL.md&lt;/code>&lt;/td>
+ &lt;td style="text-align: left">当前项目&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">Plugin&lt;/td>
+ &lt;td style="text-align: left">&lt;code>&amp;lt;plugin&amp;gt;/skills/&amp;lt;skill-name&amp;gt;/SKILL.md&lt;/code>&lt;/td>
+ &lt;td style="text-align: left">插件被启用&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;code>.claude/skills/explain-code&lt;/code> 文件夹，每个技能都是一个目录，&lt;code>SKILL.md&lt;/code> 作为入口：&lt;/p>
+&lt;p>&lt;code>.claude/skills/explain-code/SKILL.md&lt;/code>：分为两部分&lt;/p>
+&lt;blockquote>
+&lt;p>Yaml前置标记 &lt;code>descriptio&lt;/code>字段：何时使用该技能和 &lt;code>name&lt;/code>字段：名字，&lt;code>disable-model-invocation&lt;/code>：可选，以防止 Claude 自动触发。还支持技能内容中动态值的字符串替换，比如能传递参数 &lt;code>$ARGUMENTS&lt;/code>。&lt;/p>
+&lt;p>markdown内容包含技能调用要遵循的指令。&lt;/p>
+&lt;/blockquote>
+&lt;p>里面内容是指令的操作步骤，重启后就能使用&lt;code>/audit&lt;/code>.下面文档就是示例。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">name: explain-code
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">description: Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks &amp;#34;how does this work?&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">disable-model-invocation: true # 禁止自动调用
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">allowed-tools: [&amp;#34;Read&amp;#34;, &amp;#34;Grep&amp;#34;] # 限制可用工具
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">context: fork # 在子代理中运行
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">---
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">When explaining code, always include:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">1.&lt;/span> &lt;span class="gs">**Start with an analogy**&lt;/span>: Compare the code to something from everyday life
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">2.&lt;/span> &lt;span class="gs">**Draw a diagram**&lt;/span>: Use ASCII art to show the flow, structure, or relationships
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">3.&lt;/span> &lt;span class="gs">**Walk through the code**&lt;/span>: Explain step-by-step what happens
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">4.&lt;/span> &lt;span class="gs">**Highlight a gotcha**&lt;/span>: What&amp;#39;s a common mistake or misconception?
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Keep explanations conversational. For complex concepts, use multiple analogies.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h4 id="subagenthttpscodeclaudecomdocsensub-agents" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/sub-agents"target="_blank" rel="external nofollow noopener noreferrer">Subagent&lt;/a>&lt;/span>
+ &lt;a href="#subagenthttpscodeclaudecomdocsensub-agents" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;blockquote>
+&lt;p>每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;code>.claude/agents/&lt;/code> 子代理，或者用claude自动生成。&lt;/p>
+&lt;h3 id="实践httpscodeclaudecomdocsenbest-practices" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/best-practices"target="_blank" rel="external nofollow noopener noreferrer">实践&lt;/a>&lt;/span>
+ &lt;a href="#%e5%ae%9e%e8%b7%b5httpscodeclaudecomdocsenbest-practices" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;strong>Explore first, then plan, then code&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#1. 计划模式 进行探索：Claude 阅读文件并回答问题，无需更改文件。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#2. Create a plan. 按 Ctrl+G 在文本编辑器中打开计划，直接编辑，然后 Claude 继续。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">I want to add xxxx. What files need to change? What&lt;span class="err">&amp;#39;&lt;/span>s the session flow? Create a plan.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#3. 切回普通模式，让claude 编码，并对照计划进行验证。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">implement the xxxx from your plan. write tests &lt;span class="k">for&lt;/span> the callback handler, run the &lt;span class="nb">test&lt;/span> suite and fix any failures.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#4. commit提交 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">commit with a descriptive message and open a PR&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
  &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://anthropic.skilljar.com/claude-code-in-action"target="_blank" rel="external nofollow noopener noreferrer">claude-code-in-action&lt;/a>&lt;/p>
+&lt;/h3>&lt;p>&lt;a href="https://anthropic.skilljar.com/claude-code-in-action"target="_blank" rel="external nofollow noopener noreferrer">claude-code-in-action&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/"target="_blank" rel="external nofollow noopener noreferrer">Claude Code: A Highly Agentic Coding Assistant&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://code.claude.com/docs"target="_blank" rel="external nofollow noopener noreferrer">Claude Code overview - Claude Code Docs&lt;/a>&lt;/p></description></item><item><title>Memory Detection</title><link>https://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</link><pubDate>Wed, 14 Jan 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="内存检测" class="heading-element">&lt;span>内存检测&lt;/span>
+&lt;p>&lt;a href="https://code.claude.com/docs"target="_blank" rel="external nofollow noopener noreferrer">Claude Code overview - Claude Code Docs&lt;/a>&lt;/p>
+&lt;h2 id="codex" class="heading-element">&lt;span>Codex&lt;/span>
+ &lt;a href="#codex" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="安装-1" class="heading-element">&lt;span>安装&lt;/span>
+ &lt;a href="#%e5%ae%89%e8%a3%85-1" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装 Codex CLI，并能在终端调用 codex 命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm install -g @openai/codex
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置~/.codex/auth.json 输入codex进去后填入apikey就会自动生成&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置 ~/.codex/config.toml&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-toml" data-lang="toml">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># ~/.codex/config.toml 使用自己的提供商&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">model_provider&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;codex-for-me&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">model&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;gpt-5.2-codex&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">model_reasoning_effort&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;high&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">disable_response_storage&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">[&lt;/span>&lt;span class="nx">model_providers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">codex-for-me&lt;/span>&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">name&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;codex-for-me&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">base_url&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;https://api-vip.codex-for.me/v1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">wire_api&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="s2">&amp;#34;responses&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">requires_openai_auth&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="kc">true&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">npm update -g @openai/codex &lt;span class="c1"># 更新&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">npm uninstall -g @openai/codex &lt;span class="c1"># 卸载&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="参考阅读-1" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb-1" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;a href="https://developers.openai.com/codex"target="_blank" rel="external nofollow noopener noreferrer">Codex | OpenAI Developers&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://developers.openai.com/codex/learn/best-practices"target="_blank" rel="external nofollow noopener noreferrer">Best practices – Codex | OpenAI Developers&lt;/a>&lt;/p></description></item><item><title>Memory Detection</title><link>https://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</link><pubDate>Wed, 14 Jan 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="内存检测" class="heading-element">&lt;span>内存检测&lt;/span>
  &lt;a href="#%e5%86%85%e5%ad%98%e6%a3%80%e6%b5%8b" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
