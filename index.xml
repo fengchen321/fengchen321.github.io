@@ -399,11 +399,7 @@
 &lt;/h4>&lt;blockquote>
 &lt;p>可重复使用的说明、知识或工作流程&lt;/p>
 &lt;/blockquote>
-&lt;h5 id="常用skills" class="heading-element">&lt;span>常用skills&lt;/span>
- &lt;a href="#%e5%b8%b8%e7%94%a8skills" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h5>&lt;div class="highlight">&lt;div class="chroma">
+&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -414,9 +410,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/plugin uninstall &amp;lt;plugin-name&amp;gt; &lt;span class="c1"># 卸载插件&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/plugin marketplace remove &amp;lt;marketplace-name&amp;gt; &lt;span class="c1"># 移除市场&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;a href="https://github.com/gsd-build/get-shit-done/tree/main"target="_blank" rel="external nofollow noopener noreferrer">get-shit-done&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/obra/superpowers"target="_blank" rel="external nofollow noopener noreferrer">superpowers&lt;/a> 中&lt;code>test-driven-development&lt;/code>和&lt;code> brainstorming&lt;/code>&lt;/p>
-&lt;h5 id="创建自己的skill" class="heading-element">&lt;span>创建自己的skill&lt;/span>
+&lt;/div>&lt;h5 id="创建自己的skill" class="heading-element">&lt;span>创建自己的skill&lt;/span>
  &lt;a href="#%e5%88%9b%e5%bb%ba%e8%87%aa%e5%b7%b1%e7%9a%84skill" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -498,6 +492,17 @@
 &lt;p>每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限&lt;/p>
 &lt;/blockquote>
 &lt;p>&lt;code>.claude/agents/&lt;/code> 子代理，或者用claude自动生成。&lt;/p>
+&lt;h3 id="常用插件推荐" class="heading-element">&lt;span>常用插件推荐&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8%e6%8f%92%e4%bb%b6%e6%8e%a8%e8%8d%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>选一个就行，避免功能冲突。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/obra/superpowers"target="_blank" rel="external nofollow noopener noreferrer">superpowers&lt;/a> :工作流导向插件，内置 &lt;code>test-driven-development&lt;/code>（TDD）和 &lt;code>brainstorming&lt;/code> 等技能，规范开发流程&lt;/p>
+&lt;p>&lt;a href="https://github.com/gsd-build/get-shit-done/tree/main"target="_blank" rel="external nofollow noopener noreferrer">get-shit-done&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/affaan-m/everything-claude-code?tab=readme-ov-file"target="_blank" rel="external nofollow noopener noreferrer">everything-claude-code&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/snarktank/ralph"target="_blank" rel="external nofollow noopener noreferrer">Ralph&lt;/a>&lt;/p>
+&lt;/blockquote>
 &lt;h3 id="实践httpscodeclaudecomdocsenbest-practices" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/best-practices"target="_blank" rel="external nofollow noopener noreferrer">实践&lt;/a>&lt;/span>
  &lt;a href="#%e5%ae%9e%e8%b7%b5httpscodeclaudecomdocsenbest-practices" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>

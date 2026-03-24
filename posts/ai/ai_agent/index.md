@@ -216,17 +216,11 @@ my-plugin/
 
 &gt; 可重复使用的说明、知识或工作流程 
 
-##### 常用skills
-
 ```shell
 /plugin list # 列出插件
 /plugin uninstall &lt;plugin-name&gt; # 卸载插件
 /plugin marketplace remove &lt;marketplace-name&gt; # 移除市场
 ```
-
-[get-shit-done](https://github.com/gsd-build/get-shit-done/tree/main)
-
-[superpowers](https://github.com/obra/superpowers) 中`test-driven-development`和` brainstorming`
 
 ##### 创建自己的skill
 
@@ -270,6 +264,18 @@ Keep explanations conversational. For complex concepts, use multiple analogies.
 &gt; 每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限
 
 `.claude/agents/` 子代理，或者用claude自动生成。
+
+### 常用插件推荐
+
+选一个就行，避免功能冲突。
+
+&gt; [superpowers](https://github.com/obra/superpowers) :工作流导向插件，内置 `test-driven-development`（TDD）和 `brainstorming` 等技能，规范开发流程
+&gt;
+&gt; [get-shit-done](https://github.com/gsd-build/get-shit-done/tree/main)
+&gt;
+&gt; [everything-claude-code](https://github.com/affaan-m/everything-claude-code?tab=readme-ov-file)
+&gt;
+&gt; [Ralph](https://github.com/snarktank/ralph)
 
 ### [实践](https://code.claude.com/docs/en/best-practices)
 
