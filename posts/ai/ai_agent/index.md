@@ -93,7 +93,9 @@ Do the following:
 3.Run tests and verify the updates didn&#39;t break anything
 ```
 
-#### [MCP](https://code.claude.com/docs/en/mcp)
+#### MCP
+
+&gt; [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp)
 
 `.claude/settings.local.json` 里配置权限
 
@@ -119,7 +121,9 @@ claude mcp add codex -s user -- codex -m gpt-5.1-codex-max -c model_reasoning_ef
 claude mcp remove codex # 移除配置
 ```
 
-#### [Hooks](https://code.claude.com/docs/en/hooks)
+#### Hooks
+
+&gt; [Hooks reference](https://code.claude.com/docs/en/hooks)
 
 调用工具的前后操作
 
@@ -184,7 +188,9 @@ async function main() {
 main();
 
 ```
-#### [claude code sdk](https://github.com/anthropics/claude-agent-sdk-python)
+#### claude code sdk
+
+&gt; [claude-agent-sdk-python](https://github.com/anthropics/claude-agent-sdk-python)
 
 ```python
 import anyio
@@ -201,7 +207,9 @@ anyio.run(main)
 # cli: claude -p &#34;Hello, Claude! Tell me a joke.&#34;
 ```
 
-#### [plugin](https://code.claude.com/docs/en/plugins)
+#### plugin
+
+&gt; [Create plugins](https://code.claude.com/docs/en/plugins)
 
 ```shell
 my-plugin/
@@ -212,9 +220,9 @@ my-plugin/
         └── SKILL.md
 ```
 
-#### [Skills](https://code.claude.com/docs/en/skills)
+#### Skills
 
-&gt; 可重复使用的说明、知识或工作流程 
+&gt; [Extend Claude with skills](https://code.claude.com/docs/en/skills) 可重复使用的说明、知识或工作流程
 
 ```shell
 /plugin list # 列出插件
@@ -238,8 +246,6 @@ my-plugin/
 &gt;
 &gt; markdown内容包含技能调用要遵循的指令。
 
-里面内容是指令的操作步骤，重启后就能使用`/audit`.下面文档就是示例。
-
 ```markdown
 ---
 name: explain-code
@@ -259,9 +265,9 @@ When explaining code, always include:
 Keep explanations conversational. For complex concepts, use multiple analogies.
 ```
 
-#### [Subagent](https://code.claude.com/docs/en/sub-agents)
+#### Subagent
 
-&gt; 每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限
+&gt; [Create custom subagents](https://code.claude.com/docs/en/sub-agents) 每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限
 
 `.claude/agents/` 子代理，或者用claude自动生成。
 
@@ -277,7 +283,9 @@ Keep explanations conversational. For complex concepts, use multiple analogies.
 &gt;
 &gt; [Ralph](https://github.com/snarktank/ralph)
 
-### [实践](https://code.claude.com/docs/en/best-practices)
+### 实践
+
+&gt; [Best Practices for Claude Code ](https://code.claude.com/docs/en/best-practices)
 
 **Explore first, then plan, then code**
 

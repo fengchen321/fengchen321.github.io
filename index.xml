@@ -162,11 +162,14 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2.Run &lt;span class="sb">`npm audit fix`&lt;/span> to apply updates
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3.Run tests and verify the updates didn&amp;#39;t break anything&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="mcphttpscodeclaudecomdocsenmcp" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/mcp"target="_blank" rel="external nofollow noopener noreferrer">MCP&lt;/a>&lt;/span>
- &lt;a href="#mcphttpscodeclaudecomdocsenmcp" class="heading-mark">
+&lt;/div>&lt;h4 id="mcp" class="heading-element">&lt;span>MCP&lt;/span>
+ &lt;a href="#mcp" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h4>&lt;p>&lt;code>.claude/settings.local.json&lt;/code> 里配置权限&lt;/p>
+&lt;/h4>&lt;blockquote>
+&lt;p>&lt;a href="https://code.claude.com/docs/en/mcp"target="_blank" rel="external nofollow noopener noreferrer">Connect Claude Code to tools via MCP&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;code>.claude/settings.local.json&lt;/code> 里配置权限&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -208,11 +211,14 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">claude mcp add codex -s user -- codex -m gpt-5.1-codex-max -c &lt;span class="nv">model_reasoning_effort&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;high&amp;#34;&lt;/span> mcp-server
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">claude mcp remove codex &lt;span class="c1"># 移除配置&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="hookshttpscodeclaudecomdocsenhooks" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/hooks"target="_blank" rel="external nofollow noopener noreferrer">Hooks&lt;/a>&lt;/span>
- &lt;a href="#hookshttpscodeclaudecomdocsenhooks" class="heading-mark">
+&lt;/div>&lt;h4 id="hooks" class="heading-element">&lt;span>Hooks&lt;/span>
+ &lt;a href="#hooks" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h4>&lt;p>调用工具的前后操作&lt;/p>
+&lt;/h4>&lt;blockquote>
+&lt;p>&lt;a href="https://code.claude.com/docs/en/hooks"target="_blank" rel="external nofollow noopener noreferrer">Hooks reference&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>调用工具的前后操作&lt;/p>
 &lt;ol>
 &lt;li>决定使用PreToolUse（工具使用前）或PostToolUse（工具使用后）钩子&lt;/li>
 &lt;li>确定需要监控的工具调用类型&lt;/li>
@@ -338,11 +344,14 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">main&lt;/span>&lt;span class="p">();&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="claude-code-sdkhttpsgithubcomanthropicsclaude-agent-sdk-python" class="heading-element">&lt;span>&lt;a href="https://github.com/anthropics/claude-agent-sdk-python"target="_blank" rel="external nofollow noopener noreferrer">claude code sdk&lt;/a>&lt;/span>
- &lt;a href="#claude-code-sdkhttpsgithubcomanthropicsclaude-agent-sdk-python" class="heading-mark">
+&lt;/div>&lt;h4 id="claude-code-sdk" class="heading-element">&lt;span>claude code sdk&lt;/span>
+ &lt;a href="#claude-code-sdk" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/h4>&lt;blockquote>
+&lt;p>&lt;a href="https://github.com/anthropics/claude-agent-sdk-python"target="_blank" rel="external nofollow noopener noreferrer">claude-agent-sdk-python&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
 &lt;/span>&lt;span class="lnt"> 2
@@ -371,11 +380,14 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># cli: claude -p &amp;#34;Hello, Claude! Tell me a joke.&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="pluginhttpscodeclaudecomdocsenplugins" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/plugins"target="_blank" rel="external nofollow noopener noreferrer">plugin&lt;/a>&lt;/span>
- &lt;a href="#pluginhttpscodeclaudecomdocsenplugins" class="heading-mark">
+&lt;/div>&lt;h4 id="plugin" class="heading-element">&lt;span>plugin&lt;/span>
+ &lt;a href="#plugin" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;/h4>&lt;blockquote>
+&lt;p>&lt;a href="https://code.claude.com/docs/en/plugins"target="_blank" rel="external nofollow noopener noreferrer">Create plugins&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
@@ -392,12 +404,12 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── code-review/
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> └── SKILL.md&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="skillshttpscodeclaudecomdocsenskills" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/skills"target="_blank" rel="external nofollow noopener noreferrer">Skills&lt;/a>&lt;/span>
- &lt;a href="#skillshttpscodeclaudecomdocsenskills" class="heading-mark">
+&lt;/div>&lt;h4 id="skills" class="heading-element">&lt;span>Skills&lt;/span>
+ &lt;a href="#skills" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h4>&lt;blockquote>
-&lt;p>可重复使用的说明、知识或工作流程&lt;/p>
+&lt;p>&lt;a href="https://code.claude.com/docs/en/skills"target="_blank" rel="external nofollow noopener noreferrer">Extend Claude with skills&lt;/a> 可重复使用的说明、知识或工作流程&lt;/p>
 &lt;/blockquote>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -446,7 +458,6 @@
 &lt;p>Yaml前置标记 &lt;code>descriptio&lt;/code>字段：何时使用该技能和 &lt;code>name&lt;/code>字段：名字，&lt;code>disable-model-invocation&lt;/code>：可选，以防止 Claude 自动触发。还支持技能内容中动态值的字符串替换，比如能传递参数 &lt;code>$ARGUMENTS&lt;/code>。&lt;/p>
 &lt;p>markdown内容包含技能调用要遵循的指令。&lt;/p>
 &lt;/blockquote>
-&lt;p>里面内容是指令的操作步骤，重启后就能使用&lt;code>/audit&lt;/code>.下面文档就是示例。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -484,12 +495,12 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Keep explanations conversational. For complex concepts, use multiple analogies.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="subagenthttpscodeclaudecomdocsensub-agents" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/sub-agents"target="_blank" rel="external nofollow noopener noreferrer">Subagent&lt;/a>&lt;/span>
- &lt;a href="#subagenthttpscodeclaudecomdocsensub-agents" class="heading-mark">
+&lt;/div>&lt;h4 id="subagent" class="heading-element">&lt;span>Subagent&lt;/span>
+ &lt;a href="#subagent" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h4>&lt;blockquote>
-&lt;p>每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限&lt;/p>
+&lt;p>&lt;a href="https://code.claude.com/docs/en/sub-agents"target="_blank" rel="external nofollow noopener noreferrer">Create custom subagents&lt;/a> 每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限&lt;/p>
 &lt;/blockquote>
 &lt;p>&lt;code>.claude/agents/&lt;/code> 子代理，或者用claude自动生成。&lt;/p>
 &lt;h3 id="常用插件推荐" class="heading-element">&lt;span>常用插件推荐&lt;/span>
@@ -503,11 +514,14 @@
 &lt;p>&lt;a href="https://github.com/affaan-m/everything-claude-code?tab=readme-ov-file"target="_blank" rel="external nofollow noopener noreferrer">everything-claude-code&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://github.com/snarktank/ralph"target="_blank" rel="external nofollow noopener noreferrer">Ralph&lt;/a>&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="实践httpscodeclaudecomdocsenbest-practices" class="heading-element">&lt;span>&lt;a href="https://code.claude.com/docs/en/best-practices"target="_blank" rel="external nofollow noopener noreferrer">实践&lt;/a>&lt;/span>
- &lt;a href="#%e5%ae%9e%e8%b7%b5httpscodeclaudecomdocsenbest-practices" class="heading-mark">
+&lt;h3 id="实践" class="heading-element">&lt;span>实践&lt;/span>
+ &lt;a href="#%e5%ae%9e%e8%b7%b5" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;p>&lt;strong>Explore first, then plan, then code&lt;/strong>&lt;/p>
+&lt;/h3>&lt;blockquote>
+&lt;p>&lt;a href="https://code.claude.com/docs/en/best-practices"target="_blank" rel="external nofollow noopener noreferrer">Best Practices for Claude Code &lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Explore first, then plan, then code&lt;/strong>&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
