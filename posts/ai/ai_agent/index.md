@@ -223,6 +223,8 @@ my-plugin/
 #### Skills
 
 &gt; [Extend Claude with skills](https://code.claude.com/docs/en/skills) 可重复使用的说明、知识或工作流程
+&gt;
+&gt; [Agent Skills 标准](https://agentskills.io/specification)
 
 ```shell
 /plugin list # 列出插件
@@ -231,6 +233,12 @@ my-plugin/
 ```
 
 ##### 创建自己的skill
+
+&gt; `/skill-creator` 该skill可以根据好的提示词、实践（基于之前的操作）、想法创建skill。
+&gt;
+&gt; 1. **基于提示词创建**：提供现成的提示词，帮我将其封装为一个可复用的 skill
+&gt; 2. **基于操作过程创建**：将刚刚完成的一系列操作流程，固化成一个可复用的 skill
+&gt; 3. **基于想法创建**：我有一个关于 X 的初步想法，请通过提问帮我梳理需求，最终生成对应的 skill
 
 | 位置     | 路径                                     | Applies to 适用于 |
 | :------- | :--------------------------------------- | :---------------- |
@@ -264,6 +272,35 @@ When explaining code, always include:
 
 Keep explanations conversational. For complex concepts, use multiple analogies.
 ```
+
+##### Agent Skill Design Patterns
+
+&gt; [Google Cloud Tech：Agent Skill design patterns ](https://x.com/GoogleCloudTech/status/2033953579824758855)
+
+1. **工具包装器（Tool Wrapper）**
+   * **目的**：让 Agent 成为特定库的“即时专家”，按需加载上下文。
+   * **机制**：在 SKILL.md 中监听关键词，动态从 `references/` 目录加载内部文档，并强制将其作为绝对真理应用。
+   * **适用**：分发团队编码规范、框架最佳实践。
+
+2. **生成器（Generator）**
+   - **目的**：确保输出结构一致，解决 Agent 每次生成文档结构不同的问题。
+   - **机制**：使用 `assets/` 存放模板，`references/` 存放风格指南；Agent 像项目经理一样加载模板、读取风格、向用户询问缺失变量，最后填充输出。
+   - **适用**：生成可预测的 API 文档、标准化提交信息、项目脚手架等。
+
+3. **审查器（Reviewer）**
+   - **目的**：将“检查什么”与“如何检查”分离，实现模块化代码审查。
+   - **机制**：将审查清单放在 `references/review-checklist.md` 中，Agent 加载清单后按严重程度（错误、警告、提示）逐条评分。
+   - **适用**：自动化 PR 审查、安全漏洞扫描等，替换清单即可获得不同的专项审计。
+
+4. **反转模式（Inversion）**
+   - **目的**：让 Agent 先扮演采访者，通过多轮提问收集完整需求后再行动，避免猜测和过早生成。
+   - **机制**：使用明确的“门控指令”（如“在完成所有阶段前禁止构建”），强制 Agent 按顺序提问，收集完所有答案后才进入最终合成阶段。
+   - **适用**：需求模糊、需要充分上下文后才能开始的任务。
+
+5. **流水线模式（Pipeline）**
+   - **目的**：对复杂任务强制执行严格的多步顺序工作流，设置硬性检查点，防止跳步或忽略指令。
+   - **机制**：SKILL.md 本身定义工作流，强制顺序执行。各步骤按需加载对应的参考文件或模板，保持上下文窗口整洁。
+   - **适用**：不允许跳过任何步骤的复杂任务，如生成 API 文档、部署流水线等。
 
 #### Subagent
 
@@ -299,6 +336,18 @@ implement the xxxx from your plan. write tests for the callback handler, run the
 commit with a descriptive message and open a PR
 ```
 
+### Claude Code Cheat Sheet
+
+&gt; [Claude Code Cheat Sheet](https://cc.storyfox.cz/)
+
+&lt;iframe 
+    src=&#34;https://cc.storyfox.cz/&#34; 
+    width=&#34;100%&#34; 
+    height=&#34;600&#34; 
+    frameborder=&#34;0&#34; 
+    allowfullscreen&gt;
+&lt;/iframe&gt;
+
 ### 参考阅读
 
 [claude-code-in-action](https://anthropic.skilljar.com/claude-code-in-action)
@@ -306,6 +355,8 @@ commit with a descriptive message and open a PR
 [Claude Code: A Highly Agentic Coding Assistant](https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/)
 
 [Claude Code overview - Claude Code Docs](https://code.claude.com/docs)
+
+[Use Cases | Claude](https://claude.com/resources/use-cases)
 
 ## Codex
 

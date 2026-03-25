@@ -410,6 +410,7 @@
  &lt;/a>
 &lt;/h4>&lt;blockquote>
 &lt;p>&lt;a href="https://code.claude.com/docs/en/skills"target="_blank" rel="external nofollow noopener noreferrer">Extend Claude with skills&lt;/a> 可重复使用的说明、知识或工作流程&lt;/p>
+&lt;p>&lt;a href="https://agentskills.io/specification"target="_blank" rel="external nofollow noopener noreferrer">Agent Skills 标准&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -426,7 +427,15 @@
  &lt;a href="#%e5%88%9b%e5%bb%ba%e8%87%aa%e5%b7%b1%e7%9a%84skill" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h5>&lt;table>
+&lt;/h5>&lt;blockquote>
+&lt;p>&lt;code>/skill-creator&lt;/code> 该skill可以根据好的提示词、实践（基于之前的操作）、想法创建skill。&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>基于提示词创建&lt;/strong>：提供现成的提示词，帮我将其封装为一个可复用的 skill&lt;/li>
+&lt;li>&lt;strong>基于操作过程创建&lt;/strong>：将刚刚完成的一系列操作流程，固化成一个可复用的 skill&lt;/li>
+&lt;li>&lt;strong>基于想法创建&lt;/strong>：我有一个关于 X 的初步想法，请通过提问帮我梳理需求，最终生成对应的 skill&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;table>
  &lt;thead>
  &lt;tr>
  &lt;th style="text-align: left">位置&lt;/th>
@@ -495,7 +504,56 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Keep explanations conversational. For complex concepts, use multiple analogies.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="subagent" class="heading-element">&lt;span>Subagent&lt;/span>
+&lt;/div>&lt;h5 id="agent-skill-design-patterns" class="heading-element">&lt;span>Agent Skill Design Patterns&lt;/span>
+ &lt;a href="#agent-skill-design-patterns" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h5>&lt;blockquote>
+&lt;p>&lt;a href="https://x.com/GoogleCloudTech/status/2033953579824758855"target="_blank" rel="external nofollow noopener noreferrer">Google Cloud Tech：Agent Skill design patterns &lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>工具包装器（Tool Wrapper）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：让 Agent 成为特定库的“即时专家”，按需加载上下文。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：在 SKILL.md 中监听关键词，动态从 &lt;code>references/&lt;/code> 目录加载内部文档，并强制将其作为绝对真理应用。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：分发团队编码规范、框架最佳实践。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>生成器（Generator）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：确保输出结构一致，解决 Agent 每次生成文档结构不同的问题。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：使用 &lt;code>assets/&lt;/code> 存放模板，&lt;code>references/&lt;/code> 存放风格指南；Agent 像项目经理一样加载模板、读取风格、向用户询问缺失变量，最后填充输出。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：生成可预测的 API 文档、标准化提交信息、项目脚手架等。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>审查器（Reviewer）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：将“检查什么”与“如何检查”分离，实现模块化代码审查。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：将审查清单放在 &lt;code>references/review-checklist.md&lt;/code> 中，Agent 加载清单后按严重程度（错误、警告、提示）逐条评分。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：自动化 PR 审查、安全漏洞扫描等，替换清单即可获得不同的专项审计。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>反转模式（Inversion）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：让 Agent 先扮演采访者，通过多轮提问收集完整需求后再行动，避免猜测和过早生成。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：使用明确的“门控指令”（如“在完成所有阶段前禁止构建”），强制 Agent 按顺序提问，收集完所有答案后才进入最终合成阶段。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：需求模糊、需要充分上下文后才能开始的任务。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>流水线模式（Pipeline）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：对复杂任务强制执行严格的多步顺序工作流，设置硬性检查点，防止跳步或忽略指令。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：SKILL.md 本身定义工作流，强制顺序执行。各步骤按需加载对应的参考文件或模板，保持上下文窗口整洁。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：不允许跳过任何步骤的复杂任务，如生成 API 文档、部署流水线等。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h4 id="subagent" class="heading-element">&lt;span>Subagent&lt;/span>
  &lt;a href="#subagent" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -541,13 +599,28 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#4. commit提交 &lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">commit with a descriptive message and open a PR&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+&lt;/div>&lt;h3 id="claude-code-cheat-sheet" class="heading-element">&lt;span>Claude Code Cheat Sheet&lt;/span>
+ &lt;a href="#claude-code-cheat-sheet" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;blockquote>
+&lt;p>&lt;a href="https://cc.storyfox.cz/"target="_blank" rel="external nofollow noopener noreferrer">Claude Code Cheat Sheet&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;iframe 
+ src="https://cc.storyfox.cz/" 
+ width="100%" 
+ height="600" 
+ frameborder="0" 
+ allowfullscreen>
+&lt;/iframe>
+&lt;h3 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
  &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h3>&lt;p>&lt;a href="https://anthropic.skilljar.com/claude-code-in-action"target="_blank" rel="external nofollow noopener noreferrer">claude-code-in-action&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.deeplearning.ai/short-courses/claude-code-a-highly-agentic-coding-assistant/"target="_blank" rel="external nofollow noopener noreferrer">Claude Code: A Highly Agentic Coding Assistant&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://code.claude.com/docs"target="_blank" rel="external nofollow noopener noreferrer">Claude Code overview - Claude Code Docs&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://claude.com/resources/use-cases"target="_blank" rel="external nofollow noopener noreferrer">Use Cases | Claude&lt;/a>&lt;/p>
 &lt;h2 id="codex" class="heading-element">&lt;span>Codex&lt;/span>
  &lt;a href="#codex" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
