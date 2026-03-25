@@ -535,6 +535,6 @@ int main(void) {
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/c&#43;&#43;/%E5%86%85%E5%AD%98%E6%A3%80%E6%B5%8B/  
 

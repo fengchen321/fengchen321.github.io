@@ -195,6 +195,6 @@ $$
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/attention/branch_channel_attention/  
 

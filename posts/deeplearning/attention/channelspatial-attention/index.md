@@ -624,6 +624,6 @@ channel和spital形式一样。位置上的空间注意力得分$a_i$
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/attention/channelspatial-attention/  
 

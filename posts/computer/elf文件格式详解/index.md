@@ -424,6 +424,6 @@ llvm-amdgpu-objdump --inputs=MatrixTranspose
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/  
 

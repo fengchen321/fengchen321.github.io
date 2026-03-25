@@ -169,6 +169,6 @@ open AI的clip模型：有一个图片，还有一个描述这个图片的文本
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/instdisc/  
 

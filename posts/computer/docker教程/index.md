@@ -144,6 +144,6 @@ docker run -d -t -v /home/待映射路径:/data --privileged --device=/dev/kfd/ 
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/docker%E6%95%99%E7%A8%8B/  
 

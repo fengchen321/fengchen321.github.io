@@ -1420,6 +1420,6 @@ padding: 2px;&#34;&gt;YOLOX_L网络图&lt;/div&gt;
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/object-detection/yolo/  
 

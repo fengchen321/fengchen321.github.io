@@ -261,6 +261,6 @@ MoCo v2发现SimCLR里的那些技术都是即插即用型的，引入了mlp pro
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/moco/  
 

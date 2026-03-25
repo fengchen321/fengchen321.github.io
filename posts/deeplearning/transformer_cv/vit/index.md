@@ -489,6 +489,6 @@ padding: 2px;&#34;&gt;Relative position bias&lt;/div&gt;
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/transformer_cv/vit/  
 

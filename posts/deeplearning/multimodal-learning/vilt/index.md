@@ -155,6 +155,6 @@ Transformer 的输出为$1\times H$的矩阵，经过$H\times H$的pooler(权重
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/multimodal-learning/vilt/  
 

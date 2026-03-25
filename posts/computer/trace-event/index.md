@@ -165,6 +165,6 @@ google 的 trace-viewer 项目，合并到了 [catapult](https://github.com/cata
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/trace-event/  
 

@@ -85,6 +85,6 @@ SimCLR和InvaSpread区别
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/simclr/  
 

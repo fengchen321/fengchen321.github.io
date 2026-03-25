@@ -1090,6 +1090,6 @@ padding: 2px;&#34;&gt;RedNet_involution&lt;/div&gt;
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/image-classification/resnet/  
 

@@ -103,6 +103,6 @@ padding: 2px;&#34;&gt;LCNet_ablation&lt;/div&gt;
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/light-weight/lcnet/  
 

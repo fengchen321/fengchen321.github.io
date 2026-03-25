@@ -64,6 +64,6 @@ BERT前六层去做文本编码，剩下的六层transformer encoder直接当成
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/multimodal-learning/albef/  
 

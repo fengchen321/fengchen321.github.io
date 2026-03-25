@@ -59,6 +59,6 @@ $$
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/generative-model/dall_e2/  
 

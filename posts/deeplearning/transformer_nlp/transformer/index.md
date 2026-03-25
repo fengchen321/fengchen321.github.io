@@ -323,6 +323,6 @@ src=&#34;/images/Transformer_NLP/Transformer.assets/transformer_decoder_output_s
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/transformer_nlp/transformer/  
 

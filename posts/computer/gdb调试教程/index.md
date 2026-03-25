@@ -331,6 +331,6 @@ asm{
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/gdb%E8%B0%83%E8%AF%95%E6%95%99%E7%A8%8B/  
 

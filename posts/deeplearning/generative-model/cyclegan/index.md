@@ -37,6 +37,6 @@ https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tut
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/generative-model/cyclegan/  
 

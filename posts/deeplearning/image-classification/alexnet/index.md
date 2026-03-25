@@ -231,6 +231,6 @@ src=&#34;/images/Image Classification/AlexNet.assets/ZFNet_AlexNet.png&#34;&gt;
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/image-classification/alexnet/  
 

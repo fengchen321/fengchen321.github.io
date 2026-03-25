@@ -310,6 +310,6 @@ DINO ：左边的网络叫做 student network；右边叫做 teacher network
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/contrastive-learning/byol/  
 

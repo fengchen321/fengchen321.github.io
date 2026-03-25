@@ -183,6 +183,6 @@ Export Bookmarks To Json 书签导出为json格式
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/other/record/  
 

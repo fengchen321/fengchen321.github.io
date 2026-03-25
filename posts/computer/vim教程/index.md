@@ -269,6 +269,6 @@ inoremap {} {}
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/vim%E6%95%99%E7%A8%8B/  
 

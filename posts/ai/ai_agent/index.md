@@ -395,6 +395,6 @@ npm uninstall -g @openai/codex # 卸载
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/ai/ai_agent/  
 

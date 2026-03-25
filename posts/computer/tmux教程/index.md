@@ -166,6 +166,6 @@ bind &#39;c&#39; new-window -c &#34;#{pane_current_path}&#34;
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/tmux%E6%95%99%E7%A8%8B/  
 

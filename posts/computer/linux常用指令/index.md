@@ -487,6 +487,6 @@ find . -name &#39;*.py&#39; | xargs cat | wc -l
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/linux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/  
 

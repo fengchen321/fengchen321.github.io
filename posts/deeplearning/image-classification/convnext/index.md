@@ -264,6 +264,6 @@ ImageNet-1K
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/image-classification/convnext/  
 

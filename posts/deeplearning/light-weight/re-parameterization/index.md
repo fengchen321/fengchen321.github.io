@@ -96,6 +96,6 @@ ResRep: Reparam(KxK) = KxK-BN-1x1。这是一个剪枝（channel pruning）方�
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/light-weight/re-parameterization/  
 

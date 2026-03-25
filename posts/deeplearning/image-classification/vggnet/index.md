@@ -158,6 +158,6 @@ Localisation定位问题（可看成目标检测的特例）（模型预测是bb
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/deeplearning/image-classification/vggnet/  
 

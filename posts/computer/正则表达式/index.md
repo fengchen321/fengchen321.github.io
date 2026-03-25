@@ -222,6 +222,6 @@ def sub(pattern, repl, string, count=0, flags=0):
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/  
 

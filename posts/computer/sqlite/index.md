@@ -344,6 +344,6 @@ sqlite&gt; .exit
 
 ---
 
-> 作者: fengchen  
+> 作者:   
 > URL: https://fengchen321.github.io/posts/computer/sqlite/  
 
