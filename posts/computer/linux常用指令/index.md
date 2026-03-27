@@ -131,15 +131,32 @@ echo $PATH
 ### 常用终端快捷键
 
 1. `ctrl c`: 取消命令，并且换行
+
 2. `ctrl d`:关闭终端
+
 3. `crtl l`: 清空终端 (也可输入`clear`)
+
 4. `ctrl u`: 擦除从当前光标位置到行首的全部内容
+
 5. `ctrl k`: 擦除从当前光标位置到行尾的全部内容
+
 6. `crtl w`: 擦除光标位置前的单词
+
 7. `crtl y`: 粘贴使用前三种查出方式的文本。（误删的时候派上用场）
+
 8. `crtl a`: 移动光标到行首
+
 9. `crtl e`: 移动光标到行尾
+
 10. `tab`键：可以补全命令和文件名，如果补全不了快速按两下tab键，可以显示备选选项
+
+11. `Ctrl &#43; z`：将当前前台任务挂起到后台的暂停状态
+
+    &gt; `jobs`：查看当前 shell 中后台或挂起任务的编号和状态
+    &gt;
+    &gt; `bg %3`：让 `jobs` 输出中的 3 号任务在后台继续运行
+    &gt;
+    &gt; `fg %1`：将 1 号任务重新切回前台
 
 ### 4.1 系统状况
 
@@ -307,6 +324,10 @@ echo $PATH
    &gt;
    &gt; `tail -f xxx`：实时追踪该xxx文档的所有更新 (常用于 flume 采集数据)
 
+5. `man sh`：查看 `sh`（Bourne shell）的手册页
+
+   &gt; `man -P cat sh`：强制使用 `cat` 作为分页器，直接将手册内容输出到标准输出，适合配合重定向或 `grep` 使用
+
 ### 4.5 用户相关
 
 1. `history`：展示当前用户的历史操作。内容存放在`~/.bash_history`中
@@ -326,9 +347,18 @@ echo $PATH
 
    &gt; `! echo &#34;Hello World&#34;`：!表示执行shell脚本
 
-4. `watch -n 0.1 command`：每0.1秒执行一次command命令
+4. `python3 -m textual`：运行 Textual 自带的演示程序，快速体验 Python 终端界面（TUI）效果
+5. `watch -n 0.1 command`：每0.1秒执行一次command命令
 
-5. `tar`：压缩文件
+6. `ttyrec demo.ttyrec`：录制当前终端会话，适合保存操作过程或复现问题
+
+   &gt; `ttyplay demo.ttyrec`：按原始时间间隔回放录制内容
+   &gt;
+   &gt; `ttyplay -n demo.ttyrec`：忽略原始时间间隔，快速回放
+   &gt;
+   &gt; `ttyplay -s 2 demo.ttyrec`：以 2 倍速回放
+
+7. `tar`：压缩文件
 
    &gt; `tar -zcvf xxx.tar.gz /path/to/file/*`：压缩
    &gt;
@@ -336,17 +366,17 @@ echo $PATH
    &gt;
    &gt; &gt; `tar -zxvf xxx.tar.gz -C yyy`：解压到指定目录 yyy 中
 
-6. `diff xxx yyy`：查找文件xxx与yyy的不同点
+8. `diff xxx yyy`：查找文件xxx与yyy的不同点
 
-7. `rpm2cpio demo.rpm | cpio -idmv` ：解压`demo.rmp`文件
+9.  `rpm2cpio demo.rpm | cpio -idmv` ：解压`demo.rmp`文件
 
-8. `ln -s /usr/home/file /usr/home/abc ` ：软连接: 在目录`/usr/home`下建立一个符号链接文件`abc`，使它指向目录`/usr/home/file`
+10. `ln -s /usr/home/file /usr/home/abc ` ：软连接: 在目录`/usr/home`下建立一个符号链接文件`abc`，使它指向目录`/usr/home/file`
 
-9. `scp source@host:filename targt@host:filename`：远程拷贝文件 [源文件] [目标文件]
+11. `scp source@host:filename targt@host:filename`：远程拷贝文件 [源文件] [目标文件]
 
-10. `sz demo`:下载文件
+12. `sz demo`:下载文件
 
-9. `strace ./demo`：用于跟踪进程的系统调用以及接收和发送到内核的信号
+13. `strace ./demo`：用于跟踪进程的系统调用以及接收和发送到内核的信号
 
 ### 4.7 安装软件
 

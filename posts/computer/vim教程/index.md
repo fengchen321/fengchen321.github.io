@@ -31,6 +31,16 @@
 
 ## 常用操作
 
+&lt;center&gt;
+&lt;img 
+src=&#34;/images/Computer/vim教程.assets/vim快捷键.png&#34; width=&#34;1000&#34; /&gt;
+&lt;br&gt;
+&lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
+display: inline-block;
+color: #999;
+padding: 2px;&#34;&gt;Vim快捷键速查表&lt;/div&gt;
+&lt;/center&gt;
+
 1. ` i`：进入编辑模式
 
    &gt; - `i`:在光标所在字符前开始插入
