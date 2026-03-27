@@ -118,12 +118,12 @@ catch 事件
 `gdb -tui filename` # 显示代码窗口
 
 ```shell
-tui enable  # 显示  crtl &#43; x 再按a关闭打开窗口
+tui enable  # 显示  ctrl &#43; x 再按a关闭打开窗口
 layout src 	# 显示源码
 layout asm  # 显示汇编
 layout split	# 显示源代码和汇编
 layout regs	# 显示寄存器
-refresh # 刷新屏幕 crtl &#43; l
+refresh # 刷新屏幕 ctrl &#43; l
 update 	# 更新源代码
 ```
 

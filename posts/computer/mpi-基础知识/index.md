@@ -6,7 +6,7 @@ MPI (Message Passing Interface)
 
 &gt; C/C&#43;&#43;: `mpi,h`  -&gt; `libmpi.so`  编译：`mpicxx -o test_mpi_cpp test_mpi.cpp  -lmpi`
 &gt;
-&gt; Fortran: `mpif.h`, 或者使用模板mpi`use mpi` -&gt; `libmpi_mpifh.so`  编译：``mpifort test_mpi.F90 -o test_mpi_fortran`
+&gt; Fortran: `mpif.h`, 或者使用模板mpi`use mpi` -&gt; `libmpi_mpifh.so`  编译：`mpifort test_mpi.F90 -o test_mpi_fortran`
 &gt;
 &gt; 运行  `mpirun -n 8 ./tests/mpi_tests/test_mpi_cpp`
 

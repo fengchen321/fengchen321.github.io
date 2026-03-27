@@ -1380,7 +1380,7 @@ int steup_daemon(int nochdir, int noclose){
 
 ### signal
 
-`SIGINT (crtl &#43; c)`; `SIGQUIT (crtl &#43; \)`
+`SIGINT (ctrl &#43; c)`; `SIGQUIT (ctrl &#43; \)`
 
 &gt; 功能：安装信号
 &gt;

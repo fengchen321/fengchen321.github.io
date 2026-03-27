@@ -3164,7 +3164,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;/h2>&lt;p>MPI (Message Passing Interface)&lt;/p>
 &lt;blockquote>
 &lt;p>C/C++: &lt;code>mpi,h&lt;/code> -&amp;gt; &lt;code>libmpi.so&lt;/code> 编译：&lt;code>mpicxx -o test_mpi_cpp test_mpi.cpp -lmpi&lt;/code>&lt;/p>
-&lt;p>Fortran: &lt;code>mpif.h&lt;/code>, 或者使用模板mpi&lt;code>use mpi&lt;/code> -&amp;gt; &lt;code>libmpi_mpifh.so&lt;/code> 编译：``mpifort test_mpi.F90 -o test_mpi_fortran`&lt;/p>
+&lt;p>Fortran: &lt;code>mpif.h&lt;/code>, 或者使用模板mpi&lt;code>use mpi&lt;/code> -&amp;gt; &lt;code>libmpi_mpifh.so&lt;/code> 编译：&lt;code>mpifort test_mpi.F90 -o test_mpi_fortran&lt;/code>&lt;/p>
 &lt;p>运行 &lt;code>mpirun -n 8 ./tests/mpi_tests/test_mpi_cpp&lt;/code>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="核心概念" class="heading-element">&lt;span>核心概念&lt;/span>

@@ -231,7 +231,7 @@
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=nv>str</span><span class=o>=</span><span class=s2>&#34;Hello World!&#34;</span>
-</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=sb>`</span>expr length <span class=nv>$str</span><span class=sb>`</span>  <span class=c1>#等价于echo `expr length Hello World!`；中间有空格，length只船一个参数，一般加双引号字符串传入 syntax error:unexpecter argument &#39;World!&#39;.</span>
+</span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=sb>`</span>expr length <span class=nv>$str</span><span class=sb>`</span>  <span class=c1># 等价于echo `expr length Hello World!`；中间有空格，length只船一个参数，一般加双引号字符串传入 syntax error:unexpecter argument &#39;World!&#39;.</span>
 </span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=sb>`</span>expr length <span class=s2>&#34;</span><span class=nv>$str</span><span class=s2>&#34;</span><span class=sb>`</span>  <span class=c1># ``不是单引号，表示执行该命令，输出12</span>
 </span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=sb>`</span>expr index <span class=s2>&#34;</span><span class=nv>$str</span><span class=s2>&#34;</span> aWd<span class=sb>`</span>  <span class=c1># 输出7，下标从1开始</span>
 </span></span><span class=line><span class=cl><span class=nb>echo</span> <span class=sb>`</span>expr substr <span class=s2>&#34;</span><span class=nv>$str</span><span class=s2>&#34;</span> <span class=m>2</span> 3<span class=sb>`</span>  <span class=c1># 输出 ell</span></span></span></code></pre></td></tr></table></div></div><h3 id=整数表达式 class=heading-element><span>整数表达式</span>

@@ -272,7 +272,7 @@ expr 命令用于求表达式的值，格式为：`expr 表达式`
 
 ```bash
 str=&#34;Hello World!&#34;
-echo `expr length $str`  #等价于echo `expr length Hello World!`；中间有空格，length只船一个参数，一般加双引号字符串传入 syntax error:unexpecter argument &#39;World!&#39;.
+echo `expr length $str`  # 等价于echo `expr length Hello World!`；中间有空格，length只船一个参数，一般加双引号字符串传入 syntax error:unexpecter argument &#39;World!&#39;.
 echo `expr length &#34;$str&#34;`  # ``不是单引号，表示执行该命令，输出12
 echo `expr index &#34;$str&#34; aWd`  # 输出7，下标从1开始
 echo `expr substr &#34;$str&#34; 2 3`  # 输出 ell
