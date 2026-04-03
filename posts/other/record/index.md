@@ -86,6 +86,9 @@ Host 主机名
 ### vscode 插件
 
 &gt; [vscode 集成 Neovim - 简书 (jianshu.com)](https://www.jianshu.com/p/ac739c6ea541)
+&gt;
+&gt; [PlantUML](https://pdf.plantuml.net/PlantUML_Language_Reference_Guide_zh.pdf)
+&gt; &gt; PlantUML配置 -&gt; Renderer -&gt; PlantUMLServer -&gt; http://www.plantuml.com/plantuml  生成图表选中puml文件快捷键 `Alt&#43;D`
 
 ##  安装rocm环境
 
@@ -165,7 +168,7 @@ sh -c &#34;$(wget -O- https://install.ohmyz.sh/)&#34;
 
 
 
-# typora
+## typora
 
 [使用 Typora 画图（类图、流程图、时序图） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/172635547)
 
@@ -177,9 +180,10 @@ KaTeX 默认不支持 numcases 环境，还是使用cases吧。
 
 [katex在线](https://katex.org/#demo)
 
-# 插件
+## 插件
 
 Export Bookmarks To Json 书签导出为json格式
+
 
 ---
 

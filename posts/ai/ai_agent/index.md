@@ -348,6 +348,33 @@ commit with a descriptive message and open a PR
     allowfullscreen&gt;
 &lt;/iframe&gt;
 
+### 使用Github Copliot订阅
+
+```shell
+npx @jeffreycao/copilot-api@latest start 
+```
+```json
+&#34;env&#34;: {
+    &#34;ANTHROPIC_BASE_URL&#34;: &#34;http://localhost:4141&#34;,
+    &#34;ANTHROPIC_AUTH_TOKEN&#34;: &#34;dummy&#34;,
+    &#34;ANTHROPIC_MODEL&#34;: &#34;gpt-5.4&#34;,
+    &#34;ANTHROPIC_DEFAULT_SONNET_MODEL&#34;: &#34;gpt-5.4&#34;,
+    &#34;ANTHROPIC_DEFAULT_HAIKU_MODEL&#34;: &#34;gpt-5-mini&#34;,
+    &#34;DISABLE_NON_ESSENTIAL_MODEL_CALLS&#34;: &#34;1&#34;,
+    &#34;CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC&#34;: &#34;1&#34;,
+    &#34;CLAUDE_CODE_ATTRIBUTION_HEADER&#34;: &#34;0&#34;,
+    &#34;CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION&#34;: &#34;false&#34;
+  },
+  &#34;permissions&#34;: {
+    &#34;deny&#34;: [
+      &#34;WebSearch&#34;
+    ]
+  }
+```
+
+Github Copliot Chat vscode 插件快捷键`ctrl&#43;alt&#43;i`,打开session
+
+
 ### 参考阅读
 
 [claude-code-in-action](https://anthropic.skilljar.com/claude-code-in-action)
@@ -357,6 +384,10 @@ commit with a descriptive message and open a PR
 [Claude Code overview - Claude Code Docs](https://code.claude.com/docs)
 
 [Use Cases | Claude](https://claude.com/resources/use-cases)
+
+[Claude Code interactive](https://claude.nagdy.me)
+
+[Claude Code Unpacked](https://ccunpacked.dev)
 
 ## Codex
 
@@ -392,6 +423,24 @@ npm uninstall -g @openai/codex # 卸载
 [Codex | OpenAI Developers](https://developers.openai.com/codex)
 
 [Best practices – Codex | OpenAI Developers](https://developers.openai.com/codex/learn/best-practices)
+
+## OpenCode
+
+### 安装
+```shell
+npm i -g opencode-ai@latest  
+```
+
+`/connect` and select GitHub Copilot 连入即可。
+
+### 使用oh my opencode
+
+[oh-my-opencode](https://opencodedocs.com/zh/code-yeongyu/oh-my-opencode/)
+
+### 参考阅读
+
+[OpenCode | GitHub](https://github.com/anomalyco/opencode/tree/dev)
+
 
 ---
 

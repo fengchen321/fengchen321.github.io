@@ -1040,6 +1040,14 @@ int print() {
 - 返回值通常仍然放在 `eax`
 - 具体细节随编译器和平台实现而变
 
+## 整数和浮点数运算
+
+### 高级 x86 指令
+
+- SIMD - Single Instruction Multiple Data，单指令多数据，常用于向量化计算和多媒体处理。
+- MMX - MultiMedia eXtensions - 奔腾2
+- SSE - Streaming SIMD Extensions - 奔腾4
+
 ## 参考阅读
 
 [Intel 64 and IA-32 Architectures Software Developer Manuals](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-sdm.html)
