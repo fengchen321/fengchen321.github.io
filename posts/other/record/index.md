@@ -85,8 +85,6 @@ Host 主机名
 
 ### vscode 插件
 
-&gt; [vscode 集成 Neovim - 简书 (jianshu.com)](https://www.jianshu.com/p/ac739c6ea541)
-&gt;
 &gt; [PlantUML](https://pdf.plantuml.net/PlantUML_Language_Reference_Guide_zh.pdf)
 &gt; &gt; PlantUML配置 -&gt; Renderer -&gt; PlantUMLServer -&gt; http://www.plantuml.com/plantuml  生成图表选中puml文件快捷键 `Alt&#43;D`
 

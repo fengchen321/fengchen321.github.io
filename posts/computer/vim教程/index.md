@@ -232,6 +232,10 @@ j.
 
 ```
 
+## 插件
+
+- [vscode 集成 Neovim](https://www.jianshu.com/p/ac739c6ea541)
+- **[YouCompleteMe](https://github.com/ycm-core/YouCompleteMe)**: — Vim 代码补全引擎，支持 C/C&#43;&#43;、Python 等多语言语义补全
 
 
 ### vi &#43; ctags

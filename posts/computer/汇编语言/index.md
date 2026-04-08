@@ -1068,6 +1068,8 @@ int print() {
 
 [Guide to x86-64](https://web.stanford.edu/class/cs107/guide/x86-64.html)
 
+[x86 Instruction Set Reference](https://www.felixcloutier.com/x86/)
+
 [NASM汇编器官方文档](https://www.nasm.us/docs.php) 
 
 [GCC-Inline-Assembly-HOWTO](https://www.ibiblio.org/gferg/ldp/GCC-Inline-Assembly-HOWTO.html)

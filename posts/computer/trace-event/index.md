@@ -163,6 +163,11 @@ google 的 trace-viewer 项目，合并到了 [catapult](https://github.com/cata
 | s/t 或 s/f | Flow事件  | 箭头连接       | 数据/依赖流动  |
 | O          | 快照      | 圆点           | 提供状态信息   |
 
+## 参考阅读
+
+[Trace Event Format - Google 文档](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview?hl=zh_CN&amp;pli=1&amp;tab=t.0)
+
+
 ---
 
 > 作者:   

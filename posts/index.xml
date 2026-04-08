@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>所有文章 - fengchen</title><link>https://fengchen321.github.io/posts/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Jan 2026 12:33:12 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>AI agent</title><link>https://fengchen321.github.io/posts/ai/ai_agent/</link><pubDate>Fri, 23 Jan 2026 12:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/ai_agent/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="claude-code" class="heading-element">&lt;span>Claude code&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>所有文章 - fengchen</title><link>https://fengchen321.github.io/posts/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Apr 2026 13:33:12 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Performance Analysis Tools</title><link>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</link><pubDate>Wed, 01 Apr 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="performance-analysis-tools" class="heading-element">&lt;span>Performance Analysis Tools&lt;/span>
+ &lt;a href="#performance-analysis-tools" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>在 Linux 性能观测中，&lt;strong>Tracing&lt;/strong> 侧重于捕捉事件的因果顺序与详细流程，而 &lt;strong>Profiling&lt;/strong> 侧重于统计资源的宏观消耗热点。二者相辅相成。&lt;/p></description></item><item><title>AI agent</title><link>https://fengchen321.github.io/posts/ai/ai_agent/</link><pubDate>Fri, 23 Jan 2026 12:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/ai_agent/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="claude-code" class="heading-element">&lt;span>Claude code&lt;/span>
  &lt;a href="#claude-code" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -130,7 +134,12 @@
  &lt;a href="#%e4%b8%80%e4%ba%8b%e4%bb%b6%e9%80%9a%e7%94%a8%e5%ad%97%e6%ae%b5" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>google 的 trace-viewer 项目，合并到了 &lt;a href="https://github.com/catapult-project/catapult/blob/master/tracing/README.md"target="_blank" rel="external nofollow noopener noreferrer">catapult&lt;/a> 中，工具 &lt;a href="https://ui.perfetto.dev/#!/"target="_blank" rel="external nofollow noopener noreferrer">perfetto&lt;/a> 打算替换 Trace Viewer。&lt;/p></description></item><item><title>ELF文件格式详解</title><link>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
+&lt;/h2>&lt;p>google 的 trace-viewer 项目，合并到了 &lt;a href="https://github.com/catapult-project/catapult/blob/master/tracing/README.md"target="_blank" rel="external nofollow noopener noreferrer">catapult&lt;/a> 中，工具 &lt;a href="https://ui.perfetto.dev/#!/"target="_blank" rel="external nofollow noopener noreferrer">perfetto&lt;/a> 打算替换 Trace Viewer。&lt;/p></description></item><item><title>C++ 开发碎片笔记</title><link>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</link><pubDate>Thu, 08 Jan 2026 10:00:00 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-开发碎片笔记" class="heading-element">&lt;span>C++ 开发碎片笔记&lt;/span>
+ &lt;a href="#c-%e5%bc%80%e5%8f%91%e7%a2%8e%e7%89%87%e7%ac%94%e8%ae%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;blockquote>
+&lt;p>日常开发中常用的命令和技巧，持续更新中。&lt;/p></description></item><item><title>ELF文件格式详解</title><link>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
  &lt;a href="#elf%e6%96%87%e4%bb%b6%e6%a0%bc%e5%bc%8f%e8%af%a6%e8%a7%a3" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -298,7 +307,102 @@
  &lt;a href="#mpi-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>MPI (Message Passing Interface)&lt;/p></description></item><item><title>汇编语言</title><link>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
+&lt;/h2>&lt;p>MPI (Message Passing Interface)&lt;/p></description></item><item><title>GPU_碎片笔记</title><link>https://fengchen321.github.io/posts/ai/gpu_%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</link><pubDate>Thu, 23 Jan 2025 12:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/gpu_%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="gpu_碎片笔记" class="heading-element">&lt;span>GPU_碎片笔记&lt;/span>
+ &lt;a href="#gpu_%e7%a2%8e%e7%89%87%e7%ac%94%e8%ae%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="n卡--a卡--opencl-对比" class="heading-element">&lt;span>N卡 / A卡 / OpenCL 对比&lt;/span>
+ &lt;a href="#n%e5%8d%a1--a%e5%8d%a1--opencl-%e5%af%b9%e6%af%94" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">Nvidia/CUDA&lt;/th>
+ &lt;th style="text-align: left">AMD/HIP&lt;/th>
+ &lt;th style="text-align: left">OpenCL&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">Streaming Multiprocessor (SM)&lt;/td>
+ &lt;td style="text-align: left">Compute Unit (CU)&lt;/td>
+ &lt;td style="text-align: left">Compute Unit&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">Thread Block&lt;/td>
+ &lt;td style="text-align: left">Workgroup&lt;/td>
+ &lt;td style="text-align: left">Work-group&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">Shared Memory&lt;/td>
+ &lt;td style="text-align: left">Local Memory&lt;/td>
+ &lt;td style="text-align: left">Local Memory&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">Local Memory&lt;/td>
+ &lt;td style="text-align: left">Private Memory&lt;/td>
+ &lt;td style="text-align: left">Private Memory&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">grid&lt;/td>
+ &lt;td style="text-align: left">grid&lt;/td>
+ &lt;td style="text-align: left">NDRange&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">block&lt;/td>
+ &lt;td style="text-align: left">block&lt;/td>
+ &lt;td style="text-align: left">work-group&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">thread&lt;/td>
+ &lt;td style="text-align: left">work-item / thread&lt;/td>
+ &lt;td style="text-align: left">work-item&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">warp (32)&lt;/td>
+ &lt;td style="text-align: left">wavefront (64)&lt;/td>
+ &lt;td style="text-align: left">sub-group&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="硬件规格" class="heading-element">&lt;span>硬件规格&lt;/span>
+ &lt;a href="#%e7%a1%ac%e4%bb%b6%e8%a7%84%e6%a0%bc" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="fermi-n卡老架构" class="heading-element">&lt;span>Fermi (N卡老架构)&lt;/span>
+ &lt;a href="#fermi-n%e5%8d%a1%e8%80%81%e6%9e%b6%e6%9e%84" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>SM 数：16&lt;/li>
+&lt;li>每 SM 的 CUDA 核心数：32&lt;/li>
+&lt;li>Warp 大小：32&lt;/li>
+&lt;li>每 SM 最大线程：1536&lt;/li>
+&lt;/ul>
+&lt;h3 id="gfx906-amddcu-典型" class="heading-element">&lt;span>gfx906 (AMD/DCU 典型)&lt;/span>
+ &lt;a href="#gfx906-amddcu-%e5%85%b8%e5%9e%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>CU 数：64&lt;/li>
+&lt;li>SE：4&lt;/li>
+&lt;li>每 CU 的 SIMD：4&lt;/li>
+&lt;li>每 SIMD wavefront 数量：10&lt;/li>
+&lt;li>Wavefront 大小：64&lt;/li>
+&lt;li>单 block 最大线程：1024 (即最多 16 个 wavefront)&lt;/li>
+&lt;li>SGPR(标量寄存器)：每组 16 个，编程时可用的 SGPR 为 0～101，共 102 个&lt;/li>
+&lt;li>VGPR(向量寄存器)：分配粒度为 4 个寄存器一组&lt;/li>
+&lt;/ul>
+&lt;h3 id="bw" class="heading-element">&lt;span>BW&lt;/span>
+ &lt;a href="#bw" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>CU 数：80&lt;/li>
+&lt;li>SE：8&lt;/li>
+&lt;/ul>
+&lt;p>峰值：$cu数 \times simds数\times频率\times数据布局\times2 /时钟周期$&lt;/p></description></item><item><title>汇编语言</title><link>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
  &lt;a href="#%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
