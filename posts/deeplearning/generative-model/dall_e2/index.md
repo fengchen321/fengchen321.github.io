@@ -9,7 +9,7 @@
 &gt;
 &gt; [dalle-mini](https://github.com/borisdayma/dalle-mini) [pyorch code](https://github.com/lucidrains/DALLE2-pytorch)
 &gt;
-&gt;  CLIP &#43; Diffusion models
+&gt; CLIP &#43; Diffusion models
 
 ### title
 

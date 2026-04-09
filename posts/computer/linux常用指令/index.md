@@ -16,7 +16,7 @@
 
 ## 2. 常用文件管理命令
 
-1. `ls`: 列出当前目录下所有文件，蓝色的是文件夹，白色的是普通文件，绿色的是可执行文件
+1. `ls`: 列出当前目录下所有文件，目录=蓝色，可执行=绿色，链接=青色，压缩=红色
 
    &gt; `ls -a`：查看所有文件包括隐藏文件（以.开头的文件就是隐藏文件）
    &gt;
@@ -40,13 +40,13 @@
    &gt; `mkdir -p`：如果文件夹不存在，则创建
 
 6. `rm XXX`: 删除普通文件; ` rm XXX -r`: 删除文件夹; 
-   &gt; `rm *./txt`：删除所有同类文件比如txt格式
+   &gt; `rm *.txt`：删除所有同类文件比如txt格式
    &gt;
    &gt; `rm *`：删除所有文件（不包括文件夹）
    &gt;
    &gt; `rm * -r` ：删除所有文件夹
    &gt;
-   &gt; `rmkdir`：删除一个空的目录
+   &gt; `rmdir`：删除一个空的目录
 
 7. `mv XXX YYY`: 将XXX文件移动到YYY，和cp命令一样，XXX和YYY可以是一个路径；重命名也是用这个命令
 
@@ -194,7 +194,7 @@ echo $PATH
 
    &gt; `netstat -nlp | grep 22`：查看22端口号是否被占用
    &gt;
-   &gt; 查看网络设置：`netsh wlan show profiles`
+   &gt; 查看网络设置(windows)：`netsh wlan show profiles`
    &gt;
    &gt; &gt; 具体设置：`wlan show profiles wifi名称 key=clear`
 

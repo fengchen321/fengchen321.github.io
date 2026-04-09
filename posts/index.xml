@@ -134,12 +134,7 @@
  &lt;a href="#%e4%b8%80%e4%ba%8b%e4%bb%b6%e9%80%9a%e7%94%a8%e5%ad%97%e6%ae%b5" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>google 的 trace-viewer 项目，合并到了 &lt;a href="https://github.com/catapult-project/catapult/blob/master/tracing/README.md"target="_blank" rel="external nofollow noopener noreferrer">catapult&lt;/a> 中，工具 &lt;a href="https://ui.perfetto.dev/#!/"target="_blank" rel="external nofollow noopener noreferrer">perfetto&lt;/a> 打算替换 Trace Viewer。&lt;/p></description></item><item><title>C++ 开发碎片笔记</title><link>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</link><pubDate>Thu, 08 Jan 2026 10:00:00 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-开发碎片笔记" class="heading-element">&lt;span>C++ 开发碎片笔记&lt;/span>
- &lt;a href="#c-%e5%bc%80%e5%8f%91%e7%a2%8e%e7%89%87%e7%ac%94%e8%ae%b0" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>日常开发中常用的命令和技巧，持续更新中。&lt;/p></description></item><item><title>ELF文件格式详解</title><link>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
+&lt;/h2>&lt;p>google 的 trace-viewer 项目，合并到了 &lt;a href="https://github.com/catapult-project/catapult/blob/master/tracing/README.md"target="_blank" rel="external nofollow noopener noreferrer">catapult&lt;/a> 中，工具 &lt;a href="https://ui.perfetto.dev/#!/"target="_blank" rel="external nofollow noopener noreferrer">perfetto&lt;/a> 打算替换 Trace Viewer。&lt;/p></description></item><item><title>ELF文件格式详解</title><link>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
  &lt;a href="#elf%e6%96%87%e4%bb%b6%e6%a0%bc%e5%bc%8f%e8%af%a6%e8%a7%a3" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -391,7 +386,7 @@
 &lt;li>每 SIMD wavefront 数量：10&lt;/li>
 &lt;li>Wavefront 大小：64&lt;/li>
 &lt;li>单 block 最大线程：1024 (即最多 16 个 wavefront)&lt;/li>
-&lt;li>SGPR(标量寄存器)：每组 16 个，编程时可用的 SGPR 为 0～101，共 102 个&lt;/li>
+&lt;li>SGPR(标量寄存器)：每组 16 个，编程可见范围：SGPR0 ~ SGPR101，共 102 个逻辑寄存器&lt;/li>
 &lt;li>VGPR(向量寄存器)：分配粒度为 4 个寄存器一组&lt;/li>
 &lt;/ul>
 &lt;h3 id="bw" class="heading-element">&lt;span>BW&lt;/span>
@@ -402,7 +397,12 @@
 &lt;li>CU 数：80&lt;/li>
 &lt;li>SE：8&lt;/li>
 &lt;/ul>
-&lt;p>峰值：$cu数 \times simds数\times频率\times数据布局\times2 /时钟周期$&lt;/p></description></item><item><title>汇编语言</title><link>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
+&lt;p>峰值：$cu数 \times simds数\times频率\times数据布局\times2 /时钟周期$&lt;/p></description></item><item><title>C++ 开发碎片笔记</title><link>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</link><pubDate>Wed, 08 Jan 2025 10:00:00 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-开发碎片笔记" class="heading-element">&lt;span>C++ 开发碎片笔记&lt;/span>
+ &lt;a href="#c-%e5%bc%80%e5%8f%91%e7%a2%8e%e7%89%87%e7%ac%94%e8%ae%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;blockquote>
+&lt;p>日常开发中常用的命令和技巧，持续更新中。&lt;/p></description></item><item><title>汇编语言</title><link>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
  &lt;a href="#%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -465,7 +465,7 @@
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 启动配置文件 .gdbinit，需要设置安全设置生效&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; ~/.config/gdb/gdbinit &lt;span class="s">&amp;lt;&amp;lt; &amp;#39;EOF&amp;#39;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">add-auto-load-safe-path /home/username/learn_object/learn_assembly/
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">add-auto-load-safe-path $ENV{HOME}/learn_object/learn_assembly/
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># .gdbinit&lt;/span>
@@ -563,8 +563,8 @@
  &lt;a href="#%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>创建型模式：单例模式，工厂方法模式，抽象工厂模式，建造者模式，原型模式&lt;/p></description></item><item><title>Linux系统编程</title><link>https://fengchen321.github.io/posts/computer/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</link><pubDate>Sun, 20 Aug 2023 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="linx系统编程" class="heading-element">&lt;span>Linx系统编程&lt;/span>
- &lt;a href="#linx%e7%b3%bb%e7%bb%9f%e7%bc%96%e7%a8%8b" class="heading-mark">
+&lt;/h2>&lt;p>创建型模式：单例模式，工厂方法模式，抽象工厂模式，建造者模式，原型模式&lt;/p></description></item><item><title>Linux系统编程</title><link>https://fengchen321.github.io/posts/computer/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</link><pubDate>Sun, 20 Aug 2023 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/linux%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A8%8B/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="linux系统编程" class="heading-element">&lt;span>Linux系统编程&lt;/span>
+ &lt;a href="#linux%e7%b3%bb%e7%bb%9f%e7%bc%96%e7%a8%8b" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;p>在 Linux 中，手册节号通常被分为以下 8 个部分：&lt;/p></description></item><item><title>SQLite</title><link>https://fengchen321.github.io/posts/computer/sqlite/</link><pubDate>Thu, 20 Jul 2023 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/sqlite/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="sqlite" class="heading-element">&lt;span>SQLite&lt;/span>
@@ -687,23 +687,23 @@
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: center">(xyz)&lt;/td>
- &lt;td>字符集，匹配与 xyz 完全相等的字符串.&lt;br />&amp;quot;`(c&lt;/td>
+ &lt;td>字符集，匹配与 xyz 完全相等的字符串.&lt;br /> &amp;ldquo;&lt;code>(c|p|g)ar&lt;/code>&amp;rdquo; =&amp;gt; The &lt;font color=blue>car&lt;/font> &lt;font color=blue>par&lt;/font>ked in the &lt;font color=blue>gar&lt;/font>age.&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: center">|&lt;/td>
- &lt;td>或运算符，匹配符号前或后的字符.&lt;br /> &amp;ldquo;`(T&lt;/td>
+ &lt;td>或运算符，匹配符号前或后的字符.&lt;br /> &amp;ldquo;&lt;code>(T|t)he|car&lt;/code>&amp;quot;=&amp;gt; &lt;font color=blue>The&lt;/font> &lt;font color=blue>car&lt;/font> parked in &lt;font color=blue>the&lt;/font> garage.&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: center">\&lt;/td>
- &lt;td>转义字符,用于匹配一些保留的字符 &lt;code>[ ] ( ) { } . * + ? ^ $ \ |&lt;/code>&lt;br />&amp;quot;`(f&lt;/td>
+ &lt;td>转义字符,用于匹配一些保留的字符 &lt;code>[ ] ( ) { } . * + ? ^ $ \ |&lt;/code>&lt;br />&amp;quot;&lt;code>(f|c|m)at\.?&lt;/code>&amp;quot;=&amp;gt; The &lt;font color=blue>fat&lt;/font> &lt;font color=blue>cat&lt;/font> sat on the &lt;font color=blue>mat.&lt;/font>&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: center">^&lt;/td>
- &lt;td>从开始行开始匹配&lt;br />`[T&lt;/td>
+ &lt;td>从开始行开始匹配&lt;br />&amp;quot;&lt;code>[T|t]he&lt;/code>&amp;rdquo; =&amp;gt; &lt;font color=blue>The&lt;/font> car is parked in &lt;font color=blue>the&lt;/font> garage.&lt;br />&amp;quot;&lt;code>^[T|t]he&lt;/code>&amp;quot; =&amp;gt; &lt;font color=blue>The&lt;/font> car is parked in thegarage.&lt;/td>
  &lt;/tr>
  &lt;tr>
  &lt;td style="text-align: center">$&lt;/td>
- &lt;td>从末端开始匹配&lt;br />&amp;quot;&lt;code>(at\.)&lt;/code>&amp;rdquo; =&amp;gt;The fat c&lt;font color=blue>at.&lt;/font> s&lt;font color=blue>at.&lt;/font> on the m&lt;font color=blue>at.&lt;/font>&lt;br />&amp;quot;&lt;code>(at\.$)&lt;/code>&amp;quot;=&amp;gt;The fat cat. sat. on the m&lt;font color=blue>at.&lt;/font>&lt;/td>
+ &lt;td>从末端开始匹配&lt;br />&amp;quot;&lt;code>(at.)&lt;/code>&amp;quot; =&amp;gt;The fat c&lt;font color=blue>at.&lt;/font> s&lt;font color=blue>at.&lt;/font> on the m&lt;font color=blue>at.&lt;/font>&lt;br />&amp;quot;&lt;code>(at.$)&lt;/code>&amp;quot;=&amp;gt;The fat cat. sat. on the m&lt;font color=blue>at.&lt;/font>&lt;/td>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>

@@ -21,7 +21,7 @@
 ## PyTorch 性能分析
 
 - **[PyTorch profiler](https://pytorch.org/blog/introducing-pytorch-profiler-the-new-and-improved-performance-tool/)**: PyTorch 官方性能剖析器，可视化计算与数据加载。
-  &gt; [Kineto](https://github.com/pytorch/kineto/): PyTorch profiler 的底层性能分析库
+  - [Kineto](https://github.com/pytorch/kineto/): PyTorch profiler 的底层性能分析库
 - **[PyTorch memory profiler](https://pytorch.org/blog/understanding-gpu-memory-1/)**: PyTorch GPU 显存分析工具，辅助 OOM 调试。
 
 ## HPC 性能分析
@@ -46,8 +46,8 @@
 - **[Omnitrace / rocprofiler-systems](https://github.com/ROCm/rocprofiler-systems)**: ROCm 全栈追踪器，支持 CPU/GPU 事件捕捉与分析。
 - **[Omniperf / rocprofiler-compute](https://github.com/ROCm/rocprofiler-compute)**: GPU 计算内核微架构剖析工具。
 - **[rocprofv3](https://github.com/ROCm/rocprofiler-sdk)**: 新一代低层性能分析接口，用于 GPU 计算应用的硬件级分析与追踪。
-  &gt; **[rocprof-compute-viewer](https://github.com/ROCm/rocprof-compute-viewer)**: ROCm 计算性能分析结果可视化工具。\
-  &gt; **[AQLprofile](https://github.com/ROCm/rocm-systems/tree/develop/projects/aqlprofile)**: Architected Queuing Language Profiling Library
+  - **[rocprof-compute-viewer](https://github.com/ROCm/rocprof-compute-viewer)**: ROCm 计算性能分析结果可视化工具。\
+  - **[AQLprofile](https://github.com/ROCm/rocm-systems/tree/develop/projects/aqlprofile)**: Architected Queuing Language Profiling Library
 - **[roc-optiq](https://github.com/ROCm/roc-optiq)**:ROCm Profiler 工具的可视化工具。
 - **[Deprecated: rocprofiler v1/v2](https://github.com/ROCm/rocprofiler)**: 旧版性能分析工具库。
 - **[Deprecated: roctracer / roctx](https://github.com/ROCm/roctracer)**: 旧版运行时追踪器

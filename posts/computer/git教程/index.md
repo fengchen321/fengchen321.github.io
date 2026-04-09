@@ -69,7 +69,7 @@
 
     &gt; `git restore -- xx` 将xx从暂存区恢复到工作区，其中 -- 可以不加
     
-3. `git checkout — XX`或`git restore XX`：将XX文件尚未加入暂存区的修改全部撤销
+3. `git checkout -- XX`或`git restore XX`：将XX文件尚未加入暂存区的修改全部撤销
 
 ### 代码回滚
 

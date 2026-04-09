@@ -28,9 +28,9 @@
  &lt;/a>
 &lt;/h2>&lt;ul>
 &lt;li>&lt;strong>&lt;a href="https://pytorch.org/blog/introducing-pytorch-profiler-the-new-and-improved-performance-tool/"target="_blank" rel="external nofollow noopener noreferrer">PyTorch profiler&lt;/a>&lt;/strong>: PyTorch 官方性能剖析器，可视化计算与数据加载。
-&lt;blockquote>
-&lt;p>&lt;a href="https://github.com/pytorch/kineto/"target="_blank" rel="external nofollow noopener noreferrer">Kineto&lt;/a>: PyTorch profiler 的底层性能分析库&lt;/p>
-&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/pytorch/kineto/"target="_blank" rel="external nofollow noopener noreferrer">Kineto&lt;/a>: PyTorch profiler 的底层性能分析库&lt;/li>
+&lt;/ul>
 &lt;/li>
 &lt;li>&lt;strong>&lt;a href="https://pytorch.org/blog/understanding-gpu-memory-1/"target="_blank" rel="external nofollow noopener noreferrer">PyTorch memory profiler&lt;/a>&lt;/strong>: PyTorch GPU 显存分析工具，辅助 OOM 调试。&lt;/li>
 &lt;/ul>
@@ -67,10 +67,10 @@
 &lt;li>&lt;strong>&lt;a href="https://github.com/ROCm/rocprofiler-systems"target="_blank" rel="external nofollow noopener noreferrer">Omnitrace / rocprofiler-systems&lt;/a>&lt;/strong>: ROCm 全栈追踪器，支持 CPU/GPU 事件捕捉与分析。&lt;/li>
 &lt;li>&lt;strong>&lt;a href="https://github.com/ROCm/rocprofiler-compute"target="_blank" rel="external nofollow noopener noreferrer">Omniperf / rocprofiler-compute&lt;/a>&lt;/strong>: GPU 计算内核微架构剖析工具。&lt;/li>
 &lt;li>&lt;strong>&lt;a href="https://github.com/ROCm/rocprofiler-sdk"target="_blank" rel="external nofollow noopener noreferrer">rocprofv3&lt;/a>&lt;/strong>: 新一代低层性能分析接口，用于 GPU 计算应用的硬件级分析与追踪。
-&lt;blockquote>
-&lt;p>&lt;strong>&lt;a href="https://github.com/ROCm/rocprof-compute-viewer"target="_blank" rel="external nofollow noopener noreferrer">rocprof-compute-viewer&lt;/a>&lt;/strong>: ROCm 计算性能分析结果可视化工具。&lt;br>
-&lt;strong>&lt;a href="https://github.com/ROCm/rocm-systems/tree/develop/projects/aqlprofile"target="_blank" rel="external nofollow noopener noreferrer">AQLprofile&lt;/a>&lt;/strong>: Architected Queuing Language Profiling Library&lt;/p>
-&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://github.com/ROCm/rocprof-compute-viewer"target="_blank" rel="external nofollow noopener noreferrer">rocprof-compute-viewer&lt;/a>&lt;/strong>: ROCm 计算性能分析结果可视化工具。\&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/ROCm/rocm-systems/tree/develop/projects/aqlprofile"target="_blank" rel="external nofollow noopener noreferrer">AQLprofile&lt;/a>&lt;/strong>: Architected Queuing Language Profiling Library&lt;/li>
+&lt;/ul>
 &lt;/li>
 &lt;li>&lt;strong>&lt;a href="https://github.com/ROCm/roc-optiq"target="_blank" rel="external nofollow noopener noreferrer">roc-optiq&lt;/a>&lt;/strong>:ROCm Profiler 工具的可视化工具。&lt;/li>
 &lt;li>&lt;strong>&lt;a href="https://github.com/ROCm/rocprofiler"target="_blank" rel="external nofollow noopener noreferrer">Deprecated: rocprofiler v1/v2&lt;/a>&lt;/strong>: 旧版性能分析工具库。&lt;/li>
@@ -339,7 +339,7 @@
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;permissions&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;allow&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="err">mcp__playwright&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;allow&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;mcp__playwright&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;deny&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[]&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
@@ -483,7 +483,7 @@
 &lt;/span>&lt;span class="lnt">17
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// .hooks/read_hook.js
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-js" data-lang="js">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// ./hooks/read_hook.js
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kr">async&lt;/span> &lt;span class="kd">function&lt;/span> &lt;span class="nx">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kr">const&lt;/span> &lt;span class="nx">chunks&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[];&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="kr">await&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kr">const&lt;/span> &lt;span class="nx">chunk&lt;/span> &lt;span class="k">of&lt;/span> &lt;span class="nx">process&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nx">stdin&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
@@ -770,8 +770,8 @@
  frameborder="0" 
  allowfullscreen>
 &lt;/iframe>
-&lt;h3 id="使用github-copliot订阅" class="heading-element">&lt;span>使用Github Copliot订阅&lt;/span>
- &lt;a href="#%e4%bd%bf%e7%94%a8github-copliot%e8%ae%a2%e9%98%85" class="heading-mark">
+&lt;h3 id="使用github-copilot订阅" class="heading-element">&lt;span>使用Github Copilot订阅&lt;/span>
+ &lt;a href="#%e4%bd%bf%e7%94%a8github-copilot%e8%ae%a2%e9%98%85" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
@@ -2279,424 +2279,7 @@ padding: 2px;">ebpf-tracing&lt;/div>
  &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview?hl=zh_CN&amp;amp;pli=1&amp;amp;tab=t.0"target="_blank" rel="external nofollow noopener noreferrer">Trace Event Format - Google 文档&lt;/a>&lt;/p></description></item><item><title>C++ 开发碎片笔记</title><link>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</link><pubDate>Thu, 08 Jan 2026 10:00:00 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-开发碎片笔记" class="heading-element">&lt;span>C++ 开发碎片笔记&lt;/span>
- &lt;a href="#c-%e5%bc%80%e5%8f%91%e7%a2%8e%e7%89%87%e7%ac%94%e8%ae%b0" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>日常开发中常用的命令和技巧，持续更新中。&lt;/p>
-&lt;/blockquote>
-&lt;hr>
-&lt;h2 id="编译相关" class="heading-element">&lt;span>编译相关&lt;/span>
- &lt;a href="#%e7%bc%96%e8%af%91%e7%9b%b8%e5%85%b3" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h3 id="常用编译选项" class="heading-element">&lt;span>常用编译选项&lt;/span>
- &lt;a href="#%e5%b8%b8%e7%94%a8%e7%bc%96%e8%af%91%e9%80%89%e9%a1%b9" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 输出 C++ 虚函数表（vtable）布局信息&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-Xclang -fdump-vtable-layouts
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 代码覆盖率插桩&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-fprofile-instr-generate -fcoverage-mapping&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="代码覆盖率完整流程clangllvm" class="heading-element">&lt;span>代码覆盖率完整流程（clang/llvm）&lt;/span>
- &lt;a href="#%e4%bb%a3%e7%a0%81%e8%a6%86%e7%9b%96%e7%8e%87%e5%ae%8c%e6%95%b4%e6%b5%81%e7%a8%8bclangllvm" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>rm *.profraw *.profdata -rf
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">SRC_FILES&lt;/span>&lt;span class="o">=&lt;/span>main.cpp
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>clang++
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LLVM_PROFDATA&lt;/span>&lt;span class="o">=&lt;/span>llvm-profdata
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LLVM_COV&lt;/span>&lt;span class="o">=&lt;/span>llvm-cov
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CXX_PROFILE_INSTR_FLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-fprofile-instr-generate -fcoverage-mapping&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$CXX&lt;/span> -O2 -std&lt;span class="o">=&lt;/span>c++17 &lt;span class="nv">$SRC_FILES&lt;/span> -o program_nomal -g &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> ./program_nomal
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$CXX&lt;/span> -O2 -std&lt;span class="o">=&lt;/span>c++17 &lt;span class="nv">$CXX_PROFILE_INSTR_FLAGS&lt;/span> &lt;span class="nv">$SRC_FILES&lt;/span> -o program_instr -g &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> ./program_instr
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;merge profraw&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$LLVM_PROFDATA&lt;/span> merge -output&lt;span class="o">=&lt;/span>program.profdata *.profraw
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;show testPattern count&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$LLVM_PROFDATA&lt;/span> show --function&lt;span class="o">=&lt;/span>testPattern --counts --detailed-summary program.profdata
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;show source&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$LLVM_COV&lt;/span> show ./program_instr -instr-profile&lt;span class="o">=&lt;/span>./program.profdata main.cpp
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="代码格式化批量检查" class="heading-element">&lt;span>代码格式化批量检查&lt;/span>
- &lt;a href="#%e4%bb%a3%e7%a0%81%e6%a0%bc%e5%bc%8f%e5%8c%96%e6%89%b9%e9%87%8f%e6%a3%80%e6%9f%a5" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;p>&lt;strong>&lt;a href="https://clang.llvm.org/docs/ClangFormatStyleOptions.html"target="_blank" rel="external nofollow noopener noreferrer">ClangFormat Style Options&lt;/a>&lt;/strong>：&lt;code>.clang-format&lt;/code> 所有配置项说明&lt;/p>
-&lt;p>&lt;a href="https://github.com/Sarcasm/run-clang-format/tree/master"target="_blank" rel="external nofollow noopener noreferrer">run-clang-format&lt;/a> — clang-format 的封装脚本，支持批量检查多个文件/目录，适合 CI 集成。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 递归检查 src 和 include 目录&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./run-clang-format.py -r src include
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 排除指定路径&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./run-clang-format.py -r --exclude src/third_party --exclude &lt;span class="s1">&amp;#39;*_test.cpp&amp;#39;&lt;/span> src include&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>也可以在 &lt;code>.clang-format-ignore&lt;/code> 文件中配置排除规则：&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># ignore third_party code from clang-format checks
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/third_party/*&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="asan-addresssanitizer" class="heading-element">&lt;span>ASAN (AddressSanitizer)&lt;/span>
- &lt;a href="#asan-addresssanitizer" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h3 id="cmake-启用-asan" class="heading-element">&lt;span>CMake 启用 ASAN&lt;/span>
- &lt;a href="#cmake-%e5%90%af%e7%94%a8-asan" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">-DADDRESS_SANITIZER&lt;span class="o">=&lt;/span>TRUE&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="运行时配置" class="heading-element">&lt;span>运行时配置&lt;/span>
- &lt;a href="#%e8%bf%90%e8%a1%8c%e6%97%b6%e9%85%8d%e7%bd%ae" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 搭配 LD_PRELOAD 使用（适用于 ROCm/HIP 环境）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LD_PRELOAD&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$ROCM_PATH&lt;/span>/llvm/lib/clang/17.0.0/lib/linux/libclang_rt.asan-x86_64.so::/opt/hyhal/lib/libhsa-runtime64.so &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="nv">ASAN_OPTIONS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">halt_on_error&lt;/span>&lt;span class="o">=&lt;/span>0,detect_odr_violation&lt;span class="o">=&lt;/span>0,log_path&lt;span class="o">=&lt;/span>./log_asan.txt &lt;span class="se">\
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> ./demo
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 完整 ASAN 选项示例&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">ASAN_OPTIONS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">halt_on_error&lt;/span>&lt;span class="o">=&lt;/span>0:detect_odr_violation&lt;span class="o">=&lt;/span>0:log_path&lt;span class="o">=&lt;/span>./log_asan.txt:verbosity&lt;span class="o">=&lt;/span>2:alloc_dealloc_mismatch&lt;span class="o">=&lt;/span>1:fast_unwind_on_malloc&lt;span class="o">=&lt;/span>0:malloc_context_size&lt;span class="o">=&lt;/span>&lt;span class="m">50&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="反汇编" class="heading-element">&lt;span>反汇编&lt;/span>
- &lt;a href="#%e5%8f%8d%e6%b1%87%e7%bc%96" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;span class="lnt">8
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 通用（默认 CPU 架构）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">llvm-objdump -d &amp;lt;binary&amp;gt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># DCU（海光 DCU）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">extractkernel -i &amp;lt;binary&amp;gt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># AMDGPU / DCCobjdump&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">llvm-amdgpu-objdump --inputs&lt;span class="o">=&lt;/span>&amp;lt;binary&amp;gt;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="构建与调试" class="heading-element">&lt;span>构建与调试&lt;/span>
- &lt;a href="#%e6%9e%84%e5%bb%ba%e4%b8%8e%e8%b0%83%e8%af%95" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看 make 详细构建指令&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make &lt;span class="nv">VERBOSE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 解析 C++ mangled 符号&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">c++filt &amp;lt;mangled_name&amp;gt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 显示动态符号表&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nm -D &amp;lt;library&amp;gt;
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看动态库依赖并搜索符号&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ldd demo &lt;span class="p">|&lt;/span> awk &lt;span class="s1">&amp;#39;{print $3}&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> grep -v &lt;span class="s1">&amp;#39;^$&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> xargs -I &lt;span class="o">{}&lt;/span> nm -A &lt;span class="o">{}&lt;/span> &lt;span class="p">|&lt;/span> grep _ZTINSt6thread6_StateE
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 动态链接器调试（查看符号解析过程）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LD_DEBUG&lt;/span>&lt;span class="o">=&lt;/span>libs,symbols,bindings ./demo 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="p">|&lt;/span> grep -A5 -B5 &lt;span class="s2">&amp;#34;func&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="性能分析" class="heading-element">&lt;span>性能分析&lt;/span>
- &lt;a href="#%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 统计指令数、周期数等基础硬件事件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">perf stat -e instructions,cycles ls
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 后台运行 ctest，日志带时间戳&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nohup ctest &amp;gt; ./ctest_&lt;span class="k">$(&lt;/span>date +%m%d%H%M&lt;span class="k">)&lt;/span>.log 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="p">&amp;amp;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="trace-可视化" class="heading-element">&lt;span>Trace 可视化&lt;/span>
- &lt;a href="#trace-%e5%8f%af%e8%a7%86%e5%8c%96" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://ui.perfetto.dev/"target="_blank" rel="external nofollow noopener noreferrer">Perfetto UI&lt;/a>&lt;/strong>&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview?hl=zh_CN&amp;amp;pli=1&amp;amp;tab=t.0"target="_blank" rel="external nofollow noopener noreferrer">Trace Event Format 文档&lt;/a>&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;p>导出 Google Doc 为 PDF：&lt;/p>
-&lt;ol>
-&lt;li>&lt;code>Ctrl + P&lt;/code> → 另存为 PDF&lt;/li>
-&lt;li>直接修改 URL 触发下载：
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 原始 URL（预览模式）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">https&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">docs&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">google&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">document&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="o">/&amp;lt;&lt;/span>&lt;span class="n">DOC_ID&lt;/span>&lt;span class="o">&amp;gt;/&lt;/span>&lt;span class="n">preview&lt;/span>&lt;span class="o">...&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 改为导出 URL&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">https&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">docs&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">google&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">document&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="o">/&amp;lt;&lt;/span>&lt;span class="n">DOC_ID&lt;/span>&lt;span class="o">&amp;gt;/&lt;/span>&lt;span class="k">export&lt;/span>&lt;span class="err">?&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">pdf&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2 id="系统诊断" class="heading-element">&lt;span>系统诊断&lt;/span>
- &lt;a href="#%e7%b3%bb%e7%bb%9f%e8%af%8a%e6%96%ad" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
-&lt;/span>&lt;span class="lnt">33
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看进程&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ps -ef &lt;span class="p">|&lt;/span> grep demo
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ps aux &lt;span class="p">|&lt;/span> grep demo
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 重定向标准错误到标准输出&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./program &amp;gt; log.txt 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 系统调用跟踪（输出到 vim）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">strace -f ./MatrixTranspose &lt;span class="p">|&amp;amp;&lt;/span> vim -
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看命名管道&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls -l /tmp/ &lt;span class="p">|&lt;/span> grep &lt;span class="s2">&amp;#34;^p&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看 PCI 设备（显卡等）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lspci &lt;span class="p">|&lt;/span> grep -i Display
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 乌镇平台（海光 DCU）驱动版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /sys/module/hydcu/version
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -qa &lt;span class="p">|&lt;/span> grep rock
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hy-smi --showdriverversion
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 昆山平台（AMD GPU）驱动版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /sys/module/amdgpu/version
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 解压 RPM 文件（不安装）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm2cpio package.rpm &lt;span class="p">|&lt;/span> cpio -idmv
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装 / 卸载 RPM 包&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -i package.rpm &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> rpm -e package_name
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看 RPM 包内的安装脚本&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -qp --scripts ./package.rpm
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 在指定目录中搜索包含某字符串的头文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">find /opt/hpc/software/mpi/hpcx/v2.11.0 -name &lt;span class="s2">&amp;#34;*.h&amp;#34;&lt;/span> -exec grep -il &lt;span class="s2">&amp;#34;MPI_SEND&amp;#34;&lt;/span> &lt;span class="o">{}&lt;/span> &lt;span class="se">\;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="文本处理" class="heading-element">&lt;span>文本处理&lt;/span>
- &lt;a href="#%e6%96%87%e6%9c%ac%e5%a4%84%e7%90%86" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;p>Windows 换行符为 &lt;code>\r\n&lt;/code>，在 Linux 下显示为 &lt;code>^M&lt;/code>，需转换为 Unix 格式 &lt;code>\n&lt;/code>。&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">dos2unix filename &lt;span class="c1"># 方法1：dos2unix 工具&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s2">&amp;#34;s/\r//&amp;#34;&lt;/span> filename &lt;span class="c1"># 方法2：sed 直接替换&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 方法3：vim 内执行 :set ff=unix 后 :wq&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 以十六进制查看文件原始字节（排查换行符、不可见字符等）&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hexdump -C ./simple&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;hr>
-&lt;h2 id="参考规范" class="heading-element">&lt;span>参考规范&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e8%a7%84%e8%8c%83" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://en.cppreference.com/w/cpp.html"target="_blank" rel="external nofollow noopener noreferrer">cppreference&lt;/a>&lt;/strong> — C++ 标准库与语言参考文档&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://lynnboy.github.io/CppCoreGuidelines-zh-CN/CppCoreGuidelines-zh-CN"target="_blank" rel="external nofollow noopener noreferrer">C++ Core Guidelines（中文）&lt;/a>&lt;/strong> — Bjarne Stroustrup 等人制定的 C++ 最佳实践&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://google.github.io/styleguide/cppguide.html"target="_blank" rel="external nofollow noopener noreferrer">Google C++ Style Guide&lt;/a>&lt;/strong> — Google 内部 C++ 编码规范&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="在线工具" class="heading-element">&lt;span>在线工具&lt;/span>
- &lt;a href="#%e5%9c%a8%e7%ba%bf%e5%b7%a5%e5%85%b7" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://godbolt.org/"target="_blank" rel="external nofollow noopener noreferrer">Compiler Explorer (Godbolt)&lt;/a>&lt;/strong> — 在线编译查看汇编输出，支持多编译器多语言&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://quick-bench.com/"target="_blank" rel="external nofollow noopener noreferrer">Quick Bench&lt;/a>&lt;/strong> — 在线 C++ 性能基准测试（基于 Google Benchmark）&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://cppinsights.io/"target="_blank" rel="external nofollow noopener noreferrer">CppInsights&lt;/a>&lt;/strong> — 展示编译器对 C++ 代码的实际展开（模板、lambda、range-for 等）&lt;/li>
-&lt;li>&lt;strong>&lt;a href="http://svr-pes20-cppmem.cl.cam.ac.uk/cppmem/"target="_blank" rel="external nofollow noopener noreferrer">CppMem&lt;/a>&lt;/strong> — 交互式 C/C++ 内存模型分析，用于理解多线程内存序行为&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="工具链与源码" class="heading-element">&lt;span>工具链与源码&lt;/span>
- &lt;a href="#%e5%b7%a5%e5%85%b7%e9%93%be%e4%b8%8e%e6%ba%90%e7%a0%81" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://gcc.gnu.org/"target="_blank" rel="external nofollow noopener noreferrer">GCC&lt;/a>&lt;/strong> — GNU 编译器集合&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://www.gnu.org/software/binutils/"target="_blank" rel="external nofollow noopener noreferrer">GNU Binutils&lt;/a>&lt;/strong> — 二进制工具集（ld、objdump、nm、readelf 等）&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://musl.libc.org/"target="_blank" rel="external nofollow noopener noreferrer">musl libc&lt;/a>&lt;/strong> — 轻量级 C 标准库，常用于静态链接场景&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://elixir.bootlin.com/linux/v6.13.7/source"target="_blank" rel="external nofollow noopener noreferrer">Linux 内核源码（Elixir）&lt;/a>&lt;/strong> — 带交叉引用的 Linux 内核源码浏览器&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2 id="学习资源" class="heading-element">&lt;span>学习资源&lt;/span>
- &lt;a href="#%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://jaso1024.com/mvidia/"target="_blank" rel="external nofollow noopener noreferrer">MVIDIA&lt;/a>&lt;/strong> — 在线可视化硬件基础课程&lt;/li>
-&lt;/ul>
-&lt;hr></description></item><item><title>ELF文件格式详解</title><link>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
+&lt;/h2>&lt;p>&lt;a href="https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview?hl=zh_CN&amp;amp;pli=1&amp;amp;tab=t.0"target="_blank" rel="external nofollow noopener noreferrer">Trace Event Format - Google 文档&lt;/a>&lt;/p></description></item><item><title>ELF文件格式详解</title><link>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 18 Dec 2025 10:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/elf%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="elf文件格式详解" class="heading-element">&lt;span>ELF文件格式详解&lt;/span>
  &lt;a href="#elf%e6%96%87%e4%bb%b6%e6%a0%bc%e5%bc%8f%e8%af%a6%e8%a7%a3" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -3038,7 +2621,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
  &lt;td>&lt;strong>重定位表&lt;/strong>&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td>SHT_DNYSYM&lt;/td>
+ &lt;td>SHT_DYNSYM&lt;/td>
  &lt;td>&lt;strong>动态链接的符号表&lt;/strong>&lt;/td>
  &lt;/tr>
  &lt;/tbody>
@@ -3178,8 +2761,8 @@ padding: 2px;">ELF 详细结构&lt;/div>
  &lt;/thead>
  &lt;tbody>
  &lt;tr>
- &lt;td>&lt;code>.rel.a_section&lt;/code>&lt;/td>
- &lt;td>节的重定位信息&lt;/td>
+ &lt;td>&lt;code>.rel.&amp;lt;section&amp;gt;&lt;/code> / &lt;code>.rela.&amp;lt;section&amp;gt;&lt;/code>&lt;/td>
+ &lt;td>重定位表（如 &lt;code>.rel.text&lt;/code>, &lt;code>.rela.plt&lt;/code>）&lt;/td>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
@@ -3836,7 +3419,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>函数格式：&lt;/p>
 &lt;blockquote>
 &lt;p>C/C++: &lt;code>int MPI_Comm_size(MPI_Comm comm, int *size);&lt;/code>&lt;/p>
-&lt;p>Fortran: &lt;code>call MPI_Comm_size(comm, size, ieror)&lt;/code>&lt;/p>
+&lt;p>Fortran: &lt;code>call MPI_Comm_size(comm, size, ierror)&lt;/code>&lt;/p>
 &lt;p>C++: &lt;code>int MPI::COMM::Get_size() const;&lt;/code>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="6个基本函数" class="heading-element">&lt;span>6个基本函数&lt;/span>
@@ -3846,19 +3429,19 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;/h2>&lt;p>&lt;code>MPI_Init(ierr)&lt;/code>: 初始化并行环境，通信域&lt;code>MPI_COMM_WORLD&lt;/code>形成&lt;/p>
 &lt;p>&lt;code>MPI_Finalize(ierr)&lt;/code>: 退出并行环境&lt;/p>
 &lt;p>&lt;code>MPI_Comm_size(comm, size, ierr)&lt;/code>: 返回进程数size&lt;/p>
-&lt;p>&lt;code>MPI_Comm_rank(comm, rank, iree)&lt;/code>: 返回进程编号rank， &lt;code>0~size-1&lt;/code>&lt;/p>
+&lt;p>&lt;code>MPI_Comm_rank(comm, rank, ierr)&lt;/code>: 返回进程编号rank， &lt;code>0~size-1&lt;/code>&lt;/p>
 &lt;p>&lt;code>MPI_Send(buf, count, datatype, dest, tag, comm, ierr)&lt;/code>: 消息发送&lt;/p>
 &lt;p>&lt;code>MPI_Recv(buf, count, datatype, source, tag, comm, status, ierr)&lt;/code>: 消息接收&lt;/p>
 &lt;blockquote>
 &lt;p>消息缓冲（MessageBuffer）：消息起始地址（&lt;code>buf&lt;/code>），数据个数（&lt;code>count&lt;/code>）， 消息类型（&lt;code> datatype&lt;/code>） 实际长度= datatype * count&lt;/p>
-&lt;p>消息信封（Message Envelop)：接收/发送进程号(&lt;code>dest/source&lt;/code>)，消息标签 0-32767（&lt;code>tag&lt;/code>），通信域（&lt;code>comm&lt;/code>）&lt;/p>
+&lt;p>消息信封(Message Envelop)：接收/发送进程号(&lt;code>dest/source&lt;/code>)，消息标签 0-32767（&lt;code>tag&lt;/code>），通信域（&lt;code>comm&lt;/code>）&lt;/p>
 &lt;p>&lt;code>status&lt;/code>：消息接收的状态&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="其他函数" class="heading-element">&lt;span>其他函数&lt;/span>
  &lt;a href="#%e5%85%b6%e4%bb%96%e5%87%bd%e6%95%b0" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>&lt;code>MPI_Abort(comm, errorcode, ireror)&lt;/code>: 出现特殊情况，需要中途停止MPI&lt;/p>
+&lt;/h2>&lt;p>&lt;code>MPI_Abort(comm, errorcode, ierror)&lt;/code>: 出现特殊情况，需要中途停止MPI&lt;/p>
 &lt;p>&lt;code>MPI_Get_count(status, datatype, count, ierror)&lt;/code>: 接收数据的数量&lt;/p>
 &lt;p>&lt;code>MPI_Pack_size(incount, datatype, comm, size, ierror)&lt;/code>: 确定要打包的数据占用空间大小&lt;/p>
 &lt;p>&lt;code>MPI_Pack(inbuf, incount, datatype, outbuf, outsize, position, comm, ierror)&lt;/code>:将数据打包，由&amp;lt;inbuf, incount, datatype&amp;gt;指定的消息到&amp;lt;outbuf, outsize&amp;gt;指定的空间&lt;/p>
@@ -3868,9 +3451,9 @@ padding: 2px;">ELF 详细结构&lt;/div>
  &lt;/a>
 &lt;/h2>&lt;p>通信模式&lt;/p>
 &lt;blockquote>
-&lt;p>同步发送(Synchrounous Send)&lt;/p>
+&lt;p>同步发送(Synchronous Send)&lt;/p>
 &lt;p>缓冲发送(Buffered Send)&lt;/p>
-&lt;p>标准发送(Standed Send)&lt;/p>
+&lt;p>标准发送(Standard Send)&lt;/p>
 &lt;p>就绪发送(Ready Send)&lt;/p>
 &lt;/blockquote>
 &lt;blockquote>
@@ -4364,7 +3947,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;li>每 SIMD wavefront 数量：10&lt;/li>
 &lt;li>Wavefront 大小：64&lt;/li>
 &lt;li>单 block 最大线程：1024 (即最多 16 个 wavefront)&lt;/li>
-&lt;li>SGPR(标量寄存器)：每组 16 个，编程时可用的 SGPR 为 0～101，共 102 个&lt;/li>
+&lt;li>SGPR(标量寄存器)：每组 16 个，编程可见范围：SGPR0 ~ SGPR101，共 102 个逻辑寄存器&lt;/li>
 &lt;li>VGPR(向量寄存器)：分配粒度为 4 个寄存器一组&lt;/li>
 &lt;/ul>
 &lt;h3 id="bw" class="heading-element">&lt;span>BW&lt;/span>
@@ -4416,21 +3999,21 @@ padding: 2px;">ELF 详细结构&lt;/div>
  &lt;/a>
 &lt;/h2>&lt;p>&lt;strong>算力计算&lt;/strong>：3060Ti：&lt;/p>
 &lt;p>$\begin{aligned}
-\text{FLOPS} &amp;amp;= \text{GPU核数} \times \text{单核主频} \times \text{GPU单个周期浮点计算能力} \
-&amp;amp;= \text{Shading Units} \times \text{Boost Clock} \times 2 \
-&amp;amp;= 4864 \times 1665\text{MHz} \times 2 \quad \text{(乘加2次操作)} \
-&amp;amp;= 16.20\ \text{TFLOPS}
+\text{FLOPS} &amp;= \text{GPU核数} \times \text{单核主频} \times \text{GPU单个周期浮点计算能力} \\
+&amp;= \text{Shading Units} \times \text{Boost Clock} \times 2 \\
+&amp;= 4864 \times 1665\text{MHz} \times 2 \quad \text{(乘加2次操作)} \\
+&amp;= 16.20\ \text{TFLOPS}
 \end{aligned}$&lt;/p>
 &lt;p>&lt;strong>线程束分化&lt;/strong>：同 warp / wavefront 内执行不同分支 → 分支边界尽量对齐 warp 大小。&lt;/p>
 &lt;p>&lt;strong>指令延迟&lt;/strong>：在指令发出和完成之间的时钟周期&lt;/p>
 &lt;p>&lt;strong>带宽&lt;/strong>：理论峰值，用来描述单位时间内最大可能的数据传输量, 1字节为 8 比特,GDDR6的prefetch是16n，不知道为啥乘8，还是直接用有效传输速率计算吧。&lt;/p>
 &lt;p>$\begin{aligned}
-\text{bandwidth} &amp;amp;= \text{内存频率} \times \text{Prefetch} \times \text{内存位宽} / 8\
-&amp;amp;= \text{有效数据传输速率} \times \text{内存位宽} / 8 \
-&amp;amp;= 14\text{Gbps} \times 256\text{bit} / 8 \
-&amp;amp;= \text{Memory Clock} \times 8 \times \text{Memory Bus} /8 \
-&amp;amp;= 1750\text{MHz} \times 4 \times 2 \times 256\text{bit} / 8 \
-&amp;amp;= 448\ \text{GB/s}
+\text{bandwidth} &amp;= \text{内存频率} \times \text{Prefetch} \times \text{内存位宽} / 8\\
+&amp;= \text{有效数据传输速率} \times \text{内存位宽} / 8 \\
+&amp;= 14\text{Gbps} \times 256\text{bit} / 8 \\
+&amp;= \text{Memory Clock} \times 8 \times \text{Memory Bus} /8 \\
+&amp;= 1750\text{MHz} \times 4 \times 2 \times 256\text{bit} / 8 \\
+&amp;= 448\ \text{GB/s}
 \end{aligned}$&lt;/p>
 &lt;p>&lt;strong>吞吐量&lt;/strong>：已达到的值，用来描述单位时间内任何形式的信息或操作的执行速度，例如，每个周期完成多少个指令。&lt;/p>
 &lt;p>估算隐藏延迟所需要的活跃线程束的数量：所需线程束数量＝延迟×吞吐量&lt;/p>
@@ -4475,7 +4058,467 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;li>&lt;a href="https://rocmdocs.amd.com/projects/HIP/en/latest/understand/hardware_implementation.html"target="_blank" rel="external nofollow noopener noreferrer">AMD Hardware Implementation&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://www.nvidia.com/content/PDF/fermi_white_papers/NVIDIA_Fermi_Compute_Architecture_Whitepaper.pdf"target="_blank" rel="external nofollow noopener noreferrer">Fermi Whitepaper&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://modal.com/gpu-glossary"target="_blank" rel="external nofollow noopener noreferrer">GPU Glossary&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>汇编语言</title><link>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
+&lt;/ul></description></item><item><title>C++ 开发碎片笔记</title><link>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</link><pubDate>Wed, 08 Jan 2025 10:00:00 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%BC%80%E5%8F%91%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-开发碎片笔记" class="heading-element">&lt;span>C++ 开发碎片笔记&lt;/span>
+ &lt;a href="#c-%e5%bc%80%e5%8f%91%e7%a2%8e%e7%89%87%e7%ac%94%e8%ae%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;blockquote>
+&lt;p>日常开发中常用的命令和技巧，持续更新中。&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="编译相关" class="heading-element">&lt;span>编译相关&lt;/span>
+ &lt;a href="#%e7%bc%96%e8%af%91%e7%9b%b8%e5%85%b3" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="常用编译选项" class="heading-element">&lt;span>常用编译选项&lt;/span>
+ &lt;a href="#%e5%b8%b8%e7%94%a8%e7%bc%96%e8%af%91%e9%80%89%e9%a1%b9" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 输出 C++ 虚函数表（vtable）布局信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-Xclang -fdump-vtable-layouts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 代码覆盖率插桩&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-fprofile-instr-generate -fcoverage-mapping&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="代码覆盖率完整流程clangllvm" class="heading-element">&lt;span>代码覆盖率完整流程（clang/llvm）&lt;/span>
+ &lt;a href="#%e4%bb%a3%e7%a0%81%e8%a6%86%e7%9b%96%e7%8e%87%e5%ae%8c%e6%95%b4%e6%b5%81%e7%a8%8bclangllvm" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>rm *.profraw *.profdata -rf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">SRC_FILES&lt;/span>&lt;span class="o">=&lt;/span>main.cpp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CXX&lt;/span>&lt;span class="o">=&lt;/span>clang++
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LLVM_PROFDATA&lt;/span>&lt;span class="o">=&lt;/span>llvm-profdata
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LLVM_COV&lt;/span>&lt;span class="o">=&lt;/span>llvm-cov
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">CXX_PROFILE_INSTR_FLAGS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;-fprofile-instr-generate -fcoverage-mapping&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$CXX&lt;/span> -O2 -std&lt;span class="o">=&lt;/span>c++17 &lt;span class="nv">$SRC_FILES&lt;/span> -o program_nomal -g &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> ./program_nomal
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$CXX&lt;/span> -O2 -std&lt;span class="o">=&lt;/span>c++17 &lt;span class="nv">$CXX_PROFILE_INSTR_FLAGS&lt;/span> &lt;span class="nv">$SRC_FILES&lt;/span> -o program_instr -g &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> ./program_instr
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;merge profraw&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$LLVM_PROFDATA&lt;/span> merge -output&lt;span class="o">=&lt;/span>program.profdata *.profraw
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;show testPattern count&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$LLVM_PROFDATA&lt;/span> show --function&lt;span class="o">=&lt;/span>testPattern --counts --detailed-summary program.profdata
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;show source&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">$LLVM_COV&lt;/span> show ./program_instr -instr-profile&lt;span class="o">=&lt;/span>./program.profdata main.cpp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;-------------------------------------------------------&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="代码格式化批量检查" class="heading-element">&lt;span>代码格式化批量检查&lt;/span>
+ &lt;a href="#%e4%bb%a3%e7%a0%81%e6%a0%bc%e5%bc%8f%e5%8c%96%e6%89%b9%e9%87%8f%e6%a3%80%e6%9f%a5" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;strong>&lt;a href="https://clang.llvm.org/docs/ClangFormatStyleOptions.html"target="_blank" rel="external nofollow noopener noreferrer">ClangFormat Style Options&lt;/a>&lt;/strong>：&lt;code>.clang-format&lt;/code> 所有配置项说明&lt;/p>
+&lt;p>&lt;a href="https://github.com/Sarcasm/run-clang-format/tree/master"target="_blank" rel="external nofollow noopener noreferrer">run-clang-format&lt;/a> — clang-format 的封装脚本，支持批量检查多个文件/目录，适合 CI 集成。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 递归检查 src 和 include 目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./run-clang-format.py -r src include
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 排除指定路径&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./run-clang-format.py -r --exclude src/third_party --exclude &lt;span class="s1">&amp;#39;*_test.cpp&amp;#39;&lt;/span> src include&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>也可以在 &lt;code>.clang-format-ignore&lt;/code> 文件中配置排除规则：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-fallback" data-lang="fallback">&lt;span class="line">&lt;span class="cl"># ignore third_party code from clang-format checks
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">src/third_party/*&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="asan-addresssanitizer" class="heading-element">&lt;span>ASAN (AddressSanitizer)&lt;/span>
+ &lt;a href="#asan-addresssanitizer" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="cmake-启用-asan" class="heading-element">&lt;span>CMake 启用 ASAN&lt;/span>
+ &lt;a href="#cmake-%e5%90%af%e7%94%a8-asan" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">-DADDRESS_SANITIZER&lt;span class="o">=&lt;/span>TRUE&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="运行时配置" class="heading-element">&lt;span>运行时配置&lt;/span>
+ &lt;a href="#%e8%bf%90%e8%a1%8c%e6%97%b6%e9%85%8d%e7%bd%ae" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 搭配 LD_PRELOAD 使用（适用于 ROCm/HIP 环境）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LD_PRELOAD&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$ROCM_PATH&lt;/span>/llvm/lib/clang/17.0.0/lib/linux/libclang_rt.asan-x86_64.so::/opt/hyhal/lib/libhsa-runtime64.so &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="nv">ASAN_OPTIONS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">halt_on_error&lt;/span>&lt;span class="o">=&lt;/span>0,detect_odr_violation&lt;span class="o">=&lt;/span>0,log_path&lt;span class="o">=&lt;/span>./log_asan.txt &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> ./demo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 完整 ASAN 选项示例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">ASAN_OPTIONS&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">halt_on_error&lt;/span>&lt;span class="o">=&lt;/span>0:detect_odr_violation&lt;span class="o">=&lt;/span>0:log_path&lt;span class="o">=&lt;/span>./log_asan.txt:verbosity&lt;span class="o">=&lt;/span>2:alloc_dealloc_mismatch&lt;span class="o">=&lt;/span>1:fast_unwind_on_malloc&lt;span class="o">=&lt;/span>0:malloc_context_size&lt;span class="o">=&lt;/span>&lt;span class="m">50&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="反汇编" class="heading-element">&lt;span>反汇编&lt;/span>
+ &lt;a href="#%e5%8f%8d%e6%b1%87%e7%bc%96" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 通用（默认 CPU 架构）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">llvm-objdump -d &amp;lt;binary&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># DCU（海光 DCU）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">extractkernel -i &amp;lt;binary&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># AMDGPU / DCCobjdump&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">llvm-amdgpu-objdump --inputs&lt;span class="o">=&lt;/span>&amp;lt;binary&amp;gt;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="构建与调试" class="heading-element">&lt;span>构建与调试&lt;/span>
+ &lt;a href="#%e6%9e%84%e5%bb%ba%e4%b8%8e%e8%b0%83%e8%af%95" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看 make 详细构建指令&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">make &lt;span class="nv">VERBOSE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 解析 C++ mangled 符号&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">c++filt &amp;lt;mangled_name&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 显示动态符号表&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nm -D &amp;lt;library&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看动态库依赖并搜索符号&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ldd demo &lt;span class="p">|&lt;/span> awk &lt;span class="s1">&amp;#39;{print $3}&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> grep -v &lt;span class="s1">&amp;#39;^$&amp;#39;&lt;/span> &lt;span class="p">|&lt;/span> xargs -I &lt;span class="o">{}&lt;/span> nm -A &lt;span class="o">{}&lt;/span> &lt;span class="p">|&lt;/span> grep _ZTINSt6thread6_StateE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 动态链接器调试（查看符号解析过程）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LD_DEBUG&lt;/span>&lt;span class="o">=&lt;/span>libs,symbols,bindings ./demo 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="p">|&lt;/span> grep -A5 -B5 &lt;span class="s2">&amp;#34;func&amp;#34;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="性能分析" class="heading-element">&lt;span>性能分析&lt;/span>
+ &lt;a href="#%e6%80%a7%e8%83%bd%e5%88%86%e6%9e%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 统计指令数、周期数等基础硬件事件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">perf stat -e instructions,cycles ls
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 后台运行 ctest，日志带时间戳&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">nohup ctest &amp;gt; ./ctest_&lt;span class="k">$(&lt;/span>date +%m%d%H%M&lt;span class="k">)&lt;/span>.log 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="p">&amp;amp;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="trace-可视化" class="heading-element">&lt;span>Trace 可视化&lt;/span>
+ &lt;a href="#trace-%e5%8f%af%e8%a7%86%e5%8c%96" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://ui.perfetto.dev/"target="_blank" rel="external nofollow noopener noreferrer">Perfetto UI&lt;/a>&lt;/strong>&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/preview?hl=zh_CN&amp;amp;pli=1&amp;amp;tab=t.0"target="_blank" rel="external nofollow noopener noreferrer">Trace Event Format 文档&lt;/a>&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;p>导出 Google Doc 为 PDF：&lt;/p>
+&lt;ol>
+&lt;li>&lt;code>Ctrl + P&lt;/code> → 另存为 PDF&lt;/li>
+&lt;li>直接修改 URL 触发下载：
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 原始 URL（预览模式）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">https&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">docs&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">google&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">document&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="o">/&amp;lt;&lt;/span>&lt;span class="n">DOC_ID&lt;/span>&lt;span class="o">&amp;gt;/&lt;/span>&lt;span class="n">preview&lt;/span>&lt;span class="o">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 改为导出 URL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">https&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="o">//&lt;/span>&lt;span class="n">docs&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">google&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">com&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">document&lt;/span>&lt;span class="o">/&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="o">/&amp;lt;&lt;/span>&lt;span class="n">DOC_ID&lt;/span>&lt;span class="o">&amp;gt;/&lt;/span>&lt;span class="k">export&lt;/span>&lt;span class="err">?&lt;/span>&lt;span class="n">format&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">pdf&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2 id="系统诊断" class="heading-element">&lt;span>系统诊断&lt;/span>
+ &lt;a href="#%e7%b3%bb%e7%bb%9f%e8%af%8a%e6%96%ad" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ps -ef &lt;span class="p">|&lt;/span> grep demo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ps aux &lt;span class="p">|&lt;/span> grep demo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 重定向标准错误到标准输出&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./program &amp;gt; log.txt 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 系统调用跟踪（输出到 vim）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">strace -f ./MatrixTranspose &lt;span class="p">|&amp;amp;&lt;/span> vim -
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># `|&amp;amp;` 等价于 `2&amp;gt;&amp;amp;1 |`&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看命名管道&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ls -l /tmp/ &lt;span class="p">|&lt;/span> grep &lt;span class="s2">&amp;#34;^p&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看 PCI 设备（显卡等）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lspci &lt;span class="p">|&lt;/span> grep -i Display
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 乌镇平台（海光 DCU）驱动版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /sys/module/hydcu/version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -qa &lt;span class="p">|&lt;/span> grep rock
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hy-smi --showdriverversion
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 昆山平台（AMD GPU）驱动版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /sys/module/amdgpu/version
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 解压 RPM 文件（不安装）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm2cpio package.rpm &lt;span class="p">|&lt;/span> cpio -idmv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装 / 卸载 RPM 包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -i package.rpm &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> rpm -e package_name
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看 RPM 包内的安装脚本&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rpm -qp --scripts ./package.rpm
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 在指定目录中搜索包含某字符串的头文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">find /opt/hpc/software/mpi/hpcx/v2.11.0 -name &lt;span class="s2">&amp;#34;*.h&amp;#34;&lt;/span> -exec grep -il &lt;span class="s2">&amp;#34;MPI_SEND&amp;#34;&lt;/span> &lt;span class="o">{}&lt;/span> &lt;span class="se">\;&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="进程与文件描述符" class="heading-element">&lt;span>进程与文件描述符&lt;/span>
+ &lt;a href="#%e8%bf%9b%e7%a8%8b%e4%b8%8e%e6%96%87%e4%bb%b6%e6%8f%8f%e8%bf%b0%e7%ac%a6" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># lsof - List Open Files，查看进程打开的所有文件（包括文件、管道、socket 等）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 常用选项：&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -p &amp;lt;pid&amp;gt; 查看指定进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -c &amp;lt;name&amp;gt; 查看指定程序名的进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -u &amp;lt;user&amp;gt; 查看指定用户的进程&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -i 查看网络相关的文件描述符&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 打开该 .so 文件的进程数&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lsof &amp;lt;library&amp;gt;.so &lt;span class="p">|&lt;/span> wc -l
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看进程内存映射&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat /proc/&amp;lt;pid&amp;gt;/maps
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 查看进程 AUXV（内核传递给程序的辅助向量）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LD_SHOW_AUXV&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> ./demo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 输出包括：AT_PHDR (程序头表地址), AT_ENTRY (入口点), AT_PAGESZ (页大小) 等&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="文本处理" class="heading-element">&lt;span>文本处理&lt;/span>
+ &lt;a href="#%e6%96%87%e6%9c%ac%e5%a4%84%e7%90%86" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>Windows 换行符为 &lt;code>\r\n&lt;/code>，在 Linux 下显示为 &lt;code>^M&lt;/code>，需转换为 Unix 格式 &lt;code>\n&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">dos2unix filename &lt;span class="c1"># 方法1：dos2unix 工具&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sed -i &lt;span class="s2">&amp;#34;s/\r//&amp;#34;&lt;/span> filename &lt;span class="c1"># 方法2：sed 直接替换&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 方法3：vim 内执行 :set ff=unix 后 :wq&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 以十六进制查看文件原始字节（排查换行符、不可见字符等）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">hexdump -C ./simple&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;hr>
+&lt;h2 id="参考规范" class="heading-element">&lt;span>参考规范&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e8%a7%84%e8%8c%83" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://en.cppreference.com/w/cpp.html"target="_blank" rel="external nofollow noopener noreferrer">cppreference&lt;/a>&lt;/strong> — C++ 标准库与语言参考文档&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://lynnboy.github.io/CppCoreGuidelines-zh-CN/CppCoreGuidelines-zh-CN"target="_blank" rel="external nofollow noopener noreferrer">C++ Core Guidelines（中文）&lt;/a>&lt;/strong> — Bjarne Stroustrup 等人制定的 C++ 最佳实践&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://google.github.io/styleguide/cppguide.html"target="_blank" rel="external nofollow noopener noreferrer">Google C++ Style Guide&lt;/a>&lt;/strong> — Google 内部 C++ 编码规范&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="在线工具" class="heading-element">&lt;span>在线工具&lt;/span>
+ &lt;a href="#%e5%9c%a8%e7%ba%bf%e5%b7%a5%e5%85%b7" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://godbolt.org/"target="_blank" rel="external nofollow noopener noreferrer">Compiler Explorer (Godbolt)&lt;/a>&lt;/strong> — 在线编译查看汇编输出，支持多编译器多语言&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://quick-bench.com/"target="_blank" rel="external nofollow noopener noreferrer">Quick Bench&lt;/a>&lt;/strong> — 在线 C++ 性能基准测试（基于 Google Benchmark）&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://cppinsights.io/"target="_blank" rel="external nofollow noopener noreferrer">CppInsights&lt;/a>&lt;/strong> — 展示编译器对 C++ 代码的实际展开（模板、lambda、range-for 等）&lt;/li>
+&lt;li>&lt;strong>&lt;a href="http://svr-pes20-cppmem.cl.cam.ac.uk/cppmem/"target="_blank" rel="external nofollow noopener noreferrer">CppMem&lt;/a>&lt;/strong> — 交互式 C/C++ 内存模型分析，用于理解多线程内存序行为&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="工具链与源码" class="heading-element">&lt;span>工具链与源码&lt;/span>
+ &lt;a href="#%e5%b7%a5%e5%85%b7%e9%93%be%e4%b8%8e%e6%ba%90%e7%a0%81" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://gcc.gnu.org/"target="_blank" rel="external nofollow noopener noreferrer">GCC&lt;/a>&lt;/strong> — GNU 编译器集合&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://www.gnu.org/software/binutils/"target="_blank" rel="external nofollow noopener noreferrer">GNU Binutils&lt;/a>&lt;/strong> — 二进制工具集（ld、objdump、nm、readelf 等）&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://musl.libc.org/"target="_blank" rel="external nofollow noopener noreferrer">musl libc&lt;/a>&lt;/strong> — 轻量级 C 标准库，常用于静态链接场景&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://elixir.bootlin.com/linux/v6.13.7/source"target="_blank" rel="external nofollow noopener noreferrer">Linux 内核源码（Elixir）&lt;/a>&lt;/strong> — 带交叉引用的 Linux 内核源码浏览器&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2 id="学习资源" class="heading-element">&lt;span>学习资源&lt;/span>
+ &lt;a href="#%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://jaso1024.com/mvidia/"target="_blank" rel="external nofollow noopener noreferrer">MVIDIA&lt;/a>&lt;/strong> — 在线可视化硬件基础课程&lt;/li>
+&lt;/ul>
+&lt;hr></description></item><item><title>汇编语言</title><link>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</link><pubDate>Tue, 24 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/</guid><category domain="https://fengchen321.github.io/categories/system/">System</category><description>&lt;h2 id="汇编语言" class="heading-element">&lt;span>汇编语言&lt;/span>
  &lt;a href="#%e6%b1%87%e7%bc%96%e8%af%ad%e8%a8%80" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -4538,7 +4581,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 启动配置文件 .gdbinit，需要设置安全设置生效&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cat &amp;gt;&amp;gt; ~/.config/gdb/gdbinit &lt;span class="s">&amp;lt;&amp;lt; &amp;#39;EOF&amp;#39;
-&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">add-auto-load-safe-path /home/username/learn_object/learn_assembly/
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">add-auto-load-safe-path $ENV{HOME}/learn_object/learn_assembly/
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s">EOF&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># .gdbinit&lt;/span>

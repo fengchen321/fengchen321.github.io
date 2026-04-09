@@ -40,7 +40,7 @@ b class1::function_name # 指定函数
 b &#43;5  # 偏移量打断点，当前73行， &#43;5到78行
 b demo.cpp:123 if i==3 # b 断点 条件    满足条件命中断点
 b *0x11111 # 指令地址设置断点（调试程序没有符号信息时）使用p function_name获得函数地址0x11111,在断点然后r运行
-rb funtion_nam* # 正则表达式
+rb funtion_name* # 正则表达式
 tb 				# 临时断点
 ```
 
@@ -66,7 +66,7 @@ breakpoint： breakpoint break b  三种方式
 #### 启用/禁用断点
 
 ```shell
-enable/disabele 断点编号  	#启用/禁用断点，可以单一编号如`1`，也可以范围`2-7`
+enable/disable 断点编号  	#启用/禁用断点，可以单一编号如`1`，也可以范围`2-7`
 enable once 断点编号		# 启用一次后自动禁用
 enable delete 断点编号 		# 启用后删除
 enable count 数量N 断点编号 	# 启用断点并命中N次
@@ -136,7 +136,7 @@ list demo.cpp:123 # 查看指定文件指定行代码
 list function_name # 查看指定函数的源代码
 
 # 搜索源代码
-serach 正则表达式
+search 正则表达式
 forward-search 正则表达式  # 正向搜索
 reverse-search 正则表达式  # 反向搜索
 ```
@@ -206,11 +206,18 @@ whatis 变量或表达式	# 查看变量类型
 ```shell
 # x /选项 地址  查看各个变量内存信息
 const char* str = &#34;test&#34;;
-x str  # 默认16进制显示，内存存储内容和“test&#34;相反（小端存储） 0x74736574
-x /s str  # 直接显示内容 ”test&#34;
+x str  # 默认16进制显示，内存存储内容和&#34;test&#34;相反（小端存储） 0x74736574
+x /s str  # 直接显示内容 &#34;test&#34;
 x /d str  # 十进制显示
 x /4d str # 十进制显示，显示宽度为4
 # 变量非指针类型，如int， 先p &amp;value_name, 使用x查看
+```
+
+#### 进程内存映射
+
+```shell
+info proc mappings    # 查看进程虚拟地址空间映射（vmmap）
+# 输出包括：start addr, end addr, size, perms, offset, dev, inode, pathname
 ```
 
 #### 查看寄存器

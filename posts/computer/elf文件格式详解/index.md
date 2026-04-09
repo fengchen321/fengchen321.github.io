@@ -148,7 +148,7 @@ Section Header是一个`Elf_Shdr`结构体，描述每个节的详细信息：
 | SHT_NOTE | 提示性信息 |
 | SHT_NOBITS | 文件中无内容（如`.bss`） |
 | SHT_RELA / SHT_REL | **重定位表** |
-| SHT_DNYSYM | **动态链接的符号表** |
+| SHT_DYNSYM | **动态链接的符号表** |
 
 ### 节标志位（sh_flags）
 
@@ -190,7 +190,7 @@ Section Header是一个`Elf_Shdr`结构体，描述每个节的详细信息：
 
 | 节名 | 作用 |
 |------|------|
-| `.rel.a_section` | 节的重定位信息 |
+| `.rel.&lt;section&gt;` / `.rela.&lt;section&gt;` | 重定位表（如 `.rel.text`, `.rela.plt`）|
 
 ### 程序执行控制
 

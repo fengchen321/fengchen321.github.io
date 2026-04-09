@@ -1718,7 +1718,7 @@ classDiagram
 
 ```mermaid
 classDiagram
-	class Aggergate {
+	class Aggregate {
 		&#43;createIterator()
 	}
 	class ConcreteAggerate {
@@ -1736,10 +1736,10 @@ classDiagram
 		&#43;hasNext()
 		&#43;currentItem()
 	}
-	Aggergate &lt;|.. ConcreteAggerate : Realization
+	Aggregate &lt;|.. ConcreteAggregate : Realization
 	Iterator &lt;|.. ConcreteIterator : Realization
-	ConcreteAggerate ..&gt; ConcreteIterator : Dependency
-	ConcreteAggerate &lt;-- ConcreteIterator : Association
+	ConcreteAggregate ..&gt; ConcreteIterator : Dependency
+	ConcreteAggregate &lt;-- ConcreteIterator : Association
 	
 ```
 
@@ -1747,9 +1747,9 @@ classDiagram
 &gt;
 &gt; ConcreteIterator(具体迭代器)：完成对聚合对象的遍历，同时在具体迭代器中通过游标来记录在聚合对象中所处的当前位置
 &gt;
-&gt; Aggergate(抽象聚合类)：用于存储和管理元素对象；将迭代器类设计为聚合类的内部类（迭代器访问聚合对象数据）
+&gt; Aggregate(抽象聚合类)：用于存储和管理元素对象；将迭代器类设计为聚合类的内部类（迭代器访问聚合对象数据）
 &gt;
-&gt; ConcreteAggerate(具体聚合类)：返回一个与该具体聚合类对应的具体迭代器
+&gt; ConcreteAggregate(具体聚合类)：返回一个与该具体聚合类对应的具体迭代器
 
 #### 迭代器模式实现
 
@@ -2077,7 +2077,7 @@ classDiagram
 	}
 	class ConcreteObserver {
 		-observerState:
-		&#43;upodate()
+		&#43;update()
 	}
 	Subject --&gt; Observer : Association
 	Subject &lt;|-- ConcreteSubject : Inheritance

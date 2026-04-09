@@ -780,7 +780,7 @@ Xception与标准可分离卷积的区别
 
   &lt;center&gt;
   &lt;img 
-  src=&#34;/images/Image Classification/Inception.assets\Xception_与深度可分离卷积的区别.png&#34;&gt;
+  src=&#34;/images/Image Classification/Inception.assets/Xception_与深度可分离卷积的区别.png&#34;&gt;
   &lt;br&gt;
   &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
   display: inline-block;
@@ -800,7 +800,7 @@ SeperableConv包含$1\times1$卷积&#43;深度可分离卷积&#43;合并
 
 &lt;center&gt;
 &lt;img 
-src=&#34;/images/Image Classification/Inception.assets\Xception_extreme version.png&#34;&gt;
+src=&#34;/images/Image Classification/Inception.assets/Xception_extreme version.png&#34;&gt;
 &lt;br&gt;
 &lt;div style=&#34;color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -819,7 +819,6 @@ padding: 2px;&#34;&gt;extreme version of Inception module&lt;/div&gt;
 [Keras中的Xception预训练模型](https://github.com/keras-team/keras/blob/master/keras/applications/xception.py)
 
 [博客](https://medium.com/@zurister/depth-wise-convolution-and-depth-wise-separable-convolution-37346565d4ec)
-
 
 
 

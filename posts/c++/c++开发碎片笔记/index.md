@@ -172,6 +172,7 @@ ps aux | grep demo
 
 # 系统调用跟踪（输出到 vim）
 strace -f ./MatrixTranspose |&amp; vim -
+# `|&amp;` 等价于 `2&gt;&amp;1 |`
 
 # 查看命名管道
 ls -l /tmp/ | grep &#34;^p&#34;
@@ -196,6 +197,27 @@ rpm -qp --scripts ./package.rpm
 
 # 在指定目录中搜索包含某字符串的头文件
 find /opt/hpc/software/mpi/hpcx/v2.11.0 -name &#34;*.h&#34; -exec grep -il &#34;MPI_SEND&#34; {} \;
+```
+
+### 进程与文件描述符
+
+```shell
+# lsof - List Open Files，查看进程打开的所有文件（包括文件、管道、socket 等）
+# 常用选项：
+#   -p &lt;pid&gt;   查看指定进程
+#   -c &lt;name&gt; 查看指定程序名的进程
+#   -u &lt;user&gt; 查看指定用户的进程
+#   -i        查看网络相关的文件描述符
+
+# 打开该 .so 文件的进程数&#34;
+lsof &lt;library&gt;.so | wc -l
+
+# 查看进程内存映射
+cat /proc/&lt;pid&gt;/maps
+
+# 查看进程 AUXV（内核传递给程序的辅助向量）
+LD_SHOW_AUXV=1 ./demo
+# 输出包括：AT_PHDR (程序头表地址), AT_ENTRY (入口点), AT_PAGESZ (页大小) 等
 ```
 
 ### 文本处理

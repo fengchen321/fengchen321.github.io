@@ -659,7 +659,7 @@ private:
 条件不满足时(num 不等于1 时)`cvA.wait`就会挂起，等待线程B通知通知线程A唤醒，线程B采用的是`cvA.notifyone`
 
 ```cpp
-void ResonableImplemention() {
+void ResonableImplementation() {
     std::thread t1([](){
         while(true){
             std::unique_lock&lt;std::mutex&gt; lk(mtx_num);

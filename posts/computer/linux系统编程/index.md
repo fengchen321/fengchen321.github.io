@@ -1,6 +1,6 @@
 # Linux系统编程
 
-# Linx系统编程
+# Linux系统编程
 
 在 Linux 中，手册节号通常被分为以下 8 个部分：
 
@@ -1006,7 +1006,7 @@ int main(int argc, char *argv[]){
     printf(&#34;before fork pid = %d\n&#34;, getpid());
     pid_t pid;
     pid = fork();
-    if (oid == -1){
+    if (pid == -1){
         ERR_EXIT(&#34;fork fail&#34;);
     }
     if (pid &gt; 0){

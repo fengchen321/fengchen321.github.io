@@ -24,7 +24,7 @@ MPI (Message Passing Interface)
 
 &gt;C/C&#43;&#43;: `int MPI_Comm_size(MPI_Comm comm, int *size);`
 &gt;
-&gt;Fortran: `call MPI_Comm_size(comm, size, ieror)`
+&gt;Fortran: `call MPI_Comm_size(comm, size, ierror)`
 &gt;
 &gt;C&#43;&#43;: `int MPI::COMM::Get_size() const;`
 
@@ -36,7 +36,7 @@ MPI (Message Passing Interface)
 
 `MPI_Comm_size(comm, size, ierr)`: 返回进程数size
 
-`MPI_Comm_rank(comm, rank, iree)`: 返回进程编号rank， `0~size-1`
+`MPI_Comm_rank(comm, rank, ierr)`: 返回进程编号rank， `0~size-1`
 
 `MPI_Send(buf, count, datatype, dest, tag, comm, ierr)`: 消息发送
 
@@ -44,13 +44,13 @@ MPI (Message Passing Interface)
 
 &gt; 消息缓冲（MessageBuffer）：消息起始地址（`buf`），数据个数（`count`）， 消息类型（` datatype`） 实际长度= datatype \* count
 &gt;
-&gt; 消息信封（Message Envelop)：接收/发送进程号(`dest/source`)，消息标签 0-32767（`tag`），通信域（`comm`）
+&gt; 消息信封(Message Envelop)：接收/发送进程号(`dest/source`)，消息标签 0-32767（`tag`），通信域（`comm`）
 &gt;
 &gt; `status`：消息接收的状态
 
 ## 其他函数
 
-`MPI_Abort(comm, errorcode, ireror)`: 出现特殊情况，需要中途停止MPI
+`MPI_Abort(comm, errorcode, ierror)`: 出现特殊情况，需要中途停止MPI
 
 `MPI_Get_count(status, datatype, count, ierror)`: 接收数据的数量
 
@@ -62,11 +62,11 @@ MPI (Message Passing Interface)
 
 通信模式
 
-&gt; 同步发送(Synchrounous Send)
+&gt; 同步发送(Synchronous Send)
 &gt;
 &gt; 缓冲发送(Buffered Send)
 &gt;
-&gt; 标准发送(Standed Send)
+&gt; 标准发送(Standard Send)
 &gt;
 &gt; 就绪发送(Ready Send)
 

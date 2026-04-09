@@ -82,13 +82,13 @@ docker run -d -t -v /home/待映射路径:/data --privileged --device=/dev/kfd/ 
 
 5. `docker [container] restart CONTAINER`：重启容器
 
-6. `docker [contaienr] run -itd ubuntu:20.04`：创建并启动一个容器
+6. `docker [container] run -itd ubuntu:20.04`：创建并启动一个容器
 
-   &gt; `docker [contaienr] run -it ubuntu:20.04`：创建启动并进入一个容器
+   &gt; `docker [container] run -it ubuntu:20.04`：创建启动并进入一个容器
 
 7. `docker [container] attach CONTAINER`：进入容器
 
-   &gt; 先按`Ctrl&#43;p`，再按`Ctrl&#43;q`可以挂起容器
+   &gt; 先按`Ctrl&#43;p`，再按`Ctrl&#43;q`,容器继续运行，终端返回宿主机
 
 8. `docker [container] exec CONTAINER COMMAND`：在容器中执行命令
 
@@ -111,7 +111,7 @@ docker run -d -t -v /home/待映射路径:/data --privileged --device=/dev/kfd/ 
 
 15. `docker stats`：查看所有容器的统计信息，包括CPU、内存、存储、网络等信息
 
-15. `docker system df -v`：容器，镜像占用空间显示
+16. `docker system df -v`：容器，镜像占用空间显示
 
 17. `docker inspect CONTAINER` : 可视化查看容器配置信息
 
@@ -134,11 +134,11 @@ docker run -d -t -v /home/待映射路径:/data --privileged --device=/dev/kfd/ 
 
     
 
-16. `docker cp xxx CONTAINER:xxx` 或 `docker cp CONTAINER:xxx xxx`：在本地和容器间复制文件
+18. `docker cp xxx CONTAINER:xxx` 或 `docker cp CONTAINER:xxx xxx`：在本地和容器间复制文件
 
-17. `docker rename CONTAINER1 CONTAINER2`：重命名容器
+19. `docker rename CONTAINER1 CONTAINER2`：重命名容器
 
-19. `docker update CONTAINER --memory 500MB`：修改容器限制
+20. `docker update CONTAINER --memory 500MB`：修改容器限制
 
 
 

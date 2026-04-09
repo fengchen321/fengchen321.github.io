@@ -201,7 +201,7 @@ $$
 &gt; &gt;
 &gt; &gt; 和 V 矩阵做矩阵乘法时，没看到 t 时刻以后的内容，只看 t 时刻之前的 key - value pair。
 &gt; &gt;
-&gt; &gt; mask是个 0 1矩阵，和attention（scale QK）size一样，t 时刻以后 mask 为 0。
+&gt; &gt; mask是个01矩阵，和attention（scale QK）size一样，t 时刻以后 mask 为 0。
 
 ###### Multi-Head Attention
 

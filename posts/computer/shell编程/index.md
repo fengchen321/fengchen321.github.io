@@ -272,7 +272,7 @@ expr 命令用于求表达式的值，格式为：`expr 表达式`
 
 ```bash
 str=&#34;Hello World!&#34;
-echo `expr length $str`  # 等价于echo `expr length Hello World!`；中间有空格，length只船一个参数，一般加双引号字符串传入 syntax error:unexpecter argument &#39;World!&#39;.
+echo `expr length $str`  # 等价于echo `expr length Hello World!`；中间有空格，length只传一个参数，一般加双引号字符串传入 syntax error:unexpected argument &#39;World!&#39;.
 echo `expr length &#34;$str&#34;`  # ``不是单引号，表示执行该命令，输出12
 echo `expr index &#34;$str&#34; aWd`  # 输出7，下标从1开始
 echo `expr substr &#34;$str&#34; 2 3`  # 输出 ell
@@ -476,8 +476,8 @@ test ! -r filename
 &gt; []与test用法几乎一模一样，更常用于if语句中。[[]]是[]的加强版，支持的特性更多。
 
 ```bash
-acs@a1d78bab476e:~learn$ [2 -lt 3]
-acs@a1d78bab476e:~learn$ echoi $?
+acs@a1d78bab476e:~learn$ [ 2 -lt 3 ]
+acs@a1d78bab476e:~learn$ echo $?
 0
 acs@a1d78bab476e:~learn$ ls  # 列出当前目录下的所有文件
 output.txt  test.sh 
@@ -490,8 +490,8 @@ Not exist  # tesh.sh 文件不存在
 注意：
 
 &gt; []内的每一项都要用空格隔开
-&gt; []]内的变量，最好用双引号括起来
-&gt; []]内的常数，最好用单或双引号括起来
+&gt; []内的变量，最好用双引号括起来
+&gt; []内的常数，最好用单或双引号括起来
 
 ```bash
 name=&#34;acwing abc&#34;

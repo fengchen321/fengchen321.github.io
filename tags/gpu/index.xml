@@ -82,7 +82,7 @@
 &lt;li>每 SIMD wavefront 数量：10&lt;/li>
 &lt;li>Wavefront 大小：64&lt;/li>
 &lt;li>单 block 最大线程：1024 (即最多 16 个 wavefront)&lt;/li>
-&lt;li>SGPR(标量寄存器)：每组 16 个，编程时可用的 SGPR 为 0～101，共 102 个&lt;/li>
+&lt;li>SGPR(标量寄存器)：每组 16 个，编程可见范围：SGPR0 ~ SGPR101，共 102 个逻辑寄存器&lt;/li>
 &lt;li>VGPR(向量寄存器)：分配粒度为 4 个寄存器一组&lt;/li>
 &lt;/ul>
 &lt;h3 id="bw" class="heading-element">&lt;span>BW&lt;/span>

@@ -25,7 +25,7 @@ cmake --build build --target analyse
 ```shell
 # 启动配置文件 .gdbinit，需要设置安全设置生效
 cat &gt;&gt; ~/.config/gdb/gdbinit &lt;&lt; &#39;EOF&#39;
-add-auto-load-safe-path /home/username/learn_object/learn_assembly/
+add-auto-load-safe-path $ENV{HOME}/learn_object/learn_assembly/
 EOF
 
 # .gdbinit

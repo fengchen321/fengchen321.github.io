@@ -45,7 +45,7 @@ cmake_minimum_required(VERSION major.minor[.patch[.tweak]])
 &gt; 2. 强制设置将CMake行为匹配到对应版本
 &gt;
 &gt; ```cmake
-&gt; # cmake_minimum_required(VERSION 3.10)
+&gt; cmake_minimum_required(VERSION 3.10)
 &gt; ```
 &gt;
 &gt; &gt;  指定版本 3.10
@@ -162,12 +162,12 @@ set(varName value... CACHE type &#34;docstring&#34; [FORCE])
 布尔缓存变量使用`optio()`代替`set()`
 
 ```cmake
-option(optVar heilpstring [initialValue])  # initialValue默认OFF
-set(optVar initialValue CACHE BOOL hilpstring) # 等价option
+option(optVar helpstring [initialValue])  # initialValue默认OFF
+set(optVar initialValue CACHE BOOL helpstring) # 等价option
 ```
 
 #### 调试变量和诊断
-
+   
 ```cmake
 message([mode] msg1 [msg2]...)
 # 打印记录信息
@@ -186,7 +186,7 @@ string(FIND inputString subString outVar [REVERSE])
 ```
 
 &gt; ```cmake
-&gt; et(longStr abcdefabcdef)
+&gt; set(longStr abcdefabcdef)
 &gt; set(shortBit def)
 &gt; string(FIND ${longStr} ${shortBit} fwdIndex)
 &gt; string(FIND ${longStr} ${shortBit} revIndex REVERSE)
@@ -416,6 +416,8 @@ make规则：&#34;目标&#34;是必需的，不可省略；&#34;前置条件&#34
    CXXFLAGS = -c -Wall 
    # Wall 打开警告信息
    $(TARGET): $(OBJ)
+      # $@ = 目标文件 (hello)
+	   # $^ = 所有依赖文件 (main.o printhello.o factorial.o)
    	$(CXX) -o $@ $^
    
    %.o: %.cpp	
