@@ -661,14 +661,11 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Keep explanations conversational. For complex concepts, use multiple analogies.&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h5 id="agent-skill-design-patterns" class="heading-element">&lt;span>Agent Skill Design Patterns&lt;/span>
- &lt;a href="#agent-skill-design-patterns" class="heading-mark">
+&lt;/div>&lt;h5 id="agent-skill-design-patterns-httpsxcomgooglecloudtechstatus2033953579824758855" class="heading-element">&lt;span>&lt;a href="https://x.com/GoogleCloudTech/status/2033953579824758855"target="_blank" rel="external nofollow noopener noreferrer">Agent Skill design patterns &lt;/a>&lt;/span>
+ &lt;a href="#agent-skill-design-patterns-httpsxcomgooglecloudtechstatus2033953579824758855" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h5>&lt;blockquote>
-&lt;p>&lt;a href="https://x.com/GoogleCloudTech/status/2033953579824758855"target="_blank" rel="external nofollow noopener noreferrer">Google Cloud Tech：Agent Skill design patterns &lt;/a>&lt;/p>
-&lt;/blockquote>
-&lt;ol>
+&lt;/h5>&lt;ol>
 &lt;li>
 &lt;p>&lt;strong>工具包装器（Tool Wrapper）&lt;/strong>&lt;/p>
 &lt;ul>
@@ -718,6 +715,52 @@
 &lt;p>&lt;a href="https://code.claude.com/docs/en/sub-agents"target="_blank" rel="external nofollow noopener noreferrer">Create custom subagents&lt;/a> 每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限&lt;/p>
 &lt;/blockquote>
 &lt;p>&lt;code>.claude/agents/&lt;/code> 子代理，或者用claude自动生成。&lt;/p>
+&lt;h5 id="多智能体模式--multi-agent-coordination-patternshttpsclaudecomblogmulti-agent-coordination-patterns" class="heading-element">&lt;span>多智能体模式 &lt;a href="https://claude.com/blog/multi-agent-coordination-patterns"target="_blank" rel="external nofollow noopener noreferrer">multi-agent-coordination-patterns&lt;/a>&lt;/span>
+ &lt;a href="#%e5%a4%9a%e6%99%ba%e8%83%bd%e4%bd%93%e6%a8%a1%e5%bc%8f--multi-agent-coordination-patternshttpsclaudecomblogmulti-agent-coordination-patterns" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h5>&lt;ol>
+&lt;li>
+&lt;p>&lt;strong>生成器-验证器 (Generator-verifier)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：确保质量关键输出的准确性和一致性，适用于有明确评估标准的任务。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：生成器生产初稿，校验器依据显式的评判标准进行审核。若不合格，反馈回生成器修改，形成循环迭代，直至通过或达最大重试次数。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：代码生成与测试、合规性检查、事实核查、邮件起草等有明确对错标准的场景。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>编排器-子智能体 (Orchestrator-subagent)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：通过分层架构清晰分解复杂任务，由“队长”统筹全局并整合结果。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：编排器负责规划工作、委派任务并综合结果。子智能体负责负责具体职责并汇报，在独立上下文中执行单一、有边界的任务后返回结果，生命周期较短。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：任务分解边界清晰、子任务相互独立且耗时较短的场景（如代码审查、多维度报告生成）。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>智能体团队 (Agent teams)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：处理需要长时间运行、且能从持续积累的上下文中获益的&lt;strong>并行子任务&lt;/strong>。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：协调器派发任务后，工作智能体持续存活，在多个步骤中自主认领队列任务，不断积累领域经验，完成后上报结果。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：大型代码库迁移、独立服务重构等需要跨越多轮交互、且各单元互不干扰的长线任务。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>消息总线 (Message bus)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：在智能体生态系统不断扩张时，通过事件驱动解耦依赖，实现灵活、可扩展的响应式工作流。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：智能体向总线&lt;strong>发布&lt;/strong>事件或&lt;strong>订阅&lt;/strong>感兴趣的主题。路由器负责分发消息，新加入的智能体无需修改旧代码即可接入工作流。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：安全运维自动化、事件驱动的数据处理管道，以及需要动态路由而非硬编码顺序的场景。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>共享状态 (Shared-state)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>目的&lt;/strong>：消除中央协调瓶颈，让智能体通过公共存储直接协同发现与增量构建知识。&lt;/li>
+&lt;li>&lt;strong>机制&lt;/strong>：所有智能体直接读写同一个&lt;strong>持久化存储区&lt;/strong>（数据库/文档），彼此可见对方的实时发现，无需中介转发。&lt;/li>
+&lt;li>&lt;strong>适用&lt;/strong>：学术或市场研究综合、需要多方实时启发与成果交叉引用的协作任务，或要求无单点故障的系统。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
 &lt;h3 id="常用插件推荐" class="heading-element">&lt;span>常用插件推荐&lt;/span>
  &lt;a href="#%e5%b8%b8%e7%94%a8%e6%8f%92%e4%bb%b6%e6%8e%a8%e8%8d%90" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>

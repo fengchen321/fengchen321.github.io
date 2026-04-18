@@ -273,9 +273,7 @@ When explaining code, always include:
 Keep explanations conversational. For complex concepts, use multiple analogies.
 ```
 
-##### Agent Skill Design Patterns
-
-&gt; [Google Cloud Tech：Agent Skill design patterns ](https://x.com/GoogleCloudTech/status/2033953579824758855)
+#####   [Agent Skill design patterns ](https://x.com/GoogleCloudTech/status/2033953579824758855)
 
 1. **工具包装器（Tool Wrapper）**
    * **目的**：让 Agent 成为特定库的“即时专家”，按需加载上下文。
@@ -307,6 +305,33 @@ Keep explanations conversational. For complex concepts, use multiple analogies.
 &gt; [Create custom subagents](https://code.claude.com/docs/en/sub-agents) 每个子代理在自己的上下文窗口中运行，拥有自定义系统提示、特定工具访问和独立权限
 
 `.claude/agents/` 子代理，或者用claude自动生成。
+
+##### 多智能体模式  [multi-agent-coordination-patterns](https://claude.com/blog/multi-agent-coordination-patterns)
+
+1. **生成器-验证器 (Generator-verifier)**
+    - **目的**：确保质量关键输出的准确性和一致性，适用于有明确评估标准的任务。
+    - **机制**：生成器生产初稿，校验器依据显式的评判标准进行审核。若不合格，反馈回生成器修改，形成循环迭代，直至通过或达最大重试次数。
+    - **适用**：代码生成与测试、合规性检查、事实核查、邮件起草等有明确对错标准的场景。
+
+2. **编排器-子智能体 (Orchestrator-subagent)**
+    - **目的**：通过分层架构清晰分解复杂任务，由“队长”统筹全局并整合结果。
+    - **机制**：编排器负责规划工作、委派任务并综合结果。子智能体负责负责具体职责并汇报，在独立上下文中执行单一、有边界的任务后返回结果，生命周期较短。
+    - **适用**：任务分解边界清晰、子任务相互独立且耗时较短的场景（如代码审查、多维度报告生成）。
+
+3. **智能体团队 (Agent teams)**
+    - **目的**：处理需要长时间运行、且能从持续积累的上下文中获益的**并行子任务**。
+    - **机制**：协调器派发任务后，工作智能体持续存活，在多个步骤中自主认领队列任务，不断积累领域经验，完成后上报结果。
+    - **适用**：大型代码库迁移、独立服务重构等需要跨越多轮交互、且各单元互不干扰的长线任务。
+
+4. **消息总线 (Message bus)**
+    - **目的**：在智能体生态系统不断扩张时，通过事件驱动解耦依赖，实现灵活、可扩展的响应式工作流。
+    - **机制**：智能体向总线**发布**事件或**订阅**感兴趣的主题。路由器负责分发消息，新加入的智能体无需修改旧代码即可接入工作流。
+    - **适用**：安全运维自动化、事件驱动的数据处理管道，以及需要动态路由而非硬编码顺序的场景。
+
+5. **共享状态 (Shared-state)**
+    - **目的**：消除中央协调瓶颈，让智能体通过公共存储直接协同发现与增量构建知识。
+    - **机制**：所有智能体直接读写同一个**持久化存储区**（数据库/文档），彼此可见对方的实时发现，无需中介转发。
+    - **适用**：学术或市场研究综合、需要多方实时启发与成果交叉引用的协作任务，或要求无单点故障的系统。   
 
 ### 常用插件推荐
 
