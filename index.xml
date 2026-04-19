@@ -274,14 +274,20 @@
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;code>#&lt;/code> 开头：进入记忆模式，可以让 Claude 更新 CLAUDE.md
-&lt;code>@&lt;/code> 提及文件：在记忆模式下也能使用 @ 提及具体文件&lt;/p>
+&lt;p>&lt;code>#&lt;/code> 开头：进入记忆模式，可以让 Claude 更新 CLAUDE.md&lt;/p>
+&lt;p>&lt;code>@&lt;/code> 提及文件：在记忆模式下也能使用 @ 提及具体文件&lt;/p>
 &lt;p>&lt;code>ctrl+v&lt;/code> ：粘贴图片进行提问&lt;/p>
 &lt;p>两次 &lt;code>Shift+Tab&lt;/code> 或者 &lt;code>/plan&lt;/code>：进入计划模式，阅读更多文件并进行详细计划&lt;/p>
 &lt;p>思考模式：提示词中让他多思考就行或者在提示词里加上 &lt;code>ultrathink:&lt;/code>&lt;/p>
 &lt;p>git助手： 直接提交就行&lt;/p>
 &lt;p>&lt;code>/commit&lt;/code>：智能生成提交信息并提交代码&lt;/p>
 &lt;p>&lt;code>!command&lt;/code>：执行命令，例如:&lt;code>!ls&lt;/code>&lt;/p>
+&lt;p>&lt;code>/loop&lt;/code>: 让claude重复执行指令&lt;/p>
+&lt;p>&lt;code>ctrl + g&lt;/code>：在编辑器中打开计划，编辑后保存，claude会继续执行计划&lt;/p>
+&lt;p>&lt;code>ctrl + o&lt;/code>: 打开详细的操作历史记录&lt;/p>
+&lt;p>&lt;code>ctrl + s&lt;/code>: 将当前未完成输入暂存，方便后续使用，避免删改焦虑&lt;/p>
+&lt;p>&lt;code>claude -w worktree_name&lt;/code>: 使用工作树(worktree)功能创建新工作区，后续可以进行合并主分支比如：mege back to main&lt;/p>
+&lt;p>&lt;code>claude 提示词 -p&lt;/code>: 直接在命令行输入提示词，无需进入TUI，适合脚本集成和后台自动化&lt;/p>
 &lt;h4 id="管理上下文" class="heading-element">&lt;span>管理上下文&lt;/span>
  &lt;a href="#%e7%ae%a1%e7%90%86%e4%b8%8a%e4%b8%8b%e6%96%87" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
@@ -293,7 +299,7 @@
 &lt;p>&lt;code>Escape + Escape&lt;/code>：回退对话，恢复到之前的消息，移除与当前任务无关的上下文 &lt;code>/rewind&lt;/code>&lt;/p>
 &lt;p>&lt;code>/compact&lt;/code>：清除对话历史但是总结当前对话的所有信息，在新任务时候保持知识连贯&lt;/p>
 &lt;p>&lt;code>/clear&lt;/code>：清空整个对话历史&lt;/p>
-&lt;p>&lt;code>/btw&lt;/code>: by the way 对于不需要上下文的快速问题，不会进入对话记录&lt;/p>
+&lt;p>&lt;code>/btw&lt;/code>: by the way 对于不需要上下文的快速问题，不会进入对话记录 ，不会污染推理链&lt;/p>
 &lt;h4 id="创建自己的指令" class="heading-element">&lt;span>创建自己的指令&lt;/span>
  &lt;a href="#%e5%88%9b%e5%bb%ba%e8%87%aa%e5%b7%b1%e7%9a%84%e6%8c%87%e4%bb%a4" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>

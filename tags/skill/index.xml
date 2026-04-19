@@ -117,5 +117,4 @@
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;code>#&lt;/code> 开头：进入记忆模式，可以让 Claude 更新 CLAUDE.md
-&lt;code>@&lt;/code> 提及文件：在记忆模式下也能使用 @ 提及具体文件&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>#&lt;/code> 开头：进入记忆模式，可以让 Claude 更新 CLAUDE.md&lt;/p></description></item></channel></rss>
