@@ -714,5 +714,5 @@ MQTT:物联网传输协议，设计用于轻量级的发布订阅式消息传输
 ---
 
 > 作者:   
-> URL: https://fengchen321.github.io/posts/other/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9F%A5%E8%AF%86%E7%82%B9/  
+> URL: https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9F%A5%E8%AF%86%E7%82%B9/  
 

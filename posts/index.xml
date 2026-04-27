@@ -141,7 +141,7 @@
  &lt;a href="#%e4%bb%80%e4%b9%88%e6%98%afelf" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>ELF（Executable and Linkable Format）是Linux平台的可执行和可链接文件的文件格式标准。ELF文件以文件开头的ELF字符串为标识，这个Magic String用于标记文件类型。&lt;/p></description></item><item><title>系统架构设计师知识点</title><link>https://fengchen321.github.io/posts/other/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9F%A5%E8%AF%86%E7%82%B9/</link><pubDate>Fri, 07 Nov 2025 20:14:59 +0800</pubDate><guid>https://fengchen321.github.io/posts/other/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9F%A5%E8%AF%86%E7%82%B9/</guid><category domain="https://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="综合知识" class="heading-element">&lt;span>综合知识&lt;/span>
+&lt;/h2>&lt;p>ELF（Executable and Linkable Format）是Linux平台的可执行和可链接文件的文件格式标准。ELF文件以文件开头的ELF字符串为标识，这个Magic String用于标记文件类型。&lt;/p></description></item><item><title>系统架构设计师知识点</title><link>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9F%A5%E8%AF%86%E7%82%B9/</link><pubDate>Fri, 07 Nov 2025 20:14:59 +0800</pubDate><guid>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%B8%88%E7%9F%A5%E8%AF%86%E7%82%B9/</guid><category domain="https://fengchen321.github.io/categories/readingnotes/">ReadingNotes</category><description>&lt;h2 id="综合知识" class="heading-element">&lt;span>综合知识&lt;/span>
  &lt;a href="#%e7%bb%bc%e5%90%88%e7%9f%a5%e8%af%86" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -564,7 +564,33 @@
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="line">&lt;span class="cl">winget install Hugo.Hugo.Extended&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>安装完成后查看hugo版本验证安装是否成功&lt;/p></description></item><item><title>C++并发</title><link>https://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</link><pubDate>Sun, 15 Oct 2023 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-concurrency" class="heading-element">&lt;span>C++ Concurrency&lt;/span>
+&lt;/div>&lt;p>安装完成后查看hugo版本验证安装是否成功&lt;/p></description></item><item><title>读书摘录</title><link>https://fengchen321.github.io/posts/readingnotes/%E8%AF%BB%E4%B9%A6%E6%91%98%E5%BD%95/</link><pubDate>Sun, 21 Apr 2024 20:14:59 +0800</pubDate><guid>https://fengchen321.github.io/posts/readingnotes/%E8%AF%BB%E4%B9%A6%E6%91%98%E5%BD%95/</guid><category domain="https://fengchen321.github.io/categories/readingnotes/">ReadingNotes</category><description>&lt;h2 id="阅读" class="heading-element">&lt;span>阅读&lt;/span>
+ &lt;a href="#%e9%98%85%e8%af%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>要是有些事我没说，地坛，你别以为是我忘了，我什么也没忘，但是有些事只适合收藏。不能说，也不能想，却又不能忘。《我与地坛》&lt;/li>
+&lt;li>不与伪君子争名，不与真小人争利，不与执拗人争理，不与匹夫争勇，不与酸儒争才，不与蠢人施恩。《剑来》&lt;/li>
+&lt;li>莫道君行早，更有早行人。莫道君行高，早有山巅路。《剑来》&lt;/li>
+&lt;li>何为遗憾，不可再得之物，不可再遇之人，便是遗憾。《剑来》&lt;/li>
+&lt;li>落花有意流水无情，世间所有男子的一厢情愿，都是今天的青山与夕阳，追不着，留不住。 《剑来》&lt;/li>
+&lt;li>我们的言语，既会千山万水，迷障横生，也能铺路搭桥，柳暗花明。故而与亲近之人朝夕久处，不可说气话，不可说反话，不可不说话。《剑来》&lt;/li>
+&lt;li>畏强者凌弱，媚上者欺下，很难有例外之人事。你要是没有与强者心平气和说道理的心气，就定然会对弱者容易失去耐心。《剑来》&lt;/li>
+&lt;li>胜败之道勿求于外。《卑鄙的圣人：曹操》&lt;/li>
+&lt;li>来日不可待，往事不可追。《卑鄙的圣人：曹操》&lt;/li>
+&lt;li>读书当择三余：冬者岁之余，夜者日之余，阴雨者时之余也。《卑鄙的圣人：曹操》&lt;/li>
+&lt;li>研究科学所需最重要的习惯，就是即使没人教，也能以自己的错误为垫脚石来自我学习。&lt;/li>
+&lt;li>信仰是真狡猾啊 无论好坏 人心都会自己打补丁。&lt;/li>
+&lt;/ul>
+&lt;h2 id="软件工程定律" class="heading-element">&lt;span>软件工程定律&lt;/span>
+ &lt;a href="#%e8%bd%af%e4%bb%b6%e5%b7%a5%e7%a8%8b%e5%ae%9a%e5%be%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;/li>
+&lt;li>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://lawsofsoftwareengineering.com/"target="_blank" rel="external nofollow noopener noreferrer">软件工程定律 &amp;mdash; Laws of Software Engineering&lt;/a>&lt;/p></description></item><item><title>C++并发</title><link>https://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</link><pubDate>Sun, 15 Oct 2023 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/c++/c++%E5%B9%B6%E5%8F%91/</guid><category domain="https://fengchen321.github.io/categories/c++/">C++</category><description>&lt;h2 id="c-concurrency" class="heading-element">&lt;span>C++ Concurrency&lt;/span>
  &lt;a href="#c-concurrency" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
