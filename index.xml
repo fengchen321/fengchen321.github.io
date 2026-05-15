@@ -3649,7 +3649,7 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;p>&lt;strong>创建型模式&lt;/strong>&lt;/p>
 &lt;p>单例模式 (Singleton)：保证一个类只有一个实例&lt;/p>
 &lt;p>抽象工厂(Abstract factory)：提供一个接口，用于创建一系列相关或相互依赖的对象&lt;/p>
-&lt;p>工厂方法 (Factory)：&lt;/p>
+&lt;p>工厂方法 (Factory)：子类决定实例化。&lt;/p>
 &lt;p>构建器模式(Builder)：构建复杂对象的过程与其表示分离&lt;/p>
 &lt;p>原型模式(Prototype)：通过&lt;strong>拷贝&lt;/strong>创建对象，无需知道这些对象的类或创建过程&lt;/p>
 &lt;p>&lt;strong>结构型模式&lt;/strong>&lt;/p>
@@ -3945,7 +3945,7 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;/li>
 &lt;li>
 &lt;p>大数据架构: Lambda(批处理(Batch) + 加速层(Speed) + 服务层(Serving))和Kappa&lt;/p>
-&lt;p>Hsaoop:用于存储主数据集&lt;/p>
+&lt;p>Hsaoop: 用于存储主数据集&lt;/p>
 &lt;p>Apark：构成速度层&lt;/p>
 &lt;p>HBase：作为服务层，有Hive创建可查询的视图。&lt;/p>
 &lt;/li>
@@ -4003,21 +4003,20 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
  &lt;td>有限支持&lt;/td>
  &lt;td>不支持&lt;/td>
  &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;ol start="2">
+&lt;li>Redis持久化方法&lt;/li>
+&lt;/ol>
+&lt;table>
+ &lt;thead>
  &lt;tr>
- &lt;td>2. Redie持久化方法&lt;/td>
- &lt;td>&lt;/td>
- &lt;td>&lt;/td>
+ &lt;th>&lt;/th>
+ &lt;th>RDB快照(指定时间间隔内，执行指定次数的写操作，将内存中的数据集快照写入磁盘中，生成dump.rdb文件)&lt;/th>
+ &lt;th>AOF日志(采用日志来记录每个写操作，追加到文中，重启时在执行AOF文件中的命令来恢复数据)&lt;/th>
  &lt;/tr>
- &lt;tr>
- &lt;td>&lt;/td>
- &lt;td>RDB快照(指定时间间隔内，执行指定次数的写操作，将内存中的数据集快照写入磁盘中，生成dump.rdb文件)&lt;/td>
- &lt;td>AOF日志(采用日志来记录每个写操作，追加到文中，重启时在执行AOF文件中的命令来恢复数据)&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/td>
- &lt;td>&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/td>
- &lt;td>&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/td>
- &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
  &lt;tr>
  &lt;td>磁盘更新频率&lt;/td>
  &lt;td>指定时间间隔内将内存中的数据快照保存到磁盘&lt;/td>
@@ -4040,16 +4039,24 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
  &lt;/tr>
  &lt;tr>
  &lt;td>数据文件大小&lt;/td>
- &lt;td>叫AOF小&lt;/td>
+ &lt;td>较AOF小&lt;/td>
  &lt;td>记录内容越多，文件越大，数据恢复变慢&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td>3. 缓存问题&lt;/td>
- &lt;td>&lt;/td>
- &lt;td>&lt;/td>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
+&lt;ol start="3">
+&lt;li>
+&lt;p>Redis高可用机制&lt;/p>
+&lt;ul>
+&lt;li>主从复制：主节点负责处理写请求，从节点负责处理读请求。主节点将写操作记录到日志中，从节点通过日志复制主节点的数据。当主节点发生故障时，从节点可以提升为主节点继续提供服务。&lt;/li>
+&lt;li>哨兵模式：哨兵节点监控主节点和从节点的状态，当主节点发生故障时，哨兵节点会从从节点中选举出一个新的主节点。&lt;/li>
+&lt;li>集群模式：集群模式将数据分片存储在多个节点上，每个节点负责一部分数据。集群模式支持数据的自动分片和故障转移，提高了系统的可用性和扩展性。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>缓存问题&lt;/p>
+&lt;/li>
+&lt;/ol>
 &lt;table>
  &lt;thead>
  &lt;tr>
@@ -4080,13 +4087,15 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;ol start="4">
 &lt;li>
 &lt;p>内存淘汰机制：当内存不足以容纳新写入数据时；LRU(最近最少使用)、LFU(最不经常使用)&lt;/p>
-&lt;p>volatile-lru: 从设置了过期时间的key中使用LRU&lt;/p>
-&lt;p>allkeys-lru: 所有key中使用LRU&lt;/p>
-&lt;p>volatile-lfu:过期的key中，使用LFU&lt;/p>
-&lt;p>allkeys-lfu: 所有key中使用LFU&lt;/p>
-&lt;p>allkeys-random: 所有key中随机淘汰数据&lt;/p>
-&lt;p>voatile-ttl: 设置了过期时间的key中，根据过期时间进行淘汰，越早过期优先淘汰&lt;/p>
-&lt;p>noeviction: 默认策略，新写入报错&lt;/p>
+&lt;ul>
+&lt;li>volatile-lru: 从设置了过期时间的key中使用LRU&lt;/li>
+&lt;li>allkeys-lru: 所有key中使用LRU&lt;/li>
+&lt;li>volatile-lfu:过期的key中，使用LFU&lt;/li>
+&lt;li>allkeys-lfu: 所有key中使用LFU&lt;/li>
+&lt;li>allkeys-random: 所有key中随机淘汰数据&lt;/li>
+&lt;li>voatile-ttl: 设置了过期时间的key中，根据过期时间进行淘汰，越早过期优先淘汰&lt;/li>
+&lt;li>noeviction: 默认策略，新写入报错&lt;/li>
+&lt;/ul>
 &lt;/li>
 &lt;li>
 &lt;p>反规范化设计方法：增加冗余列；增加派生列；重新组表；水平分割表；垂直分割表 。处理数据不一致：定期同步更新；触发器同步；应用程序级同步。&lt;/p>
@@ -4110,25 +4119,108 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;li>
 &lt;p>常见术语&lt;/p>
 &lt;p>MongoDB: 存储非结构数据方式：文档存储(BSON 文档)；灵活的数据模型；动态模式；索引支持。矢量化存储优点：高效存储与查询；简化数据模型(支持嵌套文档、数组字段)；易于拓展与演变；高性能。&lt;/p>
-&lt;p>图数据库(Graph Database)，如 Neo4j、Amazon Neptune )：支持高效的关系遍历、多跳查询和图算法分析。&lt;/p>
+&lt;p>图数据库(Graph Database)，如 Neo4j、Amazon Neptune：支持高效的关系遍历、多跳查询和图算法分析。&lt;/p>
 &lt;p>HDFS:分布式文件系统，适合存储海量的、一次写入多次读取的数据。HDFS是存储数据的基础设施，Hive是让数据查询变得更简单的工具，而 HBase是提供快速随机访问和实时数据处理的数据库。&lt;/p>
-&lt;p>HBase:基于 Hadoop 的分布式列式数据库，能处理海量数据的随机读写，适合存储像瓦片数据等需要快速查询和更新的数据&lt;/p>
+&lt;p>HBase:基于 Hadoop 的分布式列式数据库，能处理海量数据的随机读写，适合存储像瓦片数据等需要快速查询和更新的数据。&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;h3 id="应用设计" class="heading-element">&lt;span>应用设计&lt;/span>
  &lt;a href="#%e5%ba%94%e7%94%a8%e8%ae%be%e8%ae%a1" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;p>ES(elasticsearch):开源分布式搜索和分析引擎，在存储层可用于存储索引数据，方便对数据进行快速检索&lt;/p>
-&lt;p>k8s(Kubernetes):开源的容器编排平台，用于自动化部署、扩展和管理容器化应用程序&lt;/p>
-&lt;p>kafka: 分布式流处理平台，用于构建实时数据管道和流应用程序。它具有高吞吐量、可扩展性和持久性等特点，适用于处理大规模数据流。&lt;/p>
-&lt;p>CDN: 内容分发网络。主要加速静态资源，HTML、CSS和JS 202411 201611&lt;/p>
-&lt;p>REST(Representational State Transfer，表述性状态转移)&lt;/p>
-&lt;p>Mybatis(持久层框架)， JWT(Json Web Token用于在双方之间安全传输信息的简洁的、URL安全的令牌标准)&lt;/p>
+&lt;/h3>&lt;ol>
+&lt;li>MVC设计模式 (架构风格)
+&lt;ul>
+&lt;li>模型(Model)：业务逻辑处理和数据存储。&lt;/li>
+&lt;li>视图(View)：展示数据。&lt;/li>
+&lt;li>控制器(Controller)：接受用户请求，调用模型处理数据请求，返回视图。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;p>优点: 分离关注点职责清晰，降低耦合度，方便维护和扩展；支持多人协作；高复用性。
+缺点：复杂度增加，工作量增加；不适合小型项目，成本较高；控制器可能臃肿，职责不清。&lt;/p>
+&lt;pre class="mermaid">flowchart TB
+ subgraph MVC["MVC 模式"]
+ direction LR
+ V[View&lt;br>视图] --> C[Controller&lt;br>控制器] --> M[Model&lt;br>模型]
+ M -.-> V
+ end
+
+ subgraph ThreeTier["三层架构"]
+ direction TB
+ P[表现层&lt;br>Presentation Layer] --> B[业务层&lt;br>Business Layer] --> D[数据层&lt;br>Data Layer]
+ end&lt;/pre>
+&lt;template>flowchart TB
+ subgraph MVC["MVC 模式"]
+ direction LR
+ V[View&lt;br>视图] --> C[Controller&lt;br>控制器] --> M[Model&lt;br>模型]
+ M -.-> V
+ end
+
+ subgraph ThreeTier["三层架构"]
+ direction TB
+ P[表现层&lt;br>Presentation Layer] --> B[业务层&lt;br>Business Layer] --> D[数据层&lt;br>Data Layer]
+ end&lt;/template>&lt;p>三层架构(表现层，业务层，数据层)&lt;/p>
+&lt;ol start="2">
+&lt;li>
+&lt;p>J2EE平台：&lt;/p>
+&lt;ul>
+&lt;li>客户层&lt;/li>
+&lt;li>web层： 与浏览器通过HTTP交互
+&lt;ul>
+&lt;li>JSP：动态网页技术，组织信息内容并为用户产生响应页面的HTML数据流。&lt;/li>
+&lt;li>Servlet：处理HTTP请求，用来接收用户输入信息，执行业务操作逻辑后转发用户请求。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>业务层： EJB(Enterprise JavaBean)组件，用于封装业务逻辑，实现业务功能&lt;/li>
+&lt;li>企业信息系统层： ERP/数据库
+&lt;ul>
+&lt;li>JDBC：Java连接数据库的标准接口(执行SQL)&lt;/li>
+&lt;li>JPA：对象关系映射框架，用Java对象操作数据库(无需写SQL)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>kafaka: 消息中间件，分布式流处理平台，用于构建实时数据管道和流应用程序。它具有高吞吐量、可扩展性和持久性等特点，适用于处理大规模数据流。日志收集流式处理，事件驱动架构等场景。&lt;/p>
+&lt;ul>
+&lt;li>producer：生产者，负责将数据发送到kafka集群。&lt;/li>
+&lt;li>customer：消费者，负责从kafka集群中读取数据。&lt;/li>
+&lt;li>broker：kafka集群中的服务器节点，负责存储和管理消息。&lt;/li>
+&lt;li>topic：主题，用于存储消息的类别。&lt;/li>
+&lt;li>partition：分区，用于将消息分成多个部分，提高并发处理能力。&lt;/li>
+&lt;li>offset：偏移量，用于标识消息在分区中的位置。&lt;/li>
+&lt;li>zookeeper：用于管理kafka集群的元数据，如broker列表、topic列表等。
+新版本 Kafka 逐步移除对 Zookeeper 的依赖(KRaft模式)&lt;/li>
+&lt;li>高可用，高拓展性
+&lt;ul>
+&lt;li>分区副本机制(每个分区有多个副本(Leader + Follower)，Leader 负责读写，Follower 同步数据)&lt;/li>
+&lt;li>消费者组&lt;/li>
+&lt;li>ISR(In-Sync Replicas)等机制。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>消息投递语义
+&lt;ul>
+&lt;li>at most once：最多一次，消息可能丢失，但不会重复。&lt;/li>
+&lt;li>at least once：最少一次，消息不会丢失，但可能重复。&lt;/li>
+&lt;li>exactly once：恰好一次，消息不会丢失或重复。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>常见术语&lt;/p>
+&lt;p>ORM(Object Relational Mapping)：对象关系映射，将对象和数据库表进行映射，通过操作对象来操作数据库表。典型ORM框架：Hibernate、MyBatis(持久层框架)、JPA。&lt;/p>
+&lt;p>ES(elasticsearch):开源分布式搜索和分析引擎，在存储层可用于存储索引数据，方便对数据进行快速检索。&lt;/p>
+&lt;p>k8s(Kubernetes):开源的容器编排平台，用于自动化部署、扩展和管理容器化应用程序。&lt;/p>
+&lt;p>CDN: 内容分发网络。主要加速静态资源，HTML、CSS和JS。&lt;/p>
+&lt;p>REST(Representational State Transfer，表述性状态转移)。&lt;/p>
+&lt;p>JWT(Json Web Token用于在双方之间安全传输信息的简洁的、URL安全的令牌标准)。&lt;/p>
 &lt;p>Nginx：高性能的HTTP和反向代理web服务器。占有内存少，并发能力强。&lt;/p>
-&lt;p>Strut2：用于构建Java Web应用程序的开源框架&lt;/p>
-&lt;p>J2EE平台：与浏览器直接通过HTTP交互的视图层构件：JSP(动态网页技术，组织信息内容并为用户产生响应页面的HTME数据流)和Servelt(用来接收用户输入信息，执行业务操作逻辑后转发用户请求)&lt;/p>
+&lt;p>Strut2：用于构建Java Web应用程序的开源框架。&lt;/p>
 &lt;p>MQTT:物联网传输协议，设计用于轻量级的发布订阅式消息传输。&lt;/p>
+&lt;/li>
+&lt;/ol>
 &lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
  &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
