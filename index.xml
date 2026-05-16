@@ -4139,28 +4139,7 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;/ol>
 &lt;p>优点: 分离关注点职责清晰，降低耦合度，方便维护和扩展；支持多人协作；高复用性。
 缺点：复杂度增加，工作量增加；不适合小型项目，成本较高；控制器可能臃肿，职责不清。&lt;/p>
-&lt;pre class="mermaid">flowchart TB
- subgraph MVC["MVC 模式"]
- direction LR
- V[View&lt;br>视图] --> C[Controller&lt;br>控制器] --> M[Model&lt;br>模型]
- M -.-> V
- end
-
- subgraph ThreeTier["三层架构"]
- direction TB
- P[表现层&lt;br>Presentation Layer] --> B[业务层&lt;br>Business Layer] --> D[数据层&lt;br>Data Layer]
- end&lt;/pre>
-&lt;template>flowchart TB
- subgraph MVC["MVC 模式"]
- direction LR
- V[View&lt;br>视图] --> C[Controller&lt;br>控制器] --> M[Model&lt;br>模型]
- M -.-> V
- end
-
- subgraph ThreeTier["三层架构"]
- direction TB
- P[表现层&lt;br>Presentation Layer] --> B[业务层&lt;br>Business Layer] --> D[数据层&lt;br>Data Layer]
- end&lt;/template>&lt;p>三层架构(表现层，业务层，数据层)&lt;/p>
+&lt;p>三层架构(表现层，业务层，数据层)&lt;/p>
 &lt;ol start="2">
 &lt;li>
 &lt;p>J2EE平台：&lt;/p>
@@ -5035,6 +5014,15 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;p>SVM (&lt;a href="https://www.intel.com/content/www/us/en/developer/articles/technical/opencl-20-shared-virtual-memory-overview.html"target="_blank" rel="external nofollow noopener noreferrer">Shared Virtual Memory&lt;/a>, by Intel)共享虚拟内存&lt;/p>
 &lt;p>HMM(&lt;a href="https://www.redhat.com/files/summit/session-assets/2017/S104078-hubbard.pdf"target="_blank" rel="external nofollow noopener noreferrer">Heterogeneous Memory Management&lt;/a>, by Glisse from redhat)异构内存管理&lt;/p>
 &lt;p>UM(Unified Memory, by NVIDIA)统一内存&lt;/p>
+&lt;h2 id="开源gpu实现" class="heading-element">&lt;span>开源GPU实现&lt;/span>
+ &lt;a href="#%e5%bc%80%e6%ba%90gpu%e5%ae%9e%e7%8e%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;a href="https://github.com/adam-maj/tiny-gpu"target="_blank" rel="external nofollow noopener noreferrer">tiny-gpu&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/FareedKhan-dev/small-gpu"target="_blank" rel="external nofollow noopener noreferrer">small-gpu&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/vortexgpgpu/vortex"target="_blank" rel="external nofollow noopener noreferrer">vortex&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/THU-DSP-LAB/ventus-gpgpu"target="_blank" rel="external nofollow noopener noreferrer">ventus-gpgpu&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/VerticalResearchGroup/miaow"target="_blank" rel="external nofollow noopener noreferrer">miaow&lt;/a>&lt;/p>
 &lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
  &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>

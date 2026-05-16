@@ -117,6 +117,18 @@ HMM([Heterogeneous Memory Management](https://www.redhat.com/files/summit/sessio
 
 UM(Unified Memory, by NVIDIA)统一内存
 
+## 开源GPU实现
+
+[tiny-gpu](https://github.com/adam-maj/tiny-gpu)
+
+[small-gpu](https://github.com/FareedKhan-dev/small-gpu)
+
+[vortex](https://github.com/vortexgpgpu/vortex)
+
+[ventus-gpgpu](https://github.com/THU-DSP-LAB/ventus-gpgpu)
+
+[miaow](https://github.com/VerticalResearchGroup/miaow)
+
 ## 参考阅读
 
 - [GPU Database](https://www.techpowerup.com/gpu-specs/)

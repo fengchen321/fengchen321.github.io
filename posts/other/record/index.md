@@ -86,6 +86,7 @@ Host 主机名
 ### vscode 插件
 
 &gt; [PlantUML](https://pdf.plantuml.net/PlantUML_Language_Reference_Guide_zh.pdf)
+&gt;
 &gt; &gt; PlantUML配置 -&gt; Renderer -&gt; PlantUMLServer -&gt; http://www.plantuml.com/plantuml  生成图表选中puml文件快捷键 `Alt&#43;D`
 
 ##  安装rocm环境
@@ -171,6 +172,8 @@ sh -c &#34;$(wget -O- https://install.ohmyz.sh/)&#34;
 [使用 Typora 画图（类图、流程图、时序图） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/172635547)
 
 一不小心没保存可以在临时目录里找：`C:\Users\用户名\AppData\Roaming\Typora\draftsRecover`
+
+[Typora 插件](https://github.com/obgnail/typora_plugin?tab=readme-ov-file)
 
 # Latex
 

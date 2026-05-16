@@ -694,19 +694,6 @@ TCP协议中端口号作用：标识主机上的具体应用进程
 优点: 分离关注点职责清晰，降低耦合度，方便维护和扩展；支持多人协作；高复用性。
 缺点：复杂度增加，工作量增加；不适合小型项目，成本较高；控制器可能臃肿，职责不清。
 
-```mermaid
-flowchart TB
-    subgraph MVC[&#34;MVC 模式&#34;]
-        direction LR
-        V[View&lt;br&gt;视图] --&gt; C[Controller&lt;br&gt;控制器] --&gt; M[Model&lt;br&gt;模型]
-        M -.-&gt; V
-    end
-
-    subgraph ThreeTier[&#34;三层架构&#34;]
-        direction TB
-        P[表现层&lt;br&gt;Presentation Layer] --&gt; B[业务层&lt;br&gt;Business Layer] --&gt; D[数据层&lt;br&gt;Data Layer]
-    end
-```
 三层架构(表现层，业务层，数据层)
 
 2. J2EE平台：
