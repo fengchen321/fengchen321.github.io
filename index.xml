@@ -3308,16 +3308,121 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>架构描述语言(ADL)：组件、组件接口、&lt;strong>连接件&lt;/strong>(建立组件间的交互和规则)和架构配置(组件和连接件的连接图)&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>架构风格：数据流：&lt;strong>批处理&lt;/strong>(&lt;strong>传统编译器, 整体传输&lt;/strong>)，管道-过滤器(构件是过滤器，连接件是管道；&lt;strong>每个阶段产生的结果作为下一个阶段的输入&lt;/strong>；管道负责传输，过滤器负责处理；支持并行);&lt;/p>
-&lt;p>调用/返回：面向对象(构件：对象，连接件：交互方式)，层次结构，主程序 / 子程序(构件是：主程序和子程序；连接件：过程调用)；&lt;/p>
-&lt;p>独立构件：进程通信(构件：独立的进程，连接件是消息传递)，&lt;strong>事件驱动(语法高亮，触发动作&lt;/strong>)；&lt;/p>
-&lt;p>虚拟机(模拟新系统)：解释器(&lt;strong>用户自定义，更灵活&lt;/strong>)，规则系统(&lt;strong>定义关系进行执行&lt;/strong>，将业务逻辑中频繁变化的部分定义为规则，基于规则的系统包括规则集、规则解释器、规则/数据选择器及&lt;strong>工作内存&lt;/strong>等组成)；&lt;/p>
-&lt;p>仓库：数据库(&lt;strong>IDE, 数据共享&lt;/strong>)，超文本，黑板(&lt;strong>语音识别，知识推理&lt;/strong>); (两种构件：&lt;strong>中央数据结构&lt;/strong>说明当前数据的状态，&lt;strong>独立构件&lt;/strong>在中央数据存储上执行)。&lt;/p>
-&lt;p>闭环：过程控制(&lt;strong>设定参数，定速巡航&lt;/strong>)；&lt;/p>
-&lt;p>C2：通过连接件绑定在一起按照一组规则运作的并行构件&lt;/p>
+&lt;p>架构风格：&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">架构风格&lt;/th>
+ &lt;th style="text-align: left">子风格&lt;/th>
+ &lt;th style="text-align: left">构件&lt;/th>
+ &lt;th style="text-align: left">连接件&lt;/th>
+ &lt;th style="text-align: left">主要特点&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>数据流&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">批处理&lt;/td>
+ &lt;td style="text-align: left">独立程序&lt;/td>
+ &lt;td style="text-align: left">某种类型的媒介（如文件）&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>传统编译器风格&lt;/strong>，整体传输；顺序执行，前一步完全完成后才进入下一步。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;/td>
+ &lt;td style="text-align: left">管道-过滤器&lt;/td>
+ &lt;td style="text-align: left">过滤器&lt;/td>
+ &lt;td style="text-align: left">管道&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>每个阶段产生的结果作为下一阶段的输入&lt;/strong>；管道负责传输，过滤器负责处理；支持并行。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>调用/返回&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">面向对象&lt;/td>
+ &lt;td style="text-align: left">对象&lt;/td>
+ &lt;td style="text-align: left">交互方式（如方法调用、消息传递）&lt;/td>
+ &lt;td style="text-align: left">通过对象间交互实现功能。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;/td>
+ &lt;td style="text-align: left">层次结构&lt;/td>
+ &lt;td style="text-align: left">各层模块&lt;/td>
+ &lt;td style="text-align: left">层间协议或调用接口&lt;/td>
+ &lt;td style="text-align: left">系统组织为层次，每层为上层提供服务。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;/td>
+ &lt;td style="text-align: left">主程序/子程序&lt;/td>
+ &lt;td style="text-align: left">主程序和子程序&lt;/td>
+ &lt;td style="text-align: left">过程调用&lt;/td>
+ &lt;td style="text-align: left">典型的主程序调用子程序结构。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>独立构件&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">进程通信&lt;/td>
+ &lt;td style="text-align: left">独立的进程&lt;/td>
+ &lt;td style="text-align: left">消息传递&lt;/td>
+ &lt;td style="text-align: left">独立进程间通过消息传递通信。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;/td>
+ &lt;td style="text-align: left">事件驱动&lt;/td>
+ &lt;td style="text-align: left">事件处理器&lt;/td>
+ &lt;td style="text-align: left">事件触发机制&lt;/td>
+ &lt;td style="text-align: left">由事件触发相应动作，如&lt;strong>语法高亮&lt;/strong>等。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>虚拟机&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">解释器&lt;/td>
+ &lt;td style="text-align: left">解释器组件&lt;/td>
+ &lt;td style="text-align: left">解释执行连接&lt;/td>
+ &lt;td style="text-align: left">用户自定义更灵活。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;/td>
+ &lt;td style="text-align: left">规则系统&lt;/td>
+ &lt;td style="text-align: left">规则集、规则解释器、规则/数据选择器、工作内存&lt;/td>
+ &lt;td style="text-align: left">规则匹配与执行&lt;/td>
+ &lt;td style="text-align: left">将业务逻辑中频繁变化的部分定义为规则。定义关系进行执行。&lt;strong>专家系统&lt;/strong>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>仓库&lt;/strong>（以数据为中心）&lt;/td>
+ &lt;td style="text-align: left">数据库系统&lt;/td>
+ &lt;td style="text-align: left">中央数据结构、独立构件&lt;/td>
+ &lt;td style="text-align: left">数据共享访问&lt;/td>
+ &lt;td style="text-align: left">典型如&lt;strong>IDE&lt;/strong>，&lt;strong>数据共享&lt;/strong>为主。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;/td>
+ &lt;td style="text-align: left">超文本&lt;/td>
+ &lt;td style="text-align: left">节点、链接&lt;/td>
+ &lt;td style="text-align: left">超链接&lt;/td>
+ &lt;td style="text-align: left">通过超链接组织数据。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;/td>
+ &lt;td style="text-align: left">黑板&lt;/td>
+ &lt;td style="text-align: left">黑板（中央数据结构）、知识源（独立构件）&lt;/td>
+ &lt;td style="text-align: left">黑板读写机制&lt;/td>
+ &lt;td style="text-align: left">用于&lt;strong>语音识别、知识推理&lt;/strong>；&lt;strong>中央数据结构&lt;/strong>说明当前数据的状态，&lt;strong>独立构件&lt;/strong>在中央数据存储上执行。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>闭环&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">过程控制&lt;/td>
+ &lt;td style="text-align: left">控制器、传感器、执行器&lt;/td>
+ &lt;td style="text-align: left">反馈控制回路&lt;/td>
+ &lt;td style="text-align: left">&lt;strong>设定参数，如定速巡航&lt;/strong>。&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>C2&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">C2&lt;/td>
+ &lt;td style="text-align: left">并行构件&lt;/td>
+ &lt;td style="text-align: left">连接件（按规则绑定）&lt;/td>
+ &lt;td style="text-align: left">通过连接件绑定在一起并按照一组规则运作的并行构件。&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
 &lt;/li>
 &lt;li>
-&lt;p>层次结构风格：三层在两层上增加一个&lt;strong>应用服务器&lt;/strong>，构成包括&lt;strong>表示层&lt;/strong>(用户接口部分，存在于客户机)、&lt;strong>功能层&lt;/strong>(应用本体)和&lt;strong>数据层&lt;/strong>(数据库管理系统)三个部分&lt;/p>
+&lt;p>C/S架构：三层在两层上增加一个&lt;strong>应用服务器&lt;/strong>，构成包括&lt;strong>表示层&lt;/strong>(用户接口部分，存在于客户机)、&lt;strong>功能层&lt;/strong>(应用本体)和&lt;strong>数据层&lt;/strong>(数据库管理系统)三个部分&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>MVC: Modle负责数据， View 负责展示、Controller负责协调。&lt;/p>
@@ -3329,7 +3434,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;li>
 &lt;p>特定领域软件架构(DSSA) 通常是一个具有三个层次的系统模型，包括&lt;strong>领域开发环境、领域特定应用开发环境和应用执行环境&lt;/strong>。&lt;/p>
 &lt;p>&lt;strong>领域架构师&lt;/strong>在领域开发环境工作，&lt;strong>应用工程师&lt;/strong>在领域特定的应用开发环境工作，&lt;strong>操作员&lt;/strong>在应用执行环境工作。&lt;/p>
-&lt;p>4角色：&lt;strong>领域专家&lt;/strong>(提供需求规格和实现知识)、&lt;strong>领域分析师&lt;/strong>(获得的知识组织到&lt;strong>领域模型&lt;/strong>中)、&lt;strong>领域设计人员&lt;/strong>(根据领域模型和现有系统开发出 &lt;strong>DSSA&lt;/strong> 以及建立两者联系)和&lt;strong>领域实现人员&lt;/strong>(软件实现，可重用构件验证)&lt;/p>
+&lt;p>4角色：&lt;strong>领域专家&lt;/strong>(提供需求规格和实现的知识)、&lt;strong>领域分析师&lt;/strong>(获得的知识组织到&lt;strong>领域模型&lt;/strong>中)、&lt;strong>领域设计人员&lt;/strong>(根据领域模型和现有系统开发出 &lt;strong>DSSA&lt;/strong> 以及建立两者联系)和&lt;strong>领域实现人员&lt;/strong>(软件实现，可重用构件验证)&lt;/p>
 &lt;p>2领域：水平域(不同行业共性)，垂直域(通用)&lt;/p>
 &lt;p>过程是&lt;strong>并发的、递归的、反复的&lt;/strong>。&lt;/p>
 &lt;/li>
@@ -3339,6 +3444,9 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>6过程：架构需求、架构设计、&lt;strong>架构文档化&lt;/strong>(输出架构规格说明书和架构质量说明书)、&lt;strong>架构复审&lt;/strong>(标识潜在风险，用户代表和领域专家决定)、&lt;strong>架构实现&lt;/strong>、架构演化(按需求修改，6步骤：需求变化归类，制订体系结构演化计划，修改、增加或删除构件、&lt;strong>更新构件的相互作用&lt;/strong>、构件组装与测试、技术评审)&lt;/p>
 &lt;p>顶层被分解为若干&lt;strong>概念子系统&lt;/strong>和一个或若干个软件模板。在第2层，概念子系统又被分解成概念构件和一个或若干个附加软件模板。&lt;/p>
 &lt;p>体系结构需求一般来自3个方面，分别是&lt;strong>系统的质量目标、系统的商业目标和系统开发人员的商业目标&lt;/strong>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>软件架构复用：类型：&lt;strong>机会复用&lt;/strong>(抓住机会)和&lt;strong>系统复用&lt;/strong>(开发前规划)；主要阶段：构造/获取可复用的软件资产、管理可复用资产和使用可复用资产&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>架构权衡分析方法(ATAM): 4阶段：需求收集、&lt;strong>架构视图&lt;/strong>描述、属性模型构造和分析、架构决策与折中；强调以&lt;strong>属性&lt;/strong>为架构评估的核心概念，主要针对性能、可用性、安全性和可修改性，在系统开发之前，对这些质量属性进行&lt;strong>评价和折中&lt;/strong>。通过头脑风暴和优先场景理解质量属性要求，分析架构方法的三种场景：用例场景，增长情景，探索性情景。&lt;/p>
@@ -3380,9 +3488,6 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;/li>
 &lt;li>
 &lt;p>中间件：分布式系统中中间件的两种不同类型的支持：&lt;strong>交互支持和提供公共服务&lt;/strong>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>软件架构复用：类型：&lt;strong>机会复用&lt;/strong>(抓住机会)和&lt;strong>系统复用&lt;/strong>(开发前规划)；主要阶段：构造/获取可复用的软件资产、管理可复用资产和使用可复用资产&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>类图：(类内部属性，类间关系)；状态图(对象内部行为)&lt;/p>
@@ -3681,7 +3786,7 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;p>事务的ACID特性： Atomicity 原子性、Consistency 一致性、Isolation 隔离性、Durability 持久性。&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>函数依赖和无损分解：U还能推出F就是保持了函数依赖；无损分解：$U_1\cap U_2 \rightarrow U_1-U2\ or\ U_2-U1 $，或者表格法能填满就行&lt;/p>
+&lt;p>函数依赖和无损分解：U还能推出F就是保持了函数依赖；无损分解：$U_1\cap U_2 \rightarrow U_1-U2\ or\ U_2-U1$，或者表格法能填满就行&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>判断几范式&lt;/p>
