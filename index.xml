@@ -3505,6 +3505,9 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>云计算3服务模式：IaaS(基础设施即服务)、PaaS(平台即服务)、SaaS(软件即服务)&lt;/p>
 &lt;/li>
 &lt;li>
+&lt;p>数字孪生体有三种类型：&lt;strong>数字孪生原型体、数字孪生实例体和数字孪生聚合体&lt;/strong>。数字孪生环境则是数字孪生体的操作环境。&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>大数据处理框架&lt;/p>
 &lt;table>
  &lt;thead>
@@ -3683,6 +3686,15 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;li>
 &lt;p>DO-178 将软件适航要求抽象为三大核心元素：&lt;strong>适航目标(Objectives)、完成这些目标所需的活动(Activities)、用于证明目标达成的数据(Software Life Cycle Data)&lt;/strong>&lt;/p>
 &lt;/li>
+&lt;li>
+&lt;p>软件配置管理(SCM)核心内容包括&lt;strong>版本控制和变更控制&lt;/strong>。SCM活动的目标就是为了标识变更、控制变更、确保变更正确实现并向其他有关人员报告变更。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>净室软件工程的理论基础主要是&lt;strong>函数理论和抽样理论&lt;/strong>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>维护分为4种类型：&lt;strong>排错性维护、适应性维护、完善性维护和预防性维护&lt;/strong>。&lt;/p>
+&lt;/li>
 &lt;/ol>
 &lt;h3 id="系统分析与设计" class="heading-element">&lt;span>系统分析与设计&lt;/span>
  &lt;a href="#%e7%b3%bb%e7%bb%9f%e5%88%86%e6%9e%90%e4%b8%8e%e8%ae%be%e8%ae%a1" class="heading-mark">
@@ -3800,6 +3812,18 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;p>分布式数据库两阶段提交协议中的两个阶段：表决阶段，执行阶段&lt;/p>
 &lt;/li>
 &lt;li>
+&lt;p>数据库也分为三级模式，分别是&lt;strong>外模式、概念模式和内模式&lt;/strong>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>关系的完整性约束共分为3类：&lt;strong>实体完整性、参照完整性(引用完整性)和用户定义完整性&lt;/strong>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>数据库设计分为&lt;strong>需求分析、概念结构设计、逻辑结构设计、物理结构设计、应用程序设计和运行维护&lt;/strong>6个阶段。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>NoSQL整体框架分为4层，由下至上：&lt;strong>数据持久层、数据分布层、数据逻辑模型层和接口层&lt;/strong>。&lt;/p>
+&lt;/li>
+&lt;li>
 &lt;p>NoSQL数据库分类&lt;/p>
 &lt;table>
  &lt;thead>
@@ -3861,7 +3885,9 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
  &lt;a href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;p>局域网3层：核心层(负责高速转发和网络骨干通信)、汇聚层(承担路由汇总、策略控制、协议转换等功能)和接入层&lt;/p>
+&lt;/h3>&lt;p>TCP/IP网络协议模型共分为&lt;strong>网络接口层、网际层、传输层和应用层&lt;/strong>4层。&lt;/p>
+&lt;p>OSI七层：物理层、数据链路层、网络层、传输层、会话层、表示层和应用层。&lt;/p>
+&lt;p>局域网3层：核心层(负责高速转发和网络骨干通信)、汇聚层(承担路由汇总、策略控制、协议转换等功能)和接入层&lt;/p>
 &lt;p>RAID 5计算：可用容量 = (硬盘数量 - 1) × 最小容量&lt;/p>
 &lt;p>TCP协议中端口号作用：标识主机上的具体应用进程&lt;/p>
 &lt;p>软件定义网络(SDN)3层次：**控制层(**负责网络的流量控制、流表的管理和决策)，&lt;strong>转发层&lt;/strong>(负责根据控制器的指令进行数据包的转发)，&lt;strong>应用层&lt;/strong>(实现网络流量优化、安全管理、流量监控等功能)&lt;/p>
@@ -3883,6 +3909,8 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;p>测试内容划分：功能测试、性能测试、用户界面测试和安全性测试&lt;/p>
 &lt;p>用户参与程度划分：内部测试、Alpha、Beta 和验收测试&lt;/p>
 &lt;p>测试方法分类：黑盒(功能测试)，白盒&lt;/p>
+&lt;p>Alpha测试是在&lt;strong>软件开发环境&lt;/strong>下由用户进行的测试；Beta测试是在&lt;strong>实际环境&lt;/strong>中由多个用户对其进行测试。&lt;/p>
+&lt;p>白盒测试方法：控制流分析、数据流分析、路径分析、程序变异等。覆盖程度：语句覆盖、判定覆盖、分支覆盖和路径覆盖。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>静态测试：桌面检查、代码审查、代码走查等，目的是在早期发现语法错误、逻辑缺陷和设计问题。&lt;/p>
@@ -3913,6 +3941,7 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;/li>
 &lt;li>
 &lt;p>企业资源规划 ERP 5层次计划：经营规划、销售与运作规划 (生产规划)、主生产计划、物料需求计划、车间作业控制&lt;/p>
+&lt;p>ERP中的企业资源包括企业的&amp;quot;三流&amp;quot;资源，即&lt;strong>物流资源、资金流资源和信息流资源&lt;/strong>。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>企业集成平台功能：&lt;strong>通信服务&lt;/strong>(侧重于底层网络和消息传输)；&lt;strong>信息集成服务&lt;/strong>(实现不同数据库系统之间的数据交换、互操作)；应用集成服务(负责应用层之间的协作)，二次开发工具；平台运行管理工具&lt;/p>
@@ -4227,6 +4256,7 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;p>图数据库(Graph Database)，如 Neo4j、Amazon Neptune：支持高效的关系遍历、多跳查询和图算法分析。&lt;/p>
 &lt;p>HDFS:分布式文件系统，适合存储海量的、一次写入多次读取的数据。HDFS是存储数据的基础设施，Hive是让数据查询变得更简单的工具，而 HBase是提供快速随机访问和实时数据处理的数据库。&lt;/p>
 &lt;p>HBase:基于 Hadoop 的分布式列式数据库，能处理海量数据的随机读写，适合存储像瓦片数据等需要快速查询和更新的数据。&lt;/p>
+&lt;p>DAO(数据库访问对象)位于业务逻辑层与数据资源层之间。&lt;/p>
 &lt;/li>
 &lt;/ol>
 &lt;h3 id="应用设计" class="heading-element">&lt;span>应用设计&lt;/span>
