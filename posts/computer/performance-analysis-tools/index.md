@@ -48,12 +48,19 @@
 - **[rocprofv3](https://github.com/ROCm/rocprofiler-sdk)**: 新一代低层性能分析接口，用于 GPU 计算应用的硬件级分析与追踪。
   - **[rocprof-compute-viewer](https://github.com/ROCm/rocprof-compute-viewer)**: ROCm 计算性能分析结果可视化工具。\
   - **[AQLprofile](https://github.com/ROCm/rocm-systems/tree/develop/projects/aqlprofile)**: Architected Queuing Language Profiling Library
+  - **[rocprofiler-register](https://github.com/ROCm/rocprofiler-register/)**: 辅助库，构建API table表。
+  - **[rocprof-trace-decoder](https://github.com/ROCm/rocprof-trace-decoder)**: att数据解析库
 - **[roc-optiq](https://github.com/ROCm/roc-optiq)**:ROCm Profiler 工具的可视化工具。
 - **[Deprecated: rocprofiler v1/v2](https://github.com/ROCm/rocprofiler)**: 旧版性能分析工具库。
 - **[Deprecated: roctracer / roctx](https://github.com/ROCm/roctracer)**: 旧版运行时追踪器
 - **[Omniprobe](https://github.com/AMDResearch/omniprobe)**: 源代码层面精准定位性能瓶颈
 - **[IntelliKit](https://github.com/AMDResearch/intellikit)**: 内核开发智能工具
 - **[IntelliPerf](https://github.com/AMDResearch/intelliperf)**: 基于 LLM 驱动的自主 GPU 性能工程师
+
+#### ROCM底层补充
+- [clr](https://github.com/ROCm/clr): hipamd&#43;opencl&#43;rocclr
+- [ROCR-Runtime](https://github.com/ROCm/ROCR-Runtime/): hsa-runtime(支持 HSA 标准的核心运行时) &#43; libhsakmt(用于与 ROCk 驱动程序交互的用户模式 API 接口)
+- [rccl](https://github.com/ROCm/rccl): ROCm 通信集合库
 
 ### NVIDIA 生态
 
@@ -64,6 +71,9 @@
 - **[Nsight Copilot](https://developer.nvidia.com/nsight-copilot)**: 基于 AI 的性能分析助手。
 - **[CUPTI](https://docs.nvidia.com/cupti/index.html)**: CUDA 性能工具接口，提供对 CUDA 应用程序的性能分析和事件追踪功能。
 - **[NVTX](https://github.com/NVIDIA/NVTX)**: NVIDIA 运行时追踪库，支持在 CUDA 应用程序中插入自定义事件和范围，以便进行性能分析和调试。
+
+#### NVIDIA底层补充
+- [cutlass: CUDA Templates for Linear Algebra Subroutines](https://github.com/NVIDIA/cutlass)
 
 ### 国产 GPU 生态
 
@@ -89,6 +99,8 @@
 - [Tracing Topics on GitHub](https://github.com/topics/tracing)
 - [Profiler Topics on GitHub](https://github.com/topics/profiler)
 - 相关学术会议: MLSYS、ASPLOS、HPCA、MICRO、ISCA、[RTNS](https://dl.acm.org/conference/rtns)
+- [Brendan Gregg 的主页](https://www.brendangregg.com/)
+- [easyperf blog CPU架构](https://easyperf.net/)
 
 ---
 

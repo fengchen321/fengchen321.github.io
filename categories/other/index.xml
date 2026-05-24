@@ -154,8 +154,43 @@
  '&lt;div class="bm-error">加载失败，请刷新重试&lt;/div>';
  });
 })();
-&lt;/script></description></item><item><title>Record</title><link>https://fengchen321.github.io/posts/other/record/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/other/record/</guid><category domain="https://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="常用工具" class="heading-element">&lt;span>常用工具&lt;/span>
- &lt;a href="#%e5%b8%b8%e7%94%a8%e5%b7%a5%e5%85%b7" class="heading-mark">
+&lt;/script></description></item><item><title>Learning Resources</title><link>https://fengchen321.github.io/posts/other/learning-resources/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/other/learning-resources/</guid><category domain="https://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="编程" class="heading-element">&lt;span>编程&lt;/span>
+ &lt;a href="#%e7%bc%96%e7%a8%8b" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a href="https://csdiy.wiki/"target="_blank" rel="external nofollow noopener noreferrer">CS自学指南&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://google.github.io/styleguide/cppguide.html"target="_blank" rel="external nofollow noopener noreferrer">Google C++ Style Guide&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://cloud.google.com/apis/design?hl=zh-cn"target="_blank" rel="external nofollow noopener noreferrer">API 设计指南 | Cloud API Design Guide | Google Cloud&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://donsheehy.github.io/datastructures/fullbook.pdf"target="_blank" rel="external nofollow noopener noreferrer">python 算法 fullbook.pdf&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://dragonfly.wpi.edu/book/#down"target="_blank" rel="external nofollow noopener noreferrer">Dragonfly - 从头开始编写游戏引擎&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://mirrors.edge.kernel.org/pub/linux/kernel/people/paulmck/perfbook/perfbook.html"target="_blank" rel="external nofollow noopener noreferrer">并行编程难吗，如果难，您能做些什么？&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://artofproblemsolving.com/wiki/index.php/Proofs_without_words"target="_blank" rel="external nofollow noopener noreferrer">解决问题的艺术&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="操作系统" class="heading-element">&lt;span>操作系统&lt;/span>
+ &lt;a href="#%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a href="https://pages.cs.wisc.edu/~remzi/OSTEP/"target="_blank" rel="external nofollow noopener noreferrer">Operating Systems: Three Easy Pieces&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://jyywiki.cn/OS/2025/"target="_blank" rel="external nofollow noopener noreferrer">操作系统原理 (2025 春季学期)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://mohitmishra786.github.io/exploring-os/src/"target="_blank" rel="external nofollow noopener noreferrer">Daily OS Explorations | Exploring Operating Systems&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://operating-system-in-1000-lines.vercel.app/en/"target="_blank" rel="external nofollow noopener noreferrer">Operating System in 1,000 Lines&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://jamesbornholt.com/blog/memory-models/"target="_blank" rel="external nofollow noopener noreferrer">内存一致性模型：Memory Consistency Models: A Tutorial&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://research.swtch.com/mm"target="_blank" rel="external nofollow noopener noreferrer">内存模型：research!rsc: Memory Models&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://mohitmishra786.github.io/amILearningEnough/"target="_blank" rel="external nofollow noopener noreferrer">Am I Learning Enough&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="ai--机器学习" class="heading-element">&lt;span>AI / 机器学习&lt;/span>
+ &lt;a href="#ai--%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a href="https://speech.ee.ntu.edu.tw/~hylee/index.php"target="_blank" rel="external nofollow noopener noreferrer">Hung-yi Lee (李宏毅)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://huggingface.co/learn/mcp-course/"target="_blank" rel="external nofollow noopener noreferrer">MCP Course&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/chenzomi12"target="_blank" rel="external nofollow noopener noreferrer">zomi-AI System&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://arxiv.org/abs/2412.05265"target="_blank" rel="external nofollow noopener noreferrer">Reinforcement Learning: An Overview&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Record</title><link>https://fengchen321.github.io/posts/other/record/</link><pubDate>Sun, 01 Dec 2024 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/other/record/</guid><category domain="https://fengchen321.github.io/categories/other/">Other</category><description>&lt;h2 id="开发环境" class="heading-element">&lt;span>开发环境&lt;/span>
+ &lt;a href="#%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;h2 id="wsl" class="heading-element">&lt;span>WSL&lt;/span>

@@ -1,7 +1,7 @@
 # Record
 
 
-# 常用工具
+# 开发环境
 
 ## WSL
 
@@ -34,7 +34,31 @@ autoProxy=true
 sparseVhd=true
 ```
 
-## VSCode远程连接AC平台
+## 终端美化
+
+[ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+
+```shell
+sudo apt install zsh # git也要安装
+sh -c &#34;$(wget -O- https://install.ohmyz.sh/)&#34;
+```
+
+## ROCm 环境
+
+```shell
+sudo apt update
+wget https://repo.radeon.com/amdgpu-install/6.2.3/ubuntu/jammy/amdgpu-install_6.2.60203-1_all.deb
+sudo apt install ./amdgpu-install_6.2.60203-1_all.deb
+
+sudo amdgpu-install --list-usecase # 显示可用用例的列表
+amdgpu-install -y --usecase=wsl,rocm --no-dkms
+```
+
+# 编辑器 / IDE
+
+## VSCode
+
+### 远程连接
 
 [vscode1.86无法远程连接waiting the server log-CSDN博客](https://blog.csdn.net/qq_41596730/article/details/135982231)
 
@@ -53,6 +77,8 @@ Host 主机名
 ```
 
 - 保存config文件后，点击`左侧的小图标`选择``连接到主机Remote-ssh`,选择配置好的服务器即可。
+
+### 终端主题
 
 [终端主题选择](https://glitchbone.github.io/vscode-base16-term/#/gruvbox-dark-hard)
 
@@ -83,25 +109,17 @@ Host 主机名
     }
 ```
 
-### vscode 插件
+### 插件
 
 &gt; [PlantUML](https://pdf.plantuml.net/PlantUML_Language_Reference_Guide_zh.pdf)
 &gt;
 &gt; &gt; PlantUML配置 -&gt; Renderer -&gt; PlantUMLServer -&gt; http://www.plantuml.com/plantuml  生成图表选中puml文件快捷键 `Alt&#43;D`
 
-##  安装rocm环境
+## PyCharm
 
-```shell
-sudo apt update
-wget https://repo.radeon.com/amdgpu-install/6.2.3/ubuntu/jammy/amdgpu-install_6.2.60203-1_all.deb
-sudo apt install ./amdgpu-install_6.2.60203-1_all.deb
-
-sudo amdgpu-install --list-usecase # 显示可用用例的列表
-amdgpu-install -y --usecase=wsl,rocm --no-dkms
-```
-## MobaXterm
-
-[MobaXterm的基本使用与快捷键介绍 - 木卯生十木 - 博客园 (cnblogs.com)](https://www.cnblogs.com/jxearlier/p/13236571.html)
+&gt; 在File-Settings -&gt; Plugins 内手动添加第三方插件仓库地址：*https://plugins.zhile.io*
+&gt;
+&gt; IDE Eval Reset
 
 ## Source Insight
 
@@ -111,7 +129,39 @@ project source directory:输入程序源代码的路径
 
 add all 为工程添加文件 ，全部勾选；Show only known file types这一选项来选择显示其它类型的文件
 
-## 软件
+## Typora
+
+[使用 Typora 画图（类图、流程图、时序图） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/172635547)
+
+一不小心没保存可以在临时目录里找：`C:\Users\用户名\AppData\Roaming\Typora\draftsRecover`
+
+[Typora 插件](https://github.com/obgnail/typora_plugin?tab=readme-ov-file)
+
+# 远程工具
+
+## MobaXterm
+
+[MobaXterm的基本使用与快捷键介绍 - 木卯生十木 - 博客园 (cnblogs.com)](https://www.cnblogs.com/jxearlier/p/13236571.html)
+
+# 代码分析
+
+## Scientific Toolworks Understand
+
+`Setup x64.exe`安装
+
+安装目录的bin文件夹下替换crack的`understand.exe`
+
+[Understand 6.4.1141破解_understand离线激活-CSDN博客](https://blog.csdn.net/weixin_48220838/article/details/131297065)
+
+# 文档排版
+
+## LaTeX
+
+KaTeX 默认不支持 numcases 环境，还是使用cases吧。
+
+[katex在线](https://katex.org/#demo)
+
+# Windows 工具
 
 [ 键盘/🎮手柄按键 检测及历史记录显示工具](https://github.com/Sunrisepeak/KHistory)
 
@@ -137,53 +187,22 @@ start explorer
 pause
 ```
 
-### 终端美化
+# 浏览器插件
 
-[ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+Export Bookmarks To Json 书签导出为json格式
 
-```shell
-sudo apt install zsh # git也要安装
-sh -c &#34;$(wget -O- https://install.ohmyz.sh/)&#34;
-```
+# 小技巧
 
+`github1s.com`看代码，`github.dev`
+
+油管下载： youtubepp，9xyoutube  [YouTube高清视频在线下载 - 保存油管4K视频到本地](https://snapany.com/zh/youtube)
+
+[MinerU 文档解析，如pdf-&gt;md](https://mineru.net/)
+
+# 其他
 
 ## 专利检索平台
 [访问网址](https://www.incopat.com)
-
-## pycharm激活插件
-
-&gt; 在File-Settings -&gt; Plugins 内手动添加第三方插件仓库地址：*https://plugins.zhile.io*
-&gt;
-&gt; IDE Eval Reset
-
-
-## Scientific Toolworks Understand安装
-
-`Setup x64.exe`安装
-
-安装目录的bin文件夹下替换crack的`understand.exe`
-
-[Understand 6.4.1141破解_understand离线激活-CSDN博客](https://blog.csdn.net/weixin_48220838/article/details/131297065)
-
-
-
-## typora
-
-[使用 Typora 画图（类图、流程图、时序图） - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/172635547)
-
-一不小心没保存可以在临时目录里找：`C:\Users\用户名\AppData\Roaming\Typora\draftsRecover`
-
-[Typora 插件](https://github.com/obgnail/typora_plugin?tab=readme-ov-file)
-
-# Latex
-
-KaTeX 默认不支持 numcases 环境，还是使用cases吧。
-
-[katex在线](https://katex.org/#demo)
-
-## 插件
-
-Export Bookmarks To Json 书签导出为json格式
 
 
 ---
