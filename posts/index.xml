@@ -1,4 +1,389 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>所有文章 - fengchen</title><link>https://fengchen321.github.io/posts/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Apr 2026 13:33:12 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Performance Analysis Tools</title><link>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</link><pubDate>Wed, 01 Apr 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="performance-analysis-tools" class="heading-element">&lt;span>Performance Analysis Tools&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>所有文章 - fengchen</title><link>https://fengchen321.github.io/posts/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sun, 24 May 2026 20:14:59 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>系统设计</title><link>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link><pubDate>Sun, 24 May 2026 20:14:59 +0800</pubDate><guid>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid><category domain="https://fengchen321.github.io/categories/readingnotes/">ReadingNotes</category><description>&lt;h2 id="ai-codereview" class="heading-element">&lt;span>AI CodeReview&lt;/span>
+ &lt;a href="#ai-codereview" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;pre class="mermaid">%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart LR
+ webhook[gitlab webhook]
+ subgraph AI_CodeReview [AI CodeReview]
+ event[push or meger request]
+ diff[diff text]
+ sys_prompt[system prompt]
+ result[result &amp; score]
+ event --> diff
+ end
+ 
+ llm[LLM]
+ gitlab_notes[gitlab notes]
+ db[database]
+ others[others]
+ feishu[feishu&lt;br>...]
+ custom[custom]
+ 
+ webhook --> event
+ diff --> llm
+ sys_prompt --> llm
+ llm --> result
+ 
+ result --> gitlab_notes
+ result --> db
+ result --> others
+ result --> feishu
+ result --> custom
+ 
+ 
+ style event fill:#e6f3ff,stroke:#333,stroke-width:2px
+ style diff fill:#d4edda,stroke:#333,stroke-width:2px
+ style sys_prompt fill:#d4edda,stroke:#333,stroke-width:2px
+ style llm fill:#fff3cd,stroke:#333,stroke-width:2px
+ style gitlab_notes fill:#f8f9fa,stroke:#333,stroke-width:2px
+ style db fill:#f8f9fa,stroke:#333,stroke-width:2px
+ style others fill:#f8f9fa,stroke:#333,stroke-width:2px
+ style feishu fill:#f8f9ea,stroke:#333,stroke-width:2px
+ style custom fill:#f8f9ea,stroke:#333,stroke-width:2px&lt;/pre>
+&lt;template>%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart LR
+ webhook[gitlab webhook]
+ subgraph AI_CodeReview [AI CodeReview]
+ event[push or meger request]
+ diff[diff text]
+ sys_prompt[system prompt]
+ result[result &amp; score]
+ event --> diff
+ end
+ 
+ llm[LLM]
+ gitlab_notes[gitlab notes]
+ db[database]
+ others[others]
+ feishu[feishu&lt;br>...]
+ custom[custom]
+ 
+ webhook --> event
+ diff --> llm
+ sys_prompt --> llm
+ llm --> result
+ 
+ result --> gitlab_notes
+ result --> db
+ result --> others
+ result --> feishu
+ result --> custom
+ 
+ 
+ style event fill:#e6f3ff,stroke:#333,stroke-width:2px
+ style diff fill:#d4edda,stroke:#333,stroke-width:2px
+ style sys_prompt fill:#d4edda,stroke:#333,stroke-width:2px
+ style llm fill:#fff3cd,stroke:#333,stroke-width:2px
+ style gitlab_notes fill:#f8f9fa,stroke:#333,stroke-width:2px
+ style db fill:#f8f9fa,stroke:#333,stroke-width:2px
+ style others fill:#f8f9fa,stroke:#333,stroke-width:2px
+ style feishu fill:#f8f9ea,stroke:#333,stroke-width:2px
+ style custom fill:#f8f9ea,stroke:#333,stroke-width:2px&lt;/template>&lt;h2 id="rag" class="heading-element">&lt;span>RAG&lt;/span>
+ &lt;a href="#rag" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;pre class="mermaid">%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart LR
+ %% 样式定义
+ classDef blue fill:#e3f2fd,stroke:#1976d2,stroke-width:2px;
+ classDef orange fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+ classDef green fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+ classDef user fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+ classDef answer fill:#fce4ec,stroke:#c62828,stroke-width:2px;
+
+ subgraph Pre [构建知识库（提问前）]
+ direction LR
+ text[故障手册] -->|分段| list[片段列表]
+ list --> embedding(Embedding模型):::orange
+ embedding -->|向量化| vector[向量]
+ vector --> vectorDB[(向量数据库)]:::green
+ end&lt;/pre>
+&lt;template>%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart LR
+ %% 样式定义
+ classDef blue fill:#e3f2fd,stroke:#1976d2,stroke-width:2px;
+ classDef orange fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+ classDef green fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+ classDef user fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+ classDef answer fill:#fce4ec,stroke:#c62828,stroke-width:2px;
+
+ subgraph Pre [构建知识库（提问前）]
+ direction LR
+ text[故障手册] -->|分段| list[片段列表]
+ list --> embedding(Embedding模型):::orange
+ embedding -->|向量化| vector[向量]
+ vector --> vectorDB[(向量数据库)]:::green
+ end&lt;/template>&lt;pre class="mermaid">%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart LR
+ %% 样式定义
+ classDef blue fill:#e3f2fd,stroke:#1976d2,stroke-width:2px;
+ classDef orange fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+ classDef green fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+ classDef user fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+ classDef answer fill:#fce4ec,stroke:#c62828,stroke-width:2px;
+
+ subgraph Answer [回答部分（提问后）]
+ direction LR
+ user((用户))
+ embedding(Embedding模型):::orange
+ vector[向量]
+ vectorDB[(向量数据库)]:::green
+ 10segment[相关片段]
+ reranker(Reranker模型):::orange
+ 3segment[相关片段]
+ llm(LLM模型):::orange
+ 
+ user -->|提问| embedding
+ embedding -->|向量化| vector
+ vector -->|相似度计算| vectorDB
+ embedding~~~3segment
+ vectorDB -.->|召回 10个| 10segment
+ 10segment -->reranker -->|重排 3个| 3segment
+ 3segment -->|问题+片段| llm
+ llm -->|生成答案| user
+ end&lt;/pre>
+&lt;template>%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart LR
+ %% 样式定义
+ classDef blue fill:#e3f2fd,stroke:#1976d2,stroke-width:2px;
+ classDef orange fill:#fff3e0,stroke:#f57c00,stroke-width:2px;
+ classDef green fill:#e8f5e9,stroke:#388e3c,stroke-width:2px;
+ classDef user fill:#e1f5fe,stroke:#0288d1,stroke-width:2px;
+ classDef answer fill:#fce4ec,stroke:#c62828,stroke-width:2px;
+
+ subgraph Answer [回答部分（提问后）]
+ direction LR
+ user((用户))
+ embedding(Embedding模型):::orange
+ vector[向量]
+ vectorDB[(向量数据库)]:::green
+ 10segment[相关片段]
+ reranker(Reranker模型):::orange
+ 3segment[相关片段]
+ llm(LLM模型):::orange
+ 
+ user -->|提问| embedding
+ embedding -->|向量化| vector
+ vector -->|相似度计算| vectorDB
+ embedding~~~3segment
+ vectorDB -.->|召回 10个| 10segment
+ 10segment -->reranker -->|重排 3个| 3segment
+ 3segment -->|问题+片段| llm
+ llm -->|生成答案| user
+ end&lt;/template>&lt;h2 id="mcp" class="heading-element">&lt;span>MCP&lt;/span>
+ &lt;a href="#mcp" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;pre class="mermaid">%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart TB
+ %% 样式定义
+ classDef plain fill:#fff,stroke:#333,stroke-width:1px;
+ classDef lila fill:#e8dff5,stroke:#333,stroke-width:1px;
+ classDef orange fill:#ffe6cc,stroke:#333,stroke-width:1px;
+ classDef yellow fill:#fff2cc,stroke:#333,stroke-width:1px;
+ classDef green fill:#d9ead3,stroke:#333,stroke-width:1px;
+ classDef blue fill:#cfe2f3,stroke:#333,stroke-width:1px;
+	
+ %% 顶部：用户输入
+ UserInput[User Input]:::orange
+
+ %% 顶部：System Prompt 模块
+ subgraph SystemPrompt [System prompt]
+ direction TB
+ Instructions[Instructions]:::plain
+ ToolDescription[Tool Description]:::blue
+ end
+
+ %% 中间层：Message 与 LLM
+ Message[Message]:::orange
+ LLM[LLM]:::lila
+
+ %% 下半部分：Tool 调用及 MCP Server
+ ToolCallJson[Tool call json]:::yellow
+ FinalResult[Final Result]:::orange
+ ToolCallResult[Tool call result]:::green
+
+ MCPServer[["MCP Server&lt;br/>tool1 / tool2 / tool3 / ..."]]:::plain
+
+ %% 核心连接关系
+ UserInput --> Message
+ SystemPrompt --> Message
+ Message --> LLM
+ LLM --> ToolCallJson --> MCPServer
+ MCPServer --> ToolCallResult --> LLM
+ LLM --> FinalResult
+
+ %% 补充：Tool Description 与 MCP Server 之间的配置关系
+ ToolDescription -.-|提供工具结构化文本描述| MCPServer&lt;/pre>
+&lt;template>%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart TB
+ %% 样式定义
+ classDef plain fill:#fff,stroke:#333,stroke-width:1px;
+ classDef lila fill:#e8dff5,stroke:#333,stroke-width:1px;
+ classDef orange fill:#ffe6cc,stroke:#333,stroke-width:1px;
+ classDef yellow fill:#fff2cc,stroke:#333,stroke-width:1px;
+ classDef green fill:#d9ead3,stroke:#333,stroke-width:1px;
+ classDef blue fill:#cfe2f3,stroke:#333,stroke-width:1px;
+	
+ %% 顶部：用户输入
+ UserInput[User Input]:::orange
+
+ %% 顶部：System Prompt 模块
+ subgraph SystemPrompt [System prompt]
+ direction TB
+ Instructions[Instructions]:::plain
+ ToolDescription[Tool Description]:::blue
+ end
+
+ %% 中间层：Message 与 LLM
+ Message[Message]:::orange
+ LLM[LLM]:::lila
+
+ %% 下半部分：Tool 调用及 MCP Server
+ ToolCallJson[Tool call json]:::yellow
+ FinalResult[Final Result]:::orange
+ ToolCallResult[Tool call result]:::green
+
+ MCPServer[["MCP Server&lt;br/>tool1 / tool2 / tool3 / ..."]]:::plain
+
+ %% 核心连接关系
+ UserInput --> Message
+ SystemPrompt --> Message
+ Message --> LLM
+ LLM --> ToolCallJson --> MCPServer
+ MCPServer --> ToolCallResult --> LLM
+ LLM --> FinalResult
+
+ %% 补充：Tool Description 与 MCP Server 之间的配置关系
+ ToolDescription -.-|提供工具结构化文本描述| MCPServer&lt;/template>&lt;h3 id="故障诊断实际场景" class="heading-element">&lt;span>故障诊断实际场景&lt;/span>
+ &lt;a href="#%e6%95%85%e9%9a%9c%e8%af%8a%e6%96%ad%e5%ae%9e%e9%99%85%e5%9c%ba%e6%99%af" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;pre class="mermaid">%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart TB
+ %% 样式定义
+ classDef input fill:#fff2cc,stroke:#333,stroke-width:1px;
+ classDef intent fill:#ffe6cc,stroke:#333,stroke-width:1px;
+ classDef knowledgeBase fill:#e2efda,stroke:#333,stroke-width:1px;
+ classDef retrieval fill:#e2efda,stroke:#333,stroke-width:1px;
+ classDef agent fill:#e2effa,stroke:#333,stroke-width:1px;
+ classDef mcp fill:#fce5cd,stroke:#333,stroke-width:1px;
+ classDef output fill:#fff2cc,stroke:#333,stroke-width:1px;
+ classDef plain fill:#fff,stroke:#333,stroke-width:1px;
+
+ %% --- 顶层 ---
+ subgraph InputLayer [输入层]
+ direction TB
+ UserInput[用户输入]:::input
+ API[API]:::input
+ end
+
+ %% --- 知识库构建模块 ---
+ subgraph KnowledgeConstruction [知识库构建]
+ direction LR
+ text[专业知识]:::plain 
+ object[文件对象]:::plain
+ sub_segment[向量化后的段落]:::plain
+ vector_segment[向量化后的段落]:::plain
+ knowledgeDB[向量化后的段落]:::plain
+ 
+ text -->|预处理| object -->|切分|sub_segment -->|向量化| vector_segment-->|索引| knowledgeDB
+ end
+
+ %% --- 知识检索模块（左侧） ---
+ subgraph KRetrievalProcess [知识检索]
+ direction LR
+ vector_process[向量化处理]:::plain
+ topK[知识库匹配TopK]:::plain
+ reranker[Reranker重排序]:::plain
+ end
+ 
+ %% --- MCP Server 模块 ---
+ subgraph MCPServer [MCP Server]
+ end
+ 
+ Intent[意图识别]:::intent
+ DiagKnowledgeRetrieval_1[知识检索]:::retrieval
+ AgentNode[Agent&lt;br>规划-执行-观测]:::agent
+ DiagKnowledgeRetrieval_2[知识检索]:::retrieval
+ KResult[返回答案]:::output
+ DiagResult[返回诊断结论]:::output
+ 
+ InputLayer --> Intent
+ Intent -->|知识问答| vector_process
+ Intent -->|诊断操作| DiagKnowledgeRetrieval_1
+ DiagKnowledgeRetrieval_1 --> AgentNode
+ AgentNode -->|提取关键字| DiagKnowledgeRetrieval_2
+ DiagKnowledgeRetrieval_2-->DiagResult
+ 
+ knowledgeDB --> topK
+ reranker--> KResult
+ AgentNode &lt;--> MCPServer&lt;/pre>
+&lt;template>%%{ init: { 'flowchart': { 'curve': 'basis' } } }%%
+flowchart TB
+ %% 样式定义
+ classDef input fill:#fff2cc,stroke:#333,stroke-width:1px;
+ classDef intent fill:#ffe6cc,stroke:#333,stroke-width:1px;
+ classDef knowledgeBase fill:#e2efda,stroke:#333,stroke-width:1px;
+ classDef retrieval fill:#e2efda,stroke:#333,stroke-width:1px;
+ classDef agent fill:#e2effa,stroke:#333,stroke-width:1px;
+ classDef mcp fill:#fce5cd,stroke:#333,stroke-width:1px;
+ classDef output fill:#fff2cc,stroke:#333,stroke-width:1px;
+ classDef plain fill:#fff,stroke:#333,stroke-width:1px;
+
+ %% --- 顶层 ---
+ subgraph InputLayer [输入层]
+ direction TB
+ UserInput[用户输入]:::input
+ API[API]:::input
+ end
+
+ %% --- 知识库构建模块 ---
+ subgraph KnowledgeConstruction [知识库构建]
+ direction LR
+ text[专业知识]:::plain 
+ object[文件对象]:::plain
+ sub_segment[向量化后的段落]:::plain
+ vector_segment[向量化后的段落]:::plain
+ knowledgeDB[向量化后的段落]:::plain
+ 
+ text -->|预处理| object -->|切分|sub_segment -->|向量化| vector_segment-->|索引| knowledgeDB
+ end
+
+ %% --- 知识检索模块（左侧） ---
+ subgraph KRetrievalProcess [知识检索]
+ direction LR
+ vector_process[向量化处理]:::plain
+ topK[知识库匹配TopK]:::plain
+ reranker[Reranker重排序]:::plain
+ end
+ 
+ %% --- MCP Server 模块 ---
+ subgraph MCPServer [MCP Server]
+ end
+ 
+ Intent[意图识别]:::intent
+ DiagKnowledgeRetrieval_1[知识检索]:::retrieval
+ AgentNode[Agent&lt;br>规划-执行-观测]:::agent
+ DiagKnowledgeRetrieval_2[知识检索]:::retrieval
+ KResult[返回答案]:::output
+ DiagResult[返回诊断结论]:::output
+ 
+ InputLayer --> Intent
+ Intent -->|知识问答| vector_process
+ Intent -->|诊断操作| DiagKnowledgeRetrieval_1
+ DiagKnowledgeRetrieval_1 --> AgentNode
+ AgentNode -->|提取关键字| DiagKnowledgeRetrieval_2
+ DiagKnowledgeRetrieval_2-->DiagResult
+ 
+ knowledgeDB --> topK
+ reranker--> KResult
+ AgentNode &lt;--> MCPServer&lt;/template>&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;a href="https://github.com/Vonng/ddia"target="_blank" rel="external nofollow noopener noreferrer">Vonng/ddia: 《Designing Data-Intensive Application》DDIA中文翻译&lt;/a>&lt;/p></description></item><item><title>Performance Analysis Tools</title><link>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</link><pubDate>Wed, 01 Apr 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="performance-analysis-tools" class="heading-element">&lt;span>Performance Analysis Tools&lt;/span>
  &lt;a href="#performance-analysis-tools" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
