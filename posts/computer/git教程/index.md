@@ -129,6 +129,35 @@
 4. `git stash pop`：将栈顶存储的修改恢复到当前分支，同时删除栈顶元素
 5. `git stash list`：查看栈中所有元素
 
+### 子模块相关
+
+1. `git submodule update --init --recursive`：初始化并拉取所有子模块
+2. `git submodule add &lt;repo-url&gt; &lt;path&gt;`：添加新子模块
+
+```shell
+# 1. 进入子模块
+cd bpfti
+# 2. 重命名远程仓库
+git remote rename origin upstream
+git remote add origin https://github.com/fengchen321/bpftime.git
+# 3. 提交子模块的本地修改
+git add .
+git commit -m &#34;feat: my modifications to bpftime&#34;
+git push origin master  # 或 main
+# 4. 返回主项目
+cd ..
+# 5. 修改 .gitmodules 指向你的 fork
+git config -f .gitmodules submodule.bpftime.url https://github.com/fengchen321/bpftime.git
+# 6. 更新子模块到最新的 commit
+git submodule update --remote bpftime
+# 7. 添加变更（包括 .gitmodules 和子模块引用）
+git add .gitmodules
+git add bpftime 
+# 8. 提交主项目
+git commit -m &#34;chore: point bpftime submodule to fork and update to latest commit&#34;
+git push
+```
+
 ## 3 其他
 
 **云端复制到本地**

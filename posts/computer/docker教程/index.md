@@ -62,6 +62,17 @@ sudo usermod -aG docker $USER
 
 6. `docker load -i ubuntu_20_04.tar`：将镜像ubuntu:20.04从本地文件ubuntu_20_04.tar中加载出来
 
+```shell
+# docker迁移常用流程
+docker commit 4e283ad0633f centos8_claude:1.1 # 1. 提交容器为镜像
+docker save centos8_claude:1.1 | gzip &gt; centos8_claude_1.1.tar.gz # 2. 保存并压缩
+docker rmi centos8_claude:1.1 # 3. 确认无误后删除原镜像
+
+docker load &lt; centos8-claude_1.1.tar.gz # 4. 加载镜像
+docker run -d -t -v/usr/share/hwdata/:/usr/share/hwdata/ -v/opt/hyhal:/opt/hyhal -v/public:/public -v/public2:/public2 -v/public4:/public4 -v/public5:/public5 --privileged --pid=host --network=host --device=/dev/kfd --device=/dev/dri/ --group-add video  --name centos_test centos8_claude:1.1
+docker exec -it centos_test /bin/bash # 5. 重建容器并进入
+```
+
 #### 容器(container)
 
 ```shell
