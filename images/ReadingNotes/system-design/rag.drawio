@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram id="rag" name="RAG">
+    <mxGraphModel dx="1654" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pre" parent="1" style="rounded=1;whiteSpace=wrap;html=1;container=1;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=14;" value="构建知识库（提问前）" vertex="1">
+          <mxGeometry height="200" width="850" x="130" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="text" parent="pre" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;" value="故障手册" vertex="1">
+          <mxGeometry height="50" width="92.72727272727273" x="30.909090909090914" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="list" parent="pre" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;" value="片段列表" vertex="1">
+          <mxGeometry height="50" width="92.72727272727273" x="185.45454545454547" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="embedding1" parent="pre" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;" value="Embedding模型" vertex="1">
+          <mxGeometry height="50" width="108.18181818181819" x="340" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vector1" parent="pre" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;" value="向量" vertex="1">
+          <mxGeometry height="50" width="77.27272727272728" x="510" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="vectorDB1" parent="pre" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e8f5e9;strokeColor=#388e3c;strokeWidth=2;" value="向量数据库" vertex="1">
+          <mxGeometry height="70" width="92.72727272727273" x="664.5454545454546" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ke1" edge="1" parent="pre" source="text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="list" value="分段">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ke2" edge="1" parent="pre" source="list" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;" target="embedding1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ke3" edge="1" parent="pre" source="embedding1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="vector1" value="向量化">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ke4" edge="1" parent="pre" source="vector1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;" target="vectorDB1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="answer" parent="1" style="rounded=1;whiteSpace=wrap;html=1;container=1;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=14;" value="回答部分（提问后）" vertex="1">
+          <mxGeometry height="280" width="850" x="130" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="answer" style="ellipse;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0288d1;strokeWidth=2;" value="用户" vertex="1">
+          <mxGeometry height="80" width="61.81818181818181" x="60.00363636363636" y="35" as="geometry" />
+        </mxCell>
+        <mxCell id="embedding2" parent="answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;" value="Embedding模型" vertex="1">
+          <mxGeometry height="50" width="108.18181818181817" x="240" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vector2" parent="answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;" value="向量" vertex="1">
+          <mxGeometry height="50" width="77.27272727272727" x="440" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="vectorDB2" parent="answer" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e8f5e9;strokeColor=#388e3c;strokeWidth=2;" value="向量数据库" vertex="1">
+          <mxGeometry height="70" width="92.72727272727272" x="662.040909090909" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="10segment" parent="answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;" value="相关片段(10个)" vertex="1">
+          <mxGeometry height="50" width="92.72727272727272" x="662.0436363636363" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="reranker" parent="answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;" value="Reranker模型" vertex="1">
+          <mxGeometry height="50" width="100.45454545454545" x="439.99909090909085" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="3segment" parent="answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1;" value="相关片段(3个)" vertex="1">
+          <mxGeometry height="50" width="100.45454545454545" x="239.99727272727267" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" parent="answer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;" value="LLM模型" vertex="1">
+          <mxGeometry height="50" width="100.45454545454545" x="40.68545454545455" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ae1" edge="1" parent="answer" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="embedding2" value="提问">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae2" edge="1" parent="answer" source="embedding2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="vector2" value="向量化">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae3" edge="1" parent="answer" source="vector2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="vectorDB2" value="相似度计算">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae4" edge="1" parent="answer" source="vectorDB2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;dashed=1;" target="10segment" value="召回 10个">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae5" edge="1" parent="answer" source="10segment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;" target="reranker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae6" edge="1" parent="answer" source="reranker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="3segment" value="重排 3个">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae7" edge="1" parent="answer" source="3segment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="llm" value="问题+片段">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ae8" edge="1" parent="answer" source="llm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;fontStyle=1;fontSize=11;" target="user" value="生成答案">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

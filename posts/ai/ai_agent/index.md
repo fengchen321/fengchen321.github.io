@@ -134,6 +134,10 @@ claude mcp add codex -s user -- codex -m gpt-5.1-codex-max -c model_reasoning_ef
 claude mcp remove codex # 移除配置
 ```
 
+```shell
+claude mcp add drawio -- npx -y @drawio/mcp  # draw.io 官方mcp
+```
+
 #### Hooks
 
 &gt; [Hooks reference](https://code.claude.com/docs/en/hooks)

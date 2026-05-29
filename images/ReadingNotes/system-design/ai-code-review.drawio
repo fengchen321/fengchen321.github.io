@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram id="ai-code-review" name="AI CodeReview">
+    <mxGraphModel dx="1406" dy="746" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="webhook" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1;" value="gitlab webhook" vertex="1">
+          <mxGeometry height="50" width="120" x="50" y="172.86" as="geometry" />
+        </mxCell>
+        <mxCell id="ai_code_review" parent="1" style="rounded=1;whiteSpace=wrap;html=1;container=1;collapsible=0;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;verticalAlign=top;fontStyle=1;fontSize=14;" value="AI CodeReview" vertex="1">
+          <mxGeometry height="300" width="650" x="210" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="event" parent="ai_code_review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f3ff;strokeColor=#333333;strokeWidth=2;" value="push or merge request" vertex="1">
+          <mxGeometry height="44.29" width="132.5" x="20" y="115.71" as="geometry" />
+        </mxCell>
+        <mxCell id="diff" parent="ai_code_review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#333333;strokeWidth=2;" value="diff text" vertex="1">
+          <mxGeometry height="40" width="100" x="200" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="sys_prompt" parent="ai_code_review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#333333;strokeWidth=2;" value="system prompt" vertex="1">
+          <mxGeometry height="140" width="110" x="320" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="result" parent="ai_code_review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f3ff;strokeColor=#333333;strokeWidth=2;" value="result &amp; score" vertex="1">
+          <mxGeometry height="200" width="160" x="460" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="K3pDemEdXNWVAfZfwOJV-3" edge="1" parent="ai_code_review" source="event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;endArrow=classic;endFill=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="K3pDemEdXNWVAfZfwOJV-4" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="363" y="165" as="sourcePoint" />
+            <mxPoint x="200" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="K3pDemEdXNWVAfZfwOJV-4" parent="ai_code_review" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;" value="&lt;b&gt;...&lt;/b&gt;" vertex="1">
+          <mxGeometry height="32.85" width="90" x="200" y="121.43" as="geometry" />
+        </mxCell>
+        <mxCell id="K3pDemEdXNWVAfZfwOJV-2" parent="ai_code_review" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d4edda;strokeColor=#333333;strokeWidth=2;" value="diff text" vertex="1">
+          <mxGeometry height="46.08" width="100" x="200" y="69.63" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3cd;strokeColor=#333333;strokeWidth=2;" value="LLM" vertex="1">
+          <mxGeometry height="50" width="450" x="210" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="gitlab_notes" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1;" value="gitlab notes" vertex="1">
+          <mxGeometry height="30" width="120" x="680" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="db" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1;" value="database" vertex="1">
+          <mxGeometry height="30" width="120" x="810" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="others" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#333333;strokeWidth=1;" value="others" vertex="1">
+          <mxGeometry height="30" width="120" x="730" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="feishu" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9ea;strokeColor=#333333;strokeWidth=1;" value="feishu&lt;br&gt;..." vertex="1">
+          <mxGeometry height="100" width="120" x="930" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="custom" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9ea;strokeColor=#333333;strokeWidth=1;" value="custom" vertex="1">
+          <mxGeometry height="80" width="120" x="930" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="webhook" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;" target="event">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="diff" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="460" y="350" />
+              <mxPoint x="460" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="sys_prompt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="llm">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="585" y="340" />
+              <mxPoint x="585" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="gitlab_notes">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;exitX=0.669;exitY=1.015;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="777" y="310" />
+              <mxPoint x="780" y="310" />
+              <mxPoint x="780" y="350" />
+              <mxPoint x="870" y="350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;exitX=1.006;exitY=0.4;exitDx=0;exitDy=0;exitPerimeter=0;" target="feishu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;exitX=1;exitY=0.9;exitDx=0;exitDy=0;" target="custom">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="llm" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#333333;strokeWidth=1;exitX=0.95;exitY=0;exitDx=0;exitDy=0;entryX=-0.006;entryY=0.535;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="result">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="400" />
+              <mxPoint x="650" y="217" />
+            </Array>
+            <mxPoint x="720" y="645" as="sourcePoint" />
+            <mxPoint x="1230" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
