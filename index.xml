@@ -51,7 +51,265 @@
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h2>&lt;p>&lt;a href="https://github.com/Vonng/ddia"target="_blank" rel="external nofollow noopener noreferrer">Vonng/ddia: 《Designing Data-Intensive Application》DDIA中文翻译&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://highscalability.com/"target="_blank" rel="external nofollow noopener noreferrer">架构案例&lt;/a>&lt;/p></description></item><item><title>Performance Analysis Tools</title><link>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</link><pubDate>Wed, 01 Apr 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="performance-analysis-tools" class="heading-element">&lt;span>Performance Analysis Tools&lt;/span>
+&lt;p>&lt;a href="https://highscalability.com/"target="_blank" rel="external nofollow noopener noreferrer">架构案例&lt;/a>&lt;/p></description></item><item><title>CS336</title><link>https://fengchen321.github.io/posts/ai/cs336/</link><pubDate>Mon, 11 May 2026 23:06:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/cs336/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="cs336" class="heading-element">&lt;span>CS336&lt;/span>
+ &lt;a href="#cs336" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="basics" class="heading-element">&lt;span>Basics&lt;/span>
+ &lt;a href="#basics" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="tokenization" class="heading-element">&lt;span>Tokenization&lt;/span>
+ &lt;a href="#tokenization" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>Byte-Pair Encoding (BPE)&lt;/p>
+&lt;p>根据模型参数和硬件能力初略估计耗时&lt;/p>
+&lt;p>float32 float16 bfloat16 fp8(2022 E4M3和E5M2) fp4(2025)&lt;/p>
+&lt;p>混合精度: bf16(参数，激活，梯度) + fp32(优化状态) AMP库&lt;/p>
+&lt;p>Einops库：张量操作&lt;/p>
+&lt;blockquote>
+&lt;p>einsum, reduce, rearrange&lt;/p>
+&lt;/blockquote>
+&lt;p>MFU = (actual FLOP/s) / (promised FLOP/s)&lt;/p>
+&lt;blockquote>
+&lt;p>MFU = 0.5： flop / bytes: 运算强度
+怎么看是内存受限还是计算受限：Roofline模型&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="model-architecture" class="heading-element">&lt;span>Model Architecture&lt;/span>
+ &lt;a href="#model-architecture" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h4 id="架构和超参数" class="heading-element">&lt;span>架构和超参数&lt;/span>
+ &lt;a href="#%e6%9e%b6%e6%9e%84%e5%92%8c%e8%b6%85%e5%8f%82%e6%95%b0" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>&lt;strong>Normalization: Pre-Norm vs Post-Norm&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>最初的 Transformer 使用 Post-Norm（LayerNorm 在残差连接之后）&lt;/li>
+&lt;li>Pre-Norm：LayerNorm 放在残差连接之前，保持残差流（residual stream）干净&lt;/li>
+&lt;li>Pre-Norm 训练更稳定，减少梯度峰值的大小和频率&lt;/li>
+&lt;li>LayerNorm vs RMSNorm：RMSNorm 省略了均值中心化步骤，运算更快&lt;/li>
+&lt;li>LayerNorm 的作用：控制梯度峰值，保证信号在深层网络中传递顺畅&lt;/li>
+&lt;li>丢弃 bias：简化系统实现，现代 LLM 普遍不使用 bias&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>激活函数与参数量平衡&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>激活函数（如 SwiGLU）会增加额外参数量&lt;/li>
+&lt;li>保持架构总参数不变：缩小前馈维度，将 d_ff 调整为原来的 2/3&lt;/li>
+&lt;li>例：原来 d_ff = 4d_model → 使用 SwiGLU 后 d_ff = (4 × 2/3) d_model ≈ 8/3 d_model&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>串行 vs 并行 Layers&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>串行（Sequential）：每层依次计算，先 Attention 再 FFN&lt;/li>
+&lt;li>并行（Parallel）：Attention 和 FFN 并行计算后合并&lt;/li>
+&lt;li>现代模型更多使用串行，训练更稳定&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>位置编码：RoPE（Rotary Position Embedding）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>当前主流方案，将位置信息编码为旋转矩阵&lt;/li>
+&lt;li>相对位置编码：通过旋转角度差表示 token 间距离&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>超参数选择&lt;/strong>&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>超参数&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>feedforward-size&lt;/td>
+ &lt;td>d_ff = 4 × d_model（标准）; 使用 SwiGLU 时调整为 ~8/3 × d_model&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>num-heads&lt;/td>
+ &lt;td>head_dim = d_model / num_heads，通常 head_dim ≥ 64&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>d_model / n_layer&lt;/td>
+ &lt;td>深度和宽度的权衡，比值大约在 100 左右&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Vocab-size&lt;/td>
+ &lt;td>单语种 30-50k，多语种 100-250k&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Dropout&lt;/td>
+ &lt;td>现代大规模预训练中较少使用&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Weight decay&lt;/td>
+ &lt;td>典型值 0.1，防止权重过大&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>训练稳定性技巧&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Softmax 不稳定：指数运算可能溢出，除 0 操作导致 NaN
+&lt;ul>
+&lt;li>解决：输出端添加 z-loss（对 logits 的平方惩罚）&lt;/li>
+&lt;li>解决：注意力归一化中使用 QK norm（对 Q、K 做归一化）&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Logit soft-capping：用 Tanh 将 logits 压缩到某个最大值范围内，防止极端值&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Attention Heads 变体&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>MHA（Multi-Head Attention）：标准多头注意力&lt;/li>
+&lt;li>MQA（Multi-Query Attention）：多个 query head 共享同一组 K、V，减少 KV cache&lt;/li>
+&lt;li>GQA（Grouped-Query Attention）：介于 MHA 和 MQA 之间，每组 query head 共享 K、V，当前主流&lt;/li>
+&lt;li>滑动窗口注意力（Sliding Window Attention）：交替使用 full attention 和 local attention（LR attention），兼顾全局建模与效率&lt;/li>
+&lt;/ul>
+&lt;h4 id="attention-alternatives--mixture-of-experts" class="heading-element">&lt;span>Attention Alternatives &amp;amp; Mixture of Experts&lt;/span>
+ &lt;a href="#attention-alternatives--mixture-of-experts" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>&lt;strong>Attention Alternatives&lt;/strong>&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>方案&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>Sliding Window + Full Attention&lt;/td>
+ &lt;td>组合局部与全局注意力&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>FlashAttention&lt;/td>
+ &lt;td>系统工程层面优化，IO-aware 的精确注意力实现&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Linear Attention&lt;/td>
+ &lt;td>线性注意力，如 MiniMax M1&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Gated $\gamma_t$&lt;/td>
+ &lt;td>Mamba-2 的核心机制&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Nemotron-3&lt;/td>
+ &lt;td>NVIDIA 的门控线性注意力方案&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Gated $\gamma_t$ + $\beta_t$&lt;/td>
+ &lt;td>Gated DeltaNet，结合门控与 delta 更新&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>DSA（DeepSeek Sparse Attention）&lt;/td>
+ &lt;td>DeepSeek V3.2 / GLM-5 使用，Lightning Indexer 机制&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>注意力计算的优化思路&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>将注意力重排为 RNN 递归形式，有利于推理阶段效率（逐 token 生成时避免重复计算）&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>MoE（Mixture of Experts）&lt;/strong>&lt;/p>
+&lt;p>MoE 可以看作高效的 MLP 替代方案，将 Dense Model 转化为 Sparse Model。&lt;/p>
+&lt;p>核心思想：&lt;/p>
+&lt;ul>
+&lt;li>在 FFN 层引入多个专家（expert），每个 token 只激活其中一部分&lt;/li>
+&lt;li>为模型增加了一个新的并行化维度（expert 并行）&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>路由函数（Routing）&lt;/strong>&lt;/p>
+&lt;p>三种路由范式：&lt;/p>
+&lt;ol>
+&lt;li>Token 选择 Expert：每个 token 通过路由函数决定由哪些 expert 处理&lt;/li>
+&lt;li>Expert 选择 Token：expert 反向选择要处理的 token&lt;/li>
+&lt;li>全局路由：全局视角进行决策，统一调度 token 与 expert 的分配&lt;/li>
+&lt;/ol>
+&lt;p>具体路由策略：&lt;/p>
+&lt;ul>
+&lt;li>Top-k routing：最常用，每个 token 选择 top-k 个 expert&lt;/li>
+&lt;li>Hash routing：基于 hash 的确定性分配，简单 baseline&lt;/li>
+&lt;li>RL 学习路由：用强化学习优化门控策略&lt;/li>
+&lt;li>匹配问题求解：将路由建模为优化问题&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>共享专家（Shared Expert）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>部分专家对所有 token 激活，不参与路由&lt;/li>
+&lt;li>保证基础能力的稳定输出&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>训练 MoE 的方法&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>强化学习优化门控策略&lt;/li>
+&lt;li>随机近似（Stochastic Perturbations）&lt;/li>
+&lt;li>启发式策略：辅助负载均衡 loss（heuristic balancing losses）&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>训练 MoE 的挑战&lt;/strong>&lt;/p>
+&lt;p>负载均衡问题：&lt;/p>
+&lt;ul>
+&lt;li>路由不均匀导致部分 expert 过载、部分闲置&lt;/li>
+&lt;/ul>
+&lt;p>并行策略：&lt;/p>
+&lt;ul>
+&lt;li>数据并行：batch-size 达到极限时无法继续扩展&lt;/li>
+&lt;li>模型并行：将模型拆分到多个设备&lt;/li>
+&lt;li>专家并行：不同 expert 分布在不同设备上，MoE 特有的并行方式&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Upcycling&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>将已训练好的 Dense Model 复制为多个 expert再继续训练&lt;/li>
+&lt;li>降低 MoE 训练的初始化成本&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>MTP（Multi-Token Prediction）&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>一次预测多个未来 token，而非仅预测下一个 token&lt;/li>
+&lt;/ul>
+&lt;h2 id="systems" class="heading-element">&lt;span>Systems&lt;/span>
+ &lt;a href="#systems" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h3 id="kernels" class="heading-element">&lt;span>Kernels&lt;/span>
+ &lt;a href="#kernels" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h3 id="parallelism" class="heading-element">&lt;span>Parallelism&lt;/span>
+ &lt;a href="#parallelism" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h3 id="inference" class="heading-element">&lt;span>inference&lt;/span>
+ &lt;a href="#inference" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h2 id="scaling_laws" class="heading-element">&lt;span>Scaling_laws&lt;/span>
+ &lt;a href="#scaling_laws" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;h2 id="data" class="heading-element">&lt;span>Data&lt;/span>
+ &lt;a href="#data" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;blockquote>
+&lt;p>evaluation, curation, transformation, filtering, deduplication, mixing&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="alignment" class="heading-element">&lt;span>Alignment&lt;/span>
+ &lt;a href="#alignment" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;blockquote>
+&lt;p>RLHF, RL algorithms, RL systems&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+ &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;ul>
+&lt;li>&lt;a href="https://cs336.stanford.edu/"target="_blank" rel="external nofollow noopener noreferrer">CS336: Language Modeling from Scratch&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">python&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">m&lt;/span> &lt;span class="n">edtrace&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">execute&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">m&lt;/span> &lt;span class="n">lecture&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item><item><title>Performance Analysis Tools</title><link>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</link><pubDate>Wed, 01 Apr 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="performance-analysis-tools" class="heading-element">&lt;span>Performance Analysis Tools&lt;/span>
  &lt;a href="#performance-analysis-tools" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -5043,208 +5301,4 @@ Web 服务器的构件模型：servlet 模型，以及基于 Visual Basic 和 AS
 &lt;/h2>&lt;p>&lt;a href="https://mpitutorial.com/"target="_blank" rel="external nofollow noopener noreferrer">MPI Tutorial&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://www.open-mpi.org/doc/v4.1/"target="_blank" rel="external nofollow noopener noreferrer">Open MPI documentation&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/590277732"target="_blank" rel="external nofollow noopener noreferrer">MPI 与并行计算入门 - 知乎&lt;/a>&lt;/p>
-&lt;p>&lt;a href="http://fcode.cn/download/fcode/MPI_C,C&amp;#43;&amp;#43;,Fortran_Bind.pdf"target="_blank" rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf&lt;/a>&lt;/p></description></item><item><title>GPU_碎片笔记</title><link>https://fengchen321.github.io/posts/ai/gpu_%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</link><pubDate>Thu, 23 Jan 2025 12:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/ai/gpu_%E7%A2%8E%E7%89%87%E7%AC%94%E8%AE%B0/</guid><category domain="https://fengchen321.github.io/categories/ai/">AI</category><description>&lt;h2 id="gpu_碎片笔记" class="heading-element">&lt;span>GPU_碎片笔记&lt;/span>
- &lt;a href="#gpu_%e7%a2%8e%e7%89%87%e7%ac%94%e8%ae%b0" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h2 id="n卡--a卡--opencl-对比" class="heading-element">&lt;span>N卡 / A卡 / OpenCL 对比&lt;/span>
- &lt;a href="#n%e5%8d%a1--a%e5%8d%a1--opencl-%e5%af%b9%e6%af%94" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th style="text-align: left">Nvidia/CUDA&lt;/th>
- &lt;th style="text-align: left">AMD/HIP&lt;/th>
- &lt;th style="text-align: left">OpenCL&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td style="text-align: left">Streaming Multiprocessor (SM)&lt;/td>
- &lt;td style="text-align: left">Compute Unit (CU)&lt;/td>
- &lt;td style="text-align: left">Compute Unit&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">Thread Block&lt;/td>
- &lt;td style="text-align: left">Workgroup&lt;/td>
- &lt;td style="text-align: left">Work-group&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">Shared Memory&lt;/td>
- &lt;td style="text-align: left">Local Memory&lt;/td>
- &lt;td style="text-align: left">Local Memory&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">Local Memory&lt;/td>
- &lt;td style="text-align: left">Private Memory&lt;/td>
- &lt;td style="text-align: left">Private Memory&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">grid&lt;/td>
- &lt;td style="text-align: left">grid&lt;/td>
- &lt;td style="text-align: left">NDRange&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">block&lt;/td>
- &lt;td style="text-align: left">block&lt;/td>
- &lt;td style="text-align: left">work-group&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">thread&lt;/td>
- &lt;td style="text-align: left">work-item / thread&lt;/td>
- &lt;td style="text-align: left">work-item&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: left">warp (32)&lt;/td>
- &lt;td style="text-align: left">wavefront (64)&lt;/td>
- &lt;td style="text-align: left">sub-group&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h2 id="硬件规格" class="heading-element">&lt;span>硬件规格&lt;/span>
- &lt;a href="#%e7%a1%ac%e4%bb%b6%e8%a7%84%e6%a0%bc" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;h3 id="fermi-n卡老架构" class="heading-element">&lt;span>Fermi (N卡老架构)&lt;/span>
- &lt;a href="#fermi-n%e5%8d%a1%e8%80%81%e6%9e%b6%e6%9e%84" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;ul>
-&lt;li>SM 数：16&lt;/li>
-&lt;li>每 SM 的 CUDA 核心数：32&lt;/li>
-&lt;li>Warp 大小：32&lt;/li>
-&lt;li>每 SM 最大线程：1536&lt;/li>
-&lt;/ul>
-&lt;h3 id="gfx906-amddcu-典型" class="heading-element">&lt;span>gfx906 (AMD/DCU 典型)&lt;/span>
- &lt;a href="#gfx906-amddcu-%e5%85%b8%e5%9e%8b" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;ul>
-&lt;li>CU 数：64&lt;/li>
-&lt;li>SE：4&lt;/li>
-&lt;li>每 CU 的 SIMD：4&lt;/li>
-&lt;li>每 SIMD wavefront 数量：10&lt;/li>
-&lt;li>Wavefront 大小：64&lt;/li>
-&lt;li>单 block 最大线程：1024 (即最多 16 个 wavefront)&lt;/li>
-&lt;li>SGPR(标量寄存器)：每组 16 个，编程可见范围：SGPR0 ~ SGPR101，共 102 个逻辑寄存器&lt;/li>
-&lt;li>VGPR(向量寄存器)：分配粒度为 4 个寄存器一组&lt;/li>
-&lt;/ul>
-&lt;h3 id="bw" class="heading-element">&lt;span>BW&lt;/span>
- &lt;a href="#bw" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h3>&lt;ul>
-&lt;li>CU 数：80&lt;/li>
-&lt;li>SE：8&lt;/li>
-&lt;/ul>
-&lt;p>峰值：$cu数 \times simds数\times频率\times数据布局\times2 /时钟周期$&lt;/p>
-&lt;table>
- &lt;thead>
- &lt;tr>
- &lt;th style="text-align: center">指标 Basic Metrics&lt;/th>
- &lt;th style="text-align: center">位置&lt;/th>
- &lt;/tr>
- &lt;/thead>
- &lt;tbody>
- &lt;tr>
- &lt;td style="text-align: center">SQ&lt;/td>
- &lt;td style="text-align: center">计算单元（Schedule）&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">SP&lt;/td>
- &lt;td style="text-align: center">计算单元（SIMD）&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">TA&lt;/td>
- &lt;td style="text-align: center">计算单元（Vector Mem Unit）&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">TCP&lt;/td>
- &lt;td style="text-align: center">L1 Cache&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">TCC&lt;/td>
- &lt;td style="text-align: center">L2 Cache&lt;/td>
- &lt;/tr>
- &lt;tr>
- &lt;td style="text-align: center">CPC/CPF&lt;/td>
- &lt;td style="text-align: center">Command Processors&lt;/td>
- &lt;/tr>
- &lt;/tbody>
-&lt;/table>
-&lt;h2 id="常见概念" class="heading-element">&lt;span>常见概念&lt;/span>
- &lt;a href="#%e5%b8%b8%e8%a7%81%e6%a6%82%e5%bf%b5" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;strong>算力计算&lt;/strong>：3060Ti：&lt;/p>
-&lt;p>$\begin{aligned}
-\text{FLOPS} &amp;= \text{GPU核数} \times \text{单核主频} \times \text{GPU单个周期浮点计算能力} \\
-&amp;= \text{Shading Units} \times \text{Boost Clock} \times 2 \\
-&amp;= 4864 \times 1665\text{MHz} \times 2 \quad \text{(乘加2次操作)} \\
-&amp;= 16.20\ \text{TFLOPS}
-\end{aligned}$&lt;/p>
-&lt;p>&lt;strong>线程束分化&lt;/strong>：同 warp / wavefront 内执行不同分支 → 分支边界尽量对齐 warp 大小。&lt;/p>
-&lt;p>&lt;strong>指令延迟&lt;/strong>：在指令发出和完成之间的时钟周期&lt;/p>
-&lt;p>&lt;strong>带宽&lt;/strong>：理论峰值，用来描述单位时间内最大可能的数据传输量, 1字节为 8 比特,GDDR6的prefetch是16n，不知道为啥乘8，还是直接用有效传输速率计算吧。&lt;/p>
-&lt;p>$\begin{aligned}
-\text{bandwidth} &amp;= \text{内存频率} \times \text{Prefetch} \times \text{内存位宽} / 8\\
-&amp;= \text{有效数据传输速率} \times \text{内存位宽} / 8 \\
-&amp;= 14\text{Gbps} \times 256\text{bit} / 8 \\
-&amp;= \text{Memory Clock} \times 8 \times \text{Memory Bus} /8 \\
-&amp;= 1750\text{MHz} \times 4 \times 2 \times 256\text{bit} / 8 \\
-&amp;= 448\ \text{GB/s}
-\end{aligned}$&lt;/p>
-&lt;p>&lt;strong>吞吐量&lt;/strong>：已达到的值，用来描述单位时间内任何形式的信息或操作的执行速度，例如，每个周期完成多少个指令。&lt;/p>
-&lt;p>估算隐藏延迟所需要的活跃线程束的数量：所需线程束数量＝延迟×吞吐量&lt;/p>
-&lt;p>每周期字节数 = 吞吐量/内存频率，比如Ferm架构吞吐量为144GB/s,内存频率1.566GHz;&lt;/p>
-&lt;p>内存并行 = 内存延迟 × 每周期字节数= 800*(144GB/s/1.566GHz)约为74KB：是为了解决“数据来得慢”的问题，用足够的数据缓冲区掩盖内存延迟。（提前备料）&lt;/p>
-&lt;blockquote>
-&lt;p>假设你开快餐店，厨师（处理器）做菜很快，但等食材（内存数据）到货要10分钟。为了避免厨师闲着，你需要一个仓库（并行大小），存够10分钟内能用的食材量（如72KB）。这样，厨师总能拿到食材，不中断工作。&lt;/p>
-&lt;/blockquote>
-&lt;p>计算并行（简化版）= 每个SM核心的数量 × 在该SM上一条算术指令的延迟：是为了解决“指令执行慢”的问题，用足够的线程掩盖计算延迟。（多任务分配）&lt;/p>
-&lt;blockquote>
-&lt;p>SM像一个车间，核心是工人（32人），指令延迟是每个工人处理一个零件的时间（20分钟）。如果只给每个工人一个零件，他们干完20分钟就得等。但如果给每个工人20个零件（32人 × 20零件 = 640零件），那么当一个零件在处理时，工人可以立刻切换到下一个零件，整个车间一直高效运转。&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>占用率&lt;/strong>：每个SM中活跃的线程束占最大线程束数量的比值。&lt;/p>
-&lt;p>&lt;strong>网格 / 块设计经验&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>保持每个块中线程数量是线程束大小(32)的倍数·&lt;/li>
-&lt;li>避免块太小：每个块至少要有128或256个线程·&lt;/li>
-&lt;li>块的数量要远远多于SM的数量，从而在设备中可以显示有足够的并行。&lt;/li>
-&lt;li>最内层的维数（block.x）应该总是线程束大小的倍数&lt;/li>
-&lt;/ul>
-&lt;h2 id="异构技术名词" class="heading-element">&lt;span>异构技术名词&lt;/span>
- &lt;a href="#%e5%bc%82%e6%9e%84%e6%8a%80%e6%9c%af%e5%90%8d%e8%af%8d" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>HSA(&lt;a href="https://hsafoundation.com/standards/"target="_blank" rel="external nofollow noopener noreferrer">Heterogeneous System Architecture&lt;/a>)异构系统架构&lt;/p>
-&lt;p>OpenCL(&lt;a href="https://www.khronos.org/opencl/"target="_blank" rel="external nofollow noopener noreferrer">Open Computing Language&lt;/a>)开放计算语言&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;a href="https://www.cnblogs.com/LoyenWang/p/15085664.html"target="_blank" rel="external nofollow noopener noreferrer">一文说清OpenCL框架&lt;/a>&lt;/p>
-&lt;p>OpenCL使用Context代表kernel的执行环境&lt;/p>
-&lt;p>AQL packet (Architected Queuing Language)&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;a href="https://registry.khronos.org/SYCL/"target="_blank" rel="external nofollow noopener noreferrer">SYCL&lt;/a>&lt;/p>
-&lt;p>SVM (&lt;a href="https://www.intel.com/content/www/us/en/developer/articles/technical/opencl-20-shared-virtual-memory-overview.html"target="_blank" rel="external nofollow noopener noreferrer">Shared Virtual Memory&lt;/a>, by Intel)共享虚拟内存&lt;/p>
-&lt;p>HMM(&lt;a href="https://www.redhat.com/files/summit/session-assets/2017/S104078-hubbard.pdf"target="_blank" rel="external nofollow noopener noreferrer">Heterogeneous Memory Management&lt;/a>, by Glisse from redhat)异构内存管理&lt;/p>
-&lt;p>UM(Unified Memory, by NVIDIA)统一内存&lt;/p>
-&lt;h2 id="开源gpu实现" class="heading-element">&lt;span>开源GPU实现&lt;/span>
- &lt;a href="#%e5%bc%80%e6%ba%90gpu%e5%ae%9e%e7%8e%b0" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;p>&lt;a href="https://github.com/adam-maj/tiny-gpu"target="_blank" rel="external nofollow noopener noreferrer">tiny-gpu&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/FareedKhan-dev/small-gpu"target="_blank" rel="external nofollow noopener noreferrer">small-gpu&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/vortexgpgpu/vortex"target="_blank" rel="external nofollow noopener noreferrer">vortex&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/THU-DSP-LAB/ventus-gpgpu"target="_blank" rel="external nofollow noopener noreferrer">ventus-gpgpu&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://github.com/VerticalResearchGroup/miaow"target="_blank" rel="external nofollow noopener noreferrer">miaow&lt;/a>&lt;/p>
-&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
- &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
- &lt;/a>
-&lt;/h2>&lt;ul>
-&lt;li>&lt;a href="https://www.techpowerup.com/gpu-specs/"target="_blank" rel="external nofollow noopener noreferrer">GPU Database&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://rocmdocs.amd.com/projects/HIP/en/latest/understand/hardware_implementation.html"target="_blank" rel="external nofollow noopener noreferrer">AMD Hardware Implementation&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.nvidia.com/content/PDF/fermi_white_papers/NVIDIA_Fermi_Compute_Architecture_Whitepaper.pdf"target="_blank" rel="external nofollow noopener noreferrer">Fermi Whitepaper&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://modal.com/gpu-glossary"target="_blank" rel="external nofollow noopener noreferrer">GPU Glossary&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;p>&lt;a href="http://fcode.cn/download/fcode/MPI_C,C&amp;#43;&amp;#43;,Fortran_Bind.pdf"target="_blank" rel="external nofollow noopener noreferrer">MPI_C,C++,Fortran_Bind.pdf&lt;/a>&lt;/p></description></item></channel></rss>
