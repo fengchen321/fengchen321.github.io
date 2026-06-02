@@ -270,19 +270,100 @@
  &lt;a href="#systems" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;p>GPU：执行单元 + 内存层次系统 &lt;a href="https://modal.com/gpu-glossary"target="_blank" rel="external nofollow noopener noreferrer">gpu-glossary&lt;/a>&lt;/p>
+&lt;/h2>&lt;h3 id="kernels" class="heading-element">&lt;span>Kernels&lt;/span>
+ &lt;a href="#kernels" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>GPU：执行单元 + 内存层次系统 &lt;a href="https://modal.com/gpu-glossary"target="_blank" rel="external nofollow noopener noreferrer">gpu-glossary&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>SM (Streaming Multiprocessor)：计算核心，执行 CUDA 核函数；每个 SM 包含多个 SP (Streaming Processor)&lt;/li>
 &lt;li>L1 Cache, Shared Memory, Register File：SM 内部的高速存储层次&lt;/li>
 &lt;li>L2 Cache：在芯片上 (on die) 的全局缓存，所有 SM 共享&lt;/li>
 &lt;li>Global Memory：内存芯片，容量大但访问延迟高&lt;/li>
-&lt;li>以 A100 为例：global memory 有 80GB 左右的显存，L2 cache 大概有 40MB，L1 cache 中每个 SM 大致有 192KB。&lt;/li>
 &lt;/ul>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>&lt;/th>
+ &lt;th>A100&lt;/th>
+ &lt;th>H100&lt;/th>
+ &lt;th>B200&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>SMs&lt;/td>
+ &lt;td>108&lt;/td>
+ &lt;td>132&lt;/td>
+ &lt;td>148&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Register size (per SM)&lt;/td>
+ &lt;td>256 KB&lt;/td>
+ &lt;td>256 KB&lt;/td>
+ &lt;td>256 KB&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>L1 cache + shared memory (per SM)&lt;/td>
+ &lt;td>192 KB&lt;/td>
+ &lt;td>256 KB&lt;/td>
+ &lt;td>256 KB&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>L2 cache size&lt;/td>
+ &lt;td>40 MB&lt;/td>
+ &lt;td>50 MB&lt;/td>
+ &lt;td>96~126 MB&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>HBM size&lt;/td>
+ &lt;td>80 GB&lt;/td>
+ &lt;td>80 GB&lt;/td>
+ &lt;td>192 GB&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Register bandwidth&lt;/td>
+ &lt;td>~116 TB/s&lt;/td>
+ &lt;td>~401 TB/s&lt;/td>
+ &lt;td>~447 TB/s&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>L1 cache + shared memory bandwidth&lt;/td>
+ &lt;td>~19 TB/s&lt;/td>
+ &lt;td>~33 TB/s&lt;/td>
+ &lt;td>~19 TB/s&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>L2 cache bandwidth&lt;/td>
+ &lt;td>~5~8 TB/s&lt;/td>
+ &lt;td>~12 TB/s&lt;/td>
+ &lt;td>~9 TB/s&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>HBM bandwidth&lt;/td>
+ &lt;td>2 TB/s&lt;/td>
+ &lt;td>3.35 TB/s&lt;/td>
+ &lt;td>8 TB/s&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
 &lt;ol>
 &lt;li>Threads：线程以并行方式，所有线程执行相同的指令，但输入不同(SIMT：单指令多线程)&lt;/li>
 &lt;li>Blocks：block 是由多个线程组成的 group。每个 block 在一个 SM 上运行，并拥有自己的共享内存&lt;/li>
+&lt;li>grid: thread blocks集合&lt;/li>
 &lt;li>Warp：一个 warp 由 32 个连续的线程组成&lt;/li>
 &lt;/ol>
+&lt;p>SM 运行多个warp。每个线程使用0~255个寄存器。&lt;/p>
+&lt;p>&lt;strong>bank conflicts(shared memory)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>共享内存被分为 32 个 bank，每个 bank 宽 4 bytes。&lt;/li>
+&lt;li>同一 warp 内多个线程访问同一 bank 的不同地址时会冲突（访问同一地址是 broadcast，不冲突）。&lt;/li>
+&lt;li>方法：对共享内存重新排列来避免 bank 冲突。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Memory coalescing(HBM)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>一个 warp 访问 HBM，地址连续且对齐时，一次性把整条缓存行 $32 threads \times 4 bytes = 128 bytes$ 取出。若地址不连续或未对齐，可能触发多次 128-byte 事务。&lt;/li>
+&lt;/ul>
 &lt;p>&lt;strong>GPU 编程的优化技巧&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>trick0：control divergence&lt;/li>
@@ -294,7 +375,7 @@
 &lt;blockquote>
 &lt;p>影响 tile 大小的因素：合并内存访问、共享内存大小、矩阵维度是否整除&lt;/p>
 &lt;p>内存对齐：内存以 burst 方式加载，当 burst 与矩阵对齐时加载 tile 很快。burst:一种批量连续读内存的机制&lt;/p>
-&lt;p>出现抖动可能原因：wave quantization, 1792 变成 1793 后，tile 大小是 256×128，那 1792×1792 的矩阵，需要 7×14 = 98 个 tiles，1793×1793 的矩阵需要 8×15 = 120 个 tiles，A100 有 108 SM，120 tiles 超过了限制。&lt;/p>
+&lt;p>出现抖动可能原因：wave quantization, 1792 变成 1793 后，tile 大小是 256×128，那 1792×1792 的矩阵，需要 7×14 = 98 个 tiles，1793×1793 的矩阵需要 8×15 = 120 个 tiles，A100 有 108 SM，120 tiles 超过了限制， 线程块数量最好能被SMs整除。&lt;/p>
 &lt;/blockquote>
 &lt;/li>
 &lt;/ul>
@@ -308,12 +389,83 @@ display: inline-block;
 color: #999;
 padding: 2px;">FlashAttention&lt;/div>
 &lt;/center>
-&lt;p>tiling + recomputation + online softmax + fusion exponential operator&lt;/p>
-&lt;h3 id="kernels" class="heading-element">&lt;span>Kernels&lt;/span>
- &lt;a href="#kernels" class="heading-mark">
+tiling + recomputation + online softmax + fusion exponential operator
+&lt;h4 id="benchmark-and-profiling" class="heading-element">&lt;span>benchmark and profiling&lt;/span>
+ &lt;a href="#benchmark-and-profiling" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;h3 id="parallelism" class="heading-element">&lt;span>Parallelism&lt;/span>
+&lt;/h4>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">torch&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">torch.profiler&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">profile&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">ProfilerActivity&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">time&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># benchmark loop the process&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">start_event&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cuda&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Event&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">enable_timing&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">end_event&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cuda&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Event&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">enable_timing&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">start_event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">record&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1"># Start timing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">run&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1"># Actually perform computation&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">end_event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">record&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1"># End timing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cuda&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">synchronize&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="c1"># Wait for CUDA threads to finish&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">start_event&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">elapsed_time&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">end_event&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1"># @inspect times&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># profiling&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Run the code with the profiler&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">with&lt;/span> &lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">profiler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">profile&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">activities&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">ProfilerActivity&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">CUDA&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">experimental_config&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_C&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_profiler&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">_ExperimentalConfig&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">verbose&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">prof&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">run&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">torch&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">cuda&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">synchronize&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Print out table&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">table&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">prof&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">key_averages&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">table&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">sort_by&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;cuda_time_total&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">max_name_column_width&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">100&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">row_limit&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">10&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Append to profiles.txt&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">with&lt;/span> &lt;span class="nb">open&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;var/profiles.txt&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;a&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">f&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">f&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="sa">f&lt;/span>&lt;span class="s2">&amp;#34;Profile at &lt;/span>&lt;span class="si">{&lt;/span>&lt;span class="n">time&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">ctime&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">:&lt;/span>&lt;span class="se">\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">f&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">table&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">f&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">write&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="se">\n\n&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="parallelism" class="heading-element">&lt;span>Parallelism&lt;/span>
  &lt;a href="#parallelism" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>

@@ -142,19 +142,46 @@ MoE 可以看作高效的 MLP 替代方案，将 Dense Model 转化为 Sparse Mo
 
 ## Systems
 
+### Kernels
+
 GPU：执行单元 &#43; 内存层次系统 [gpu-glossary](https://modal.com/gpu-glossary)
 
 - SM (Streaming Multiprocessor)：计算核心，执行 CUDA 核函数；每个 SM 包含多个 SP (Streaming Processor)
 - L1 Cache, Shared Memory, Register File：SM 内部的高速存储层次
 - L2 Cache：在芯片上 (on die) 的全局缓存，所有 SM 共享
 - Global Memory：内存芯片，容量大但访问延迟高
-- 以 A100 为例：global memory 有 80GB 左右的显存，L2 cache 大概有 40MB，L1 cache 中每个 SM 大致有 192KB。
+
+|                                    | A100        | H100      | B200      |
+| ---------------------------------- | ----------- | --------- | --------- |
+| SMs                                | 108         | 132       | 148       |
+| Register size (per SM)             | 256 KB      | 256 KB    | 256 KB    |
+| L1 cache &#43; shared memory (per SM)  | 192 KB      | 256 KB    | 256 KB    |
+| L2 cache size                      | 40 MB       | 50 MB     | 96~126 MB |
+| HBM size                           | 80 GB       | 80 GB     | 192 GB    |
+| Register bandwidth                 | ~116 TB/s   | ~401 TB/s | ~447 TB/s |
+| L1 cache &#43; shared memory bandwidth | ~19 TB/s    | ~33 TB/s  | ~19 TB/s  |
+| L2 cache bandwidth                 | \~5\~8 TB/s | ~12 TB/s  | ~9 TB/s   |
+| HBM bandwidth                      | 2 TB/s      | 3.35 TB/s | 8 TB/s    |
 
 1. Threads：线程以并行方式，所有线程执行相同的指令，但输入不同(SIMT：单指令多线程)
 2. Blocks：block 是由多个线程组成的 group。每个 block 在一个 SM 上运行，并拥有自己的共享内存
-3. Warp：一个 warp 由 32 个连续的线程组成
+3. grid: thread blocks集合
+4. Warp：一个 warp 由 32 个连续的线程组成
+
+SM 运行多个warp。每个线程使用0~255个寄存器。
+
+**bank conflicts(shared memory)**
+
+* 共享内存被分为 32 个 bank，每个 bank 宽 4 bytes。
+* 同一 warp 内多个线程访问同一 bank 的不同地址时会冲突（访问同一地址是 broadcast，不冲突）。
+* 方法：对共享内存重新排列来避免 bank 冲突。
+
+**Memory coalescing(HBM)**
+
+* 一个 warp 访问 HBM，地址连续且对齐时，一次性把整条缓存行 $32 threads \times 4 bytes = 128 bytes$ 取出。若地址不连续或未对齐，可能触发多次 128-byte 事务。
 
 **GPU 编程的优化技巧**
+
 * trick0：control divergence
 * trick1：low precision computation
 * trick2：operator fusion(最小化内存访问次数，减少内存带宽压力)
@@ -165,7 +192,7 @@ GPU：执行单元 &#43; 内存层次系统 [gpu-glossary](https://modal.com/gpu
   &gt;
   &gt; 内存对齐：内存以 burst 方式加载，当 burst 与矩阵对齐时加载 tile 很快。burst:一种批量连续读内存的机制
   &gt;
-  &gt; 出现抖动可能原因：wave quantization, 1792 变成 1793 后，tile 大小是 256×128，那 1792×1792 的矩阵，需要 7×14 = 98 个 tiles，1793×1793 的矩阵需要 8×15 = 120 个 tiles，A100 有 108 SM，120 tiles 超过了限制。
+  &gt; 出现抖动可能原因：wave quantization, 1792 变成 1793 后，tile 大小是 256×128，那 1792×1792 的矩阵，需要 7×14 = 98 个 tiles，1793×1793 的矩阵需要 8×15 = 120 个 tiles，A100 有 108 SM，120 tiles 超过了限制， 线程块数量最好能被SMs整除。
 
 **[FlashAttention](https://arxiv.org/abs/2205.14135)**
 
@@ -178,10 +205,45 @@ display: inline-block;
 color: #999;
 padding: 2px;&#34;&gt;FlashAttention&lt;/div&gt;
 &lt;/center&gt;
-
 tiling &#43; recomputation &#43; online softmax &#43; fusion exponential operator
 
-### Kernels
+#### benchmark and profiling
+
+```python
+import torch
+from torch.profiler import profile, ProfilerActivity
+import time
+
+# benchmark loop the process
+start_event = torch.cuda.Event(enable_timing=True)
+end_event = torch.cuda.Event(enable_timing=True)
+
+start_event.record()  # Start timing
+run()  # Actually perform computation
+end_event.record()  # End timing
+
+torch.cuda.synchronize()  # Wait for CUDA threads to finish
+
+start_event.elapsed_time(end_event)  # @inspect times
+
+# profiling
+# Run the code with the profiler
+with torch.profiler.profile(activities=[ProfilerActivity.CUDA],
+        experimental_config=torch._C._profiler._ExperimentalConfig(verbose=True)) as prof:
+    run()
+    torch.cuda.synchronize()
+
+# Print out table
+table = prof.key_averages().table(sort_by=&#34;cuda_time_total&#34;,
+                                  max_name_column_width=100,
+                                  row_limit=10)
+
+# Append to profiles.txt
+with open(&#34;var/profiles.txt&#34;, &#34;a&#34;) as f:
+    f.write(f&#34;Profile at {time.ctime()}:\n&#34;)
+    f.write(table)
+    f.write(&#34;\n\n&#34;)
+```
 
 ### Parallelism
 
