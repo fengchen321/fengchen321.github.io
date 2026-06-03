@@ -460,6 +460,20 @@ npm update -g @openai/codex # 更新
 npm uninstall -g @openai/codex # 卸载
 ```
 
+### 基础使用
+
+`$`： 使用插件或者skill名字
+
+&lt;iframe 
+    src=&#34;https://ccwq.github.io/cheatsheet-generate/cheatsheets/codex-cli/codex-cli.html&#34; 
+    width=&#34;100%&#34; 
+    height=&#34;600&#34; 
+    frameborder=&#34;0&#34; 
+    allowfullscreen&gt;
+&lt;/iframe&gt;
+
+
+
 ### 参考阅读
 
 [Codex | OpenAI Developers](https://developers.openai.com/codex)
