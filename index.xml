@@ -1,4 +1,105 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>https://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sun, 24 May 2026 20:14:59 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>系统设计</title><link>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link><pubDate>Sun, 24 May 2026 20:14:59 +0800</pubDate><guid>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid><category domain="https://fengchen321.github.io/categories/readingnotes/">ReadingNotes</category><description>&lt;h2 id="ai-codereview" class="heading-element">&lt;span>AI CodeReview&lt;/span>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fengchen</title><link>https://fengchen321.github.io/</link><description>fengchen</description><generator>Hugo 0.139.0 &amp; FixIt v0.3.15</generator><language>zh-CN</language><lastBuildDate>Sun, 24 May 2026 20:14:59 +0800</lastBuildDate><atom:link href="https://fengchen321.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>系统设计</title><link>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link><pubDate>Sun, 24 May 2026 20:14:59 +0800</pubDate><guid>https://fengchen321.github.io/posts/readingnotes/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid><category domain="https://fengchen321.github.io/categories/readingnotes/">ReadingNotes</category><description>&lt;h2 id="design-text-to-video-system" class="heading-element">&lt;span>Design text-to-video system&lt;/span>
+ &lt;a href="#design-text-to-video-system" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h2>&lt;p>&lt;a href="https://www.bilibili.com/video/BV1yDR8BwE3y/"target="_blank" rel="external nofollow noopener noreferrer">Design text-to-video system&lt;/a>&lt;/p>
+&lt;p>&lt;strong>目标-Objective&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>User can have video ASAP 用户能尽快获得视频&lt;/li>
+&lt;li>video quality is acceptable&lt;/li>
+&lt;li>cost&lt;/li>
+&lt;li>throughput&lt;/li>
+&lt;li>safety&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>功能需求-FR&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>user can generate video through text prompt&lt;/li>
+&lt;li>video 15s 720px (60s 1080px)&lt;/li>
+&lt;li>user receive video published notification&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>非功能需求-NFR&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>scalability (5M / day = 50 /s, peak QPS 200)&lt;/li>
+&lt;li>latency (end-to-end &amp;lt; 5 min)&lt;/li>
+&lt;li>efficiency&lt;/li>
+&lt;li>compliance (no public figures / violence, watermark &amp;hellip;)&lt;/li>
+&lt;/ol>
+&lt;center>
+ &lt;img src="https://fengchen321.github.io/images/ReadingNotes/system-design/text-to-video.drawio.svg">
+ &lt;br>
+ &lt;div style="color:black; border-bottom: 1px solid #d9d9d9;
+ display: inline-block;
+ padding: 2px;">high-level diagram-文本生成视频系统架构 
+ &lt;/div>
+&lt;/center>
+**准入控制-admission control**
+&lt;ol>
+&lt;li>rate limit (按用户订阅等级查quota,免费/付费/企业差异化配额)&lt;/li>
+&lt;li>resource check (动态感知GPU集群可用容量、支持跨团队资源协商)&lt;/li>
+&lt;li>traffic shaping (带优先级队列，可降级保障VIP用户)&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>workflow&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>pre-processing： input check + prompt enhancement + output check (1GPU)
+&lt;blockquote>
+&lt;p>(过滤明星/暴力/明显版权等关键词) + (将碎片词扩写为结构化描述) + (最后二次校验改写后Prompt是否偏离原意且仍合规)。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>model inference： text encoder + DiT 30B + TAE decoder ((8GPU))
+&lt;blockquote>
+&lt;p>(CLIP等模型注入随机noise种子) + (DiT生成 denoised 的 latent) + (视频层面的decoder 如TAE/VAE)。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>post-processing： video enhancement (SSR/TSR) + video safty check + watermark (1GPU)
+&lt;blockquote>
+&lt;p>(对付费/企业用户启用(SSR- Spatial Super Resolution)升至1080P 或者插帧) + (最后一道防线) + (加入AI生成的水印)。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>delivery
+&lt;blockquote>
+&lt;p>上传至边缘CDN ，触发异步通知，用户按网络状况自适应下载不同清晰度版本。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ol>
+&lt;p>admission control -&amp;gt; pre-processing -&amp;gt; model inference -&amp;gt; post-processing -&amp;gt; delivery&lt;/p>
+&lt;p>&lt;strong>断点重续&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>current stage 任务进度&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>中间产物： pre-processing输出的enhanced prompt; model inference输出的latent张量; post-processing输出的视频文件&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>中间的激活状态 DiT 30B, 60GB&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>checkpoint size &amp;gt; 60GB&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>drain&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>no support preemption (GPU资源不可抢占)，只能等当前任务完成才能切换到下一个任务，可能导致高优先级任务等待时间过长。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>服务降级与容错&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>new GPU instance&lt;/li>
+&lt;li>retry + LB failover&lt;/li>
+&lt;li>degrade&lt;/li>
+&lt;li>VIP-first&lt;/li>
+&lt;li>DC failover&lt;/li>
+&lt;li>offline GPU recall&lt;/li>
+&lt;/ol>
+&lt;p>&lt;strong>性能优化&lt;/strong>&lt;/p>
+&lt;ol>
+&lt;li>GPU parallelism USP(unified sequence parallelism)&lt;/li>
+&lt;li>CFG parallelism&lt;/li>
+&lt;li>distillation&lt;/li>
+&lt;li>small sequence&lt;/li>
+&lt;/ol>
+&lt;h2 id="ai-codereview" class="heading-element">&lt;span>AI CodeReview&lt;/span>
  &lt;a href="#ai-codereview" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
