@@ -247,6 +247,56 @@ with open(&#34;var/profiles.txt&#34;, &#34;a&#34;) as f:
 
 ### Parallelism
 
+#### 集合通信操作（Collective Operations）
+
+Rank：具体的设备
+World size：设备总数
+
+**基础操作**
+
+| 操作 | 说明 | 典型场景 |
+|------|------|----------|
+| Broadcast | 将 rank0 数据拷贝给所有 rank | 初始化 checkpoint 分发 |
+| Scatter | 将 rank0 数据分发到各进程 | 数据分片 |
+| Gather | Scatter 的反操作，聚合数据到 rank0 | 结果收集 |
+| Reduce | 用操作（sum/min/max 等）聚合所有 rank 到 rank0 | 梯度汇总 |
+
+**核心操作**
+
+| 操作 | 说明 | 典型场景 |
+|------|------|----------|
+| All-Gather | 对所有 rank 进行 Gather，每个 rank 拿到完整结果 | 模型参数同步 |
+| Reduce-Scatter | 按维度 Reduce 后 Scatter 结果 | 反向传播，梯度求和后分发 |
+| All-Reduce | Reduce-Scatter &#43; All-Gather | 数据并行梯度同步 |
+| All-to-All | 每个 rank 向其他所有 rank 发送不同数据 | MoE 路由，数据给对应专家 |
+
+#### 通信基础设施
+
+同一节点下的 GPU 通过 PCIe/NVLink 通信，不同节点间通过 InfiniBand/Ethernet 通信。
+
+| 层级 | 连接方式 | 带宽参考 |
+|------|----------|----------|
+| 节点内 | 8 GPU → NVLink → NVSwitch | PCIe v7.0 (16 lanes): 242 GB/s；B200 NVLink 5.0: 1.8 TB/s |
+| Pod 内 | 256 节点 → InfiniBand | ~0.05 TB/s |
+| 集群/DC | N Pods → Ethernet | ~200 MB/s |
+
+GB200/GB300 NVL72：8 GPU/tray × 9 trays/rack = 72 GPUs in one NVLink domain
+
+RDMA（Remote Direct Memory Access）：允许 GPU 直接读写另一个 GPU 的内存，不经过 CPU。InfiniBand 支持，标准以太网不支持。
+RoCE（RDMA over Converged Ethernet）：基于以太网的 RDMA 技术，比 InfiniBand 便宜但性能稍弱。
+
+NCCL（NVIDIA Collective Communications Library）：NVIDIA 集合通信库
+
+#### 分布式训练
+
+| 策略 | 并行维度 | 切分方式 | 通信内容 |
+|------|----------|----------|----------|
+| 数据并行（Data Parallelism） | batch | 数据分片，每个 GPU 负责一部分 | DDP: All-Reduce；FSDP/ZeRO: All-Gather &#43; Reduce-Scatter |
+| 张量并行（Tensor Parallelism） | width | 每个 GPU 负责每层的一部分 | 激活值（All-Gather），依赖 NVLink 等高速互联 |
+| 流水线并行（Pipeline Parallelism） | depth | 每个 GPU 负责部分层 | 激活值（点对点 send/recv），通过 micro-batch 减少 pipeline bubble |
+| 序列并行（Sequence Parallelism） | length | 沿序列维度切分，Attention 计算并行化 | KV/激活值（All-Gather） |
+| 专家并行（Expert Parallelism） | width | 不同 expert 分布在不同 GPU | token 路由（All-to-All） |
+
 ### Inference
 
 ## Scaling Laws

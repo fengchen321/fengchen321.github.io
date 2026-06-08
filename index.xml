@@ -570,7 +570,158 @@ tiling + recomputation + online softmax + fusion exponential operator
  &lt;a href="#parallelism" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;h3 id="inference" class="heading-element">&lt;span>Inference&lt;/span>
+&lt;/h3>&lt;h4 id="集合通信操作collective-operations" class="heading-element">&lt;span>集合通信操作（Collective Operations）&lt;/span>
+ &lt;a href="#%e9%9b%86%e5%90%88%e9%80%9a%e4%bf%a1%e6%93%8d%e4%bd%9ccollective-operations" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>Rank：具体的设备
+World size：设备总数&lt;/p>
+&lt;p>&lt;strong>基础操作&lt;/strong>&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>操作&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;th>典型场景&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>Broadcast&lt;/td>
+ &lt;td>将 rank0 数据拷贝给所有 rank&lt;/td>
+ &lt;td>初始化 checkpoint 分发&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Scatter&lt;/td>
+ &lt;td>将 rank0 数据分发到各进程&lt;/td>
+ &lt;td>数据分片&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Gather&lt;/td>
+ &lt;td>Scatter 的反操作，聚合数据到 rank0&lt;/td>
+ &lt;td>结果收集&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Reduce&lt;/td>
+ &lt;td>用操作（sum/min/max 等）聚合所有 rank 到 rank0&lt;/td>
+ &lt;td>梯度汇总&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>核心操作&lt;/strong>&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>操作&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;th>典型场景&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>All-Gather&lt;/td>
+ &lt;td>对所有 rank 进行 Gather，每个 rank 拿到完整结果&lt;/td>
+ &lt;td>模型参数同步&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Reduce-Scatter&lt;/td>
+ &lt;td>按维度 Reduce 后 Scatter 结果&lt;/td>
+ &lt;td>反向传播，梯度求和后分发&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>All-Reduce&lt;/td>
+ &lt;td>Reduce-Scatter + All-Gather&lt;/td>
+ &lt;td>数据并行梯度同步&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>All-to-All&lt;/td>
+ &lt;td>每个 rank 向其他所有 rank 发送不同数据&lt;/td>
+ &lt;td>MoE 路由，数据给对应专家&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h4 id="通信基础设施" class="heading-element">&lt;span>通信基础设施&lt;/span>
+ &lt;a href="#%e9%80%9a%e4%bf%a1%e5%9f%ba%e7%a1%80%e8%ae%be%e6%96%bd" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>同一节点下的 GPU 通过 PCIe/NVLink 通信，不同节点间通过 InfiniBand/Ethernet 通信。&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>层级&lt;/th>
+ &lt;th>连接方式&lt;/th>
+ &lt;th>带宽参考&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>节点内&lt;/td>
+ &lt;td>8 GPU → NVLink → NVSwitch&lt;/td>
+ &lt;td>PCIe v7.0 (16 lanes): 242 GB/s；B200 NVLink 5.0: 1.8 TB/s&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Pod 内&lt;/td>
+ &lt;td>256 节点 → InfiniBand&lt;/td>
+ &lt;td>~0.05 TB/s&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>集群/DC&lt;/td>
+ &lt;td>N Pods → Ethernet&lt;/td>
+ &lt;td>~200 MB/s&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>GB200/GB300 NVL72：8 GPU/tray × 9 trays/rack = 72 GPUs in one NVLink domain&lt;/p>
+&lt;p>RDMA（Remote Direct Memory Access）：允许 GPU 直接读写另一个 GPU 的内存，不经过 CPU。InfiniBand 支持，标准以太网不支持。
+RoCE（RDMA over Converged Ethernet）：基于以太网的 RDMA 技术，比 InfiniBand 便宜但性能稍弱。&lt;/p>
+&lt;p>NCCL（NVIDIA Collective Communications Library）：NVIDIA 集合通信库&lt;/p>
+&lt;h4 id="分布式训练" class="heading-element">&lt;span>分布式训练&lt;/span>
+ &lt;a href="#%e5%88%86%e5%b8%83%e5%bc%8f%e8%ae%ad%e7%bb%83" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>策略&lt;/th>
+ &lt;th>并行维度&lt;/th>
+ &lt;th>切分方式&lt;/th>
+ &lt;th>通信内容&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>数据并行（Data Parallelism）&lt;/td>
+ &lt;td>batch&lt;/td>
+ &lt;td>数据分片，每个 GPU 负责一部分&lt;/td>
+ &lt;td>DDP: All-Reduce；FSDP/ZeRO: All-Gather + Reduce-Scatter&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>张量并行（Tensor Parallelism）&lt;/td>
+ &lt;td>width&lt;/td>
+ &lt;td>每个 GPU 负责每层的一部分&lt;/td>
+ &lt;td>激活值（All-Gather），依赖 NVLink 等高速互联&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>流水线并行（Pipeline Parallelism）&lt;/td>
+ &lt;td>depth&lt;/td>
+ &lt;td>每个 GPU 负责部分层&lt;/td>
+ &lt;td>激活值（点对点 send/recv），通过 micro-batch 减少 pipeline bubble&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>序列并行（Sequence Parallelism）&lt;/td>
+ &lt;td>length&lt;/td>
+ &lt;td>沿序列维度切分，Attention 计算并行化&lt;/td>
+ &lt;td>KV/激活值（All-Gather）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>专家并行（Expert Parallelism）&lt;/td>
+ &lt;td>width&lt;/td>
+ &lt;td>不同 expert 分布在不同 GPU&lt;/td>
+ &lt;td>token 路由（All-to-All）&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="inference" class="heading-element">&lt;span>Inference&lt;/span>
  &lt;a href="#inference" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
