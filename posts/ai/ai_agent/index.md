@@ -478,6 +478,8 @@ npm uninstall -g @openai/codex # 卸载
 
 [Codex | OpenAI Developers](https://developers.openai.com/codex)
 
+[Codex github](https://github.com/openai/codex)
+
 [Best practices – Codex | OpenAI Developers](https://developers.openai.com/codex/learn/best-practices)
 
 ## OpenCode
