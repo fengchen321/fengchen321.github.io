@@ -274,7 +274,7 @@ my-plugin/
 ```markdown
 ---
 name: explain-code
-description: Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks &#34;how does this work?&#34;
+description: Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks &#34;how does this work?&#34;  # (功能定义&#43;触发场景/触发词：用来干什么，什么时候用，100字~200字，如果安装多个功能相近的skill,加上&#34;不用于...&#34;等反向触发词)
 disable-model-invocation: true   # 禁止自动调用
 allowed-tools: [&#34;Read&#34;, &#34;Grep&#34;]  # 限制可用工具
 context: fork                    # 在子代理中运行
@@ -289,6 +289,8 @@ When explaining code, always include:
 
 Keep explanations conversational. For complex concepts, use multiple analogies.
 ```
+
+任务描述四要素：目标 &#43; 约束 &#43; 输入 &#43; 验收
 
 #####   [Agent Skill design patterns ](https://x.com/GoogleCloudTech/status/2033953579824758855)
 
@@ -477,8 +479,6 @@ npm uninstall -g @openai/codex # 卸载
 ### 参考阅读
 
 [Codex | OpenAI Developers](https://developers.openai.com/codex)
-
-[Codex github](https://github.com/openai/codex)
 
 [Best practices – Codex | OpenAI Developers](https://developers.openai.com/codex/learn/best-practices)
 

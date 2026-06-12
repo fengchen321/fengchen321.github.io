@@ -92,6 +92,22 @@ $\begin{aligned}
 
 **占用率**：每个SM中活跃的线程束占最大线程束数量的比值。
 
+**Scratch Memory / Local Memory（寄存器溢出区）**
+
+当线程的寄存器资源不足时，编译器自动将部分变量&#34;溢出（spill）&#34;到显存的一块私有区域。AMD 与 NVIDIA 硬件上都存在，只是名称和暴露方式不同。
+
+| 特性 | AMD (ROCm/HIP) | NVIDIA (CUDA) |
+| :--- | :--- | :--- |
+| 概念名称 | Scratch Memory（表中对应 Private Memory） | Local Memory |
+| 物理存储 | 显存（通过 L1/L2 缓存） | 显存（通过 L1/L2 缓存） |
+| 用途 | VGPR 溢出、动态索引局部数组 | 寄存器溢出、无法放入寄存器的局部变量 |
+| 访问指令 | buffer_load/store | ld.local/st.local |
+| 性能影响 | 高延迟，降低占用率 | 高延迟，降低占用率 |
+| 查看用量 | 编译器/性能分析器中的 ScratchSize | nvcc -Xptxas -v 的 lmem，Nsight Compute |
+
+- **AMD Scratch Memory**：kernel 需要的 VGPR 超过硬件限制时，编译器把变量放到 scratch memory，物理位于 VRAM，通过 buffer_load/store 以平坦地址访问，经 L1/L2 缓存缓解延迟。用 rocprof 或编译器查看 ScratchSize 字段。scratch 增大会导致有效带宽下降、占用率降低。
+- **NVIDIA Local Memory**：等价概念。当寄存器溢出（局部变量过大、数组索引编译时无法确定）时自动使用。编译时 `nvcc -Xptxas -v` 输出的 lmem 即为局部内存使用量。用 Nsight Compute 观察 local_load/local_store 计数器。
+
 **网格 / 块设计经验**  
 - 保持每个块中线程数量是线程束大小(32)的倍数·
 - 避免块太小：每个块至少要有128或256个线程·

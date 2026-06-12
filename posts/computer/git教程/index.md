@@ -77,7 +77,7 @@
 2. `git reset --hard HEAD^^`：往上回滚两次，以此类推
 3. `git reset --hard HEAD~100`：往上回滚100个版本
 4. `git reset --hard 版本号`：回滚到某一特定版本  版本号为哈希值前7位;该版本之后的所有改动将永久丢失
-5. `git reset --soft HEAD^`：撤销commit
+5. `git reset --soft HEAD^`：撤销commit 适合合并多次未推送的commit
 
 ### 远程仓库
 1. `git remote add origin git@git.acwing.com:xxx/XXX.git`：将本地仓库关联到远程仓库
@@ -186,6 +186,28 @@ git push
 
 &gt; 第一个提交后，第二个提交先pull新版本，合并本地修改冲突，再push自己的
 
+## 基于develop分支开发的常用流程
+
+```shell
+# 1. 暂存当前工作区所有修改（含未跟踪文件）
+git stash -u
+
+# 2. 切换到 develop 并拉取最新代码
+git checkout develop
+git pull origin develop
+
+# 3. 基于最新 develop 创建特性分支
+git checkout -b devYYYYMMDD/your_feature_name
+
+# 4. 恢复之前暂存的修改
+git stash pop
+
+# 5. 提交并推送
+git add .
+git commit -m &#34;fix: 你的提交信息&#34;
+git push -u origin devYYYYMMDD/your_feature_name
+```
+
 ## 提交PR
 
 ```shell
@@ -253,7 +275,7 @@ git fetch origin master
 git merge FETCH_HEAD  #FETCH_HEAD 是一个 Git 内部的引用，表示最近一次 git fetch 命令拉取的内容
 ```
 
-[[Git\].gitignore文件的配置使用 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/52885189)
+[gitignore文件的配置使用 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/52885189)
 
 
 ---
