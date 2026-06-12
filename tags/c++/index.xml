@@ -95,4 +95,4 @@
  &lt;/a>
 &lt;/h2>&lt;ol>
 &lt;li>
-&lt;p>&lt;code>gcc -o main main.c -g &lt;/code>或者&lt;code>-G&lt;/code>生成&lt;code>Debug&lt;/code>可调试版本&lt;/p></description></item></channel></rss>
+&lt;p>&lt;code>gcc -o main main.c -g&lt;/code> 生成带调试信息的可调试版本&lt;/p></description></item></channel></rss>

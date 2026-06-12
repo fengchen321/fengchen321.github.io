@@ -2,7 +2,7 @@
 
 ## GDB调试
 
-1. `gcc -o main main.c -g `或者`-G`生成`Debug`可调试版本
+1. `gcc -o main main.c -g` 生成带调试信息的可调试版本
 
    &gt; ```shell
    &gt; mkdir build &amp;&amp; cd build 
@@ -23,11 +23,29 @@
    &gt; &gt; &gt;
    &gt; &gt; &gt; `hiplogdump  sort demo_xxx.nano &gt;log.txt`
    
-3. `gdb [exec file] [core file]`：调式coredump内核转储文件，直接进去`bt`查看调用栈信息。
+3. `gdb [exec file] [core file]`：调试 coredump 内核转储文件，进入后通常先用 `bt` 查看调用栈信息。
 
-4. `gdb attach -p &lt;进程ID&gt;` :进行进程调试并附加到正在运行的进程
+4. `r` 或 `run`：启动程序运行
 
-5. `r ` 程序运行
+### 参数传递
+
+```shell
+ # 1.启动时传入
+gdb --args demo 1 2 3
+# 2. 启动后传入
+gdb demo
+set args 1 2 3
+# 3.启动后执行传入
+gdb demo
+r 1 2 3
+```
+
+### 附加进程
+
+```shell
+gdb attach -p &lt;进程ID&gt; #  gdb 附加到正在运行的进程
+gdb --pid &lt;进程ID&gt;
+```
 
 ### 断点操作
 
@@ -77,6 +95,7 @@ ignore 断点编号 次数N  		# 忽略断点前N次命中
 
 ```shell
 watch 变量/表达式   # 观察点，监视变量
+watch 变量/表达式 thread N  # 监视N号线程变量
 rwatch 变量/表达式  # 读取观察点，变量或表达式被读取时，程序中断
 awatch 变量/表达式  # 读写观察点，无论变量或表达式被读取还是写入时，程序都中断
 info watchpoints  # 查看所有观察点
@@ -104,6 +123,28 @@ catch 事件
 `jump N`：跳到第N行 ，或者函数
 
 `where` ：显示当前执行的具体函数和代码行
+
+`!ls`： 使用 `!command` 来执行 shell 命令， 也可以`shell ls`
+
+### 反向执行
+
+```shell
+record  # 开始记录，后续才能进行反向执行
+rn/reverse-next
+rc/reverse-continue
+reverse-finish
+record stop
+```
+
+### 跳过
+
+```shell
+skip function_name  # 跳过某个函数
+skip file aaa.cpp  # 跳过文件
+skip -gfi path/*.*  # 按 glob 跳过路径下所有文件
+```
+
+
 
 ### 查看显示
 
@@ -139,6 +180,9 @@ list function_name # 查看指定函数的源代码
 search 正则表达式
 forward-search 正则表达式  # 正向搜索
 reverse-search 正则表达式  # 反向搜索
+
+show directories
+directory path2/
 ```
 
 #### 查看/修改变量的值
@@ -146,13 +190,13 @@ reverse-search 正则表达式  # 反向搜索
 ```shell
 print 变量  # 打印变量
 p 变量
-p 变量名=值  #修改查看的变量值
+p 变量名=值  # 打印赋值结果，同时修改变量值
 # 一些内嵌函数
 p sizeof(a)
-p strcmp(&#34;123&#34;. &#34;12&#34;)
+p strcmp(&#34;123&#34;, &#34;12&#34;)
 p strlen(&#34;string&#34;)
 # 查看结构体/ 类的值
-set print null-stop # 设置字符串显示规则，遇到结结束符时停止显示
+set print null-stop # 设置字符串显示规则，遇到结束符时停止显示
 set print pretty  # 美化，格式化结构体
 p new_node-&gt;Name  # 查看结构体/类单个成员
 p *new_node  # 查看整个结构体/类
@@ -165,23 +209,23 @@ set print union
 display 变量名
 display {var1, var2, var3} # 多变量名时，长度要相同
 undisplay 变量编号 # 取消自动显示，info display可查看编号
-enabele/disable display 变量编号 # 启用/禁用自动显示
+enable/disable display 变量编号 # 启用/禁用自动显示
 
 # gdb内source py脚本
 # 加载 libstdc&#43;&#43; 的 pretty-printer 来美化 STL 容器
 source  /usr/share/gdb/auto-load/usr/lib64/libstdc&#43;&#43;.so.6.0.19-gdb.py
 
 # 无法美化打印情况， 比如查看map底层结构
-# 1。 _M_header._M_parent（根节点地址）和 _M_node_count（元素个数）
+# 1. 先查看 _M_header._M_parent（根节点地址）和 _M_node_count（元素个数）
 p your_map  # _M_header._M_parent（根节点地址）和 _M_node_count（元素个数）
-# 2.定义节点指针
+# 2. 定义节点指针
 set $node = (std::_Rb_tree_node&lt;std::pair&lt;const Key, Value&gt; &gt;*)根节点地址 
-# 3.# 获取键值对
-set $pair = (std::pair&lt;const Key, Value&gt;*)(&amp;$node-&gt;_M_storage)、
-# 4.打印键和值
+# 3. 获取键值对
+set $pair = (std::pair&lt;const Key, Value&gt;*)(&amp;$node-&gt;_M_storage)
+# 4. 打印键和值
 p $pair-&gt;first
 p $pair-&gt;second
-# 5，遍历其他节点对左右子节点重复步骤 2–4。
+# 5. 遍历其他节点时，对左右子节点重复步骤 2-4
 p $node-&gt;_M_left
 p $node-&gt;_M_right
 ```
@@ -199,6 +243,7 @@ ptype node_head  	# 查看变量类型，显示成员名称和类型
 /o 	# 打印结构体字段偏移量和大小信息
 
 whatis 变量或表达式	# 查看变量类型
+set print object on
 ```
 
 #### 查看内存
@@ -222,7 +267,7 @@ info proc mappings    # 查看进程虚拟地址空间映射（vmmap）
 
 #### 查看寄存器
 
-指针寄存器`$rip` (32位EIP，64RIP)指向当前执行的代码位置
+指令寄存器 `$rip`（32 位下通常对应 `$eip`）指向当前执行位置
 
 栈指针寄存器`$rsp`指向当前栈顶
 
@@ -233,12 +278,21 @@ info registers     # 简写 i  r
 info registers rax # 显示特定寄存器值
 info all-registers # 显示所有寄存器值
 
-function_test(intc a, const char* str)
+function_test(int a, const char* str)
 调用function_test(10, &#34;test&#34;)
-第一个参数存储在寄存器rdi,第二个参数存储在rsi中,是字符串指针
+在常见的 x86_64 System V ABI 下，第一个参数通常在 `rdi`，第二个参数通常在 `rsi`
 i r rdi
 i r rsi
 x /s $rsi # 查看寄存器值
+```
+
+**修改寄存器**
+
+```shell
+info line 15 # 查看15行的起始地址和结束地址  0003 -&gt; 0005 [start, end)
+info line 16 # 查看16行的起始地址和结束地址  0005 -&gt; 0006
+set $rip = 0x5  # 修改指令地址前务必确认地址有效，否则容易直接跑飞
+set $rip = 0x3
 ```
 
 #### 查看汇编
@@ -266,10 +320,17 @@ info frame 	# 查看帧信息
 
 ```shell
 info threads  # 查看线程, *号表示当前线程
+thread find xxx # 查找线程
+thread name xxx # 给当前线程命名，便于识别
 thread N      # 切换线程
 b M thread N  # 为N号线程M行设置断点
 thread apply N command 	# 为N号线程执行command命令
 thread apply all bt 		# 查看所用线程堆栈信息
+set scheduler-locking off|on|step # 控制单步时其他线程是否继续运行
+show print thread-events # 显示GDB检测到线程已经启动和退出时是否打印信息
+set print thread-events on|off # 设置是否打印线程启动/退出日志
+
+p mutex_xx # 查看锁的Owner ID 
 ```
 
 ### 多进程调试
@@ -277,13 +338,19 @@ thread apply all bt 		# 查看所用线程堆栈信息
 ```shell
 info inferiors 	# 查看进程                                 
 inferior N 		# 切换相应进程
+detach inferiors N # 让某个 inferior 脱离调试
+add-inferior # 添加一个新的 inferior
+remove-inferiors # 删除 inferior
 set follow-fork-mode child 	# 设置调试子进程
 set detach-on-fork off 		# 对所有的进程进行调试
+set schedule-multiple on
 ```
 
 ### 内存检查
 
 ```shell
+call malloc_stats() # glibc malloc 统计信息
+call malloc_info(0, stdout) # 输出 XML 格式的分配器信息
 # 需要安装 libasan 即AddressSanitizer
 g&#43;&#43; -fsanitize=address -g -o demo ./demo.cpp
 ```
@@ -294,11 +361,12 @@ g&#43;&#43; -fsanitize=address -g -o demo ./demo.cpp
 # 在调试界面生成coredump文件
 ps aux | grep ./demo  # 查看进程号
 gdb attach -p &lt;进程ID&gt;  # 附加到进程
-gcore ****.core  
+gcore ****.core   # gcore/generate-core-file 为活着的进程创建core dump文件
 detach
 q
 # 配置并生成coredump文件
-/etc/security/limits.conf添加 soft core unlimited
+ulimit -c unlimited
+/etc/security/limits.conf 添加 `soft core unlimited`
 echo -e &#34;/root/corefile/core-%e-%s-%p-%t&#34; &gt; /proc/sys/kernel/core_pattern
 # %e进程名称。%s崩溃信号，%p进程id,%t时间戳
 # 调试
@@ -310,16 +378,32 @@ gdb [exec file] [core file]  # 调式coredump内核转储文件，直接进去`b
 ```shell
 # 从调试版中提取调试符号
 objcopy --only-keep-debug demo demo.symbol  # 生成调试符号表
-gdb --symbol=demo.symbol -exec=demo_release   # 加上调试符号调试发行版
+gdb --symbol=demo.symbol --exec=demo_release   # 加上调试符号调试发行版
 
-gdb --symbol=demo -exec=demo_release  # 直接使用调试版作为符号源
+gdb --symbol=demo --exec=demo_release  # 直接使用调试版作为符号源
+```
+
+### 远程调试
+
+```shell
+# 被调试机器/服务器端
+apt install gdbserver	# 安装gdbserver
+gdbserver ip:port ./demo # 启动gdbserver
+
+# 客户端
+gdb
+&gt; target remote ip:port
+
+# 已经启动的程序,服务器端
+gdbserver ip:port --attach &lt;pid&gt;
+
 ```
 
 ### 其他
 
 ```cpp
-// int 3是用于触发调试中断的指令
-asm{
+// int 3 用于触发调试中断
+asm {
     int 3;
 }
 ```
