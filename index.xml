@@ -672,8 +672,8 @@ World size：设备总数&lt;/p>
  &lt;/tbody>
 &lt;/table>
 &lt;p>GB200/GB300 NVL72：8 GPU/tray × 9 trays/rack = 72 GPUs in one NVLink domain&lt;/p>
-&lt;p>RDMA（Remote Direct Memory Access）：允许 GPU 直接读写另一个 GPU 的内存，不经过 CPU。InfiniBand 支持，标准以太网不支持。
-RoCE（RDMA over Converged Ethernet）：基于以太网的 RDMA 技术，比 InfiniBand 便宜但性能稍弱。&lt;/p>
+&lt;p>RDMA（Remote Direct Memory Access）：允许 GPU 直接读写另一个 GPU 的内存，不经过 CPU。InfiniBand 支持，标准以太网不支持。&lt;/p>
+&lt;p>RoCE（RDMA over Converged Ethernet）：基于以太网的 RDMA 技术，比 InfiniBand 便宜但性能稍弱。&lt;/p>
 &lt;p>NCCL（NVIDIA Collective Communications Library）：NVIDIA 集合通信库&lt;/p>
 &lt;h4 id="分布式训练" class="heading-element">&lt;span>分布式训练&lt;/span>
  &lt;a href="#%e5%88%86%e5%b8%83%e5%bc%8f%e8%ae%ad%e7%bb%83" class="heading-mark">
@@ -716,11 +716,12 @@ RoCE（RDMA over Converged Ethernet）：基于以太网的 RDMA 技术，比 In
  &lt;tr>
  &lt;td>专家并行（Expert Parallelism）&lt;/td>
  &lt;td>width&lt;/td>
- &lt;td>不同 expert 分布在不同 GPU&lt;/td>
+ &lt;td>MoE 中的 FFN/MLP 并行化，不同 expert 分布在不同 GPU&lt;/td>
  &lt;td>token 路由（All-to-All）&lt;/td>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
+&lt;p>ZeRO（Zero Redundancy Optimizer）：用于降低数据并行（DP）中的冗余内存开销。根据 stage 不同，可分别切分优化器状态、梯度和参数，并通过 Reduce-Scatter / All-Gather 等通信完成同步。&lt;/p>
 &lt;h3 id="inference" class="heading-element">&lt;span>Inference&lt;/span>
  &lt;a href="#inference" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>

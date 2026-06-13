@@ -283,6 +283,7 @@ World size：设备总数
 GB200/GB300 NVL72：8 GPU/tray × 9 trays/rack = 72 GPUs in one NVLink domain
 
 RDMA（Remote Direct Memory Access）：允许 GPU 直接读写另一个 GPU 的内存，不经过 CPU。InfiniBand 支持，标准以太网不支持。
+
 RoCE（RDMA over Converged Ethernet）：基于以太网的 RDMA 技术，比 InfiniBand 便宜但性能稍弱。
 
 NCCL（NVIDIA Collective Communications Library）：NVIDIA 集合通信库
@@ -295,7 +296,9 @@ NCCL（NVIDIA Collective Communications Library）：NVIDIA 集合通信库
 | 张量并行（Tensor Parallelism） | width | 每个 GPU 负责每层的一部分 | 激活值（All-Gather），依赖 NVLink 等高速互联 |
 | 流水线并行（Pipeline Parallelism） | depth | 每个 GPU 负责部分层 | 激活值（点对点 send/recv），通过 micro-batch 减少 pipeline bubble |
 | 序列并行（Sequence Parallelism） | length | 沿序列维度切分，Attention 计算并行化 | KV/激活值（All-Gather） |
-| 专家并行（Expert Parallelism） | width | 不同 expert 分布在不同 GPU | token 路由（All-to-All） |
+| 专家并行（Expert Parallelism） | width | MoE 中的 FFN/MLP 并行化，不同 expert 分布在不同 GPU | token 路由（All-to-All） |
+
+ZeRO（Zero Redundancy Optimizer）：用于降低数据并行（DP）中的冗余内存开销。根据 stage 不同，可分别切分优化器状态、梯度和参数，并通过 Reduce-Scatter / All-Gather 等通信完成同步。
 
 ### Inference
 
