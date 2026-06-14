@@ -726,7 +726,129 @@ World size：设备总数&lt;/p>
  &lt;a href="#inference" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;h2 id="scaling-laws" class="heading-element">&lt;span>Scaling Laws&lt;/span>
+&lt;/h3>&lt;p>&lt;a href="https://github.com/vllm-project/vllm"target="_blank" rel="external nofollow noopener noreferrer">vLLM&lt;/a>, &lt;a href="https://github.com/sgl-project/sglang"target="_blank" rel="external nofollow noopener noreferrer">SGLang&lt;/a>, &lt;a href="https://nvidia.github.io/TensorRT-LLM/overview.html"target="_blank" rel="external nofollow noopener noreferrer">TensorRT-LLM&lt;/a>, &lt;a href="https://github.com/ggml-org/llama.cpp"target="_blank" rel="external nofollow noopener noreferrer">llama.cpp&lt;/a>&lt;/p>
+&lt;p>衡量指标：&lt;/p>
+&lt;ul>
+&lt;li>TTFT(Time-to-first-token)：首 token 延迟&lt;/li>
+&lt;li>Latency (seconds/token)：单查询 token 生成速度&lt;/li>
+&lt;li>Throughput (tokens/second)：多查询总生成速度&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>推理两阶段&lt;/strong>&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>维度&lt;/th>
+ &lt;th>Prefill（预填充）&lt;/th>
+ &lt;th>Generation（生成）&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>计算方式&lt;/td>
+ &lt;td>批量并行，一次性处理 Prompt&lt;/td>
+ &lt;td>串行增量，每次处理一个 token&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>资源需求&lt;/td>
+ &lt;td>计算密集型&lt;/td>
+ &lt;td>内存密集型&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>KV Cache&lt;/td>
+ &lt;td>首次构建&lt;/td>
+ &lt;td>仅追加新 token 的 K/V&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>耗时决定因素&lt;/td>
+ &lt;td>Prompt 长度&lt;/td>
+ &lt;td>生成 token 数&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>KV cache：对每个 sequence(B)、token(S)、layer(L)、head(K)，存储 $H$ 维向量&lt;/p>
+&lt;p>&lt;strong>延迟-吞吐量权衡&lt;/strong>：增大 batch → 延迟增加（KV cache 更大）+ 吞吐量提升（摊薄参数读取）&lt;/p>
+&lt;ul>
+&lt;li>TTFT 优化：Prefill 用小 batch，Generation 用大 batch&lt;/li>
+&lt;/ul>
+&lt;h4 id="减少-kv-cache-大小" class="heading-element">&lt;span>减少 KV cache 大小&lt;/span>
+ &lt;a href="#%e5%87%8f%e5%b0%91-kv-cache-%e5%a4%a7%e5%b0%8f" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2305.13245"target="_blank" rel="external nofollow noopener noreferrer">Grouped-query attention(GQA)&lt;/a>&lt;/strong>：$N$ 个 query head 共享 $K$ 个 KV head（MHA: $K=N$，MQA: $K=1$，GQA: $1&lt;K&lt;N$），KV cache 减小 $N/K$ 倍&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2405.04434"target="_blank" rel="external nofollow noopener noreferrer">Multi-head latent attention(MLA)&lt;/a>&lt;/strong>：存储压缩向量 $c = W_c h$（$C$ 维），需时投影 $K = W_K c$；DeepSeek v2: $16384 \to 512$ 维；不兼容 RoPE，需额外 64 维；精度略优于 MHA&lt;/p>
+&lt;p>&lt;strong>CLA&lt;/strong>：跨层共享 KV（类比 GQA 跨 head 共享），改善精度-KV 大小 Pareto 前沿&lt;/p>
+&lt;p>&lt;strong>滑动窗口注意力&lt;/strong>：只关注局部上下文，KV cache 与序列长度无关；有效上下文随层数线性增长；可与全局注意力交替使用&lt;/p>
+&lt;p>&lt;strong>DeepSeek v4&lt;/strong>：支持 1M 上下文，组合 Compressed Sparse Attention(CSA)（压缩 $m$ token → 1）、Deepseek Sparse Attention(DSA)（选 top-$k$）、Heavily Compressed Attention(HCA)（更高压缩比）&lt;/p>
+&lt;p>其他方向：线性注意力、状态空间模型（Mamba 2、GatedDeltaNet）&lt;/p>
+&lt;h4 id="量化" class="heading-element">&lt;span>量化&lt;/span>
+ &lt;a href="#%e9%87%8f%e5%8c%96" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>降低精度 → 减少内存 → 提升速度（推理内存受限）&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>格式&lt;/th>
+ &lt;th>大小&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>fp32&lt;/td>
+ &lt;td>4B&lt;/td>
+ &lt;td>训练参数/优化器&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>bf16&lt;/td>
+ &lt;td>2B&lt;/td>
+ &lt;td>推理默认&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>fp8&lt;/td>
+ &lt;td>1B&lt;/td>
+ &lt;td>H100 支持，可训练&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>int8&lt;/td>
+ &lt;td>1B&lt;/td>
+ &lt;td>仅推理&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>int4&lt;/td>
+ &lt;td>0.5B&lt;/td>
+ &lt;td>更便宜，精度更低&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>&lt;strong>Quantization-aware training (QAT)&lt;/strong>：训练时量化-反量化模拟误差，精度好但训练贵&lt;/li>
+&lt;li>&lt;strong>Post-training quantization (PTQ)&lt;/strong>：训练后执行，成本低；GPTQ 用 Hessian 信息补偿误差&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://arxiv.org/abs/2306.00978"target="_blank" rel="external nofollow noopener noreferrer">Activation-aware quantization (AWQ)&lt;/a>&lt;/strong>：根据激活值选 0.1-1% 权重保持高精度，fp16→int4 达 4x 内存降低、3.2x 加速&lt;/li>
+&lt;/ul>
+&lt;h4 id="模型剪枝" class="heading-element">&lt;span>模型剪枝&lt;/span>
+ &lt;a href="#%e6%a8%a1%e5%9e%8b%e5%89%aa%e6%9e%9d" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>&lt;a href="https://arxiv.org/abs/2407.14679"target="_blank" rel="external nofollow noopener noreferrer">剪枝+蒸馏&lt;/a>：校准数据识别重要层/head → 移除不重要部分 → 蒸馏恢复精度&lt;/p>
+&lt;h4 id="投机采样" class="heading-element">&lt;span>投机采样&lt;/span>
+ &lt;a href="#%e6%8a%95%e6%9c%ba%e9%87%87%e6%a0%b7" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>&lt;a href="https://arxiv.org/abs/2211.17192"target="_blank" rel="external nofollow noopener noreferrer">Speculative Sampling&lt;/a>：检查比生成快&lt;/p>
+&lt;ol>
+&lt;li>草稿模型 $p$ 猜测若干 token（如 4 个）&lt;/li>
+&lt;li>目标模型 $q$ 并行评估，合理则采纳&lt;/li>
+&lt;li>修改版拒绝采样（保证至少一个候选）&lt;/li>
+&lt;/ol>
+&lt;h4 id="动态工作负载" class="heading-element">&lt;span>动态工作负载&lt;/span>
+ &lt;a href="#%e5%8a%a8%e6%80%81%e5%b7%a5%e4%bd%9c%e8%b4%9f%e8%bd%bd" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>挑战：请求到达时间不同、序列有共享前缀、长度各异&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://www.usenix.org/system/files/osdi22-yu.pdf"target="_blank" rel="external nofollow noopener noreferrer">连续批处理&lt;/a>&lt;/strong>：迭代级调度，新请求即时加入 batch；选择性批处理——注意力单独处理，非注意力拼接张量&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://arxiv.org/pdf/2309.06180.pdf"target="_blank" rel="external nofollow noopener noreferrer">PagedAttention&lt;/a>&lt;/strong>：KV cache 划分为非连续块（借鉴 OS 分页），解决预分配导致的内存碎片化；支持前缀共享和写时复制（CoW）&lt;/p>
+&lt;h2 id="scaling-laws" class="heading-element">&lt;span>Scaling Laws&lt;/span>
  &lt;a href="#scaling-laws" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -803,6 +925,7 @@ World size：设备总数&lt;/p>
 &lt;/h2>&lt;ul>
 &lt;li>&lt;a href="https://cs336.stanford.edu/"target="_blank" rel="external nofollow noopener noreferrer">CS336: Language Modeling from Scratch&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://huggingface.co/learn/llm-course/"target="_blank" rel="external nofollow noopener noreferrer">Hugging Face LLM Course&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://jax-ml.github.io/scaling-book/"target="_blank" rel="external nofollow noopener noreferrer">scaling-book&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
