@@ -312,7 +312,7 @@ ZeRO(Zero Redundancy Optimizer)：用于降低数据并行(DP)中的冗余内存
 
 **推理两阶段**
 
-| 维度 | Prefill(预填充) | Generation(生成) |
+| 维度 | Prefill(预填充) | Decode(解码生成) |
 |------|-------------------|-------------------|
 | 计算方式 | 批量并行，一次性处理 Prompt | 串行增量，每次处理一个 token |
 | 资源需求 | 计算密集型 | 内存密集型 |
@@ -322,11 +322,11 @@ ZeRO(Zero Redundancy Optimizer)：用于降低数据并行(DP)中的冗余内存
 KV cache：对每个 sequence(B)、token(S)、layer(L)、head(K)，存储 $H$ 维向量
 
 **延迟-吞吐量权衡**：增大 batch → 延迟增加(KV cache 更大)&#43; 吞吐量提升(摊薄参数读取)
-- TTFT 优化：Prefill 用小 batch，Generation 用大 batch
+- TTFT 优化：Prefill 用小 batch，Decode 用大 batch
 
 #### 减少 KV cache 大小
 
-**[Grouped-query attention(GQA)](https://arxiv.org/abs/2305.13245)**：$N$ 个 query head 共享 $K$ 个 KV head(MHA: $K=N$，MQA: $K=1$，GQA: $1&lt;K&lt;N$)，KV cache 减小 $N/K$ 倍
+**[Grouped-query attention(GQA)](https://arxiv.org/abs/2305.13245)**：$N$ 个 query head 共享 $K$ 个 KV head(MHA: $K=N$，MQA: $K=1$，GQA: K在1和N之间)，KV cache 减小 $N/K$ 倍
 
 **[Multi-head latent attention(MLA)](https://arxiv.org/abs/2405.04434)**：存储压缩向量 $c = W_c h$($C$ 维)，需时投影 $K = W_K c$；DeepSeek v2: $16384 \to 512$ 维；不兼容 RoPE，需额外 64 维；精度略优于 MHA
 
