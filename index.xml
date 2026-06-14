@@ -458,7 +458,7 @@
 &lt;p>&lt;strong>bank conflicts(shared memory)&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>共享内存被分为 32 个 bank，每个 bank 宽 4 bytes。&lt;/li>
-&lt;li>同一 warp 内多个线程访问同一 bank 的不同地址时会冲突（访问同一地址是 broadcast，不冲突）。&lt;/li>
+&lt;li>同一 warp 内多个线程访问同一 bank 的不同地址时会冲突(访问同一地址是 broadcast，不冲突)。&lt;/li>
 &lt;li>方法：对共享内存重新排列来避免 bank 冲突。&lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>Memory coalescing(HBM)&lt;/strong>&lt;/p>
@@ -570,7 +570,7 @@ tiling + recomputation + online softmax + fusion exponential operator
  &lt;a href="#parallelism" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;h4 id="集合通信操作collective-operations" class="heading-element">&lt;span>集合通信操作（Collective Operations）&lt;/span>
+&lt;/h3>&lt;h4 id="集合通信操作collective-operations" class="heading-element">&lt;span>集合通信操作(Collective Operations)&lt;/span>
  &lt;a href="#%e9%9b%86%e5%90%88%e9%80%9a%e4%bf%a1%e6%93%8d%e4%bd%9ccollective-operations" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -603,7 +603,7 @@ World size：设备总数&lt;/p>
  &lt;/tr>
  &lt;tr>
  &lt;td>Reduce&lt;/td>
- &lt;td>用操作（sum/min/max 等）聚合所有 rank 到 rank0&lt;/td>
+ &lt;td>用操作(sum/min/max 等)聚合所有 rank 到 rank0&lt;/td>
  &lt;td>梯度汇总&lt;/td>
  &lt;/tr>
  &lt;/tbody>
@@ -672,9 +672,9 @@ World size：设备总数&lt;/p>
  &lt;/tbody>
 &lt;/table>
 &lt;p>GB200/GB300 NVL72：8 GPU/tray × 9 trays/rack = 72 GPUs in one NVLink domain&lt;/p>
-&lt;p>RDMA（Remote Direct Memory Access）：允许 GPU 直接读写另一个 GPU 的内存，不经过 CPU。InfiniBand 支持，标准以太网不支持。&lt;/p>
-&lt;p>RoCE（RDMA over Converged Ethernet）：基于以太网的 RDMA 技术，比 InfiniBand 便宜但性能稍弱。&lt;/p>
-&lt;p>NCCL（NVIDIA Collective Communications Library）：NVIDIA 集合通信库&lt;/p>
+&lt;p>RDMA(Remote Direct Memory Access)：允许 GPU 直接读写另一个 GPU 的内存，不经过 CPU。InfiniBand 支持，标准以太网不支持。&lt;/p>
+&lt;p>RoCE(RDMA over Converged Ethernet)：基于以太网的 RDMA 技术，比 InfiniBand 便宜但性能稍弱。&lt;/p>
+&lt;p>NCCL(NVIDIA Collective Communications Library)：NVIDIA 集合通信库&lt;/p>
 &lt;h4 id="分布式训练" class="heading-element">&lt;span>分布式训练&lt;/span>
  &lt;a href="#%e5%88%86%e5%b8%83%e5%bc%8f%e8%ae%ad%e7%bb%83" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
@@ -690,38 +690,38 @@ World size：设备总数&lt;/p>
  &lt;/thead>
  &lt;tbody>
  &lt;tr>
- &lt;td>数据并行（Data Parallelism）&lt;/td>
+ &lt;td>数据并行(Data Parallelism)&lt;/td>
  &lt;td>batch&lt;/td>
  &lt;td>数据分片，每个 GPU 负责一部分&lt;/td>
  &lt;td>DDP: All-Reduce；FSDP/ZeRO: All-Gather + Reduce-Scatter&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td>张量并行（Tensor Parallelism）&lt;/td>
+ &lt;td>张量并行(Tensor Parallelism)&lt;/td>
  &lt;td>width&lt;/td>
  &lt;td>每个 GPU 负责每层的一部分&lt;/td>
- &lt;td>激活值（All-Gather），依赖 NVLink 等高速互联&lt;/td>
+ &lt;td>激活值(All-Gather)，依赖 NVLink 等高速互联&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td>流水线并行（Pipeline Parallelism）&lt;/td>
+ &lt;td>流水线并行(Pipeline Parallelism)&lt;/td>
  &lt;td>depth&lt;/td>
  &lt;td>每个 GPU 负责部分层&lt;/td>
- &lt;td>激活值（点对点 send/recv），通过 micro-batch 减少 pipeline bubble&lt;/td>
+ &lt;td>激活值(点对点 send/recv)，通过 micro-batch 减少 pipeline bubble&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td>序列并行（Sequence Parallelism）&lt;/td>
+ &lt;td>序列并行(Sequence Parallelism)&lt;/td>
  &lt;td>length&lt;/td>
  &lt;td>沿序列维度切分，Attention 计算并行化&lt;/td>
- &lt;td>KV/激活值（All-Gather）&lt;/td>
+ &lt;td>KV/激活值(All-Gather)&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td>专家并行（Expert Parallelism）&lt;/td>
+ &lt;td>专家并行(Expert Parallelism)&lt;/td>
  &lt;td>width&lt;/td>
  &lt;td>MoE 中的 FFN/MLP 并行化，不同 expert 分布在不同 GPU&lt;/td>
- &lt;td>token 路由（All-to-All）&lt;/td>
+ &lt;td>token 路由(All-to-All)&lt;/td>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
-&lt;p>ZeRO（Zero Redundancy Optimizer）：用于降低数据并行（DP）中的冗余内存开销。根据 stage 不同，可分别切分优化器状态、梯度和参数，并通过 Reduce-Scatter / All-Gather 等通信完成同步。&lt;/p>
+&lt;p>ZeRO(Zero Redundancy Optimizer)：用于降低数据并行(DP)中的冗余内存开销。根据 stage 不同，可分别切分优化器状态、梯度和参数，并通过 Reduce-Scatter / All-Gather 等通信完成同步。&lt;/p>
 &lt;h3 id="inference" class="heading-element">&lt;span>Inference&lt;/span>
  &lt;a href="#inference" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
@@ -738,8 +738,8 @@ World size：设备总数&lt;/p>
  &lt;thead>
  &lt;tr>
  &lt;th>维度&lt;/th>
- &lt;th>Prefill（预填充）&lt;/th>
- &lt;th>Generation（生成）&lt;/th>
+ &lt;th>Prefill(预填充)&lt;/th>
+ &lt;th>Generation(生成)&lt;/th>
  &lt;/tr>
  &lt;/thead>
  &lt;tbody>
@@ -766,7 +766,7 @@ World size：设备总数&lt;/p>
  &lt;/tbody>
 &lt;/table>
 &lt;p>KV cache：对每个 sequence(B)、token(S)、layer(L)、head(K)，存储 $H$ 维向量&lt;/p>
-&lt;p>&lt;strong>延迟-吞吐量权衡&lt;/strong>：增大 batch → 延迟增加（KV cache 更大）+ 吞吐量提升（摊薄参数读取）&lt;/p>
+&lt;p>&lt;strong>延迟-吞吐量权衡&lt;/strong>：增大 batch → 延迟增加(KV cache 更大)+ 吞吐量提升(摊薄参数读取)&lt;/p>
 &lt;ul>
 &lt;li>TTFT 优化：Prefill 用小 batch，Generation 用大 batch&lt;/li>
 &lt;/ul>
@@ -774,17 +774,17 @@ World size：设备总数&lt;/p>
  &lt;a href="#%e5%87%8f%e5%b0%91-kv-cache-%e5%a4%a7%e5%b0%8f" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h4>&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2305.13245"target="_blank" rel="external nofollow noopener noreferrer">Grouped-query attention(GQA)&lt;/a>&lt;/strong>：$N$ 个 query head 共享 $K$ 个 KV head（MHA: $K=N$，MQA: $K=1$，GQA: $1&lt;K&lt;N$），KV cache 减小 $N/K$ 倍&lt;/p>
-&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2405.04434"target="_blank" rel="external nofollow noopener noreferrer">Multi-head latent attention(MLA)&lt;/a>&lt;/strong>：存储压缩向量 $c = W_c h$（$C$ 维），需时投影 $K = W_K c$；DeepSeek v2: $16384 \to 512$ 维；不兼容 RoPE，需额外 64 维；精度略优于 MHA&lt;/p>
-&lt;p>&lt;strong>CLA&lt;/strong>：跨层共享 KV（类比 GQA 跨 head 共享），改善精度-KV 大小 Pareto 前沿&lt;/p>
+&lt;/h4>&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2305.13245"target="_blank" rel="external nofollow noopener noreferrer">Grouped-query attention(GQA)&lt;/a>&lt;/strong>：$N$ 个 query head 共享 $K$ 个 KV head(MHA: $K=N$，MQA: $K=1$，GQA: $1&lt;K&lt;N$)，KV cache 减小 $N/K$ 倍&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2405.04434"target="_blank" rel="external nofollow noopener noreferrer">Multi-head latent attention(MLA)&lt;/a>&lt;/strong>：存储压缩向量 $c = W_c h$($C$ 维)，需时投影 $K = W_K c$；DeepSeek v2: $16384 \to 512$ 维；不兼容 RoPE，需额外 64 维；精度略优于 MHA&lt;/p>
+&lt;p>&lt;strong>CLA&lt;/strong>：跨层共享 KV(类比 GQA 跨 head 共享)，改善精度-KV 大小 Pareto 前沿&lt;/p>
 &lt;p>&lt;strong>滑动窗口注意力&lt;/strong>：只关注局部上下文，KV cache 与序列长度无关；有效上下文随层数线性增长；可与全局注意力交替使用&lt;/p>
-&lt;p>&lt;strong>DeepSeek v4&lt;/strong>：支持 1M 上下文，组合 Compressed Sparse Attention(CSA)（压缩 $m$ token → 1）、Deepseek Sparse Attention(DSA)（选 top-$k$）、Heavily Compressed Attention(HCA)（更高压缩比）&lt;/p>
-&lt;p>其他方向：线性注意力、状态空间模型（Mamba 2、GatedDeltaNet）&lt;/p>
+&lt;p>&lt;strong>DeepSeek v4&lt;/strong>：支持 1M 上下文，组合 Compressed Sparse Attention(CSA)(压缩 $m$ token → 1)、Deepseek Sparse Attention(DSA)(选 top-$k$)、Heavily Compressed Attention(HCA)(更高压缩比)&lt;/p>
+&lt;p>其他方向：线性注意力、状态空间模型(Mamba 2、GatedDeltaNet)&lt;/p>
 &lt;h4 id="量化" class="heading-element">&lt;span>量化&lt;/span>
  &lt;a href="#%e9%87%8f%e5%8c%96" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h4>&lt;p>降低精度 → 减少内存 → 提升速度（推理内存受限）&lt;/p>
+&lt;/h4>&lt;p>降低精度 → 减少内存 → 提升速度(推理内存受限)&lt;/p>
 &lt;table>
  &lt;thead>
  &lt;tr>
@@ -837,9 +837,9 @@ World size：设备总数&lt;/p>
  &lt;/a>
 &lt;/h4>&lt;p>&lt;a href="https://arxiv.org/abs/2211.17192"target="_blank" rel="external nofollow noopener noreferrer">Speculative Sampling&lt;/a>：检查比生成快&lt;/p>
 &lt;ol>
-&lt;li>草稿模型 $p$ 猜测若干 token（如 4 个）&lt;/li>
+&lt;li>草稿模型 $p$ 猜测若干 token(如 4 个)&lt;/li>
 &lt;li>目标模型 $q$ 并行评估，合理则采纳&lt;/li>
-&lt;li>修改版拒绝采样（保证至少一个候选）&lt;/li>
+&lt;li>修改版拒绝采样(保证至少一个候选)&lt;/li>
 &lt;/ol>
 &lt;h4 id="动态工作负载" class="heading-element">&lt;span>动态工作负载&lt;/span>
  &lt;a href="#%e5%8a%a8%e6%80%81%e5%b7%a5%e4%bd%9c%e8%b4%9f%e8%bd%bd" class="heading-mark">
@@ -847,7 +847,7 @@ World size：设备总数&lt;/p>
  &lt;/a>
 &lt;/h4>&lt;p>挑战：请求到达时间不同、序列有共享前缀、长度各异&lt;/p>
 &lt;p>&lt;strong>&lt;a href="https://www.usenix.org/system/files/osdi22-yu.pdf"target="_blank" rel="external nofollow noopener noreferrer">连续批处理&lt;/a>&lt;/strong>：迭代级调度，新请求即时加入 batch；选择性批处理——注意力单独处理，非注意力拼接张量&lt;/p>
-&lt;p>&lt;strong>&lt;a href="https://arxiv.org/pdf/2309.06180.pdf"target="_blank" rel="external nofollow noopener noreferrer">PagedAttention&lt;/a>&lt;/strong>：KV cache 划分为非连续块（借鉴 OS 分页），解决预分配导致的内存碎片化；支持前缀共享和写时复制（CoW）&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://arxiv.org/pdf/2309.06180.pdf"target="_blank" rel="external nofollow noopener noreferrer">PagedAttention&lt;/a>&lt;/strong>：KV cache 划分为非连续块(借鉴 OS 分页)，解决预分配导致的内存碎片化；支持前缀共享和写时复制(CoW)&lt;/p>
 &lt;h2 id="scaling-laws" class="heading-element">&lt;span>Scaling Laws&lt;/span>
  &lt;a href="#scaling-laws" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
@@ -866,12 +866,12 @@ World size：设备总数&lt;/p>
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h3>&lt;ul>
-&lt;li>架构（Transformer vs LSTM）、优化器（Adam vs SGD）可通过小模型预测&lt;/li>
-&lt;li>层数、宽深比对 loss 影响较小（参数固定时）&lt;/li>
+&lt;li>架构(Transformer vs LSTM)、优化器(Adam vs SGD)可通过小模型预测&lt;/li>
+&lt;li>层数、宽深比对 loss 影响较小(参数固定时)&lt;/li>
 &lt;li>临界批量 $B_{\text{crit}}$：超过后收益递减&lt;/li>
-&lt;li>学习率需按 µP 规则缩放（宽模型）&lt;/li>
+&lt;li>学习率需按 µP 规则缩放(宽模型)&lt;/li>
 &lt;/ul>
-&lt;h3 id="联合缩放数据--模型" class="heading-element">&lt;span>联合缩放（数据 + 模型）&lt;/span>
+&lt;h3 id="联合缩放数据--模型" class="heading-element">&lt;span>联合缩放(数据 + 模型)&lt;/span>
  &lt;a href="#%e8%81%94%e5%90%88%e7%bc%a9%e6%94%be%e6%95%b0%e6%8d%ae--%e6%a8%a1%e5%9e%8b" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -879,7 +879,7 @@ World size：设备总数&lt;/p>
 &lt;li>误差形式：$\text{Error} = n^{-\alpha} + m^{-\beta} + C$&lt;/li>
 &lt;li>用于最优分配计算预算&lt;/li>
 &lt;/ul>
-&lt;h3 id="kaplanopenai-2020" class="heading-element">&lt;span>Kaplan（OpenAI 2020）&lt;/span>
+&lt;h3 id="kaplanopenai-2020" class="heading-element">&lt;span>Kaplan(OpenAI 2020)&lt;/span>
  &lt;a href="#kaplanopenai-2020" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -887,14 +887,14 @@ World size：设备总数&lt;/p>
 &lt;li>$N_{\text{opt}} \propto C^{0.73},\; D_{\text{opt}} \propto C^{0.27}$&lt;/li>
 &lt;li>模型偏大，数据相对不足&lt;/li>
 &lt;/ul>
-&lt;h3 id="chinchilladeepmind-2022" class="heading-element">&lt;span>Chinchilla（DeepMind 2022）&lt;/span>
+&lt;h3 id="chinchilladeepmind-2022" class="heading-element">&lt;span>Chinchilla(DeepMind 2022)&lt;/span>
  &lt;a href="#chinchilladeepmind-2022" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h3>&lt;ul>
-&lt;li>$N_{\text{opt}} \propto C^{0.5},\; D_{\text{opt}} \propto C^{0.5}$（数据与模型等比例扩展）&lt;/li>
-&lt;li>约 &lt;strong>20 tokens / param&lt;/strong> 为计算最优（纠正了 Kaplan 时代大模型 token 不足的问题）&lt;/li>
-&lt;li>若推理为主，应 over-train（更多 token）&lt;/li>
+&lt;li>$N_{\text{opt}} \propto C^{0.5},\; D_{\text{opt}} \propto C^{0.5}$(数据与模型等比例扩展)&lt;/li>
+&lt;li>约 &lt;strong>20 tokens / param&lt;/strong> 为计算最优(纠正了 Kaplan 时代大模型 token 不足的问题)&lt;/li>
+&lt;li>若推理为主，应 over-train(更多 token)&lt;/li>
 &lt;/ul>
 &lt;h3 id="注意" class="heading-element">&lt;span>注意&lt;/span>
  &lt;a href="#%e6%b3%a8%e6%84%8f" class="heading-mark">
@@ -904,6 +904,130 @@ World size：设备总数&lt;/p>
 &lt;li>缩放定律是下界，可能被打破&lt;/li>
 &lt;li>下游任务缩放不如预训练平滑&lt;/li>
 &lt;/ul>
+&lt;h3 id="μphttpsarxivorgabs220303466maximal-update-parameterization-最大更新参数化" class="heading-element">&lt;span>&lt;a href="https://arxiv.org/abs/2203.03466"target="_blank" rel="external nofollow noopener noreferrer">μP&lt;/a>(maximal-update-parameterization 最大更新参数化)&lt;/span>
+ &lt;a href="#%ce%bcphttpsarxivorgabs220303466maximal-update-parameterization-%e6%9c%80%e5%a4%a7%e6%9b%b4%e6%96%b0%e5%8f%82%e6%95%b0%e5%8c%96" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>μP 是一套初始化 + 学习率缩放规则，使得&lt;strong>最优超参数(尤其是 LR学习率)在宽度变化时保持稳定&lt;/strong>。&lt;/p>
+&lt;h4 id="核心条件" class="heading-element">&lt;span>核心条件&lt;/span>
+ &lt;a href="#%e6%a0%b8%e5%bf%83%e6%9d%a1%e4%bb%b6" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>A1&lt;/strong>：初始化时激活值量级 $\Theta(1)$(与宽度无关)&lt;/li>
+&lt;li>&lt;strong>A2&lt;/strong>：单步更新后激活变化量级 $\Theta(1)$&lt;/li>
+&lt;/ul>
+&lt;h4 id="缩放公式线性层" class="heading-element">&lt;span>缩放公式(线性层)&lt;/span>
+ &lt;a href="#%e7%bc%a9%e6%94%be%e5%85%ac%e5%bc%8f%e7%ba%bf%e6%80%a7%e5%b1%82" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;ul>
+&lt;li>初始化标准差：$\Theta\left(\frac{1}{\sqrt{n_{l-1}}} \min\left(1, \sqrt{\frac{n_l}{n_{l-1}}}\right)\right)$&lt;/li>
+&lt;li>学习率(SGD)：$\eta = \Theta\left(\frac{n_l}{n_{l-1}}\right)$；Adam 则为 $\Theta\left(\frac{1}{n_{l-1}}\right)$&lt;/li>
+&lt;/ul>
+&lt;p>相比“标准”参数化(初始化 $\frac{1}{\sqrt{n_{l-1}}}$，LR $\Theta(1)$)，μP 在 $n_l &lt; n_{l-1}$ 时调整初始化和 LR，避免激活爆炸或消失。&lt;/p>
+&lt;h4 id="μp-的鲁棒性与失效场景" class="heading-element">&lt;span>μP 的鲁棒性与失效场景&lt;/span>
+ &lt;a href="#%ce%bcp-%e7%9a%84%e9%b2%81%e6%a3%92%e6%80%a7%e4%b8%8e%e5%a4%b1%e6%95%88%e5%9c%ba%e6%99%af" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>组件/修改&lt;/th>
+ &lt;th>是否破坏 μP&lt;/th>
+ &lt;th>说明&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>RMSNorm 可学习增益(向量/标量)&lt;/td>
+ &lt;td>&lt;strong>是&lt;/strong>&lt;/td>
+ &lt;td>最优 LR 无法跨宽度迁移，且损害最终性能&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Lion 优化器&lt;/td>
+ &lt;td>&lt;strong>是&lt;/strong>&lt;/td>
+ &lt;td>基于符号的优化器破坏 μP 假设&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>强权重衰减(λ=0.1)&lt;/td>
+ &lt;td>&lt;strong>是&lt;/strong>&lt;/td>
+ &lt;td>唯一显著失效场景，最优 LR 在 2048 宽时偏移&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>SwiGLU / 平方 ReLU&lt;/td>
+ &lt;td>否&lt;/td>
+ &lt;td>实验表明 μP 仍稳定&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>零注意力 / 不同批大小&lt;/td>
+ &lt;td>否&lt;/td>
+ &lt;td>可安全使用&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="wsdhttpsarxivorgpdf240406395-warmupstabledecay学习率调度器" class="heading-element">&lt;span>&lt;a href="https://arxiv.org/pdf/2404.06395"target="_blank" rel="external nofollow noopener noreferrer">WSD&lt;/a> (Warmup‑Stable‑Decay学习率调度器)&lt;/span>
+ &lt;a href="#wsdhttpsarxivorgpdf240406395-warmupstabledecay%e5%ad%a6%e4%b9%a0%e7%8e%87%e8%b0%83%e5%ba%a6%e5%99%a8" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>&lt;strong>目的&lt;/strong>：以线性成本 $O(mC)$ 测量缩放定律，避免从头训练多个模型。&lt;/p>
+&lt;h4 id="调度阶段" class="heading-element">&lt;span>调度阶段&lt;/span>
+ &lt;a href="#%e8%b0%83%e5%ba%a6%e9%98%b6%e6%ae%b5" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>Warmup&lt;/strong>：快速升至峰值 LR&lt;/li>
+&lt;li>&lt;strong>Stable&lt;/strong>：长时间保持高 LR，训练至目标 token 数的 $k$ 倍&lt;/li>
+&lt;li>&lt;strong>Decay&lt;/strong>：约占总 token 的 10%，LR 快速降至接近 0&lt;/li>
+&lt;/ul>
+&lt;h4 id="优势" class="heading-element">&lt;span>优势&lt;/span>
+ &lt;a href="#%e4%bc%98%e5%8a%bf" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;ul>
+&lt;li>从 Stable 阶段&lt;strong>任意步数&lt;/strong>的检查点开始 Decay，均可达到与 Cosine 调度相同的最终 loss&lt;/li>
+&lt;li>因此可&lt;strong>一次训练&lt;/strong>，在不同 token 量处 Decay，同时获得多个 $(D, L)$ 点 → 拟合 Chinchilla 曲线无需 $n^2$ 成本&lt;/li>
+&lt;/ul>
+&lt;h3 id="模型缩放策略总结" class="heading-element">&lt;span>模型缩放策略总结&lt;/span>
+ &lt;a href="#%e6%a8%a1%e5%9e%8b%e7%bc%a9%e6%94%be%e7%ad%96%e7%95%a5%e6%80%bb%e7%bb%93" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>模型&lt;/th>
+ &lt;th>核心缩放技术&lt;/th>
+ &lt;th>关键结论&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;strong>&lt;a href="https://github.com/OpenBMB/MiniCPM"target="_blank" rel="external nofollow noopener noreferrer">面壁智能-MiniCPM&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td>μP + WSD + 小规模拟合(Chinchilla 方法 1&amp;amp;3)&lt;/td>
+ &lt;td>最优 data‑to‑model 比例远高于 Chinchilla(更重数据)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>DeepSeek&lt;/strong>&lt;/td>
+ &lt;td>无 μP，网格搜索 + 幂律外推 LR/Batch + 多步衰减调度&lt;/td>
+ &lt;td>7B/67B 性能被小规模缩放律&lt;strong>精确预测&lt;/strong>(图 5)&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Qwen 2.5/3&lt;/strong>&lt;/td>
+ &lt;td>类似 DeepSeek 的 LR/Batch 缩放，另加 MoE 对比&lt;/td>
+ &lt;td>为 MoE 和 Dense 模型分别推导超参数缩放律&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>LLaMA 3&lt;/strong>&lt;/td>
+ &lt;td>仅 IsoFLOP 曲线($6\times10^{18}$–$10^{22}$ FLOPs)&lt;/td>
+ &lt;td>未公开 LR/Batch 细节&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;strong>Kimi K2&lt;/strong>&lt;/td>
+ &lt;td>MoE 稀疏度缩放 + Muon 优化器 + 固定激活 8/总 384&lt;/td>
+ &lt;td>稀疏度 48 为性能‑成本平衡点&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
 &lt;h2 id="data" class="heading-element">&lt;span>Data&lt;/span>
  &lt;a href="#data" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
