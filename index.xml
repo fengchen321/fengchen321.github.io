@@ -1035,6 +1035,45 @@ World size：设备总数&lt;/p>
 &lt;/h2>&lt;blockquote>
 &lt;p>evaluation, curation, transformation, filtering, deduplication, mixing&lt;/p>
 &lt;/blockquote>
+&lt;h3 id="evaluation" class="heading-element">&lt;span>Evaluation&lt;/span>
+ &lt;a href="#evaluation" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>困惑度(Perplexity, PPL)：衡量模型预测的随机性，越小越好&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Benchmark&lt;/th>
+ &lt;th>类别&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/1606.06031"target="_blank" rel="external nofollow noopener noreferrer">LAMBADA&lt;/a>, &lt;a href="https://arxiv.org/pdf/1905.07830"target="_blank" rel="external nofollow noopener noreferrer">HellaSwag&lt;/a>&lt;/td>
+ &lt;td>困惑度 / 完形填空&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>Massive Multitask Language Model(&lt;a href="https://llm-stats.com/benchmarks/mmlu"target="_blank" rel="external nofollow noopener noreferrer">MMLU&lt;/a>), &lt;a href="https://llm-stats.com/benchmarks/mmlu-pro"target="_blank" rel="external nofollow noopener noreferrer">MMLU-Pro&lt;/a>, Graduate-Level Google-Proof Q&amp;amp;A(&lt;a href="https://llm-stats.com/benchmarks/gpqa"target="_blank" rel="external nofollow noopener noreferrer">GPQA&lt;/a>), Humanity&amp;rsquo;s Last Exam(&lt;a href="https://llm-stats.com/benchmarks/humanity%27s-last-exam"target="_blank" rel="external nofollow noopener noreferrer">HLE&lt;/a>)&lt;/td>
+ &lt;td>考试型&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2403.04132"target="_blank" rel="external nofollow noopener noreferrer">Chatbot Arena&lt;/a>, &lt;a href="https://tatsu-lab.github.io/alpaca_eval/"target="_blank" rel="external nofollow noopener noreferrer">AlpacaEval&lt;/a>, &lt;a href="https://arxiv.org/pdf/2406.04770"target="_blank" rel="external nofollow noopener noreferrer">WildBench&lt;/a>&lt;/td>
+ &lt;td>聊天型&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2310.06770"target="_blank" rel="external nofollow noopener noreferrer">SWE-Bench&lt;/a>, &lt;a href="https://arxiv.org/abs/2601.11868"target="_blank" rel="external nofollow noopener noreferrer">TerminalBench&lt;/a>, &lt;a href="https://arxiv.org/abs/2408.08926"target="_blank" rel="external nofollow noopener noreferrer">CyBench&lt;/a>, &lt;a href="https://arxiv.org/abs/2410.07095"target="_blank" rel="external nofollow noopener noreferrer">MLEBench&lt;/a>&lt;/td>
+ &lt;td>智能体型&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arcprize.org/arc-agi"target="_blank" rel="external nofollow noopener noreferrer">ARC-AGI&lt;/a>&lt;/td>
+ &lt;td>纯推理&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2402.04249"target="_blank" rel="external nofollow noopener noreferrer">HarmBench&lt;/a>, &lt;a href="https://arxiv.org/abs/2407.17436"target="_blank" rel="external nofollow noopener noreferrer">AIR-Bench&lt;/a>&lt;/td>
+ &lt;td>安全型&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
 &lt;h2 id="alignment" class="heading-element">&lt;span>Alignment&lt;/span>
  &lt;a href="#alignment" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
