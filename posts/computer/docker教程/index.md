@@ -85,7 +85,7 @@ docker run -d -t -v /home/待映射路径:/data --privileged --device=/dev/kfd/ 
 
    &gt; `docker ps`：显示所有在运行的容器
    &gt;
-   &gt; docker ps -a --format &#34;table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Size}}&#34;
+   &gt; `docker ps -a --format &#34;table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Size}}&#34;`
 
 3. `docker [container] start CONTAINER`：启动容器
 

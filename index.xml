@@ -483,7 +483,7 @@
 &lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2205.14135"target="_blank" rel="external nofollow noopener noreferrer">FlashAttention&lt;/a>&lt;/strong>&lt;/p>
 &lt;center>
 &lt;img 
-src="https://fengchen321.github.io/images/AI\CS336.assets/flashAttention.png" >
+src="https://fengchen321.github.io/images/AI/CS336.assets/flashAttention.png" >
 &lt;br>
 &lt;div style="color:orange; border-bottom: 1px solid #d9d9d9;
 display: inline-block;
@@ -1032,10 +1032,7 @@ World size：设备总数&lt;/p>
  &lt;a href="#data" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h2>&lt;blockquote>
-&lt;p>evaluation, curation, transformation, filtering, deduplication, mixing&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="evaluation" class="heading-element">&lt;span>Evaluation&lt;/span>
+&lt;/h2>&lt;h3 id="evaluation" class="heading-element">&lt;span>Evaluation&lt;/span>
  &lt;a href="#evaluation" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -1053,7 +1050,7 @@ World size：设备总数&lt;/p>
  &lt;td>困惑度 / 完形填空&lt;/td>
  &lt;/tr>
  &lt;tr>
- &lt;td>Massive Multitask Language Model(&lt;a href="https://llm-stats.com/benchmarks/mmlu"target="_blank" rel="external nofollow noopener noreferrer">MMLU&lt;/a>), &lt;a href="https://llm-stats.com/benchmarks/mmlu-pro"target="_blank" rel="external nofollow noopener noreferrer">MMLU-Pro&lt;/a>, Graduate-Level Google-Proof Q&amp;amp;A(&lt;a href="https://llm-stats.com/benchmarks/gpqa"target="_blank" rel="external nofollow noopener noreferrer">GPQA&lt;/a>), Humanity&amp;rsquo;s Last Exam(&lt;a href="https://llm-stats.com/benchmarks/humanity%27s-last-exam"target="_blank" rel="external nofollow noopener noreferrer">HLE&lt;/a>)&lt;/td>
+ &lt;td>&lt;a href="https://llm-stats.com/benchmarks/mmlu"target="_blank" rel="external nofollow noopener noreferrer">MMLU&lt;/a>, &lt;a href="https://llm-stats.com/benchmarks/mmlu-pro"target="_blank" rel="external nofollow noopener noreferrer">MMLU-Pro&lt;/a>, &lt;a href="https://llm-stats.com/benchmarks/gpqa"target="_blank" rel="external nofollow noopener noreferrer">GPQA&lt;/a>, &lt;a href="https://llm-stats.com/benchmarks/humanity%27s-last-exam"target="_blank" rel="external nofollow noopener noreferrer">HLE&lt;/a>&lt;/td>
  &lt;td>考试型&lt;/td>
  &lt;/tr>
  &lt;tr>
@@ -1074,6 +1071,148 @@ World size：设备总数&lt;/p>
  &lt;/tr>
  &lt;/tbody>
 &lt;/table>
+&lt;h3 id="原始数据源" class="heading-element">&lt;span>原始数据源&lt;/span>
+ &lt;a href="#%e5%8e%9f%e5%a7%8b%e6%95%b0%e6%8d%ae%e6%ba%90" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://commoncrawl.org/"target="_blank" rel="external nofollow noopener noreferrer">Common Crawl&lt;/a>&lt;/strong>：非营利网络爬虫，每月新增30-50亿页面，提供WARC/WET格式。&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://www.wikipedia.org/"target="_blank" rel="external nofollow noopener noreferrer">Wikipedia&lt;/a>&lt;/strong>：免费在线百科全书，多语言，定期dump。&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/"target="_blank" rel="external nofollow noopener noreferrer">GitHub&lt;/a>&lt;/strong> / &lt;strong>&lt;a href="https://www.softwareheritage.org/"target="_blank" rel="external nofollow noopener noreferrer">Software Heritage&lt;/a>&lt;/strong>：代码仓库与源码存档。&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://arxiv.org/"target="_blank" rel="external nofollow noopener noreferrer">arXiv&lt;/a>&lt;/strong>：学术预印本，覆盖物理、数学、CS等。&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://www.gutenberg.org/"target="_blank" rel="external nofollow noopener noreferrer">Project Gutenberg&lt;/a>&lt;/strong>：公有领域电子书（版权过期）。&lt;/li>
+&lt;li>&lt;strong>Shadow Libraries&lt;/strong>：LibGen、Sci-Hub（版权争议，常被用于Books3等数据集）。&lt;/li>
+&lt;/ul>
+&lt;h3 id="按模型数据集归类" class="heading-element">&lt;span>按模型/数据集归类&lt;/span>
+ &lt;a href="#%e6%8c%89%e6%a8%a1%e5%9e%8b%e6%95%b0%e6%8d%ae%e9%9b%86%e5%bd%92%e7%b1%bb" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th style="text-align: left">模型/数据集&lt;/th>
+ &lt;th style="text-align: left">原材料来源（数据从哪来）&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/1810.04805"target="_blank" rel="external nofollow noopener noreferrer">BERT&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Wikipedia + BookCorpus（&lt;a href="https://www.smashwords.com/"target="_blank" rel="external nofollow noopener noreferrer">Smashwords&lt;/a> 自出版书籍）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>GPT-2 (WebText)&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Reddit外链（Karma ≥ 3的高质量帖子）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/1910.10683v4"target="_blank" rel="external nofollow noopener noreferrer">T5 (C4)&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Common Crawl（规则过滤：标点、禁用词、去代码）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/1911.00359"target="_blank" rel="external nofollow noopener noreferrer">CCNet&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Common Crawl（以Wikipedia为参考进行质量过滤）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/2005.14165"target="_blank" rel="external nofollow noopener noreferrer">GPT-3&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Common Crawl + WebText2 + Books1/2 + Wikipedia&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/2101.00027"target="_blank" rel="external nofollow noopener noreferrer">The Pile&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Pile-CC, PubMed Central, arXiv, &lt;a href="https://www.cs.cmu.edu/~enron/"target="_blank" rel="external nofollow noopener noreferrer">Enron邮件&lt;/a>, &lt;a href="https://www.gutenberg.org/"target="_blank" rel="external nofollow noopener noreferrer">Project Gutenberg&lt;/a>, &lt;a href="https://paperswithcode.com/dataset/books3"target="_blank" rel="external nofollow noopener noreferrer">Books3&lt;/a>（Bibliotik）, &lt;a href="https://archive.org/details/stackexchange"target="_blank" rel="external nofollow noopener noreferrer">StackExchange&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>Gopher (MassiveText)&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">MassiveWeb, C4, Books, News, GitHub, Wikipedia&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/2302.13971"target="_blank" rel="external nofollow noopener noreferrer">LLaMA&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">CommonCrawl(CCNet), C4, GitHub(许可过滤), Wikipedia, Gutenberg, Books3, arXiv, StackExchange&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/2306.01116"target="_blank" rel="external nofollow noopener noreferrer">RefinedWeb&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Common Crawl（使用WARC+trafilatura提取，Gopher规则过滤）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/2402.00159"target="_blank" rel="external nofollow noopener noreferrer">Dolma&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Reddit(Pushshift), PeS2o(Semantic Scholar), C4, Gutenberg, Wikipedia, Common Crawl&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>DCLM&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Common Crawl（基于模型的质量分类器筛选）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>Nemotron-CC&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">Common Crawl（分类器集成 + 合成数据重写增强）&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/2211.15533"target="_blank" rel="external nofollow noopener noreferrer">The Stack v2&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">GitHub仓库(克隆), Issues/PRs, Software Heritage, 技术文档网站&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td style="text-align: left">&lt;strong>&lt;a href="https://arxiv.org/pdf/2506.05209"target="_blank" rel="external nofollow noopener noreferrer">CommonPile&lt;/a>&lt;/strong>&lt;/td>
+ &lt;td style="text-align: left">仅使用&lt;strong>许可协议&lt;/strong>数据（MIT、Apache等）&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="数据处理流程-data-pipeline" class="heading-element">&lt;span>数据处理流程 (Data Pipeline)&lt;/span>
+ &lt;a href="#%e6%95%b0%e6%8d%ae%e5%a4%84%e7%90%86%e6%b5%81%e7%a8%8b-data-pipeline" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;h4 id="数据转换-transformation" class="heading-element">&lt;span>数据转换 (Transformation)&lt;/span>
+ &lt;a href="#%e6%95%b0%e6%8d%ae%e8%bd%ac%e6%8d%a2-transformation" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>原始数据不是纯文本，需要转成模型可读的格式。&lt;/p>
+&lt;p>HTML (Common Crawl): 使用 trafilatura, resiliparse, jusText, lynx 等工具提取正文，去除导航、广告等&lt;/p>
+&lt;p>PDF (arXiv): 使用 OCR (RolmOCR) 或 Docling 提取, &lt;a href="https://huggingface.co/spaces/HuggingFaceFW/FinePDFsBlog"target="_blank" rel="external nofollow noopener noreferrer">FinePDFs&lt;/a>&lt;/p>
+&lt;h4 id="数据过滤-filtering" class="heading-element">&lt;span>数据过滤 (Filtering)&lt;/span>
+ &lt;a href="#%e6%95%b0%e6%8d%ae%e8%bf%87%e6%bb%a4-filtering" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>&lt;strong>核心逻辑&lt;/strong>：给定目标数据 T 和原始数据 R，从 R 中筛选出与 T 相似的数据子集。&lt;/p>
+&lt;p>&lt;strong>应用场景&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>语言识别 (Language ID): 使用 &lt;a href="https://fasttext.cc/docs/en/language-identification.html"target="_blank" rel="external nofollow noopener noreferrer">fastText&lt;/a> 分类器&lt;/li>
+&lt;li>质量过滤 (Quality Filtering)&lt;/li>
+&lt;li>毒性过滤 (Toxicity Filtering)&lt;/li>
+&lt;/ul>
+&lt;h4 id="数据去重-deduplication" class="heading-element">&lt;span>数据去重 (Deduplication)&lt;/span>
+ &lt;a href="#%e6%95%b0%e6%8d%ae%e5%8e%bb%e9%87%8d-deduplication" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;ul>
+&lt;li>&lt;strong>精确重复&lt;/strong>：镜像站、GitHub forks。 每个 Item(粒度一般为：句子 / 段落 / 文档) 计算哈希值(如 MurmurHash)，相同哈希保留一个。可并行(MapReduce 风格)。&lt;/li>
+&lt;li>&lt;strong>近似重复&lt;/strong>：MIT许可证文本、模板化生成的内容。参考书籍：&lt;a href="http://infolab.stanford.edu/~ullman/mmds/ch3n.pdf"target="_blank" rel="external nofollow noopener noreferrer">Mining of Massive Datasets Ch.3&lt;/a>
+&lt;blockquote>
+&lt;p>Jaccard 相似度, MinHash, &lt;a href="http://infolab.stanford.edu/~ullman/mmds/ch3n.pdf"target="_blank" rel="external nofollow noopener noreferrer">LSH &lt;/a>(Locality Sensitive Hashing)&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;h4 id="数据混合-data-mixing" class="heading-element">&lt;span>数据混合 (Data Mixing)&lt;/span>
+ &lt;a href="#%e6%95%b0%e6%8d%ae%e6%b7%b7%e5%90%88-data-mixing" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h4>&lt;p>&lt;strong>核心问题&lt;/strong>：多个数据源（Wikipedia、CC、GitHub等）应该按什么比例混合？&lt;/p>
+&lt;h5 id="常见基线方法" class="heading-element">&lt;span>常见基线方法&lt;/span>
+ &lt;a href="#%e5%b8%b8%e8%a7%81%e5%9f%ba%e7%ba%bf%e6%96%b9%e6%b3%95" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h5>&lt;ul>
+&lt;li>&lt;strong>Vibe-based&lt;/strong>：人工直觉设置&lt;/li>
+&lt;li>&lt;strong>Uniform&lt;/strong>：各源均等采样 (p(s) ∝ 1)&lt;/li>
+&lt;li>&lt;strong>Proportional&lt;/strong>：按源的总 token 数比例采样 (p(s) ∝ tokens_in_source(s))&lt;/li>
+&lt;/ul>
+&lt;p>高质量但稀疏的数据源（如 Wikipedia）如果权重过高，会反复迭代（epoch）导致过拟合。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://arxiv.org/abs/2304.09151"target="_blank" rel="external nofollow noopener noreferrer">UniMax&lt;/a>: 均匀采样数据源，但对训练epoch设置上限。&lt;/li>
+&lt;li>&lt;a href="https://arxiv.org/pdf/2602.12237"target="_blank" rel="external nofollow noopener noreferrer">Regression-based Mixing&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://arxiv.org/pdf/2501.11747"target="_blank" rel="external nofollow noopener noreferrer">Simulated Epoching&lt;/a>: 小规模实验模拟大规模训练&lt;/li>
+&lt;/ul>
+&lt;h3 id="后训练数据-post-training-data" class="heading-element">&lt;span>后训练数据 (Post-Training Data)&lt;/span>
+ &lt;a href="#%e5%90%8e%e8%ae%ad%e7%bb%83%e6%95%b0%e6%8d%ae-post-training-data" class="heading-mark">
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
+ &lt;/a>
+&lt;/h3>&lt;p>通用流程：定义一组环境 -&amp;gt; 定义任务 / Prompt 集合 -&amp;gt; 从强模型（Teacher）收集回答&lt;/p>
+&lt;p>&lt;a href="https://arxiv.org/abs/2506.04178"target="_blank" rel="external nofollow noopener noreferrer">OpenThoughts&lt;/a>, &lt;a href="https://arxiv.org/abs/2504.21798"target="_blank" rel="external nofollow noopener noreferrer">SWE-smith&lt;/a>, &lt;a href="https://arxiv.org/abs/2604.01496"target="_blank" rel="external nofollow noopener noreferrer">SWE-Zero&lt;/a>, &lt;a href="https://arxiv.org/pdf/2505.20411"target="_blank" rel="external nofollow noopener noreferrer">SWE-rebench&lt;/a>, &lt;a href="https://huggingface.co/datasets/AlienKevin/SWE-ZERO-12M-trajectories"target="_blank" rel="external nofollow noopener noreferrer">SWE-ZERO-12M&lt;/a>&lt;/p>
 &lt;h2 id="alignment" class="heading-element">&lt;span>Alignment&lt;/span>
  &lt;a href="#alignment" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>

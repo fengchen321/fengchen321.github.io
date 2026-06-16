@@ -187,6 +187,7 @@ hy-smi --showdriverversion
 
 # 昆山平台（AMD GPU）驱动版本
 cat /sys/module/amdgpu/version
+modinfo /opt/hyhal/dkms/hycu.ko |grep -E ^version
 
 # 解压 RPM 文件（不安装）
 rpm2cpio package.rpm | cpio -idmv
