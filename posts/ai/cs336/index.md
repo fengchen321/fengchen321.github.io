@@ -542,7 +542,23 @@ PDF (arXiv): 使用 OCR (RolmOCR) 或 Docling 提取, [FinePDFs](https://hugging
 [OpenThoughts](https://arxiv.org/abs/2506.04178), [SWE-smith](https://arxiv.org/abs/2504.21798), [SWE-Zero](https://arxiv.org/abs/2604.01496), [SWE-rebench](https://arxiv.org/pdf/2505.20411), [SWE-ZERO-12M](https://huggingface.co/datasets/AlienKevin/SWE-ZERO-12M-trajectories)
 
 ## Alignment
-&gt; RLHF, RL algorithms, RL systems
+
+### SFT
+&gt; 目标： 拟合参考分布
+
+
+监督微调I(SFT) data: FLAN, Self-instruct, Alpaca, SHareGPT/Vicuna, Open Assistant, WizardLM, Tulu3, Nemotron
+&gt; 质量大于数量。
+
+### RLHF
+&gt; 目标： 最大期望奖励
+
+
+[Learning to summarize from human feedback](https://arxiv.org/abs/2009.01325), [Training a Helpful and Harmless Assistant with Reinforcement Learning from Human Feedback](https://arxiv.org/abs/2204.05862)
+
+#### PPO
+
+#### DPO
 
 ## 参考阅读
 
