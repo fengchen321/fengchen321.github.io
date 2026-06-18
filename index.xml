@@ -451,10 +451,10 @@
 &lt;ol>
 &lt;li>Threads：线程以并行方式，所有线程执行相同的指令，但输入不同(SIMT：单指令多线程)&lt;/li>
 &lt;li>Blocks：block 是由多个线程组成的 group。每个 block 在一个 SM 上运行，并拥有自己的共享内存&lt;/li>
-&lt;li>grid: thread blocks集合&lt;/li>
+&lt;li>Grid：thread blocks 集合&lt;/li>
 &lt;li>Warp：一个 warp 由 32 个连续的线程组成&lt;/li>
 &lt;/ol>
-&lt;p>SM 运行多个warp。每个线程使用0~255个寄存器。&lt;/p>
+&lt;p>SM 运行多个 warp。每个线程使用 0~255 个寄存器。&lt;/p>
 &lt;p>&lt;strong>bank conflicts(shared memory)&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>共享内存被分为 32 个 bank，每个 bank 宽 4 bytes。&lt;/li>
@@ -476,7 +476,7 @@
 &lt;blockquote>
 &lt;p>影响 tile 大小的因素：合并内存访问、共享内存大小、矩阵维度是否整除&lt;/p>
 &lt;p>内存对齐：内存以 burst 方式加载，当 burst 与矩阵对齐时加载 tile 很快。burst:一种批量连续读内存的机制&lt;/p>
-&lt;p>出现抖动可能原因：wave quantization, 1792 变成 1793 后，tile 大小是 256×128，那 1792×1792 的矩阵，需要 7×14 = 98 个 tiles，1793×1793 的矩阵需要 8×15 = 120 个 tiles，A100 有 108 SM，120 tiles 超过了限制， 线程块数量最好能被SMs整除。&lt;/p>
+&lt;p>出现抖动可能原因：wave quantization。1792 变成 1793 后，tile 大小是 256×128，那 1792×1792 的矩阵需要 7×14 = 98 个 tiles，1793×1793 的矩阵需要 8×15 = 120 个 tiles；A100 有 108 个 SM，120 个 tiles 会多出一小波调度，线程块数量最好接近 SM 数的整数倍。&lt;/p>
 &lt;/blockquote>
 &lt;/li>
 &lt;/ul>
@@ -775,7 +775,7 @@ World size：设备总数&lt;/p>
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
 &lt;/h4>&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2305.13245"target="_blank" rel="external nofollow noopener noreferrer">Grouped-query attention(GQA)&lt;/a>&lt;/strong>：$N$ 个 query head 共享 $K$ 个 KV head(MHA: $K=N$，MQA: $K=1$，GQA: K在1和N之间)，KV cache 减小 $N/K$ 倍&lt;/p>
-&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2405.04434"target="_blank" rel="external nofollow noopener noreferrer">Multi-head latent attention(MLA)&lt;/a>&lt;/strong>：存储压缩向量 $c = W_c h$($C$ 维)，需时投影 $K = W_K c$；DeepSeek v2: $16384 \to 512$ 维；不兼容 RoPE，需额外 64 维；精度略优于 MHA&lt;/p>
+&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2405.04434"target="_blank" rel="external nofollow noopener noreferrer">Multi-head latent attention(MLA)&lt;/a>&lt;/strong>：存储压缩向量 $c = W_c h$($C$ 维)，按需投影 $K = W_K c$；DeepSeek v2: $16384 \to 512$ 维；不兼容 RoPE，需额外 64 维；精度略优于 MHA&lt;/p>
 &lt;p>&lt;strong>CLA&lt;/strong>：跨层共享 KV(类比 GQA 跨 head 共享)，改善精度-KV 大小 Pareto 前沿&lt;/p>
 &lt;p>&lt;strong>滑动窗口注意力&lt;/strong>：只关注局部上下文，KV cache 与序列长度无关；有效上下文随层数线性增长；可与全局注意力交替使用&lt;/p>
 &lt;p>&lt;strong>DeepSeek v4&lt;/strong>：支持 1M 上下文，组合 Compressed Sparse Attention(CSA)(压缩 $m$ token → 1)、Deepseek Sparse Attention(DSA)(选 top-$k$)、Heavily Compressed Attention(HCA)(更高压缩比)&lt;/p>
@@ -1181,9 +1181,9 @@ World size：设备总数&lt;/p>
  &lt;/a>
 &lt;/h4>&lt;ul>
 &lt;li>&lt;strong>精确重复&lt;/strong>：镜像站、GitHub forks。 每个 Item(粒度一般为：句子 / 段落 / 文档) 计算哈希值(如 MurmurHash)，相同哈希保留一个。可并行(MapReduce 风格)。&lt;/li>
-&lt;li>&lt;strong>近似重复&lt;/strong>：MIT许可证文本、模板化生成的内容。参考书籍：&lt;a href="http://infolab.stanford.edu/~ullman/mmds/ch3n.pdf"target="_blank" rel="external nofollow noopener noreferrer">Mining of Massive Datasets Ch.3&lt;/a>
+&lt;li>&lt;strong>近似重复&lt;/strong>：MIT 许可证文本、模板化生成的内容。参考书籍：&lt;a href="http://infolab.stanford.edu/~ullman/mmds/ch3n.pdf"target="_blank" rel="external nofollow noopener noreferrer">Mining of Massive Datasets Ch.3&lt;/a>
 &lt;blockquote>
-&lt;p>Jaccard 相似度, MinHash, &lt;a href="http://infolab.stanford.edu/~ullman/mmds/ch3n.pdf"target="_blank" rel="external nofollow noopener noreferrer">LSH &lt;/a>(Locality Sensitive Hashing)&lt;/p>
+&lt;p>Jaccard 相似度, MinHash, &lt;a href="http://infolab.stanford.edu/~ullman/mmds/ch3n.pdf"target="_blank" rel="external nofollow noopener noreferrer">LSH&lt;/a>(Locality Sensitive Hashing)&lt;/p>
 &lt;/blockquote>
 &lt;/li>
 &lt;/ul>
@@ -1332,7 +1332,63 @@ $$&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2501.12948"target="_blank" 
  &lt;a href="#multimodality" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
-&lt;/h3>&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
+&lt;/h3>&lt;p>图像编码器&lt;/p>
+&lt;ol>
+&lt;li>&lt;a href="https://fengchen321.github.io/posts/deeplearning/multimodal-learning/clip/"target="_blank" rel="external nofollow noopener noreferrer">CLIP&lt;/a> 多分类问题&lt;/li>
+&lt;li>&lt;a href="https://arxiv.org/abs/2303.15343"target="_blank" rel="external nofollow noopener noreferrer">SigLIP&lt;/a>, &lt;a href="https://arxiv.org/abs/2502.14786"target="_blank" rel="external nofollow noopener noreferrer">SigLIP 2&lt;/a> 二分类问题&lt;/li>
+&lt;/ol>
+&lt;p>将图像编码注入大型语言模型&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>模型&lt;/th>
+ &lt;th>vision encoder&lt;/th>
+ &lt;th>text encoder&lt;/th>
+ &lt;th>projector&lt;/th>
+ &lt;th>Training&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2304.08485"target="_blank" rel="external nofollow noopener noreferrer">LLaVA&lt;/a>&lt;/td>
+ &lt;td>CLIP&lt;/td>
+ &lt;td>Vicuna&lt;/td>
+ &lt;td>线性投影(Linear Projection W)&lt;/td>
+ &lt;td>1.(alignment)冻结视觉编码器和语言模型，仅训练 W;2.(fine-tuning)冻结视觉编码器，训练 W 和语言模型&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/pdf/2408.03326"target="_blank" rel="external nofollow noopener noreferrer">LLaVA OneVision&lt;/a>&lt;/td>
+ &lt;td>SigLIP&lt;/td>
+ &lt;td>Qwen-2 72B&lt;/td>
+ &lt;td>2层MLP&lt;/td>
+ &lt;td>1.语言-图像对齐;2.高质量知识学习;3.视觉指令微调&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2308.12966"target="_blank" rel="external nofollow noopener noreferrer">Qwen-VL&lt;/a>&lt;/td>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2212.07143"target="_blank" rel="external nofollow noopener noreferrer">OpenCLIP&amp;rsquo;s ViT-bigC&lt;/a>&lt;/td>
+ &lt;td>QwenLM&lt;/td>
+ &lt;td>一层交叉注意力，融入 2D 位置编码，映射到固定长度 256&lt;/td>
+ &lt;td>1.大规模低质量数据；冻结 LM，训练视觉编码器 + 适配器;2.更高质量的任务特定数据，提升分辨率；训练所有参数; 3.指令微调数据；冻结视觉编码器，训练适配器 + LM&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2409.12191"target="_blank" rel="external nofollow noopener noreferrer">Qwen2-VL&lt;/a>&lt;/td>
+ &lt;td>larger ViT&lt;/td>
+ &lt;td>Qwen-2&lt;/td>
+ &lt;td>MLP&lt;/td>
+ &lt;td>1.仅训练视觉编码器；2.全参数；3.指令微调&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2511.21631"target="_blank" rel="external nofollow noopener noreferrer">Qwen3-VL&lt;/a>&lt;/td>
+ &lt;td>SigLIP-2&lt;/td>
+ &lt;td>Qwen-3&lt;/td>
+ &lt;td>&lt;a href="https://arxiv.org/abs/2406.04334"target="_blank" rel="external nofollow noopener noreferrer">DeepStack&lt;/a>&lt;/td>
+ &lt;td>1.训练适配器 2.全参数训练 3.后训练：SFT（长 CoT 数据）、知识蒸馏、RL&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>原生多模态 &lt;a href="https://arxiv.org/pdf/2405.09818"target="_blank" rel="external nofollow noopener noreferrer">Chameleon&lt;/a>: 所有内容离散化为 Token&lt;/p>
+&lt;p>视觉编码器 &lt;a href="https://arxiv.org/pdf/1711.00937"target="_blank" rel="external nofollow noopener noreferrer">VQ-VAE&lt;/a>&lt;/p>
+&lt;h2 id="参考阅读" class="heading-element">&lt;span>参考阅读&lt;/span>
  &lt;a href="#%e5%8f%82%e8%80%83%e9%98%85%e8%af%bb" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
@@ -1340,15 +1396,7 @@ $$&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2501.12948"target="_blank" 
 &lt;li>&lt;a href="https://cs336.stanford.edu/"target="_blank" rel="external nofollow noopener noreferrer">CS336: Language Modeling from Scratch&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://huggingface.co/learn/llm-course/"target="_blank" rel="external nofollow noopener noreferrer">Hugging Face LLM Course&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://jax-ml.github.io/scaling-book/"target="_blank" rel="external nofollow noopener noreferrer">scaling-book&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">python&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">m&lt;/span> &lt;span class="n">edtrace&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">execute&lt;/span> &lt;span class="o">-&lt;/span>&lt;span class="n">m&lt;/span> &lt;span class="n">lecture&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Performance Analysis Tools</title><link>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</link><pubDate>Wed, 01 Apr 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="performance-analysis-tools" class="heading-element">&lt;span>Performance Analysis Tools&lt;/span>
+&lt;/ul></description></item><item><title>Performance Analysis Tools</title><link>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</link><pubDate>Wed, 01 Apr 2026 13:33:12 +0800</pubDate><guid>https://fengchen321.github.io/posts/computer/performance-analysis-tools/</guid><category domain="https://fengchen321.github.io/categories/computer/">Computer</category><description>&lt;h2 id="performance-analysis-tools" class="heading-element">&lt;span>Performance Analysis Tools&lt;/span>
  &lt;a href="#performance-analysis-tools" class="heading-mark">
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z">&lt;/path>&lt;/svg>
  &lt;/a>
