@@ -1257,8 +1257,16 @@ World size：设备总数&lt;/p>
 &lt;/h4>&lt;blockquote>
 &lt;p>局限: 需要价值模型，显存占用大，调参困难&lt;/p>
 &lt;/blockquote>
+&lt;p>&lt;a href="https://arxiv.org/abs/2203.02155"target="_blank" rel="external nofollow noopener noreferrer">InstructGPT&lt;/a>&lt;/p>
 $$
-objective (\phi)=E_{(x,y)\sim D_{\pi_{\phi}^{\mathrm{RL}}}}[r_{\theta}(x,y)-\beta \log \left(\pi_{\phi}^{\mathrm{RL}}(y \mid x) / \pi^{\mathrm{SFT}}(y \mid x)\right)]+\gamma E_{x\sim D_{\mathrm{pretrain}}}[\log(\pi_{\phi}^{\mathrm{RL}}(x))]
+\mathcal{J}(\phi)=
+\mathbb{E}_{(x,y)\sim D_{\pi_{\phi}^{\mathrm{RL}}}}
+\left[r_{\theta}(x,y)-\beta \log
+\left(
+\frac{\pi_{\phi}^{\mathrm{RL}}(y \mid x)} {\pi^{\mathrm{SFT}}(y \mid x)}
+\right)\right] + 
+\gamma \,\mathbb{E}_{x\sim D_{\mathrm{pretrain}}}
+\left[\log \pi_{\phi}^{\mathrm{RL}}(x)\right]
 $$&lt;p>PPO演进路线&lt;/p>
 &lt;ol>
 &lt;li>策略梯度 (Policy Gradient): 方差过大&lt;/li>
@@ -1298,25 +1306,22 @@ $$&lt;p>变体: &lt;a href="https://arxiv.org/abs/2405.14734"target="_blank" rel
 &lt;p>idea: 移除价值网络,用组内相对奖励来计算优势&lt;/p>
 &lt;p>局限: 存在理论缺陷(无效基线)和长度偏差 (未显式归一化序列长度，正确回答倾向于被拉短，错误回答倾向于被拉长,需要引入长度惩罚项来缓解)&lt;/p>
 &lt;/blockquote>
-&lt;p>$$
-\mathcal{J}&lt;em>{GRPO}(\theta) =
-\mathbb{E}&lt;/em>{q \sim P(Q), {o_i}&lt;em>{i=1}^G \sim \pi&lt;/em>{\theta_{\text{old}}}(o|q)}
+$$
+\mathcal{J}_{GRPO}(\theta) = 
+\mathbb{E}_{q \sim P(Q), \{o_i\}_{i=1}^G \sim \pi_{\theta_{\text{old}}}(o|q)} 
 \left[
-\frac{1}{G} \sum_{i=1}^G
+\frac{1}{G} \sum_{i=1}^G 
 \min \left(
-\frac{\pi_\theta(o_i|q)}{\pi_{\theta_{\text{old}}}(o_i|q)} A_i,
-\operatorname{clip}\left(
-\frac{\pi_\theta(o_i|q)}{\pi_{\theta_{\text{old}}}(o_i|q)},
-1 - \epsilon,
-1 + \epsilon
-\right) A_i
-\right)&lt;/p>
-&lt;ul>
-&lt;li>\beta \cdot \mathbb{D}&lt;em>{KL}(\pi&lt;/em>\theta \parallel \pi_{\text{ref}})
+ \frac{\pi_\theta(o_i|q)}{\pi_{\theta_{\text{old}}}(o_i|q)} A_i,
+ \operatorname{clip}\left(
+ \frac{\pi_\theta(o_i|q)}{\pi_{\theta_{\text{old}}}(o_i|q)},
+ 1 - \epsilon,
+ 1 + \epsilon
+ \right) A_i
+\right) -
+\beta \cdot \mathbb{D}_{KL}(\pi_\theta \parallel \pi_{\text{ref}})
 \right]
-$$&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2501.12948"target="_blank" rel="external nofollow noopener noreferrer">DeepSeek-R1&lt;/a>&lt;/strong>&lt;/p>
+$$&lt;p>&lt;strong>&lt;a href="https://arxiv.org/abs/2501.12948"target="_blank" rel="external nofollow noopener noreferrer">DeepSeek-R1&lt;/a>&lt;/strong>&lt;/p>
 &lt;ol>
 &lt;li>SFT 冷启动(Cold Start)：收集少量长 CoT(思维链)数据进行微调，避免 R1-Zero 早期的不稳定。&lt;/li>
 &lt;li>推理 RL(Reasoning RL)：类似 R1-Zero，但增加了语言一致性奖励(Language Consistency Reward)，防止思维链出现多语言混杂。&lt;/li>

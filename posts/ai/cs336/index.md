@@ -567,8 +567,16 @@ PDF (arXiv): 使用 OCR (RolmOCR) 或 Docling 提取, [FinePDFs](https://hugging
 &gt; 局限: 需要价值模型，显存占用大，调参困难
 
 [InstructGPT](https://arxiv.org/abs/2203.02155)
+
 $$
-objective (\phi)=E_{(x,y)\sim D_{\pi_{\phi}^{\mathrm{RL}}}}[r_{\theta}(x,y)-\beta \log \left(\pi_{\phi}^{\mathrm{RL}}(y \mid x) / \pi^{\mathrm{SFT}}(y \mid x)\right)]&#43;\gamma E_{x\sim D_{\mathrm{pretrain}}}[\log(\pi_{\phi}^{\mathrm{RL}}(x))]
+\mathcal{J}(\phi)=
+\mathbb{E}_{(x,y)\sim D_{\pi_{\phi}^{\mathrm{RL}}}}
+\left[r_{\theta}(x,y)-\beta \log
+\left(
+\frac{\pi_{\phi}^{\mathrm{RL}}(y \mid x)} {\pi^{\mathrm{SFT}}(y \mid x)}
+\right)\right] &#43; 
+\gamma \,\mathbb{E}_{x\sim D_{\mathrm{pretrain}}}
+\left[\log \pi_{\phi}^{\mathrm{RL}}(x)\right]
 $$
 
 PPO演进路线
@@ -614,8 +622,8 @@ $$
         1 - \epsilon,
         1 &#43; \epsilon
     \right) A_i
-\right)
-- \beta \cdot \mathbb{D}_{KL}(\pi_\theta \parallel \pi_{\text{ref}})
+\right) -
+\beta \cdot \mathbb{D}_{KL}(\pi_\theta \parallel \pi_{\text{ref}})
 \right]
 $$
 
