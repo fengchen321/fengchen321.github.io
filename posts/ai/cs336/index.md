@@ -652,6 +652,16 @@ $$
 
 视觉编码器 [VQ-VAE](https://arxiv.org/pdf/1711.00937)
 
+## 拓展
+
+- 部分 logits 变 NaN → 重复输出同一 token，形成死循环
+- 工具调用失败 → 生成变长、死循环重复调用
+- Off-by-one 错误读取 GPU 未初始化内存，输出随机中文token → 英文输入，输出中文
+
+[Megakernels](https://github.com/HazyResearch/Megakernels)（系统/推理引擎优化）：将多个计算内核融合成一个“巨型内核”来降低延迟。
+
+[Parcae: Scaling Laws For Stable Looped Language Models](https://arxiv.org/abs/2604.12946): 核心思想是通过重复使用相同的网络层（增加“循环深度”）来提升模型性能，而不是单纯地增加参数量。
+
 ## 参考阅读
 
 - [CS336: Language Modeling from Scratch](https://cs336.stanford.edu/)
