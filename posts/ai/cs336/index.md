@@ -627,6 +627,8 @@ $$
 \right]
 $$
 
+[Lightweight Guide to understanding GRPO and RL principles](https://gitlostmurali.com/blog/grpo-intro/), [policy-gradient](https://ivison.id.au/2026/02/09/policy-gradient.html)
+
 **[DeepSeek-R1](https://arxiv.org/abs/2501.12948)**
 1. SFT 冷启动(Cold Start)：收集少量长 CoT(思维链)数据进行微调，避免 R1-Zero 早期的不稳定。
 2. 推理 RL(Reasoning RL)：类似 R1-Zero，但增加了语言一致性奖励(Language Consistency Reward)，防止思维链出现多语言混杂。
@@ -667,6 +669,8 @@ $$
 - [CS336: Language Modeling from Scratch](https://cs336.stanford.edu/)
 - [Hugging Face LLM Course](https://huggingface.co/learn/llm-course/)
 - [scaling-book](https://jax-ml.github.io/scaling-book/)
+- [CS224N: Natural Language Processing with Deep Learning](https://web.stanford.edu/class/cs224n/readings/)
+- [图解GPT-2](https://jalammar.github.io/illustrated-gpt2/)
 
 ---
 

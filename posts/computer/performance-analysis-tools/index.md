@@ -101,6 +101,8 @@
 - 相关学术会议: MLSYS、ASPLOS、HPCA、MICRO、ISCA、[RTNS](https://dl.acm.org/conference/rtns)
 - [Brendan Gregg 的主页](https://www.brendangregg.com/)
 - [easyperf blog CPU架构](https://easyperf.net/)
+- [Traceing-Summit](https://tracingsummit.org/ts/2025/)
+- [Tristan Hume blog](https://thume.ca/2023/12/02/tracing-methods/)
 
 ---
 
