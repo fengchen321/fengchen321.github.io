@@ -34,6 +34,35 @@ autoProxy=true
 sparseVhd=true
 ```
 
+## Termux
+
+```shell
+pkg update &amp;&amp; pkg upgrade # 更新
+termux-change-repo # 换源
+pkg install vim curl git wget net-tools # 安装常用工具
+pkg uninstall xxx # 卸载
+pkg list-all # 查看所有包
+pkg search xxx # 搜索包
+termux-setup-storage # 挂载存储 后ls ~/storage 访问
+# 电脑连接termux
+pkg install openssh # 安装ssh
+sshd # 启动ssh
+ifcongig # 查看ip
+ssh -p 8022 ip-address # 电脑连接 (手机电脑在同一局域网内）
+# 设置公钥连接
+ssh-keygen # PC 端生成公钥和私钥
+cat ~/.ssh/id_rsa.pub # 复制公钥
+vim ~/.ssh/authorized_keys # 将公钥粘贴到termux的authorized_keys文件中
+vim $PREFIX/etc/ssh/sshd_config # 修改配置文件 将PasswordAuthentication yes改为no
+pkill sshd;sshd # 重启ssh服务
+
+pkg install nodejs-lts # 安装nodejs
+```
+- [参考阅读 termux 配置](https://www.sqlsec.com/2018/05/termux.html)
+- [安装ohmyzsh](https://github.com/Cabbagec/termux-ohmyzsh/)
+- [安装claude code](https://github.com/Zhanglisong747/termux-claude-code)
+
+
 ## 终端美化
 
 [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
