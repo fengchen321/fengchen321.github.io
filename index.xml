@@ -4879,7 +4879,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>C/S架构：三层在两层上增加一个&lt;strong>应用服务器&lt;/strong>，构成包括&lt;strong>表示层&lt;/strong>(用户接口部分，存在于客户机)、&lt;strong>功能层&lt;/strong>(应用本体)和&lt;strong>数据层&lt;/strong>(数据库管理系统)三个部分&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>MVC: Modle负责数据， View 负责展示、Controller负责协调。&lt;/p>
+&lt;p>MVC: Model负责数据， View 负责展示、Controller负责协调。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>面向服务的架构(SOA )：实现方式：Web Service(UDDI用于&lt;strong>描述、发现和集成&lt;/strong>)、服务注册表模式和&lt;strong>企业服务总线&lt;/strong> ESB 模式；SOA是集中式管理(微服务架构是去中心化管理)；描述Web服务的三个基本属性：&lt;strong>服务做些什么、如何访问服务、服务位于何处&lt;/strong>。&lt;/p>
@@ -4903,15 +4903,15 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>软件架构复用：类型：&lt;strong>机会复用&lt;/strong>(抓住机会)和&lt;strong>系统复用&lt;/strong>(开发前规划)；主要阶段：构造/获取可复用的软件资产、管理可复用资产和使用可复用资产&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>架构权衡分析方法(ATAM): 4阶段：需求收集、&lt;strong>架构视图&lt;/strong>描述、属性模型构造和分析、架构决策与折中；强调以&lt;strong>属性&lt;/strong>为架构评估的核心概念，主要针对性能、可用性、安全性和可修改性，在系统开发之前，对这些质量属性进行&lt;strong>评价和折中&lt;/strong>。通过头脑风暴和优先场景理解质量属性要求，分析架构方法的三种场景：用例场景，增长情景，探索性情景。&lt;/p>
+&lt;p>架构权衡分析方法(ATAM): 4阶段：需求收集、&lt;strong>架构视图&lt;/strong>描述、属性模型构造和分析、架构决策与折中；强调以&lt;strong>属性&lt;/strong>为架构评估的核心概念，主要针对性能、可用性、安全性和可修改性，在系统开发之前，对这些质量属性进行&lt;strong>评价和折中&lt;/strong>。通过头脑风暴和优先场景理解质量属性要求，分析架构方法的三种场景：用例场景，增长场景，探索性场景。&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>基于场景的架构分析方法(SAAM)：针对最终架构而非详细设计进行评估。5步骤：场景开发、体系结构描述、单个场景评估、场景交互和总体评估。主要输入问题是&lt;strong>问题描述、需求声明和体系结构描述&lt;/strong>。&lt;/p>
+&lt;p>基于场景的架构分析方法(SAAM)：针对最终架构而非详细设计进行评估。5步骤：场景开发、体系结构描述、单个场景评估、场景交互和总体评估。主要输入问题是&lt;strong>问题描述、需求声明和体系结构描述&lt;/strong>。
+场景是从&lt;strong>风险承担者&lt;/strong>的角度对系统交互的描述，一般采用&lt;strong>刺激、环境和响应&lt;/strong>三个方面对场景进行描述。&lt;/p>
 &lt;/li>
-&lt;/ol>
-&lt;p>场景是从&lt;strong>风险承担者&lt;/strong>的角度对系统交互的描述，一般采用&lt;strong>刺激、环境和响应&lt;/strong>三个方面对场景进行描述。&lt;/p>
-&lt;ol start="12">
-&lt;li>质量属性：6组成：刺激源、刺激、&lt;strong>环境&lt;/strong>、制品、&lt;strong>响应和响应度量&lt;/strong>；&lt;strong>响应&lt;/strong>是在激励到达后所采取的行动；效用树结构：&lt;strong>树根、质量属性、属性分类，质量属性场景&lt;/strong>。描述质量属性的手段：&lt;strong>质量属性场景&lt;/strong>&lt;/li>
+&lt;li>
+&lt;p>质量属性：6组成：刺激源、刺激、&lt;strong>环境&lt;/strong>、制品、&lt;strong>响应和响应度量&lt;/strong>；&lt;strong>响应&lt;/strong>是在激励到达后所采取的行动；效用树结构：&lt;strong>树根、质量属性、属性分类，质量属性场景&lt;/strong>。描述质量属性的手段：&lt;strong>质量属性场景&lt;/strong>&lt;/p>
+&lt;/li>
 &lt;/ol>
 &lt;p>&lt;strong>性能&lt;/strong>：系统的响应能力。(优先级队列，引入并发，&lt;strong>资源调度&lt;/strong>)(效率、响应时间、&lt;strong>吞吐量&lt;/strong>、负载)&lt;/p>
 &lt;p>&lt;strong>可用性&lt;/strong>：系统能够正常运行的时间比例。(&lt;strong>心跳&lt;/strong>、Ping/Echo、&lt;strong>主动冗余&lt;/strong>、被动冗余、选举)MTBF(平均无故障时间) / (MTBF + MTTR(平均修复时间))&lt;/p>
@@ -4928,7 +4928,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>敏感点：一个或多个构件的特性。&lt;/p>
 &lt;p>权衡点：影响多个质量属性的特性，是多个质量属性的敏感点。(让一个变好，一个变差才要权衡)&lt;/p>
 &lt;p>风险点和非风险点：某个做法如果有隐患，有可能导致一些问题，则为风险点；而如果某件事是可行的、&lt;strong>可接受的&lt;/strong>，则为非风险点。&lt;/p>
-&lt;ol start="11">
+&lt;ol start="14">
 &lt;li>4+1视图：多视图反映了&lt;strong>关注点分离&lt;/strong>的思想&lt;/li>
 &lt;/ol>
 &lt;p>逻辑视图(描述对象模型和对象关系，功能)，&lt;/p>
@@ -4936,7 +4936,7 @@ padding: 2px;">ELF 详细结构&lt;/div>
 &lt;p>进程视图(并发，同步特征)&lt;/p>
 &lt;p>物理视图 (软件到硬件的映射)&lt;/p>
 &lt;p>统一场景&lt;/p>
-&lt;ol start="12">
+&lt;ol start="15">
 &lt;li>
 &lt;p>系统应用集成(EAI)：基本原则是集成多个系统并保证系统&lt;strong>独立性&lt;/strong>，4层次服务从下至上：通信服务、信息传递与转化服务、应用连接服务和&lt;strong>流程控制服务&lt;/strong>。&lt;/p>
 &lt;/li>

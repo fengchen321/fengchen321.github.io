@@ -4,18 +4,18 @@
 
 ## 概论
 
-shell是通过命令行与操作系统沟通的语言。
+shell是通过命令行与操作系统沟通的语言。[ShellCheck](https://www.shellcheck.net/)：**Shell 脚本静态分析工具**
 
 Linux中常见的shell脚本有很多种，常见的有：
 
 &gt; **Bourne Shell** (`/usr/bin/sh`或`/bin/sh`)
-&gt; 
+&gt;
 &gt; **Bourne Again Shell** (`/bin/bash`)
-&gt; 
+&gt;
 &gt; **C Shell** (`/usr/bin/csh`)
-&gt; 
+&gt;
 &gt; **K Shell** (`/usr/bin/ksh`)
-&gt; 
+&gt;
 &gt; **zsh**
 &gt; …
 
@@ -23,8 +23,15 @@ Linux系统中一般默认使用**bash**，文件开头需要写`#! /bin/bash`�
 
 ```bash
 #! /bin/bash
+set -euo pipefail
 echo Hello World  # echo类似于C&#43;&#43;的字符串
 ```
+
+第二行让 bash 以更「严格」的模式运行，可以避免很多 Shell 脚本中常见的陷阱。`set` 接受很多参数
+
+- `-e` 表示任何命令失败时脚本立即退出
+- `-u` 表示使用未定义变量时直接报错，而不是默默当作空字符串
+- `-o pipefail` 表示在 `|` 管道序列中，只要有程序失败，整个脚本也会尽早退出
 
 **运行方式**
 
@@ -136,8 +143,9 @@ declare -x name  # 第二种方法
 环境变量改为自定义变量：
 
 ```bash
-export name=abc  # 定义环境变量
+export name=abc  # 定义环境变量  和 unset  搭配
 declare &#43;x name  # 改为自定义变量
+printenv # 查看当前环境变量
 ```
 
 ### **字符串**
@@ -793,6 +801,20 @@ done
 &gt; &gt; 使用`top`命令找到进程的PID或者`ps aux`返回当前打开的所有进程。`shift&#43;M`按照内存排序
 &gt; &gt; 输入`kill -9 PID`即可关掉此进程
 
+### 清理工作 trap
+
+```shell
+#!/usr/bin/env bash
+cleanup() {
+    echo &#34;Cleaning up temporary files...&#34;
+    rm -f /tmp/mytemp.*
+}
+trap cleanup EXIT  # 当脚本退出时执行清理
+trap cleanup SIGINT SIGTERM  # 也可以按 Ctrl-C 或 Kill
+```
+
+内建命令 `trap`，让脚本在收到信号时执行指定命令。
+
 ##  函数
 
 bash中的函数类似于C/C&#43;&#43;中的函数，但`return`的返回值与C/C&#43;&#43;不同，返回的是`exit code`，取值为0-255，0表示正常结束。
@@ -930,20 +952,21 @@ echo $?  # 传入参数个数不是1，则非正常退出，exit code为1
 每个进程默认打开3个文件描述符：
 
 &gt; stdin标准输入，从命令行读取数据，文件描述符为0
-&gt; 
+&gt;
 &gt; stdout标准输出，向命令行输出数据，文件描述符为1
-&gt; 
+&gt;
 &gt; stderr标准错误输出，向命令行输出数据，文件描述符为2
-&gt; 
+&gt;
 &gt; 可以用文件重定向将这三个文件重定向到其他文件中。
 
-|       命令       |                 说明                  |
-| :--------------: | :-----------------------------------: |
-|  command &gt; file  |        将stdout重定向到file中         |
-|  command &lt; file  |         将stdin重定向到file中         |
-| command &gt;&gt; file  |   将stdout以追加方式重定向到file中    |
-| command n&gt; file  |      将文件描述符n重定向到file中      |
-| command n&gt;&gt; file | 将文件描述符n以追加方式重定向到file中 |
+|           命令           |                 说明                  |
+| :----------------------: | :-----------------------------------: |
+|      command &gt; file      |        将stdout重定向到file中         |
+|      command &lt; file      |         将stdin重定向到file中         |
+|     command &gt;&gt; file      |   将stdout以追加方式重定向到file中    |
+|     command n&gt; file      |      将文件描述符n重定向到file中      |
+|     command n&gt;&gt; file     | 将文件描述符n以追加方式重定向到file中 |
+| command &gt; /dev/null 2&gt;&amp;1 |   通过重定向到 /dev/null 来丢弃输出   |
 
 **输入和输出重定向**
 

@@ -1086,6 +1086,10 @@ int print() {
 
 [assembler](https://sourceware.org/binutils/docs/as/index.html#SEC_Contents)
 
+[x86-64 Assembly Language Programming with Ubuntu](http://www.egr.unlv.edu/~ed/assembly64.pdf)
+
+[ASM Visualizer](https://asm.diveintosystems.org/)
+
 ---
 
 > 作者:   
